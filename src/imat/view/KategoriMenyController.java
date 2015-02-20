@@ -11,7 +11,7 @@ import imat.IMat;
  *
  * @author joel
  */
-public class StartVyController {
+public class KategoriMenyController {
   
   // Reference to the main application
   private IMat mainApp;

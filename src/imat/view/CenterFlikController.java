@@ -6,12 +6,25 @@
 package imat.view;
 
 import imat.IMat;
+import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
 
 /**
  *
  * @author joel
  */
-public class CenterFlikVyController {
+public class CenterFlikController {
+  
+  @FXML
+  private Tab handlaFlik;
+  @FXML
+  private Tab favoritvarorFlik;
+  @FXML
+  private Tab inkopslistorFlik;
+  @FXML
+  private Tab historikFlik;
+  @FXML
+  private Tab kontouppgifterFlik;
   
   // Reference to the main application
   private IMat mainApp;

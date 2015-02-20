@@ -11,7 +11,7 @@ import imat.IMat;
  *
  * @author joel
  */
-public class ToppVyController {
+public class ToppController {
   
   // Reference to the main application
   private IMat mainApp;

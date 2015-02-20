@@ -5,6 +5,10 @@
  */
 package imat;
 
+import imat.view.CenterFlikController;
+import imat.view.KategoriMenyController;
+import imat.view.ToppController;
+import imat.view.VarukorgController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,6 +24,14 @@ public class IMatController implements Initializable {
   
   @FXML
   private Label label;
+  @FXML
+  private CenterFlikController centerFlikController;
+  @FXML
+  private KategoriMenyController kategoriMenyController;
+  @FXML
+  private ToppController toppController;
+  @FXML
+  private VarukorgController varukorgController;
   
   @FXML
   private void handleButtonAction(ActionEvent event) {

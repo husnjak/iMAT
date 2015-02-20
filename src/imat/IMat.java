@@ -5,11 +5,7 @@
  */
 package imat;
 
-import imat.view.KategoriMenyController;
 import imat.view.RootLayoutController;
-import imat.view.CenterFlikVyController;
-import imat.view.ToppVyController;
-import imat.view.VarukorgController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,10 +23,6 @@ public class IMat extends Application {
   private Stage primaryStage;
   private BorderPane rootLayout;
   private RootLayoutController rootController;
-  private KategoriMenyController handlaController;
-  private CenterFlikVyController startController;
-  private ToppVyController toppController;
-  private VarukorgController varukorgController;
   
   
   @Override
@@ -39,11 +31,12 @@ public class IMat extends Application {
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
     
+    
     initRootLayout();
-    //initHandlaMeny();
+    initKategoriMeny();
     initCenterFlikVy();
-    //initToppVy();
-    //initVarukorg();
+    initToppVy();
+    initVarukorg();
   }
   
   /**
@@ -62,7 +55,6 @@ public class IMat extends Application {
       rootLayout = loader.load();
       
       rootController = loader.getController();
-      //rootController.setMainApp(this);
 
       // Show the scene containing the root layout.
       Scene scene = new Scene(rootLayout);
@@ -73,7 +65,7 @@ public class IMat extends Application {
     }
   }
       
-  public void initHandlaMeny() {
+  public void initKategoriMeny() {
     try {
       // Load handla view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/KategoriMeny.fxml"));
@@ -81,10 +73,6 @@ public class IMat extends Application {
       
       // Put handla into the left part of root layout.
       rootLayout.setLeft(kategoriMeny);
-
-      // Give the controller access to the main app
-      //handlaController = loader.getController();
-      //handlaController.setMainApp(this);
 
     } catch (IOException e) {
         // Exception gets thrown if the fxml file could not be loaded
@@ -95,15 +83,11 @@ public class IMat extends Application {
   public void initCenterFlikVy() {
     try {
       // Load start view.
-      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlikVy.fxml"));
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
       AnchorPane startVy = (AnchorPane) loader.load();
 
       // Put start into the center part of root layout.
       rootLayout.setCenter(startVy);
-      
-      // Give the controller access to the main app.
-      //startController = loader.getController();
-      //startController.setMainApp(this);
       
     } catch (IOException e) {
         e.printStackTrace();
@@ -113,15 +97,11 @@ public class IMat extends Application {
   public void initToppVy() {
     try {
       // Load top view.
-      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/ToppVy.fxml"));
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Topp.fxml"));
       AnchorPane toppVy = (AnchorPane) loader.load();
 
       // Put top into the upper part of root layout.
       rootLayout.setTop(toppVy);
-      
-      // Give the controller access to the main app.
-      //startController = loader.getController();
-      //startController.setMainApp(this);
       
     } catch (IOException e) {
         e.printStackTrace();
@@ -131,15 +111,11 @@ public class IMat extends Application {
   public void initVarukorg() {
     try {
       // Load varukorg view.
-      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/VarukorgVy.fxml"));
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Varukorg.fxml"));
       AnchorPane varukorgVy = (AnchorPane) loader.load();
 
       // Put varukorg into the right part of root layout.
       rootLayout.setRight(varukorgVy);
-      
-      // Give the controller access to the main app.
-      //startController = loader.getController();
-      //startController.setMainApp(this);
       
     } catch (IOException e) {
         e.printStackTrace();

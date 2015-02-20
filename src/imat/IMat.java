@@ -5,10 +5,12 @@
  */
 package imat;
 
+import imat.view.RootLayoutController;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -17,15 +19,47 @@ import javafx.stage.Stage;
  */
 public class IMat extends Application {
   
+  private Stage primaryStage;
+  private BorderPane rootLayout;
+  private RootLayoutController rootController;
+  
+  
   @Override
   public void start(Stage stage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("view/RootLayout.fxml"));
+    this.primaryStage = stage;
+    primaryStage.setTitle("iMat");
+    primaryStage.setResizable(false);
     
-    Scene scene = new Scene(root);
-    
-    stage.setScene(scene);
-    stage.show();
+    initRootLayout();
   }
+  
+  /**
+  * Returns the main stage.
+  * @return
+  */
+  public Stage getPrimaryStage() {
+      return primaryStage;
+  }
+  
+      public void initRootLayout() {
+    try {
+      // Load root layout from fxml file.
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(IMat.class.getResource("view/RootLayout.fxml"));
+      rootLayout = (BorderPane) loader.load();
+      
+      rootController = loader.getController();
+      rootController.setMainApp(this);
+
+      // Show the scene containing the root layout.
+      Scene scene = new Scene(rootLayout);
+      primaryStage.setScene(scene);
+      primaryStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+  }
+  
 
   /**
    * @param args the command line arguments

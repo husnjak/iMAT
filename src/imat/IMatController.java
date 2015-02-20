@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
  *
  * @author joel
  */
-public class iMatController implements Initializable {
+public class IMatController implements Initializable {
   
   @FXML
   private Label label;

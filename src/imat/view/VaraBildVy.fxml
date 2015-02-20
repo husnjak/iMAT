@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="291.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <ImageView fitHeight="148.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../test_bild.jpg" />
+         </image>
+      </ImageView>
+      <RadioButton layoutX="197.0" layoutY="29.0" mnemonicParsing="false" text="Favorit" />
+      <Label layoutX="14.0" layoutY="138.0" text="Vara">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="104.0" layoutY="138.0" text="St eller Kg pris">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="13.0" layoutY="198.0" prefHeight="25.0" prefWidth="37.0" text="1" />
+      <Button layoutX="50.0" layoutY="186.0" mnemonicParsing="false" style="-fx-background-color: GreenYellow;" text="+" textAlignment="CENTER" textFill="WHITE" />
+      <Button layoutX="50.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red;" text="-" textFill="WHITE" />
+      <Label layoutX="98.0" layoutY="195.0" text="Pris">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="200.0" layoutY="199.0" mnemonicParsing="false" text="Lägg till" />
+   </children>
+</AnchorPane>

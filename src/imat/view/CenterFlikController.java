@@ -8,6 +8,7 @@ package imat.view;
 import imat.IMat;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 
 /**
  *
@@ -15,6 +16,9 @@ import javafx.scene.control.Tab;
  */
 public class CenterFlikController {
   
+  
+  // Reference to the main application
+  private IMat mainApp;
   @FXML
   private Tab handlaFlik;
   @FXML
@@ -25,9 +29,8 @@ public class CenterFlikController {
   private Tab historikFlik;
   @FXML
   private Tab kontouppgifterFlik;
-  
-  // Reference to the main application
-  private IMat mainApp;
+  @FXML
+  private TabPane tabPane;
   
   /**
   * Is called by the main application to give a reference back to itself.

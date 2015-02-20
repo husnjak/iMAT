@@ -5,11 +5,12 @@
  */
 package imat;
 
-import imat.view.RootLayoutController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -22,9 +23,8 @@ import javafx.stage.Stage;
 public class IMat extends Application {
   
   private Stage primaryStage;
+  private Parent root;
   private BorderPane rootLayout;
-  private RootLayoutController rootController;
-  
   
   @Override
   public void start(Stage stage) throws Exception {
@@ -54,15 +54,17 @@ public class IMat extends Application {
    */
   public void initRootLayout() {
     try {
-      // Load root layout from fxml file.
+      // Load root layout from fxml file
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(IMat.class.getResource("view/RootLayout.fxml"));
-      rootLayout = loader.load();
+      root = loader.load();
       
-      rootController = loader.getController();
-
-      // Show the scene containing the root layout.
-      Scene scene = new Scene(rootLayout);
+      // Show the scene containing the root layout
+      Scene scene = new Scene(root);
+      
+      // Used for placing different views inside Root Layout
+      rootLayout = (BorderPane) root;
+      
       primaryStage.setScene(scene);
       primaryStage.show();
     } catch (IOException e) {
@@ -95,7 +97,7 @@ public class IMat extends Application {
     try {
       // Load start view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
-      AnchorPane centerFlik = (AnchorPane) loader.load();
+      TabPane centerFlik = loader.load();
 
       // Put start into the center part of root layout.
       rootLayout.setCenter(centerFlik);

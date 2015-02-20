@@ -95,7 +95,7 @@ public class IMat extends Application {
   public void initCenterFlikVy() {
     try {
       // Load start view.
-      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/StartVy.fxml"));
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlikVy.fxml"));
       AnchorPane startVy = (AnchorPane) loader.load();
 
       // Put start into the center part of root layout.

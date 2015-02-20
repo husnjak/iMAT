@@ -83,7 +83,7 @@ public class IMat extends Application {
       rootLayout.setLeft(kategoriMeny);
 
       // Give the controller access to the main app
-      handlaController = loader.getController();
+      //handlaController = loader.getController();
       //handlaController.setMainApp(this);
 
     } catch (IOException e) {
@@ -120,8 +120,8 @@ public class IMat extends Application {
       rootLayout.setTop(toppVy);
       
       // Give the controller access to the main app.
-      startController = loader.getController();
-      startController.setMainApp(this);
+      //startController = loader.getController();
+      //startController.setMainApp(this);
       
     } catch (IOException e) {
         e.printStackTrace();
@@ -138,8 +138,8 @@ public class IMat extends Application {
       rootLayout.setRight(varukorgVy);
       
       // Give the controller access to the main app.
-      startController = loader.getController();
-      startController.setMainApp(this);
+      //startController = loader.getController();
+      //startController.setMainApp(this);
       
     } catch (IOException e) {
         e.printStackTrace();

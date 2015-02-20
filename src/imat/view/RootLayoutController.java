@@ -13,7 +13,7 @@ import imat.IMat;
  */
 public class RootLayoutController {
   
-    // Reference to the main application
+  // Reference to the main application
   private IMat mainApp;
   
   

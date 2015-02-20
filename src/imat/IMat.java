@@ -5,11 +5,16 @@
  */
 package imat;
 
+import imat.view.HandlaMenyController;
 import imat.view.RootLayoutController;
+import imat.view.StartVyController;
+import imat.view.ToppVyController;
+import imat.view.VarukorgController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -22,6 +27,10 @@ public class IMat extends Application {
   private Stage primaryStage;
   private BorderPane rootLayout;
   private RootLayoutController rootController;
+  private HandlaMenyController handlaController;
+  private StartVyController startController;
+  private ToppVyController toppController;
+  private VarukorgController varukorgController;
   
   
   @Override
@@ -31,6 +40,10 @@ public class IMat extends Application {
     primaryStage.setResizable(false);
     
     initRootLayout();
+    initHandlaMeny();
+    initStartVy();
+    initToppVy();
+    initVarukorg();
   }
   
   /**
@@ -41,7 +54,7 @@ public class IMat extends Application {
       return primaryStage;
   }
   
-      public void initRootLayout() {
+  public void initRootLayout() {
     try {
       // Load root layout from fxml file.
       FXMLLoader loader = new FXMLLoader();
@@ -55,6 +68,79 @@ public class IMat extends Application {
       Scene scene = new Scene(rootLayout);
       primaryStage.setScene(scene);
       primaryStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+  }
+      
+  public void initHandlaMeny() {
+    try {
+      // Load handla view.
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/HandlaMeny.fxml"));
+      AnchorPane handlaMeny = (AnchorPane) loader.load();
+      
+      // Put handla into the left part of root layout.
+      rootLayout.setLeft(handlaMeny);
+
+      // Give the controller access to the main app
+      handlaController = loader.getController();
+      handlaController.setMainApp(this);
+
+    } catch (IOException e) {
+        // Exception gets thrown if the fxml file could not be loaded
+        e.printStackTrace();
+    }
+  }
+  
+  public void initStartVy() {
+    try {
+      // Load start view.
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/StartVy.fxml"));
+      AnchorPane startVy = (AnchorPane) loader.load();
+
+      // Put start into the center part of root layout.
+      rootLayout.setCenter(startVy);
+      
+      // Give the controller access to the main app.
+      startController = loader.getController();
+      startController.setMainApp(this);
+      
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+  }
+  
+  public void initToppVy() {
+    try {
+      // Load top view.
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/ToppVy.fxml"));
+      AnchorPane toppVy = (AnchorPane) loader.load();
+
+      // Put top into the upper part of root layout.
+      rootLayout.setTop(toppVy);
+      
+      // Give the controller access to the main app.
+      startController = loader.getController();
+      startController.setMainApp(this);
+      
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+  }
+  
+  public void initVarukorg() {
+    try {
+      // Load varukorg view.
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/VarukorgVy.fxml"));
+      AnchorPane varukorgVy = (AnchorPane) loader.load();
+
+      // Put varukorg into the right part of root layout.
+      rootLayout.setRight(varukorgVy);
+      
+      // Give the controller access to the main app.
+      startController = loader.getController();
+      startController.setMainApp(this);
+      
     } catch (IOException e) {
         e.printStackTrace();
     }

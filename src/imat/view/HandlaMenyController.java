@@ -5,10 +5,24 @@
  */
 package imat.view;
 
+import imat.IMat;
+
 /**
  *
  * @author joel
  */
 public class HandlaMenyController {
+  
+  // Reference to the main application
+  private IMat mainApp;
+  
+  /**
+  * Is called by the main application to give a reference back to itself.
+  * 
+  * @param mainApp
+  */
+  public void setMainApp(IMat mainApp) {
+    this.mainApp = mainApp;
+  }
   
 }

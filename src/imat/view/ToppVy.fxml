@@ -21,5 +21,12 @@
       <Button layoutX="1041.0" layoutY="29.0" mnemonicParsing="false" text="Logga in" />
       <Label layoutX="813.0" layoutY="62.0" text="Ej medlen?" />
       <Hyperlink layoutX="882.0" layoutY="59.0" text="Registrera" underline="true" />
+      <Pane layoutX="803.0" layoutY="4.0" prefHeight="122.0" prefWidth="310.0">
+         <children>
+            <Label layoutX="78.0" layoutY="27.0" text="Inloggad som " />
+            <Hyperlink layoutX="155.0" layoutY="24.0" text="Användare" underline="true" />
+            <Button layoutX="238.0" layoutY="23.0" mnemonicParsing="false" text="Logga ut" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

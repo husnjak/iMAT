@@ -11,7 +11,7 @@ import imat.IMat;
  *
  * @author joel
  */
-public class HandlaMenyController {
+public class CenterFlikVyController {
   
   // Reference to the main application
   private IMat mainApp;

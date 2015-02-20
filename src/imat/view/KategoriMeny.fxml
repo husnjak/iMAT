@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.HandlaMenyController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
    <children>
       <Label layoutX="85.0" layoutY="70.0" text="Bröd" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
       <Label layoutX="75.0" layoutY="93.0" text="Dryck" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="80.0" />

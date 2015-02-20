@@ -15,8 +15,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- *
- * @author joel
+ * This class set up the default views of the program.
+ * 
+ * @author grupp 11
  */
 public class IMat extends Application {
   
@@ -31,11 +32,10 @@ public class IMat extends Application {
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
     
-    
     initRootLayout();
     initKategoriMeny();
-    initCenterFlikVy();
-    initToppVy();
+    initCenterFlik();
+    initTopp();
     initVarukorg();
   }
   
@@ -47,6 +47,11 @@ public class IMat extends Application {
       return primaryStage;
   }
   
+  /**
+   * Makes the root layout the scene of the stage. All default views are
+   * placed within the root layout.
+   * 
+   */
   public void initRootLayout() {
     try {
       // Load root layout from fxml file.
@@ -64,7 +69,10 @@ public class IMat extends Application {
         e.printStackTrace();
     }
   }
-      
+  
+  /**
+   * Places the KategoriMeny view inside the left part of root layout.
+   */
   public void initKategoriMeny() {
     try {
       // Load handla view.
@@ -80,42 +88,51 @@ public class IMat extends Application {
     }
   }
   
-  public void initCenterFlikVy() {
+  /**
+   * Places the CenterFlik view inside the center part of root layout.
+   */
+  public void initCenterFlik() {
     try {
       // Load start view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
-      AnchorPane startVy = (AnchorPane) loader.load();
+      AnchorPane centerFlik = (AnchorPane) loader.load();
 
       // Put start into the center part of root layout.
-      rootLayout.setCenter(startVy);
+      rootLayout.setCenter(centerFlik);
       
     } catch (IOException e) {
         e.printStackTrace();
     }
   }
   
-  public void initToppVy() {
+  /**
+   * Places the Topp view inside the upper part of root layout.
+   */
+  public void initTopp() {
     try {
       // Load top view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Topp.fxml"));
-      AnchorPane toppVy = (AnchorPane) loader.load();
+      AnchorPane topp = (AnchorPane) loader.load();
 
       // Put top into the upper part of root layout.
-      rootLayout.setTop(toppVy);
+      rootLayout.setTop(topp);
       
     } catch (IOException e) {
         e.printStackTrace();
     }
   }
   
+  /**
+   * Places the Varukorg view inside the right side of root layout.
+   */
   public void initVarukorg() {
     try {
       // Load varukorg view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Varukorg.fxml"));
-      AnchorPane varukorgVy = (AnchorPane) loader.load();
+      AnchorPane varukorg = (AnchorPane) loader.load();
 
       // Put varukorg into the right part of root layout.
-      rootLayout.setRight(varukorgVy);
+      rootLayout.setRight(varukorg);
       
     } catch (IOException e) {
         e.printStackTrace();

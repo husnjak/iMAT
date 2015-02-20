@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="162.0" prefWidth="649.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <ImageView fitHeight="142.0" fitWidth="161.0" layoutX="8.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../test_bild.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="188.0" layoutY="21.0" text="Vara">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="185.0" layoutY="65.0" text="St eller Kg pris">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="339.0" layoutY="69.0" prefHeight="25.0" prefWidth="35.0" text="1" />
+      <Label layoutX="343.0" layoutY="45.0" text="Antal" />
+      <Button layoutX="374.0" layoutY="57.0" mnemonicParsing="false" style="-fx-background-color: GreenYellow;" text="+" textFill="WHITE" />
+      <Button layoutX="374.0" layoutY="84.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red;" text="-" textFill="WHITE" />
+      <CheckBox layoutX="479.0" layoutY="29.0" mnemonicParsing="false" text="Favorit" />
+      <Button layoutX="577.0" layoutY="123.0" mnemonicParsing="false" text="Lägg till" />
+   </children>
+</AnchorPane>

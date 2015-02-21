@@ -22,7 +22,7 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  * the imat backend. Thus, this controller is the connection between
  * the model and the view controllers.
  * 
- * @author joel
+ * @author grupp 11
  */
 public class IMatController implements Initializable {
   
@@ -37,7 +37,9 @@ public class IMatController implements Initializable {
   @FXML
   private VarukorgController varukorgController;
   @FXML
-  private final IMatDataHandler imat = IMatDataHandler.getInstance();
+  public static final IMatDataHandler imat = IMatDataHandler.getInstance();
+  @FXML
+  private final Products products = new Products();
   
   @FXML
   private void handleButtonAction(ActionEvent event) {

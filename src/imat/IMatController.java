@@ -16,11 +16,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 
 /**
  * This controller class interacts with the views' controllers, and
  * the imat backend. Thus, this controller is the connection between
- * the model and the view controllers.
+ * the model and the view controllers. It takes care of what goes in
+ * and out of the shopping cart.
  * 
  * @author grupp 11
  */
@@ -40,6 +42,8 @@ public class IMatController implements Initializable {
   public static final IMatDataHandler imat = IMatDataHandler.getInstance();
   @FXML
   private final Products products = new Products();
+  @FXML
+  private final ShoppingCart shoppingCart = imat.getShoppingCart();
   
   @FXML
   private void handleButtonAction(ActionEvent event) {

@@ -46,7 +46,19 @@ public class Products {
     favoriteProducts = new TreeMap();
     productCategories = new TreeMap();
     
-    products =IMatController.imat.getProducts(ProductCategory.BREAD);
+    products = IMatController.imat.getProducts(ProductCategory.BREAD);
     productCategories.put(ProductCategory.BREAD, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.FRUIT));
+    products.addAll(IMatController.imat.getProducts(ProductCategory.BERRY));
+    products.addAll(IMatController.imat.getProducts(ProductCategory.CITRUS_FRUIT));
+    products.addAll(IMatController.imat.getProducts(ProductCategory.EXOTIC_FRUIT));
+    products.addAll(IMatController.imat.getProducts(ProductCategory.MELONS));
+    productCategories.put(ProductCategory.FRUIT, products);
+    System.out.println(productCategories.get(ProductCategory.FRUIT).size());
+    products.clear();
+    
+    
   }
 }

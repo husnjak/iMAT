@@ -18,7 +18,7 @@ import se.chalmers.ait.dat215.project.Product;
 public class IMatUserAccount {
   
   // Contains all favorite products associated with the account
-  Set<Product> favoriteProducts;
+  private Set<Product> favoriteProducts;
   
   // Strings so whitespaces etc can be removed when parsing
   private String username;
@@ -260,6 +260,20 @@ public class IMatUserAccount {
    */
   public void setCvv(String cvv) {
     this.cvv = cvv;
+  }
+
+  /**
+   * @return the favoriteProducts
+   */
+  public Set<Product> getFavoriteProducts() {
+    return favoriteProducts;
+  }
+
+  /**
+   * @param favoriteProducts the favoriteProducts to set
+   */
+  public void setFavoriteProducts(Set<Product> favoriteProducts) {
+    this.favoriteProducts = favoriteProducts;
   }
   
   

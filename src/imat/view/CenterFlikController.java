@@ -5,20 +5,22 @@
  */
 package imat.view;
 
-import imat.IMat;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 
 /**
  *
- * @author joel
+ * @author grupp 11
  */
-public class CenterFlikController {
+public class CenterFlikController implements Initializable {
   
-  
-  // Reference to the main application
-  private IMat mainApp;
   @FXML
   private Tab handlaFlik;
   @FXML
@@ -31,14 +33,45 @@ public class CenterFlikController {
   private Tab kontouppgifterFlik;
   @FXML
   private TabPane tabPane;
+  @FXML
+  private TextField fornamnTextField;
+  @FXML
+  private TextField efternamnTextField;
+  @FXML
+  private TextField personnummerTextField;
+  @FXML
+  private TextField telefonTextField;
+  @FXML
+  private TextField emailTextField;
+  @FXML
+  private TextField gatuadressTextField;
+  @FXML
+  private TextField postnummerTextField;
+  @FXML
+  private TextField stadTextField;
+  @FXML
+  private TextField kortnummerTextField;
+  @FXML
+  private TextField arTextField;
+  @FXML
+  private TextField manadTextField;
+  @FXML
+  private TextField cvvTextField;
+
   
-  /**
-  * Is called by the main application to give a reference back to itself.
-  * 
-  * @param mainApp
-  */
-  public void setMainApp(IMat mainApp) {
-    this.mainApp = mainApp;
+ 
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    
+    
+    arTextField.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+
+      }
+    });
   }
+
   
 }

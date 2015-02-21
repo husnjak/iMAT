@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="122.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="122.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
    <children>
       <TextField layoutX="453.0" layoutY="91.0" prefHeight="25.0" prefWidth="284.0" />
       <Button layoutX="702.0" layoutY="91.0" mnemonicParsing="false" text="Sök" />
@@ -16,8 +16,8 @@
             <Image url="@../../../test_bild.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="813.0" layoutY="29.0" prefHeight="25.0" prefWidth="100.0" promptText="Användarnamn" />
-      <TextField layoutX="924.0" layoutY="29.0" prefHeight="25.0" prefWidth="100.0" promptText="Lösenord" />
+      <TextField fx:id="usernameTextField" layoutX="813.0" layoutY="29.0" prefHeight="25.0" prefWidth="100.0" promptText="Användarnamn" />
+      <TextField fx:id="passwordTextField" layoutX="924.0" layoutY="29.0" prefHeight="25.0" prefWidth="100.0" promptText="Lösenord" />
       <Button layoutX="1041.0" layoutY="29.0" mnemonicParsing="false" text="Logga in" />
       <Label layoutX="813.0" layoutY="62.0" text="Ej medlen?" />
       <Hyperlink layoutX="882.0" layoutY="59.0" text="Registrera" underline="true" />

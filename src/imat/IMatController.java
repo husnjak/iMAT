@@ -45,6 +45,9 @@ public class IMatController implements Initializable {
   @FXML
   private final ShoppingCart shoppingCart = imat.getShoppingCart();
   
+  // Used to check if user is logged in
+  public static boolean loggedIn;
+  
   @FXML
   private void handleButtonAction(ActionEvent event) {
     System.out.println("You clicked me!");

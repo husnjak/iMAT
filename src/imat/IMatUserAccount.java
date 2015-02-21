@@ -34,9 +34,9 @@ public class IMatUserAccount {
   private String cardNumber;
   private String cardType;
   private String cardHoldersname;
-  private String validYear;
-  private String validMonth;
-  private String cvv;
+  private int validYear;
+  private int validMonth;
+  private int cvv;
 
   /**
    * @return the username
@@ -223,42 +223,42 @@ public class IMatUserAccount {
   /**
    * @return the validYear
    */
-  public String getValidYear() {
+  public int getValidYear() {
     return validYear;
   }
 
   /**
    * @param validYear the validYear to set
    */
-  public void setValidYear(String validYear) {
+  public void setValidYear(int validYear) {
     this.validYear = validYear;
   }
 
   /**
    * @return the validMonth
    */
-  public String getValidMonth() {
+  public int getValidMonth() {
     return validMonth;
   }
 
   /**
    * @param validMonth the validMonth to set
    */
-  public void setValidMonth(String validMonth) {
+  public void setValidMonth(int validMonth) {
     this.validMonth = validMonth;
   }
 
   /**
    * @return the cvv
    */
-  public String getCvv() {
+  public int getCvv() {
     return cvv;
   }
 
   /**
    * @param cvv the cvv to set
    */
-  public void setCvv(String cvv) {
+  public void setCvv(int cvv) {
     this.cvv = cvv;
   }
 

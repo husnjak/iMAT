@@ -5,12 +5,14 @@
  */
 package imat.view;
 
+import imat.IMatController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -57,7 +59,10 @@ public class CenterFlikController implements Initializable {
   private TextField manadTextField;
   @FXML
   private TextField cvvTextField;
+  @FXML
+  private Label arLabel;
 
+  private IMatController iMatController;
   
  
 
@@ -68,7 +73,14 @@ public class CenterFlikController implements Initializable {
     arTextField.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-
+        if (iMatController.isLoggedIn() && arTextField.getLength() == 2) {
+          try {
+            int validYear = Integer.parseInt(arTextField.getText());
+            iMatController.getCurrentAccount().setValidYear(validYear);
+          } catch (NumberFormatException e) {
+            arLabel.setText("Ange år som två siffror");
+          }
+        }
       }
     });
   }

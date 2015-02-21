@@ -45,11 +45,31 @@ public class IMatController implements Initializable {
   @FXML
   private final ShoppingCart shoppingCart = imat.getShoppingCart();
   
+  // The account of the currently logged in user
+  private IMatUserAccount currentAccount;
+  
   // Used to store all IMatAccounts
   Map<String, IMatUserAccount> accounts;
   
   // Used to check if user is logged in
-  public static boolean loggedIn;
+  private boolean loggedIn;
+  
+  /**
+   * Check if current user is logged in or not.
+   * 
+   * @return  true if user is logged in, otherwise false 
+   */
+  public boolean isLoggedIn(){
+    return loggedIn;
+  }
+  
+  /**
+   * 
+   * @return the account of the currently logged in user
+   */
+  public IMatUserAccount getCurrentAccount() {
+    return currentAccount;
+  }
   
   
   @Override

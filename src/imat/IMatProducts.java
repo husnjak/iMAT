@@ -12,7 +12,7 @@ import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
- * This class represents everything related to the products. Since
+ * This class represents the store (the storage of products). Since
  * we use our own categories (instead of all the ones in the given
  * backend) we gather the backend products into our own categories
  * in this class. 
@@ -22,10 +22,10 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class IMatProducts {
   
   // Maps the categories we use to the products we have in them
-  Map<ProductCategory, List<Product>> productCategories;
+  private Map<ProductCategory, List<Product>> productCategories;
   
   // Used when initializing the product categories
-  List<Product> products;
+  private List<Product> products;
   
   /**
    * Initialize the products of our store.

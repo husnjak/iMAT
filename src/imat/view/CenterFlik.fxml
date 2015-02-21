@@ -159,6 +159,11 @@
                            </HBox.margin>
                         </Text>
                               <TextField fx:id="arTextField" layoutX="135.0" layoutY="510.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
+                        <Label fx:id="arLabel" textFill="#f20404">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                   </HBox>
                   <HBox layoutX="35.0" layoutY="535.0" AnchorPane.leftAnchor="96.0">

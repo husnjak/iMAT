@@ -15,9 +15,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
- *
+ * This controller class interacts with the views' controllers, and
+ * the imat backend. Thus, this controller is the connection between
+ * the model and the view controllers.
+ * 
  * @author joel
  */
 public class IMatController implements Initializable {
@@ -32,6 +36,8 @@ public class IMatController implements Initializable {
   private ToppController toppController;
   @FXML
   private VarukorgController varukorgController;
+  @FXML
+  private final IMatDataHandler imat = IMatDataHandler.getInstance();
   
   @FXML
   private void handleButtonAction(ActionEvent event) {
@@ -41,7 +47,7 @@ public class IMatController implements Initializable {
   
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }  
+     //TODO
+  }
   
 }

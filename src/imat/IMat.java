@@ -31,7 +31,7 @@ public class IMat extends Application {
     this.primaryStage = stage;
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
-    
+
     initRootLayout();
     initKategoriMeny();
     initCenterFlik();
@@ -77,11 +77,11 @@ public class IMat extends Application {
    */
   public void initKategoriMeny() {
     try {
-      // Load handla view.
+      // Load Handla view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/KategoriMeny.fxml"));
       AnchorPane kategoriMeny = (AnchorPane) loader.load();
       
-      // Put handla into the left part of root layout.
+      // Put Handla into the left part of root layout.
       rootLayout.setLeft(kategoriMeny);
 
     } catch (IOException e) {

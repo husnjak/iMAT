@@ -10,21 +10,16 @@ import java.util.Map;
 import java.util.TreeMap;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
-import se.chalmers.ait.dat215.project.User;
 
 /**
  * This class represents everything related to the products. Since
  * we use our own categories (instead of all the ones in the given
  * backend) we gather the backend products into our own categories
- * in this class. Also, favorite products are stored together with
- * the login of a user.
+ * in this class. 
  * 
  * @author grupp 11
  */
-public class Products {
-  
-  // Maps given user to a list of favorite products
-  Map<User, List<Product>> favoriteProducts;
+public class IMatProducts {
   
   // Maps the categories we use to the products we have in them
   Map<ProductCategory, List<Product>> productCategories;
@@ -35,7 +30,7 @@ public class Products {
   /**
    * Initialize the products of our store.
    */
-  public Products() {
+  public IMatProducts() {
     initializeProducts();
   }
   
@@ -43,7 +38,6 @@ public class Products {
    * Puts the products in the categories where we want them.
    */
   private void initializeProducts() {
-    favoriteProducts = new TreeMap();
     productCategories = new TreeMap();
     
     // Adds three kinds of flour to category BREAD

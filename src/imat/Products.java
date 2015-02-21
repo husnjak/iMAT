@@ -46,19 +46,87 @@ public class Products {
     favoriteProducts = new TreeMap();
     productCategories = new TreeMap();
     
+    // Adds three kinds of flour to category BREAD
     products = IMatController.imat.getProducts(ProductCategory.BREAD);
+    products.add(IMatController.imat.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(1));
+    products.add(IMatController.imat.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(2));
+    products.add(IMatController.imat.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(5));
     productCategories.put(ProductCategory.BREAD, products);
     products.clear();
     
+    // Use FRUIT category to represent the five backend fruit categories
     products.addAll(IMatController.imat.getProducts(ProductCategory.FRUIT));
     products.addAll(IMatController.imat.getProducts(ProductCategory.BERRY));
     products.addAll(IMatController.imat.getProducts(ProductCategory.CITRUS_FRUIT));
     products.addAll(IMatController.imat.getProducts(ProductCategory.EXOTIC_FRUIT));
     products.addAll(IMatController.imat.getProducts(ProductCategory.MELONS));
     productCategories.put(ProductCategory.FRUIT, products);
-    System.out.println(productCategories.get(ProductCategory.FRUIT).size());
     products.clear();
     
+    // Use COLD_DRINKS to represent all kinds of drinks (cold and hot)
+    products.addAll(IMatController.imat.getProducts(ProductCategory.COLD_DRINKS));
+    products.addAll(IMatController.imat.getProducts(ProductCategory.HOT_DRINKS));
+    productCategories.put(ProductCategory.COLD_DRINKS, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.DAIRIES));
+    productCategories.put(ProductCategory.DAIRIES, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.FISH));
+    productCategories.put(ProductCategory.FISH, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.MEAT));
+    productCategories.put(ProductCategory.MEAT, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.NUTS_AND_SEEDS));
+    productCategories.put(ProductCategory.NUTS_AND_SEEDS, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.PASTA));
+    productCategories.put(ProductCategory.PASTA, products);
+    products.clear();
+    
+    // Adds two kinds of sugar to category SWEET
+    products.addAll(IMatController.imat.getProducts(ProductCategory.SWEET));
+    products.add(IMatController.imat.getProducts(ProductCategory.SWEET).get(0));
+    products.add(IMatController.imat.getProducts(ProductCategory.SWEET).get(4));
+    productCategories.put(ProductCategory.SWEET, products);
+    products.clear();
+    
+    // Category ROOT_VEGETABLE contain both root vegetables and potatoes
+    products.addAll(IMatController.imat.getProducts(ProductCategory.ROOT_VEGETABLE));
+    for (int i = 3; i < 7; i++) {
+      products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(i));
+    }
+    productCategories.put(ProductCategory.ROOT_VEGETABLE, products);
+    products.clear();
+    
+    // Both cabbage and vegetable fruit is considered as VEGETABLE_FRUIT
+    products.addAll(IMatController.imat.getProducts(ProductCategory.CABBAGE));
+    products.addAll(IMatController.imat.getProducts(ProductCategory.VEGETABLE_FRUIT));
+    productCategories.put(ProductCategory.VEGETABLE_FRUIT, products);
+    products.clear();
+    
+    // Rice is categorized as POTATO_RICE
+    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(0));
+    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(1));
+    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(2));
+    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(7));
+    productCategories.put(ProductCategory.POTATO_RICE, products);
+    products.clear();
+    
+    products.addAll(IMatController.imat.getProducts(ProductCategory.POD));
+    productCategories.put(ProductCategory.POD, products);
+    products.clear();
+    
+    // Adds Salt as a spice to category HERB
+    products.addAll(IMatController.imat.getProducts(ProductCategory.HERB));
+    products.add(IMatController.imat.getProducts(ProductCategory.SWEET).get(3));
+    productCategories.put(ProductCategory.HERB, products);
+    products.clear();
     
   }
 }

@@ -73,13 +73,16 @@ public class CenterFlikController implements Initializable {
     arTextField.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        if (iMatController.isLoggedIn() && arTextField.getLength() == 2) {
+        if (arTextField.getLength() == 2) {
           try {
             int validYear = Integer.parseInt(arTextField.getText());
+            arLabel.setText("");
             iMatController.getCurrentAccount().setValidYear(validYear);
           } catch (NumberFormatException e) {
             arLabel.setText("Ange år som två siffror");
           }
+        } else {
+          arLabel.setText("Ange år som två siffror");
         }
       }
     });

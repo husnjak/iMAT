@@ -39,7 +39,7 @@
       </Tab>
             <Tab fx:id="kontouppgifterFlik" closable="false" text="Kontouppgifter">
               <content>
-            <ScrollPane prefViewportHeight="585.0" prefViewportWidth="650.0" vbarPolicy="ALWAYS">
+            <ScrollPane prefHeight="700.0" prefViewportHeight="585.0" prefViewportWidth="650.0" vbarPolicy="ALWAYS">
                <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="200.0">
                            <children>

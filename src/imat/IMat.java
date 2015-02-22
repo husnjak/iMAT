@@ -31,6 +31,9 @@ public class IMat extends Application {
     this.primaryStage = stage;
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
+    
+    // For testing purposes only
+    IMatController.createDatabase();
 
     initRootLayout();
     initKategoriMeny();

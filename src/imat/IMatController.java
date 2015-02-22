@@ -57,10 +57,10 @@ public class IMatController implements Initializable {
   private IMatUserAccount currentAccount;
  
   // Used for inserting statements into the database
-  PreparedStatement psInsert;
+  static PreparedStatement psInsert;
   
   // Used for communication with the database
-  Connection conn;
+  static Connection conn;
   
   // Used to check if user is logged in
   private boolean loggedIn;
@@ -69,7 +69,7 @@ public class IMatController implements Initializable {
   * The method creates a Connection object. Loads the embedded driver,
   * starts and connects to the database using the connection URL.
   */
-  public void createDatabaseConnection()
+  public static void createDatabaseConnection()
         throws SQLException, ClassNotFoundException {
     String driver = "org.apache.derby.jdbc.EmbeddedDriver";
     Class.forName(driver);
@@ -90,43 +90,42 @@ public class IMatController implements Initializable {
         String driver = "org.apache.derby.jdbc.EmbeddedDriver";
         Class.forName(driver);
         String url = "jdbc:derby:imatDB;create=true";
-        try {
-          Connection conn = DriverManager.getConnection(url);
-          Statement statement = conn.createStatement();
-          DatabaseMetaData dbm = conn.getMetaData();
+        conn = DriverManager.getConnection(url);
+        Statement statement = conn.createStatement();
+        DatabaseMetaData dbm = conn.getMetaData();
 
-          // check if "UserAccount" table exists
-          ResultSet tables = dbm.getTables(null, null, "USERACCOUNT", null);
-          if (!tables.next()) {
-            String createString = "CREATE TABLE USERACCOUNT("
-            + " ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,"
-            + " USERNAME VARCHAR(30), "
-            + " PASSWORD VARCHAR(30), "
-            + " FIRSTNAME VARCHAR(30), "
-            + " LASTNAME VARCHAR(30), "
-            + " CIVIC INT, "
-            + " EMAIL VARCHAR(30), "
-            + " PHONE VARCHAR(15), "
-            + " STREET VARCHAR(30), "
-            + " POSTAL VARCHAR(10), "
-            + " CITY VARCHAR(30), "
-            + " CARDNUMBER VARCHAR(15), "
-            + " CARDTYPE VARCHAR(15), "
-            + " CARDHOLDER VARCHAR(30), "
-            + " VALIDYEAR INT, "
-            + " VALIDMONTH INT, "
-            + " CVV INT) " ;
+        // check if "UserAccount" table exists
+        ResultSet tables = dbm.getTables(null, null, "USERACCOUNT", null);
+        if (!tables.next()) {
+          String createString = "CREATE TABLE USERACCOUNT("
+          + " ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,"
+          + " USERNAME VARCHAR(30), "
+          + " PASSWORD VARCHAR(30), "
+          + " FIRSTNAME VARCHAR(30), "
+          + " LASTNAME VARCHAR(30), "
+          + " CIVIC INT, "
+          + " EMAIL VARCHAR(30), "
+          + " PHONE VARCHAR(15), "
+          + " STREET VARCHAR(30), "
+          + " POSTAL VARCHAR(10), "
+          + " CITY VARCHAR(30), "
+          + " CARDNUMBER VARCHAR(15), "
+          + " CARDTYPE VARCHAR(15), "
+          + " CARDHOLDER VARCHAR(30), "
+          + " VALIDYEAR INT, "
+          + " VALIDMONTH INT, "
+          + " CVV INT) " ;
 
-            statement.execute(createString);
-            System.out.println("Database created");   // For testing purposes
-            // Also create table for favorite products
-          }
-        } catch (SQLException ex) {
-          ex.printStackTrace();
+          statement.execute(createString);
+          tables.close();
+          statement.close();
+          conn.close();
+          System.out.println("Database created");   // For testing purposes
+          // Also create table for favorite products
         }
-      } catch (ClassNotFoundException ex) {
-        Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
-      }
+    } catch (ClassNotFoundException | SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
   }
   
@@ -137,11 +136,12 @@ public class IMatController implements Initializable {
    * @param attribute   the attribute in given table for which to insert a value
    * @param value       the value to be inserted
    */
-  public void insertStatement(String table, String attribute, String value) {
+  public static synchronized void insertStatement(String table, String attribute, int value) {
     try {
+      createDatabaseConnection();
       psInsert = conn.prepareStatement("insert into " + table
           + "("+ attribute +") values ("+ value +")");
-    } catch (SQLException ex) {
+    } catch (SQLException | ClassNotFoundException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
   }

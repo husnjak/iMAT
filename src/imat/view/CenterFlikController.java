@@ -77,7 +77,7 @@ public class CenterFlikController implements Initializable {
           try {
             int validYear = Integer.parseInt(arTextField.getText());
             arLabel.setText("");
-            iMatController.getCurrentAccount().setValidYear(validYear);
+            IMatController.insertStatement("useraccount","validyear", validYear);
           } catch (NumberFormatException e) {
             arLabel.setText("Ange år som två siffror");
           }

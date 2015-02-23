@@ -32,7 +32,7 @@ import se.chalmers.ait.dat215.project.ShoppingCart;
  * the model and the view controllers. It takes care of what goes in
  * and out of the shopping cart.
  * 
- * @author grupp 11
+ * @author group 11
  */
 public class IMatController implements Initializable {
   

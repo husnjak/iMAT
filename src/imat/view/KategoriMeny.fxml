@@ -6,20 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
    <children>
-      <Label layoutX="85.0" layoutY="70.0" text="Bröd" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
-      <Label layoutX="75.0" layoutY="93.0" text="Dryck" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="80.0" />
-      <Label layoutX="83.0" layoutY="140.0" text="Frukt &amp; Bär" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="110.0" />
-      <Label layoutX="82.0" layoutY="179.0" text="Fisk" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="140.0" />
-      <Label layoutX="80.0" layoutY="209.0" text="Grönsaker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="170.0" />
-      <Label layoutX="77.0" layoutY="251.0" text="Kryddor &amp; Örter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0" />
-      <Label layoutX="77.0" layoutY="293.0" text="Kött" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="230.0" />
-      <Label layoutX="77.0" layoutY="335.0" text="Mejeriprodukter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="260.0" />
-      <Label layoutX="82.0" layoutY="373.0" text="Nötter &amp; Frön" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="290.0" />
-      <Label layoutX="77.0" layoutY="415.0" text="Pasta" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="320.0" />
-      <Label layoutX="73.0" layoutY="459.0" text="Potatis &amp; Rotfrukter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="350.0" />
-      <Label layoutX="77.0" layoutY="490.0" text="Ris" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="380.0" />
-      <Label layoutX="80.0" layoutY="556.0" text="Sötsaker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="410.0" />
+      <Label fx:id="breadLabel" layoutX="85.0" layoutY="70.0" text="Bröd" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
+      <Label fx:id="drinkLabel" layoutX="75.0" layoutY="93.0" text="Dryck" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="80.0" />
+      <Label fx:id="fruitLabel" layoutX="83.0" layoutY="140.0" text="Frukt &amp; Bär" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="110.0" />
+      <Label fx:id="FishLabel" layoutX="82.0" layoutY="179.0" text="Fisk" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="140.0" />
+      <Label fx:id="vegetablesLabel" layoutX="80.0" layoutY="209.0" text="Grönsaker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="170.0" />
+      <Label fx:id="spicesLabel" layoutX="77.0" layoutY="251.0" text="Kryddor &amp; Örter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0" />
+      <Label fx:id="meatLabel" layoutX="77.0" layoutY="293.0" text="Kött" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="230.0" />
+      <Label fx:id="dairiesLabel" layoutX="77.0" layoutY="335.0" text="Mejeriprodukter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="260.0" />
+      <Label fx:id="nutsLabel" layoutX="82.0" layoutY="373.0" text="Nötter &amp; Frön" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="290.0" />
+      <Label fx:id="pastaLabel" layoutX="77.0" layoutY="415.0" text="Pasta" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="320.0" />
+      <Label fx:id="potatoLabel" layoutX="73.0" layoutY="459.0" text="Potatis &amp; Rotfrukter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="350.0" />
+      <Label fx:id="riceLabel" layoutX="77.0" layoutY="490.0" text="Ris" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="380.0" />
+      <Label fx:id="sweetsLabel" layoutX="80.0" layoutY="556.0" text="Sötsaker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="410.0" />
    </children>
 </AnchorPane>

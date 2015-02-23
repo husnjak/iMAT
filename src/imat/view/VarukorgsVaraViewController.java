@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author Filip
+ * @author group 11
  */
 public class VarukorgsVaraViewController implements Initializable {
 

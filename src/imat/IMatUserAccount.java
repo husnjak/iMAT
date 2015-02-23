@@ -13,7 +13,7 @@ import se.chalmers.ait.dat215.project.Product;
  * a user account like credit card information, shipping address, personal
  * information, as well as favorite products.
  * 
- * @author grupp 11
+ * @author group 11
  */
 public class IMatUserAccount {
   

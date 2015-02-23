@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 /**
  * This class set up the default views of the program.
  * 
- * @author grupp 11
+ * @author group 11
  */
 public class IMat extends Application {
   

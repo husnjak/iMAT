@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author grupp 11
+ * @author group 11
  */
 public class CenterFlikController implements Initializable {
   
@@ -62,8 +62,6 @@ public class CenterFlikController implements Initializable {
   private Button storeInfoButton;
   @FXML
   private Label yearLabel;
-  
-  private IMatController iMatController;
   @FXML
   private Label phoneLabel;
   @FXML
@@ -76,6 +74,8 @@ public class CenterFlikController implements Initializable {
   private Label cardNumberLabel;
   @FXML
   private Label civicLabel;
+  
+  private IMatController iMatController;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

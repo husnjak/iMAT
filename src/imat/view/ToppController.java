@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author grupp 11
+ * @author group 11
  */
 public class ToppController implements Initializable {
   

@@ -5,24 +5,39 @@
  */
 package imat.view;
 
-import imat.IMat;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 /**
  *
- * @author joel
+ * @author group 11
  */
 public class KategoriMenyController {
-  
-  // Reference to the main application
-  private IMat mainApp;
-  
-  /**
-  * Is called by the main application to give a reference back to itself.
-  * 
-  * @param mainApp
-  */
-  public void setMainApp(IMat mainApp) {
-    this.mainApp = mainApp;
-  }
+  @FXML
+  private Label breadLabel;
+  @FXML
+  private Label drinkLabel;
+  @FXML
+  private Label fruitLabel;
+  @FXML
+  private Label FishLabel;
+  @FXML
+  private Label vegetablesLabel;
+  @FXML
+  private Label spicesLabel;
+  @FXML
+  private Label meatLabel;
+  @FXML
+  private Label dairiesLabel;
+  @FXML
+  private Label nutsLabel;
+  @FXML
+  private Label pastaLabel;
+  @FXML
+  private Label potatoLabel;
+  @FXML
+  private Label riceLabel;
+  @FXML
+  private Label sweetsLabel;
   
 }

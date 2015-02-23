@@ -9,7 +9,7 @@ import imat.IMat;
 
 /**
  *
- * @author joel
+ * @author group 11
  */
 public class VarukorgController {
   

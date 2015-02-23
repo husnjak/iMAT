@@ -230,7 +230,24 @@ public class CenterFlikController implements Initializable {
    */
   @FXML
   public void rensaButton() {
-    
+    firstNameTextField.clear();
+    lastNameTextField.clear();
+    civicTextField.clear();
+    civicLabel.setText("");
+    emailTextField.clear();
+    phoneTextField.clear();
+    streetTextField.clear();
+    postalTextField.clear();
+    postalLabel.setText("");
+    cityTextField.clear();
+    cardNumberTextField.clear();
+    cardNumberLabel.setText("");
+    yearTextField.clear();
+    yearLabel.setText("");
+    monthTextField.clear();
+    monthLabel.setText("");
+    cvvTextField.clear();
+    cvvLabel.setText("");
   }
   
 }

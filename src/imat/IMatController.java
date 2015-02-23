@@ -146,6 +146,23 @@ public class IMatController implements Initializable {
     }
   }
   
+    /**
+   * Inserts a value into a given attribute in a given table.
+   * 
+   * @param table       the table for which the attribute exists
+   * @param attribute   the attribute in given table for which to insert a value
+   * @param value       the value to be inserted
+   */
+  public static synchronized void insertStatement(String table, String attribute, String value) {
+    try {
+      createDatabaseConnection();
+      psInsert = conn.prepareStatement("insert into " + table
+          + "("+ attribute +") values ("+ value +")");
+    } catch (SQLException | ClassNotFoundException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
   /**
    * Check if current user is logged in or not.
    * 

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="650.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.CenterFlikController">
+<TabPane fx:id="tabPane" maxHeight="430.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="650.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.CenterFlikController">
   <tabs>
     <Tab fx:id="handlaFlik" text="Handla">
       <content>
@@ -39,9 +39,9 @@
       </Tab>
             <Tab fx:id="kontouppgifterFlik" closable="false" text="Kontouppgifter">
               <content>
-            <ScrollPane prefHeight="700.0" prefViewportHeight="585.0" prefViewportWidth="650.0" vbarPolicy="ALWAYS">
+            <ScrollPane prefHeight="430.0" prefViewportHeight="585.0" prefViewportWidth="650.0" vbarPolicy="ALWAYS">
                <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="200.0">
+                      <AnchorPane prefHeight="700.0">
                            <children>
                               <Text layoutX="33.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontouppgifter" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
                                  <font>
@@ -60,7 +60,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="fornamnTextField" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="firstNameTextField" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="160.0" spacing="5.0" AnchorPane.leftAnchor="66.0">
@@ -70,7 +70,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="efternamnTextField" layoutX="157.0" layoutY="160.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="lastNameTextField" layoutX="157.0" layoutY="160.0" AnchorPane.leftAnchor="140.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="185.0" spacing="5.0" AnchorPane.leftAnchor="35.0">
@@ -80,7 +80,12 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="personnummerTextField" layoutX="157.0" layoutY="185.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="civicTextField" layoutX="157.0" layoutY="185.0" promptText="ÅÅMMDDNNNN" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="civicLabel" textFill="#ee0707">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox layoutX="34.9619140625" layoutY="210.0" spacing="5.0" AnchorPane.leftAnchor="86.0">
@@ -90,7 +95,12 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="telefonTextField" layoutX="157.0" layoutY="210.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="phoneTextField" layoutX="157.0" layoutY="210.0" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="phoneLabel" textFill="#eb0303">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="235.0" spacing="5.0" AnchorPane.leftAnchor="94.0">
@@ -115,7 +125,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="gatuadressTextField" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="streetTextField" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="360.0" AnchorPane.leftAnchor="57.0">
@@ -125,7 +135,12 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="postnummerTextField" layoutX="150.0" layoutY="360.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="postalTextField" layoutX="150.0" layoutY="360.0" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="postalLabel" textFill="#eb0202">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="385.0" AnchorPane.leftAnchor="110.0">
@@ -135,7 +150,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="stadTextField" layoutX="150.0" layoutY="385.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="cityTextField" layoutX="150.0" layoutY="385.0" AnchorPane.leftAnchor="140.0" />
                            </children>
                         </HBox>
                               <Text layoutX="65.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betaluppgifter" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="450.0">
@@ -150,7 +165,12 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="kortnummerTextField" layoutX="135.0" layoutY="485.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="cardNumberTextField" layoutX="135.0" layoutY="485.0" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="cardNumberLabel" textFill="#e80303">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="510.0" AnchorPane.leftAnchor="125.0">
@@ -160,8 +180,8 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="arTextField" layoutX="135.0" layoutY="510.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
-                              <Label fx:id="arLabel" textFill="#f20404">
+                                    <TextField fx:id="yearTextField" layoutX="135.0" layoutY="510.0" prefHeight="25.0" prefWidth="40.0" promptText="ÅÅ" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="yearLabel" textFill="#f20404">
                                  <HBox.margin>
                                     <Insets top="5.0" />
                                  </HBox.margin>
@@ -175,7 +195,12 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                                    <TextField fx:id="manadTextField" layoutX="135.0" layoutY="535.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="monthTextField" layoutX="135.0" layoutY="535.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="monthLabel" textFill="#f20808">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox layoutX="35.0" layoutY="560.0" AnchorPane.leftAnchor="113.0">
@@ -186,8 +211,15 @@
                                  </HBox.margin>
                               </Text>
                                     <TextField fx:id="cvvTextField" layoutX="135.0" layoutY="560.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
+                              <Label fx:id="cvvLabel" textFill="#ee0707">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
+                        <Button fx:id="storeInfoButton" layoutX="198.0" layoutY="617.0" mnemonicParsing="false" onAction="#storeInformation" text="Spara uppgifter" AnchorPane.leftAnchor="193.0" />
+                        <Button fx:id="rensaButton" layoutX="46.0" layoutY="617.0" mnemonicParsing="false" onAction="#rensaButton" text="Rensa" AnchorPane.leftAnchor="35.0" />
                        </children>
                   </AnchorPane>
                </content>

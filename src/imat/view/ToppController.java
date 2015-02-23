@@ -24,7 +24,6 @@ public class ToppController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
- 
     
   }
   
@@ -32,7 +31,12 @@ public class ToppController implements Initializable {
   * Called when the user clicks the login button. 
   */
   private void handleLogin() {
-
+    String username = usernameTextField.getCharacters().toString();
+    String password = passwordTextField.getCharacters().toString();
+    
+    // Check if this username/password combination exists in database
+    // If they do, change the view to "logged in"
+    // Otherwise, print "wrong username or password"
   }
   
   /**

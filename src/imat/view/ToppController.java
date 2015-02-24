@@ -5,6 +5,7 @@
  */
 package imat.view;
 
+import imat.IMat;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -21,11 +22,22 @@ public class ToppController implements Initializable {
   private TextField usernameTextField;
   @FXML
   private TextField passwordTextField;
+  
+  private IMat imat;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     
   }
+  
+  /**
+   * Is called by the main application to give a reference back to itself.
+   * 
+   * @param imat
+   */
+  public void setMainApp(IMat imat) {
+    this.imat = imat;
+  } 
   
   /**
   * Called when the user clicks the login button. 

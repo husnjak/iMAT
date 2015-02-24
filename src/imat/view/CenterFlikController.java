@@ -5,6 +5,7 @@
  */
 package imat.view;
 
+import imat.IMat;
 import imat.IMatController;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -75,12 +77,28 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label civicLabel;
   
-  private IMatController iMatController;
+  private IMat imat;
+  @FXML
+  private Text testText;
+  @FXML
+  private Button rensaButton;
+  
+  private KategoriMenyController kategoriController;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
  
   }
+  
+  /**
+   * Is called by the main application to give a reference back to itself.
+   * 
+   * @param imat
+   */
+  public void setMainApp(IMat imat) {
+    this.imat = imat;
+  } 
+  
 
   /**
    * Stores given account information in the database. Before the data is
@@ -248,6 +266,17 @@ public class CenterFlikController implements Initializable {
     monthLabel.setText("");
     cvvTextField.clear();
     cvvLabel.setText("");
+  }
+  
+  /**
+   * Used for changing the category of products shown in the Handla view.
+   * 
+   * @param category  the category to be shown in the Handla view 
+   */
+  @FXML
+  public void changeHandlaCategory(String category) {
+    // Ändra till relevanta produkter som visas i Handla
+    testText.setText(category);
   }
   
 }

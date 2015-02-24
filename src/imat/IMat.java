@@ -5,6 +5,10 @@
  */
 package imat;
 
+import imat.view.CenterFlikController;
+import imat.view.KategoriMenyController;
+import imat.view.ToppController;
+import imat.view.VarukorgController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,12 +29,20 @@ public class IMat extends Application {
   private Stage primaryStage;
   private Parent root;
   private BorderPane rootLayout;
+  private IMatController iMatController;
+  private KategoriMenyController kategoriController;
+  private CenterFlikController centerController;
+  private ToppController toppController;
+  private VarukorgController varukorgController;
+ 
   
   @Override
   public void start(Stage stage) throws Exception {
     this.primaryStage = stage;
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
+    
+    iMatController = new IMatController();
     
     // For testing purposes only
     IMatController.createDatabase();
@@ -48,6 +60,14 @@ public class IMat extends Application {
   */
   public Stage getPrimaryStage() {
       return primaryStage;
+  }
+  
+  public KategoriMenyController getKategoriController() {
+    return kategoriController;
+  }
+  
+  public CenterFlikController getCenterController() {
+    return centerController;
   }
   
   /**
@@ -84,6 +104,9 @@ public class IMat extends Application {
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/KategoriMeny.fxml"));
       AnchorPane kategoriMeny = (AnchorPane) loader.load();
       
+      kategoriController = loader.getController();
+      kategoriController.setMainApp(this);
+      
       // Put Handla into the left part of root layout.
       rootLayout.setLeft(kategoriMeny);
 
@@ -101,6 +124,9 @@ public class IMat extends Application {
       // Load start view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
       TabPane centerFlik = loader.load();
+      
+      centerController = loader.getController();
+      centerController.setMainApp(this);
 
       // Put start into the center part of root layout.
       rootLayout.setCenter(centerFlik);
@@ -118,6 +144,9 @@ public class IMat extends Application {
       // Load top view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Topp.fxml"));
       AnchorPane topp = (AnchorPane) loader.load();
+      
+      toppController = loader.getController();
+      toppController.setMainApp(this);
 
       // Put top into the upper part of root layout.
       rootLayout.setTop(topp);
@@ -135,6 +164,9 @@ public class IMat extends Application {
       // Load varukorg view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Varukorg.fxml"));
       AnchorPane varukorg = (AnchorPane) loader.load();
+      
+      varukorgController = loader.getController();
+      varukorgController.setMainApp(this);
 
       // Put varukorg into the right part of root layout.
       rootLayout.setRight(varukorg);

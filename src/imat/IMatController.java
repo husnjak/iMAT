@@ -43,9 +43,9 @@ public class IMatController implements Initializable {
   @FXML
   private KategoriMenyController kategoriMenyController;
   @FXML
-  private ToppController toppController;
+  private ToppController toppController = new ToppController();
   @FXML
-  private VarukorgController varukorgController;
+  private VarukorgController varukorgController = new VarukorgController();
   @FXML
   public static final IMatDataHandler imat = IMatDataHandler.getInstance();
   @FXML
@@ -64,6 +64,11 @@ public class IMatController implements Initializable {
   
   // Used to check if user is logged in
   private boolean loggedIn;
+  
+  public IMatController getIMatController() {
+    return this;
+  }
+  
   
   /*
   * The method creates a Connection object. Loads the embedded driver,
@@ -183,7 +188,7 @@ public class IMatController implements Initializable {
   
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-     //TODO
+
   }
   
 }

@@ -14,15 +14,15 @@ import imat.IMat;
 public class VarukorgController {
   
   // Reference to the main application
-  private IMat mainApp;
+  private IMat imat;
   
   /**
   * Is called by the main application to give a reference back to itself.
   * 
   * @param mainApp
   */
-  public void setMainApp(IMat mainApp) {
-    this.mainApp = mainApp;
+  public void setMainApp(IMat imat) {
+    this.imat = imat;
   } 
   
 }

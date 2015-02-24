@@ -5,9 +5,8 @@
  */
 package imat;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
@@ -21,11 +20,22 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  */
 public class IMatProducts {
   
-  // Maps the categories we use to the products we have in them
-  private Map<ProductCategory, List<Product>> productCategories;
+  // Contain products of given categories
+  private List<Product> productsBread;
+  private List<Product> productsDrink;
+  private List<Product> productsFruit;
+  private List<Product> productsFish;
+  private List<Product> productsDairies;
+  private List<Product> productsMeat;
+  private List<Product> productsPod;
+  private List<Product> productsNuts;
+  private List<Product> productsPasta;
+  private List<Product> productsPotatoes;
+  private List<Product> productsRice;
+  private List<Product> productsSweets;
+  private List<Product> productsSpices;
+  private List<Product> productsVegetables;
   
-  // Used when initializing the product categories
-  private List<Product> products;
   
   /**
    * Initialize the products of our store.
@@ -35,92 +45,192 @@ public class IMatProducts {
   }
   
   /**
+   * Retrieves the list of bread products.
+   * 
+   * @return bread product list
+   */
+  public List<Product> getBreadList() {
+    return productsBread;
+  }
+  
+  /**
+   * Retrieves the list of drink products.
+   * 
+   * @return drink product list
+   */
+  public List<Product> getDrinkList() {
+    return productsDrink;
+  }
+  
+  /**
+   * Retrieves the list of fish products.
+   * 
+   * @return fish product list
+   */
+  public List<Product> getFishList() {
+    return productsFish;
+  }
+  
+  /**
+   * Retrieves the list of meat products.
+   * 
+   * @return meat product list
+   */
+  public List<Product> getMeatList() {
+    return productsMeat;
+  }
+  
+  /**
+   * Retrieves the list of pod products.
+   * 
+   * @return pod product list
+   */
+  public List<Product> getPodList() {
+    return productsPod;
+  }
+  
+  /**
+   * Retrieves the list of sweets products.
+   * 
+   * @return sweets product list
+   */
+  public List<Product> getSweetsList() {
+    return productsSweets;
+  }
+  
+  /**
+   * Retrieves the list of potato products.
+   * 
+   * @return potato product list
+   */
+  public List<Product> getPotatoList() {
+    return productsPotatoes;
+  }
+  
+  /**
+   * Retrieves the list of rice products.
+   * 
+   * @return rice product list
+   */
+  public List<Product> getRiceList() {
+    return productsRice;
+  }
+  
+  /**
+   * Retrieves the list of spice products.
+   * 
+   * @return spice product list
+   */
+  public List<Product> getSpiceList() {
+    return productsSpices;
+  }
+  
+  /**
+   * Retrieves the list of vegetable products.
+   * 
+   * @return vegetable product list
+   */
+  public List<Product> getVegetableList() {
+    return productsVegetables;
+  }
+  
+  /**
+   * Retrieves the list of fruit products.
+   * 
+   * @return fruit product list
+   */
+  public List<Product> getFruitList() {
+    return productsFruit;
+  }
+  
+  /**
+   * Retrieves the list of dairy products.
+   * 
+   * @return dairy product list
+   */
+  public List<Product> getDairieList() {
+    return productsDairies;
+  }
+  
+  /**
+   * Retrieves the list of nut products.
+   * 
+   * @return nut product list
+   */
+  public List<Product> getNutsList() {
+    return productsNuts;
+  }
+  
+  /**
+   * Retrieves the list of pasta products.
+   * 
+   * @return pasta product list
+   */
+  public List<Product> getPastaList() {
+    return productsPasta;
+  }
+
+    
+  
+  /**
    * Puts the products in the categories where we want them.
    */
   private void initializeProducts() {
-    productCategories = new TreeMap();
     
     // Adds three kinds of flour to category BREAD
-    products = IMatController.imat.getProducts(ProductCategory.BREAD);
-    products.add(IMatController.imat.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(1));
-    products.add(IMatController.imat.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(2));
-    products.add(IMatController.imat.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(5));
-    productCategories.put(ProductCategory.BREAD, products);
-    products.clear();
+    productsBread = IMatController.imatBackend.getProducts(ProductCategory.BREAD);
+    productsBread.add(IMatController.imatBackend.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(1));
+    productsBread.add(IMatController.imatBackend.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(2));
+    productsBread.add(IMatController.imatBackend.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(5));
     
     // Use FRUIT category to represent the five backend fruit categories
-    products.addAll(IMatController.imat.getProducts(ProductCategory.FRUIT));
-    products.addAll(IMatController.imat.getProducts(ProductCategory.BERRY));
-    products.addAll(IMatController.imat.getProducts(ProductCategory.CITRUS_FRUIT));
-    products.addAll(IMatController.imat.getProducts(ProductCategory.EXOTIC_FRUIT));
-    products.addAll(IMatController.imat.getProducts(ProductCategory.MELONS));
-    productCategories.put(ProductCategory.FRUIT, products);
-    products.clear();
+    productsFruit = IMatController.imatBackend.getProducts(ProductCategory.FRUIT);
+    productsFruit.addAll(IMatController.imatBackend.getProducts(ProductCategory.BERRY));
+    productsFruit.addAll(IMatController.imatBackend.getProducts(ProductCategory.CITRUS_FRUIT));
+    productsFruit.addAll(IMatController.imatBackend.getProducts(ProductCategory.EXOTIC_FRUIT));
+    productsFruit.addAll(IMatController.imatBackend.getProducts(ProductCategory.MELONS));
     
-    // Use COLD_DRINKS to represent all kinds of drinks (cold and hot)
-    products.addAll(IMatController.imat.getProducts(ProductCategory.COLD_DRINKS));
-    products.addAll(IMatController.imat.getProducts(ProductCategory.HOT_DRINKS));
-    productCategories.put(ProductCategory.COLD_DRINKS, products);
-    products.clear();
+    // Use DRINKS to represent all kinds of drinks (cold and hot)
+    productsDrink = IMatController.imatBackend.getProducts(ProductCategory.COLD_DRINKS);
+    productsDrink.addAll(IMatController.imatBackend.getProducts(ProductCategory.HOT_DRINKS));
     
-    products.addAll(IMatController.imat.getProducts(ProductCategory.DAIRIES));
-    productCategories.put(ProductCategory.DAIRIES, products);
-    products.clear();
+    productsDairies = IMatController.imatBackend.getProducts(ProductCategory.DAIRIES);
     
-    products.addAll(IMatController.imat.getProducts(ProductCategory.FISH));
-    productCategories.put(ProductCategory.FISH, products);
-    products.clear();
+    productsFish = IMatController.imatBackend.getProducts(ProductCategory.FISH);
     
-    products.addAll(IMatController.imat.getProducts(ProductCategory.MEAT));
-    productCategories.put(ProductCategory.MEAT, products);
-    products.clear();
+    productsMeat = IMatController.imatBackend.getProducts(ProductCategory.MEAT);
     
-    products.addAll(IMatController.imat.getProducts(ProductCategory.NUTS_AND_SEEDS));
-    productCategories.put(ProductCategory.NUTS_AND_SEEDS, products);
-    products.clear();
+    productsNuts = IMatController.imatBackend.getProducts(ProductCategory.NUTS_AND_SEEDS);
     
-    products.addAll(IMatController.imat.getProducts(ProductCategory.PASTA));
-    productCategories.put(ProductCategory.PASTA, products);
-    products.clear();
+    productsPasta = IMatController.imatBackend.getProducts(ProductCategory.PASTA);
     
-    // Adds two kinds of sugar to category SWEET
-    products.addAll(IMatController.imat.getProducts(ProductCategory.SWEET));
-    products.add(IMatController.imat.getProducts(ProductCategory.SWEET).get(0));
-    products.add(IMatController.imat.getProducts(ProductCategory.SWEET).get(4));
-    productCategories.put(ProductCategory.SWEET, products);
-    products.clear();
+    // Adds two kinds of sugar to category SWEETS
+    productsSweets = IMatController.imatBackend.getProducts(ProductCategory.SWEET);
+    productsSweets.add(IMatController.imatBackend.getProducts(ProductCategory.SWEET).get(0));
+    productsSweets.add(IMatController.imatBackend.getProducts(ProductCategory.SWEET).get(4));
     
-    // Category ROOT_VEGETABLE contain both root vegetables and potatoes
-    products.addAll(IMatController.imat.getProducts(ProductCategory.ROOT_VEGETABLE));
+    // Category POTATOES contain both root vegetables and potatoes
+    productsPotatoes = IMatController.imatBackend.getProducts(ProductCategory.ROOT_VEGETABLE);
     for (int i = 3; i < 7; i++) {
-      products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(i));
+      productsPotatoes.add(IMatController.imatBackend.getProducts(ProductCategory.POTATO_RICE).get(i));
     }
-    productCategories.put(ProductCategory.ROOT_VEGETABLE, products);
-    products.clear();
     
     // Both cabbage and vegetable fruit is considered as VEGETABLE_FRUIT
-    products.addAll(IMatController.imat.getProducts(ProductCategory.CABBAGE));
-    products.addAll(IMatController.imat.getProducts(ProductCategory.VEGETABLE_FRUIT));
-    productCategories.put(ProductCategory.VEGETABLE_FRUIT, products);
-    products.clear();
+    productsVegetables = IMatController.imatBackend.getProducts(ProductCategory.CABBAGE);
+    productsVegetables.addAll(IMatController.imatBackend.getProducts(ProductCategory.VEGETABLE_FRUIT));
     
-    // Rice is categorized as POTATO_RICE
-    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(0));
-    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(1));
-    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(2));
-    products.add(IMatController.imat.getProducts(ProductCategory.POTATO_RICE).get(7));
-    productCategories.put(ProductCategory.POTATO_RICE, products);
-    products.clear();
+    // Rice is categorized as RICE
+    productsRice = new ArrayList();
+    productsRice.add(IMatController.imatBackend.getProducts(ProductCategory.POTATO_RICE).get(0));
+    productsRice.add(IMatController.imatBackend.getProducts(ProductCategory.POTATO_RICE).get(1));
+    productsRice.add(IMatController.imatBackend.getProducts(ProductCategory.POTATO_RICE).get(2));
+    productsRice.add(IMatController.imatBackend.getProducts(ProductCategory.POTATO_RICE).get(7));
     
-    products.addAll(IMatController.imat.getProducts(ProductCategory.POD));
-    productCategories.put(ProductCategory.POD, products);
-    products.clear();
+    productsPod = IMatController.imatBackend.getProducts(ProductCategory.POD);
     
-    // Adds Salt as a spice to category HERB
-    products.addAll(IMatController.imat.getProducts(ProductCategory.HERB));
-    products.add(IMatController.imat.getProducts(ProductCategory.SWEET).get(3));
-    productCategories.put(ProductCategory.HERB, products);
-    products.clear();
+    // Adds Salt as a spice to category SPICES
+    productsSpices = IMatController.imatBackend.getProducts(ProductCategory.HERB);
+    productsSpices.add(IMatController.imatBackend.getProducts(ProductCategory.SWEET).get(3));
     
   }
 }

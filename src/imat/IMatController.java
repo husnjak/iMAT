@@ -43,15 +43,15 @@ public class IMatController implements Initializable {
   @FXML
   private KategoriMenyController kategoriMenyController;
   @FXML
-  private ToppController toppController = new ToppController();
+  private ToppController toppController;
   @FXML
-  private VarukorgController varukorgController = new VarukorgController();
+  private VarukorgController varukorgController;
   @FXML
-  public static final IMatDataHandler imat = IMatDataHandler.getInstance();
+  public static final IMatDataHandler imatBackend = IMatDataHandler.getInstance();
   @FXML
-  private final IMatProducts products = new IMatProducts();
+  private static final IMatProducts imatProducts = new IMatProducts();
   @FXML
-  private final ShoppingCart shoppingCart = imat.getShoppingCart();
+  private static final ShoppingCart shoppingCart = imatBackend.getShoppingCart();
   
   // The account of the currently logged in user
   private IMatUserAccount currentAccount;
@@ -65,10 +65,18 @@ public class IMatController implements Initializable {
   // Used to check if user is logged in
   private boolean loggedIn;
   
-  public IMatController getIMatController() {
-    return this;
+  /**
+   * Retrieve a reference to the iMat backend.
+   * 
+   * @return reference to the iMat backend
+   */
+  public static IMatDataHandler getIMatBackend() {
+    return imatBackend;
   }
   
+  public static IMatProducts getIMatProducts() {
+    return imatProducts;
+  }
   
   /*
   * The method creates a Connection object. Loads the embedded driver,
@@ -89,8 +97,8 @@ public class IMatController implements Initializable {
    * be created.
    */
   public static void createDatabase(){
-    // imat.resetFirstRun();   // For testing purposes only
-    if (imat.isFirstRun()) {
+    // imatBackend.resetFirstRun();   // For testing purposes only
+    if (imatBackend.isFirstRun()) {
       try {
         String driver = "org.apache.derby.jdbc.EmbeddedDriver";
         Class.forName(driver);

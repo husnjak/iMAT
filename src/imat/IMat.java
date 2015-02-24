@@ -62,10 +62,20 @@ public class IMat extends Application {
       return primaryStage;
   }
   
+  /**
+   * Return a KategoriMenyController reference.
+   * 
+   * @return a reference of the controller
+   */
   public KategoriMenyController getKategoriController() {
     return kategoriController;
   }
   
+  /**
+   * Return a CenterFlikController reference.
+   * 
+   * @return a reference of the controller
+   */
   public CenterFlikController getCenterController() {
     return centerController;
   }

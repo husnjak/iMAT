@@ -7,8 +7,18 @@ package imat.view;
 
 import imat.IMat;
 import imat.IMatController;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,7 +26,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javax.imageio.ImageIO;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
@@ -83,11 +98,26 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Button rensaButton;
   
-  private KategoriMenyController kategoriController;
+  // Used for deciding if to show the list view of products or not
+  private boolean listView;
+  @FXML
+  private ImageView imageOneOne;
+  
+  // Used for holding information about products for views
+  private Map<String, List<Product>> categoryProducts;
+  
+  // Used for holding products from specific categories
+  private List<Product> products;
+  @FXML
+  private ImageView imageOneTwo;
+  @FXML
+  private ImageView imageOneThree;
+  
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
- 
+    categoryProducts = new HashMap<String, List<Product>>();
+    products = new ArrayList<>();
   }
   
   /**
@@ -268,15 +298,46 @@ public class CenterFlikController implements Initializable {
     cvvLabel.setText("");
   }
   
+    /**
+   * Helper method that sets the image of the current product
+   */
+  private void setImage(ImageView productImage, String imageName) {
+    BufferedImage bufferedImage;
+    try {
+      bufferedImage = ImageIO.read(new File("resources/"+ imageName));
+      Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+      productImage.setImage(image);
+    } catch (IOException ex) {
+      Logger.getLogger(CenterFlikController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+  }
+  
   /**
    * Used for changing the category of products shown in the Handla view.
    * 
    * @param category  the category to be shown in the Handla view 
    */
-  @FXML
   public void changeHandlaCategory(String category) {
     // Ändra till relevanta produkter som visas i Handla
     testText.setText(category);
+    
+    if (listView) {
+      
+    } else {
+      products = IMatController.getIMatProducts().getFishList();
+      String imageName = products.get(0).getImageName();
+      setImage(imageOneOne, imageName);
+      imageOneOne.setVisible(true);
+      imageName = products.get(1).getImageName();
+      setImage(imageOneTwo, imageName);
+      imageOneTwo.setVisible(true);
+      imageName = products.get(2).getImageName();
+      setImage(imageOneThree, imageName);
+      imageOneThree.setVisible(true);
+      
+    }
+    
   }
   
 }

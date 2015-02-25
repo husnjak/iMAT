@@ -12,26 +12,27 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
+import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
@@ -94,8 +95,6 @@ public class CenterFlikController implements Initializable {
   
   private IMat imat;
   @FXML
-  private Text testText;
-  @FXML
   private Button rensaButton;
   
   // Used for deciding if to show the list view of products or not
@@ -103,21 +102,424 @@ public class CenterFlikController implements Initializable {
   @FXML
   private ImageView imageOneOne;
   
-  // Used for holding information about products for views
-  private Map<String, List<Product>> categoryProducts;
-  
   // Used for holding products from specific categories
   private List<Product> products;
   @FXML
   private ImageView imageOneTwo;
   @FXML
   private ImageView imageOneThree;
+  @FXML
+  private ScrollPane breadScrollPane;
+  @FXML
+  private ImageView imageOneOne1;
+  @FXML
+  private ImageView imageOneTwo1;
+  @FXML
+  private ImageView imageOneThree1;
+  @FXML
+  private ScrollPane meatScrollPane;
+  @FXML
+  private StackPane handlaStackPane;
+  @FXML
+  private Label breadLabel00;
+  @FXML
+  private Label breadLabel01;
+  @FXML
+  private Label breadLabel02;
+  @FXML
+  private CheckBox breadFavorite00;
+  @FXML
+  private CheckBox breadFavorite01;
+  @FXML
+  private CheckBox breadFavorite02;
+  @FXML
+  private TextField textFieldBread00;
+  @FXML
+  private Button plusBread00;
+  
+  // Used for handling products
+  Product product;
+  
+  // Used for handling product images
+  String imageName;
+  
+  @FXML
+  private Button minusBread00;
+  @FXML
+  private Label totalCostBread00;
+  @FXML
+  private Label totalCostBread01;
+  @FXML
+  private Label totalCostBread02;
+  @FXML
+  private Button buyBread00;
+  @FXML
+  private Button buyBread01;
+  @FXML
+  private TextField textFieldBread01;
+  @FXML
+  private Button plusBread01;
+  @FXML
+  private Button minusBread01;
+  @FXML
+  private Button plusBread02;
+  @FXML
+  private Button minusBread02;
+  @FXML
+  private TextField textFieldBread02;
+  @FXML
+  private Button buyBread02;
+  @FXML
+  private ImageView imageTwoOne;
+  @FXML
+  private Label breadLabel10;
+  @FXML
+  private CheckBox breadFavorite10;
+  @FXML
+  private TextField textFieldBread10;
+  @FXML
+  private Button plusBread10;
+  @FXML
+  private Button minusBread10;
+  @FXML
+  private Button buyBread10;
+  @FXML
+  private Label totalCostBread10;
+  @FXML
+  private Label riceLabel00;
+  @FXML
+  private Label riceLabel01;
+  @FXML
+  private Label riceLabel02;
+  @FXML
+  private CheckBox riceFavorite00;
+  @FXML
+  private CheckBox riceFavorite01;
+  @FXML
+  private CheckBox riceFavorite02;
+  @FXML
+  private TextField textFieldRice00;
+  @FXML
+  private Button plusRice00;
+  @FXML
+  private Button minusRice00;
+  @FXML
+  private Label totalCostRice00;
+  @FXML
+  private Label totalCostRice01;
+  @FXML
+  private Label totalCostRice02;
+  @FXML
+  private Button buyRice00;
+  @FXML
+  private Button buyRice01;
+  @FXML
+  private TextField textFieldRice01;
+  @FXML
+  private Button plusRice01;
+  @FXML
+  private Button minusRice01;
+  @FXML
+  private Button plusRice02;
+  @FXML
+  private Button minusRice02;
+  @FXML
+  private TextField textFieldRice02;
+  @FXML
+  private Button buyRice02;
+  @FXML
+  private Label riceLabel10;
+  @FXML
+  private CheckBox riceFavorite10;
+  @FXML
+  private TextField textFieldRice10;
+  @FXML
+  private Button plusRice10;
+  @FXML
+  private Button minusRice10;
+  @FXML
+  private Button buyRice10;
+  @FXML
+  private Label totalCostRice10;
+  @FXML
+  private ScrollPane riceScrollPane;
+  @FXML
+  private ImageView imageZeroZeroRice;
+  @FXML
+  private ImageView imageZeroOneRice;
+  @FXML
+  private ImageView imageZeroTwoRice;
+  @FXML
+  private ImageView imageOneZeroRice;
+  @FXML
+  private ScrollPane startPage;
+  @FXML
+  private ImageView imageZeroZeroMeat;
+  @FXML
+  private ImageView imageZeroOneMeat;
+  @FXML
+  private ImageView imageZeroTwoMeat;
+  @FXML
+  private Label meatLabel00;
+  @FXML
+  private Label meatLabel01;
+  @FXML
+  private Label meatLabel02;
+  @FXML
+  private CheckBox meatFavorite00;
+  @FXML
+  private CheckBox meatFavorite01;
+  @FXML
+  private CheckBox meatFavorite02;
+  @FXML
+  private TextField textFieldMeat00;
+  @FXML
+  private Button plusMeat00;
+  @FXML
+  private Button minusMeat00;
+  @FXML
+  private Label totalCostMeat00;
+  @FXML
+  private Label totalCostMeat01;
+  @FXML
+  private Label totalCostMeat02;
+  @FXML
+  private Button buyMeat00;
+  @FXML
+  private Button buyMeat01;
+  @FXML
+  private TextField textFieldMeat01;
+  @FXML
+  private Button plusMeat01;
+  @FXML
+  private Button minusMeat01;
+  @FXML
+  private Button plusMeat02;
+  @FXML
+  private Button minusMeat02;
+  @FXML
+  private TextField textFieldMeat02;
+  @FXML
+  private Button buyMeat02;
+  @FXML
+  private ImageView imageOneZeroMeat;
+  @FXML
+  private Label meatLabel10;
+  @FXML
+  private CheckBox meatFavorite10;
+  @FXML
+  private TextField textFieldMeat10;
+  @FXML
+  private Button plusMeat10;
+  @FXML
+  private Button minusMeat10;
+  @FXML
+  private Button buyMeat10;
+  @FXML
+  private Label totalCostMeat10;
+  @FXML
+  private ScrollPane test;
+  @FXML
+  private ScrollPane test2;
+  @FXML
+  private ImageView imageOneOneMeat;
+  @FXML
+  private Label meatLabel11;
+  @FXML
+  private CheckBox meatFavorite11;
+  @FXML
+  private TextField textFieldMeat11;
+  @FXML
+  private Button plusMeat11;
+  @FXML
+  private Button minusMeat11;
+  @FXML
+  private Button buyMeat11;
+  @FXML
+  private Label totalCostMeat11;
+  @FXML
+  private ImageView imageOneTwoMeat;
+  @FXML
+  private Label meatLabel12;
+  @FXML
+  private CheckBox meatFavorite12;
+  @FXML
+  private Button plusMeat12;
+  @FXML
+  private Button minusMeat12;
+  @FXML
+  private Button buyMeat12;
+  @FXML
+  private Label totalCostMeat12;
+  @FXML
+  private TextField textFieldMeat12;
   
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    categoryProducts = new HashMap<String, List<Product>>();
     products = new ArrayList<>();
+    
+    plusRice00.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(0);
+        increment(textFieldRice00, totalCostRice00, product);
+      }
+    });
+    
+    minusRice00.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(0);
+        decrement(textFieldRice00, totalCostRice00, product);
+      }
+    });
+    
+    plusRice01.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(1);
+        increment(textFieldRice01, totalCostRice01, product);
+      }
+    });
+    
+    minusRice01.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(1);
+        decrement(textFieldRice01, totalCostRice01, product);
+      }
+    });
+    
+    plusRice02.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(2);
+        increment(textFieldRice02, totalCostRice02, product);
+      }
+    });
+    
+    minusRice02.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(2);
+        decrement(textFieldRice02, totalCostRice02, product);
+      }
+    });
+    
+    plusRice10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(3);
+        increment(textFieldRice10, totalCostRice10, product);
+      }
+    });
+    
+    minusRice10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(3);
+        decrement(textFieldRice10, totalCostRice10, product);
+      }
+    });
+    
+    plusMeat00.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(0);
+        increment(textFieldMeat00, totalCostMeat00, product);
+      }
+    });
+    
+    minusMeat00.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(0);
+        decrement(textFieldMeat00, totalCostMeat00, product);
+      }
+    });
+    
+    plusMeat01.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(1);
+        increment(textFieldMeat01, totalCostMeat01, product);
+      }
+    });
+    
+    minusMeat01.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(1);
+        decrement(textFieldMeat01, totalCostMeat01, product);
+      }
+    });
+    
+    plusMeat02.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(2);
+        increment(textFieldMeat02, totalCostMeat02, product);
+      }
+    });
+    
+    minusMeat02.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(2);
+        decrement(textFieldMeat02, totalCostMeat02, product);
+      }
+    });
+    
+    plusMeat10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(3);
+        increment(textFieldMeat10, totalCostMeat10, product);
+      }
+    });
+    
+    minusMeat10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(3);
+        decrement(textFieldMeat10, totalCostMeat10, product);
+      }
+    });
+    
+    plusMeat11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(4);
+        increment(textFieldMeat11, totalCostMeat11, product);
+      }
+    });
+    
+    minusMeat11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(4);
+        decrement(textFieldMeat11, totalCostMeat11, product);
+      }
+    });
+    
+    plusMeat12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(5);
+        increment(textFieldMeat12, totalCostMeat12, product);
+      }
+    });
+    
+    minusMeat12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(5);
+        decrement(textFieldMeat12, totalCostMeat12, product);
+      }
+    });
+    
+    
   }
   
   /**
@@ -298,7 +700,7 @@ public class CenterFlikController implements Initializable {
     cvvLabel.setText("");
   }
   
-    /**
+  /**
    * Helper method that sets the image of the current product
    */
   private void setImage(ImageView productImage, String imageName) {
@@ -314,29 +716,154 @@ public class CenterFlikController implements Initializable {
   }
   
   /**
-   * Used for changing the category of products shown in the Handla view.
+   * Used to increment the number of units of desired product.
    * 
-   * @param category  the category to be shown in the Handla view 
+   * @param field contains the number of units
+   * @param totalCost is the product of all units
+   * @param product is the incremented product
    */
-  public void changeHandlaCategory(String category) {
-    // Ändra till relevanta produkter som visas i Handla
-    testText.setText(category);
-    
-    if (listView) {
-      
-    } else {
-      products = IMatController.getIMatProducts().getFishList();
-      String imageName = products.get(0).getImageName();
-      setImage(imageOneOne, imageName);
-      imageOneOne.setVisible(true);
-      imageName = products.get(1).getImageName();
-      setImage(imageOneTwo, imageName);
-      imageOneTwo.setVisible(true);
-      imageName = products.get(2).getImageName();
-      setImage(imageOneThree, imageName);
-      imageOneThree.setVisible(true);
-      
+  public void increment(TextField field, Label totalCost, Product product) {
+    try {
+      Integer inc = Integer.parseInt(field.getCharacters().toString());
+      if (inc > 0) {
+        inc++;
+        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      } else {
+        inc = 1;
+        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      }
+    } catch (NumberFormatException e) {
+        Integer inc = 1;
+        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
     }
+  }
+  
+  /**
+   * Used to decrement the number of units of a particular product.
+   * 
+   * @param field contains the number of units
+   * @param totalCost is the product of all units
+   * @param product is the decremented product
+   */
+  public void decrement(TextField field, Label totalCost, Product product) {
+    try {
+      Integer inc = Integer.parseInt(field.getCharacters().toString());
+      if (inc > 1) {
+        inc--;
+        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      } else {
+        inc = 1;
+        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      }
+    } catch (NumberFormatException e) {
+        Integer inc = 1;
+        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+    }
+
+  }
+    
+  
+  /**
+   * If Rice link has been clicked, show rice products in Handla view.
+   */
+  public void changeToRiceView() {
+    
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("riceScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+
+    products = IMatController.getIMatProducts().getRiceList();
+    product = products.get(0);
+    riceLabel00.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageZeroZeroRice, imageName);
+    totalCostRice00.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    riceLabel01.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageZeroOneRice, imageName);
+    totalCostRice01.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    riceLabel02.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageZeroTwoRice, imageName);
+    totalCostRice02.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    riceLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageOneZeroRice, imageName);
+    totalCostRice10.setText("Pris: " + (int)product.getPrice() + " kr");
+
+  }
+  
+  /**
+   * If Meat link has been clicked, show meat products in Handla view.
+   */
+  public void changeToMeatView() {
+
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("meatScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+
+    products = IMatController.getIMatProducts().getMeatList();
+    product = products.get(0);
+    meatLabel00.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageZeroZeroMeat, imageName);
+    totalCostMeat00.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    meatLabel01.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageZeroOneMeat, imageName);
+    totalCostMeat01.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    meatLabel02.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageZeroTwoMeat, imageName);
+    totalCostMeat02.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    meatLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageOneZeroMeat, imageName);
+    totalCostMeat10.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    meatLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageOneOneMeat, imageName);
+    totalCostMeat11.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    meatLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(imageOneTwoMeat, imageName);
+    totalCostMeat12.setText("Pris: " + (int)product.getPrice() + " kr");
     
   }
   

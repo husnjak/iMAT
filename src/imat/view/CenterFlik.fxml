@@ -13,47 +13,787 @@
   <tabs>
     <Tab fx:id="handlaFlik" text="Handla">
       <content>
-            <ScrollPane prefViewportHeight="1467.0" prefViewportWidth="650.0">
-               <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1500.0" prefWidth="650.0">
-                     <children>
-                        <GridPane layoutX="125.0" layoutY="87.0" prefHeight="1467.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
-                            <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
-                              <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+            <StackPane fx:id="handlaStackPane" alignment="TOP_CENTER" maxHeight="430.0" maxWidth="670.0" minHeight="430.0" minWidth="670.0" prefHeight="600.0" prefWidth="670.0">
+               <children>
+                  <ScrollPane fx:id="breadScrollPane" maxHeight="430.0" minHeight="430.0" prefHeight="430.0" prefViewportHeight="1467.0" prefViewportWidth="650.0" visible="false">
+                     <content>
+                    <AnchorPane maxHeight="800.0" minHeight="800.0" minWidth="0.0" prefHeight="1500.0" prefWidth="650.0" StackPane.alignment="BOTTOM_CENTER">
                            <children>
-                              <Text fx:id="testText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ImageView fx:id="imageOneOne" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-                                 <GridPane.margin>
-                                    <Insets top="5.0" />
-                                 </GridPane.margin></ImageView>
-                              <ImageView fx:id="imageOneTwo" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-                                 <GridPane.margin>
-                                    <Insets top="5.0" />
-                                 </GridPane.margin>
-                              </ImageView>
-                              <ImageView fx:id="imageOneThree" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-                                 <GridPane.margin>
-                                    <Insets top="5.0" />
-                                 </GridPane.margin>
-                              </ImageView>
+                              <GridPane layoutX="125.0" layoutY="87.0" prefHeight="1467.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                  <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                  <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                  <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageOneOne" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageOneTwo" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageOneThree" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="breadLabel00" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="breadLabel01" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="breadLabel02" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="breadFavorite00" mnemonicParsing="false" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="breadFavorite01" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="breadFavorite02" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldBread00" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusBread00" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="minusBread00" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostBread00" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="totalCostBread01" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="totalCostBread02" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Button fx:id="buyBread00" mnemonicParsing="false" text="Köp" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyBread01" mnemonicParsing="false" text="Köp" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="textFieldBread01" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusBread01" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusBread01" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="plusBread02" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusBread02" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="textFieldBread02" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="buyBread02" mnemonicParsing="false" text="Köp" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <ImageView fx:id="imageTwoOne" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="breadLabel10" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="breadFavorite10" mnemonicParsing="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldBread10" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusBread10" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusBread10" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyBread10" mnemonicParsing="false" text="Köp" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Label fx:id="totalCostBread10" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                 </children>
+                              </GridPane>
                            </children>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="test" prefHeight="430.0" prefWidth="200.0" visible="false" StackPane.alignment="BOTTOM_CENTER">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="650.0">
+                           <children>
+                              <GridPane prefHeight="700.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fx:id="imageOneOne1" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageOneTwo1" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageOneThree1" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="test2" prefHeight="430.0" prefWidth="200.0" visible="false" StackPane.alignment="CENTER_LEFT">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="650.0" />
+                    </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="riceScrollPane" maxHeight="430.0" minHeight="430.0" prefHeight="430.0" prefWidth="200.0" visible="false" StackPane.alignment="CENTER">
+                    <content>
+                      <AnchorPane maxHeight="600.0" minHeight="600.0" minWidth="650.0" prefHeight="600.0" prefWidth="650.0">
+                           <children>
+                              <GridPane alignment="CENTER" AnchorPane.topAnchor="100.0">
+                                 <children>
+                                    <ImageView fx:id="imageZeroZeroRice" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageZeroOneRice" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageZeroTwoRice" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="riceLabel00" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="riceLabel01" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="riceLabel02" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="riceFavorite00" mnemonicParsing="false" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="riceFavorite01" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="riceFavorite02" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldRice00" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusRice00" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusRice00" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostRice00" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="totalCostRice01" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="totalCostRice02" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Button fx:id="buyRice00" mnemonicParsing="false" text="Köp" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyRice01" mnemonicParsing="false" text="Köp" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="textFieldRice01" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusRice01" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusRice01" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="plusRice02" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusRice02" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="textFieldRice02" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="buyRice02" mnemonicParsing="false" text="Köp" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <ImageView fx:id="imageOneZeroRice" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="riceLabel10" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="riceFavorite10" mnemonicParsing="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldRice10" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusRice10" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusRice10" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyRice10" mnemonicParsing="false" text="Köp" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostRice10" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <Label text="Ris" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font size="33.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="startPage" maxHeight="430.0" maxWidth="670.0" minHeight="430.0" minWidth="670.0" prefHeight="430.0" prefWidth="670.0" StackPane.alignment="CENTER">
+                    <content>
+                      <AnchorPane maxHeight="430.0" maxWidth="670.0" minHeight="430.0" minWidth="670.0" prefHeight="430.0" prefWidth="670.0">
+                           <children>
+                              <Text layoutX="185.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STARTSIDA" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="104.0">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="meatScrollPane" maxHeight="430.0" minHeight="430.0" prefHeight="430.0" prefWidth="200.0" visible="false" StackPane.alignment="CENTER">
+                    <content>
+                      <AnchorPane maxHeight="600.0" maxWidth="650.0" minHeight="600.0" minWidth="650.0" prefHeight="600.0" prefWidth="650.0">
+                           <children>
+                              <GridPane alignment="BASELINE_CENTER" AnchorPane.topAnchor="100.0">
+                                 <children>
+                                    <ImageView fx:id="imageZeroZeroMeat" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageZeroOneMeat" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="imageZeroTwoMeat" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="meatLabel00" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="meatLabel01" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="meatLabel02" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="meatFavorite00" mnemonicParsing="false" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="meatFavorite01" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="meatFavorite02" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldMeat00" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusMeat00" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusMeat00" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostMeat00" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="totalCostMeat01" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="totalCostMeat02" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Button fx:id="buyMeat00" mnemonicParsing="false" text="Köp" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyMeat01" mnemonicParsing="false" text="Köp" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="textFieldMeat01" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusMeat01" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusMeat01" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="plusMeat02" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusMeat02" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="textFieldMeat02" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="buyMeat02" mnemonicParsing="false" text="Köp" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <ImageView fx:id="imageOneZeroMeat" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="meatLabel10" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="meatFavorite10" mnemonicParsing="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldMeat10" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusMeat10" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusMeat10" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyMeat10" mnemonicParsing="false" text="Köp" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostMeat10" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <ImageView fx:id="imageOneOneMeat" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="meatLabel11" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="meatFavorite11" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <padding>
+                                          <Insets right="10.0" top="5.0" />
+                                       </padding>
+                                    </CheckBox>
+                                    <TextField fx:id="textFieldMeat11" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="plusMeat11" alignment="CENTER" layoutX="290.0" layoutY="165.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusMeat11" alignment="CENTER" layoutX="75.0" layoutY="431.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyMeat11" layoutX="177.0" layoutY="418.0" mnemonicParsing="false" text="Köp" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostMeat11" layoutX="525.0" layoutY="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <ImageView fx:id="imageOneTwoMeat" fitHeight="130.0" fitWidth="150.0" layoutX="250.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="meatLabel12" layoutX="250.0" layoutY="383.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <CheckBox fx:id="meatFavorite12" layoutX="406.0" layoutY="260.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <padding>
+                                          <Insets right="10.0" top="5.0" />
+                                       </padding>
+                                       <GridPane.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </CheckBox>
+                                    <Button fx:id="plusMeat12" alignment="CENTER" layoutX="290.0" layoutY="415.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="74.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="minusMeat12" alignment="CENTER" layoutX="290.0" layoutY="431.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="8.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="65.0" top="106.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="buyMeat12" layoutX="392.0" layoutY="418.0" mnemonicParsing="false" text="Köp" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label fx:id="totalCostMeat12" layoutX="310.0" layoutY="423.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="85.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="textFieldMeat12" alignment="CENTER_RIGHT" layoutX="250.0" layoutY="419.0" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" top="90.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                    <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <Label text="Kött" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font size="33.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </StackPane>
       </content>
     </Tab>
     <Tab fx:id="favoritvarorFlik" text="Favoritvaror">
@@ -156,7 +896,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Text>
-                        <HBox layoutX="35.0" layoutY="335.0" AnchorPane.leftAnchor="65.0">
+                        <HBox layoutX="35.0" layoutY="335.0" spacing="5.0" AnchorPane.leftAnchor="65.0">
                            <children>
                                     <Text layoutX="81.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gatuadress" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="340.0">
                                  <HBox.margin>
@@ -166,7 +906,7 @@
                                     <TextField fx:id="streetTextField" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
                            </children>
                         </HBox>
-                        <HBox layoutX="35.0" layoutY="360.0" AnchorPane.leftAnchor="57.0">
+                        <HBox layoutX="35.0" layoutY="360.0" spacing="5.0" AnchorPane.leftAnchor="57.0">
                            <children>
                                     <Text layoutX="95.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="365.0">
                                  <HBox.margin>
@@ -181,7 +921,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox layoutX="35.0" layoutY="385.0" AnchorPane.leftAnchor="110.0">
+                        <HBox layoutX="35.0" layoutY="385.0" spacing="5.0" AnchorPane.leftAnchor="110.0">
                            <children>
                                     <Text layoutX="105.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="390.0">
                                  <HBox.margin>
@@ -196,7 +936,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Text>
-                        <HBox layoutX="35.0" layoutY="485.0" AnchorPane.leftAnchor="57.0">
+                        <HBox layoutX="35.0" layoutY="485.0" spacing="5.0" AnchorPane.leftAnchor="57.0">
                            <children>
                                     <Text layoutX="100.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="490.0">
                                  <HBox.margin>
@@ -211,7 +951,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox layoutX="35.0" layoutY="510.0" AnchorPane.leftAnchor="125.0">
+                        <HBox layoutX="35.0" layoutY="510.0" spacing="5.0" AnchorPane.leftAnchor="125.0">
                            <children>
                                     <Text layoutX="91.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="År" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="515.0">
                                  <HBox.margin>
@@ -226,7 +966,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox layoutX="35.0" layoutY="535.0" AnchorPane.leftAnchor="96.0">
+                        <HBox layoutX="35.0" layoutY="535.0" spacing="5.0" AnchorPane.leftAnchor="96.0">
                            <children>
                                     <Text layoutX="73.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Månad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="540.0">
                                  <HBox.margin>
@@ -241,7 +981,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox layoutX="35.0" layoutY="560.0" AnchorPane.leftAnchor="113.0">
+                        <HBox layoutX="35.0" layoutY="560.0" spacing="5.0" AnchorPane.leftAnchor="113.0">
                            <children>
                                     <Text layoutX="92.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="565.0">
                                  <HBox.margin>

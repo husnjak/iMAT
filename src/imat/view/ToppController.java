@@ -6,11 +6,25 @@
 package imat.view;
 
 import imat.IMat;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -24,10 +38,36 @@ public class ToppController implements Initializable {
   private TextField passwordTextField;
   
   private IMat imat;
+  @FXML
+  private TextField searchTextField;
+  @FXML
+  private Button searchButton;
+  @FXML
+  private ImageView logoImage;
+  @FXML
+  private StackPane loginStackPane;
+  @FXML
+  private AnchorPane loginPane;
+  @FXML
+  private Button loginButton;
+  @FXML
+  private AnchorPane logoutPane;
+  @FXML
+  private Label loggedInLabel;
+  @FXML
+  private Hyperlink loggedInUser;
+  @FXML
+  private Button logoutButton;
+  
+  // Used for comparison with the database etc
+  String username;
+  String password;
+  @FXML
+  private Hyperlink registerUser;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    
+    setImage(logoImage, "test_bild.jpg");
   }
   
   /**
@@ -37,14 +77,56 @@ public class ToppController implements Initializable {
    */
   public void setMainApp(IMat imat) {
     this.imat = imat;
-  } 
+  }
+  
+  /**
+   * Helper method that sets the logo image of the application.
+   */
+  private void setImage(ImageView productImage, String imageName) {
+    BufferedImage bufferedImage;
+    try {
+      bufferedImage = ImageIO.read(new File(imageName));
+      Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+      productImage.setImage(image);
+    } catch (IOException ex) {
+      Logger.getLogger(CenterFlikController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+  }
   
   /**
   * Called when the user clicks the login button. 
   */
+  @FXML
   private void handleLogin() {
-    String username = usernameTextField.getCharacters().toString();
-    String password = passwordTextField.getCharacters().toString();
+    
+    username = usernameTextField.getCharacters().toString();
+    password = passwordTextField.getCharacters().toString();
+    
+    loggedInUser.setText("  " + username);
+    
+    int size = loginStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = loginStackPane.getChildren().get(i).getId();
+      if (id.compareTo("logoutPane") == 0) {
+        loginStackPane.getChildren().get(i).toFront();
+        loginStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        loginStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    
+    usernameTextField.setVisible(false);
+    passwordTextField.setVisible(false);
+    loginButton.setVisible(false);
+    registerUser.setVisible(false);
+    
+    logoutButton.setVisible(true);
+    loggedInUser.setVisible(true);
+    loggedInLabel.setVisible(true);
+    
+    
     
     // Check if this username/password combination exists in database
     // If they do, change the view to "logged in"
@@ -54,8 +136,31 @@ public class ToppController implements Initializable {
   /**
   * Called when the user clicks the logout button. 
   */
+  @FXML
   private void handleLogout() {
+    
+    int size = loginStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = loginStackPane.getChildren().get(i).getId();
+      if (id.compareTo("loginPane") == 0) {
+        loginStackPane.getChildren().get(i).toFront();
+        loginStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        loginStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    
+    logoutButton.setVisible(false);
+    loggedInUser.setVisible(false);
+    loggedInLabel.setVisible(false);
+    
+    usernameTextField.setVisible(true);
+    passwordTextField.setVisible(true);
+    loginButton.setVisible(true);
+    registerUser.setVisible(true);
 
+    
     
   }
 

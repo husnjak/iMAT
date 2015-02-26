@@ -39,7 +39,7 @@ public class IMatController implements Initializable {
   @FXML
   private Label label;
   @FXML
-  private CenterFlikController centerFlikController;
+  private static CenterFlikController centerController;
   @FXML
   private KategoriMenyController kategoriMenyController;
   @FXML
@@ -47,9 +47,9 @@ public class IMatController implements Initializable {
   @FXML
   private VarukorgController varukorgController;
   @FXML
-  public static final IMatDataHandler imatBackend = IMatDataHandler.getInstance();
+  public static IMatDataHandler imatBackend = IMatDataHandler.getInstance();
   @FXML
-  private static final IMatProducts imatProducts = new IMatProducts();
+  private static final IMatProducts imatProducts = new IMatProducts();;
   @FXML
   private static final ShoppingCart shoppingCart = imatBackend.getShoppingCart();
   
@@ -65,6 +65,11 @@ public class IMatController implements Initializable {
   // Used to check if user is logged in
   private boolean loggedIn;
   
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+
+  }
+  
   /**
    * Retrieve a reference to the iMat backend.
    * 
@@ -74,6 +79,12 @@ public class IMatController implements Initializable {
     return imatBackend;
   }
   
+  /**
+   * 
+   * Retrieve a reference to the products.
+   * 
+   * @return reference to the products
+   */
   public static IMatProducts getIMatProducts() {
     return imatProducts;
   }
@@ -191,12 +202,6 @@ public class IMatController implements Initializable {
    */
   public IMatUserAccount getCurrentAccount() {
     return currentAccount;
-  }
-  
-  
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-
   }
   
 }

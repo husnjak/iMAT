@@ -773,6 +773,23 @@ public class CenterFlikController implements Initializable {
     }
 
   }
+  
+  /**
+   * Changes the center view to the start page.
+   */
+  public void changeToStartPageView() {
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("startPage") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
     
   
   /**

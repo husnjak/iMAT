@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
@@ -68,6 +70,14 @@ public class ToppController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     setImage(logoImage, "test_bild.jpg");
+    logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+     @Override
+     public void handle(MouseEvent event) {
+         imat.getCenterController().changeToStartPageView();
+         event.consume();
+     }
+    });
   }
   
   /**
@@ -102,7 +112,7 @@ public class ToppController implements Initializable {
     
     username = usernameTextField.getCharacters().toString();
     password = passwordTextField.getCharacters().toString();
-    
+
     loggedInUser.setText("  " + username);
     
     int size = loginStackPane.getChildren().size();

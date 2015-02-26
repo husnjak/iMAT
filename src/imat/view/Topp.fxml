@@ -31,7 +31,7 @@
                               <Button fx:id="loginButton" layoutX="332.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleLogin" text="Logga in" AnchorPane.topAnchor="48.0" />
                            </children>
                         </HBox>
-                        <Hyperlink fx:id="registerUser" layoutX="177.0" layoutY="69.0" text="Registrera" />
+                        <Hyperlink fx:id="registerUser" layoutX="177.0" layoutY="69.0" text="Skapa konto" />
                      </children>
                   </VBox>
                </children>

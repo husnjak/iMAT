@@ -30,6 +30,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Product;
@@ -353,6 +354,22 @@ public class CenterFlikController implements Initializable {
   private Label totalCostMeat12;
   @FXML
   private TextField textFieldMeat12;
+  @FXML
+  private ScrollPane registerPane;
+  @FXML
+  private TextField createUserNameTextField;
+  @FXML
+  private TextField createPasswordTextField;
+  @FXML
+  private TextField createPasswordRepeatTextField;
+  @FXML
+  private Label createPasswordLabel;
+  @FXML
+  private Button createAccountButton;
+  @FXML
+  private StackPane mainStackPane;
+  @FXML
+  private Label createUserNameLabel;
   
 
   @Override
@@ -519,6 +536,30 @@ public class CenterFlikController implements Initializable {
       }
     });
     
+    createAccountButton.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        String username = createUserNameTextField.getText();
+        String password = createPasswordTextField.getText();
+        String repeatPassword = createPasswordRepeatTextField.getText();
+        if (username.length() < 1 ) {
+          createUserNameLabel.setText("Fyll i användarnamn");
+        } else if (password.length() < 1 || repeatPassword.length() < 1) {
+          createPasswordLabel.setText("Fyll i lösenord");
+        } else if (password.compareTo(repeatPassword) != 0) {
+          createPasswordLabel.setText("Felaktigt lösenord");
+        } else {
+          String isValid = IMatController.validAccount(username, password);
+          if (isValid.compareTo("invalidUsername") != 0) {
+            createUserNameLabel.setText("Användarnamnet existerar redan");
+          } else {
+            IMatController.createAccount(username, password);
+          }
+          
+        }
+      }
+    });
+    
     
   }
   
@@ -529,7 +570,7 @@ public class CenterFlikController implements Initializable {
    */
   public void setMainApp(IMat imat) {
     this.imat = imat;
-  } 
+  }
   
 
   /**
@@ -544,13 +585,13 @@ public class CenterFlikController implements Initializable {
     // Store first name if entered
     if (firstNameTextField.getLength() > 0) {
       String firstName = firstNameTextField.getText();
-      IMatController.insertStatement("FIRSTNAME", firstName);
+      IMatController.updateAccount("FIRSTNAME", firstName);
     }
     
     // Store last name if entered
     if (lastNameTextField.getLength() > 0) {
       String lastName = lastNameTextField.getText();
-      IMatController.insertStatement("LASTNAME", lastName);
+      IMatController.updateAccount("LASTNAME", lastName);
     }
     
     // Check if civicTextField contains valid data
@@ -585,13 +626,13 @@ public class CenterFlikController implements Initializable {
     // Store email address if entered
     if (emailTextField.getLength() > 0) {
       String email = emailTextField.getText();
-      IMatController.insertStatement("EMAIL", email);
+      IMatController.updateAccount("EMAIL", email);
     }
     
     // Store street address if entered
     if (streetTextField.getLength() > 0) {
       String street = streetTextField.getText();
-      IMatController.insertStatement("STREET", street);
+      IMatController.updateAccount("STREET", street);
     }
     
     // Check if postalTextField contains valid data
@@ -612,7 +653,7 @@ public class CenterFlikController implements Initializable {
     // Store name of city if entered
     if (cityTextField.getLength() > 0) {
       String city = cityTextField.getText();
-      IMatController.insertStatement("CITY",city);
+      IMatController.updateAccount("CITY",city);
     }
     
     // Check if cardNumberTextField contains valid data
@@ -778,6 +819,7 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    hideOtherPanes();
     int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
@@ -790,13 +832,44 @@ public class CenterFlikController implements Initializable {
       }
     }
   }
+  
+  public void hideOtherPanes() {
+    int size = mainStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = mainStackPane.getChildren().get(i).getId();
+      if (id.compareTo("tabPane") == 0) {
+        mainStackPane.getChildren().get(i).toFront();
+        mainStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        mainStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
+  
+  /**
+   * Changes the center view to the register page.
+   */
+  public void changeToRegisterView() {
+    int size = mainStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = mainStackPane.getChildren().get(i).getId();
+      if (id.compareTo("registerPane") == 0) {
+        mainStackPane.getChildren().get(i).toFront();
+        mainStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        mainStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
     
   
   /**
    * If Rice link has been clicked, show rice products in Handla view.
    */
   public void changeToRiceView() {
-    
+    hideOtherPanes();
     int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
@@ -837,7 +910,7 @@ public class CenterFlikController implements Initializable {
    * If Meat link has been clicked, show meat products in Handla view.
    */
   public void changeToMeatView() {
-
+    hideOtherPanes();
     int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {

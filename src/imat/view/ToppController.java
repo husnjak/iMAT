@@ -72,12 +72,13 @@ public class ToppController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     setImage(logoImage, "test_bild.jpg");
     registerUser.setFocusTraversable(false);
+    loggedInUser.setFocusTraversable(false);
     
     logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
      @Override
      public void handle(MouseEvent event) {
-         imat.getCenterController().changeToStartPageView();
-         event.consume();
+        imat.getCenterController().changeToStartPageView();
+        event.consume();
      }
     });
     
@@ -85,6 +86,15 @@ public class ToppController implements Initializable {
       @Override
       public void handle(MouseEvent event) {
         registerUser.setVisited(false);
+        imat.getCenterController().changeToRegisterView();
+        event.consume();
+      }
+    });
+    
+    loggedInUser.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        loggedInUser.setVisited(false);
         event.consume();
       }
     });
@@ -123,7 +133,7 @@ public class ToppController implements Initializable {
     username = usernameTextField.getCharacters().toString();
     password = passwordTextField.getCharacters().toString();
     
-    if (IMatController.validAccount(username, password)) {
+    if ((IMatController.validAccount(username, password).compareTo("validAccount") == 0)) {
       loggedInUser.setText("  " + username);
       int size = loginStackPane.getChildren().size();
       String id;

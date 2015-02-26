@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -133,7 +134,7 @@ public class IMat extends Application {
     try {
       // Load start view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
-      TabPane centerFlik = loader.load();
+      StackPane centerFlik = loader.load();
       
       centerController = loader.getController();
       centerController.setMainApp(this);

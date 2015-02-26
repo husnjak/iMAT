@@ -29,7 +29,6 @@ public class IMat extends Application {
   private Stage primaryStage;
   private Parent root;
   private BorderPane rootLayout;
-  private IMatController iMatController;
   private KategoriMenyController kategoriController;
   private CenterFlikController centerController;
   private ToppController toppController;
@@ -42,11 +41,12 @@ public class IMat extends Application {
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
     
-    iMatController = new IMatController();
-    
-    // For testing purposes only
     IMatController.createDatabase();
-
+    //System.out.println(IMatController.validAccount("rusta", "losen"));
+    //IMatController.updateAccount("rusta", "losen");
+    //IMatController.insertTestAccount("USERACCOUNT", "USERNAME", "PASSWORD");
+    //IMatController.insertStatement("PASSWORD", "hemligt");
+ 
     initRootLayout();
     initKategoriMeny();
     initCenterFlik();

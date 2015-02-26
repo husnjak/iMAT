@@ -8,9 +8,11 @@ package imat.view;
 import imat.IMat;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -46,111 +48,140 @@ public class KategoriMenyController implements Initializable {
   
   private IMat imat;
   
-  
-  /**
-   * Request that the Handla view shows category bread.
-   */
-  @FXML
-  public void changeCategoryBread() {
-    //imat.getCenterController().changeHandlaCategory("bread");
-  }
-  
-  /**
-   * Request that the Handla view shows category drink.
-   */
-  @FXML
-  public void changeCategoryDrink() {
-    //imat.getCenterController().changeHandlaCategory("drink");
-  }
-  
-  /**
-   * Request that the Handla view shows category fruit.
-   */
-  @FXML
-  public void changeCategoryFruit() {
-    //imat.getCenterController().changeHandlaCategory("fruit");
-  }
-  
-  /**
-   * Request that the Handla view shows category fish.
-   */
-  @FXML
-  public void changeCategoryFish() {
-    //imat.getCenterController().changeHandlaCategory("fish");
-  }
-  
-  /**
-   * Request that the Handla view shows category vegetables.
-   */
-  @FXML
-  public void changeCategoryVegetables() {
-    //imat.getCenterController().changeHandlaCategory("vegetables");
-  }
-  
-  /**
-   * Request that the Handla view shows category spices.
-   */
-  @FXML
-  public void changeCategorySpices() {
-    //imat.getCenterController().changeHandlaCategory("spices");
-  }
-  
-  /**
-   * Request that the Handla view shows category meat.
-   */
-  @FXML
-  public void changeCategoryMeat() {
-    imat.getCenterController().changeToMeatView();
-  }
-  
-  /**
-   * Request that the Handla view shows category dairies.
-   */
-  @FXML
-  public void changeCategoryDairies() {
-    //imat.getCenterController().changeHandlaCategory("dairies");
-  }
-  
-  /**
-   * Request that the Handla view shows category nuts.
-   */
-  @FXML
-  public void changeCategoryNuts() {
-    //imat.getCenterController().changeHandlaCategory("nuts");
-  }
-  
-  /**
-   * Request that the Handla view shows category pasta.
-   */
-  @FXML
-  public void changeCategoryPasta() {
-    //imat.getCenterController().changeHandlaCategory("pasta");
-  }
-  
-  /**
-   * Request that the Handla view shows category potatoes.
-   */
-  @FXML
-  public void changeCategoryPotatoes() {
-    //imat.getCenterController().changeHandlaCategory("potatoes");
-  }
-  
-  /**
-   * Request that the Handla view shows category rice.
-   */
-  @FXML
-  public void changeCategoryRice() {
-    imat.getCenterController().changeToRiceView();
-  }
-  
-  /**
-   * Request that the Handla view shows category sweets.
-   */
-  @FXML
-  public void changeCategorySweets() {
-    //imat.getCenterController().changeHandlaCategory("sweets");
-  }
+    @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    riceLink.setFocusTraversable(false);
+    meatLink.setFocusTraversable(false);
+    breadLink.setFocusTraversable(false);
+    dairiesLink.setFocusTraversable(false);
+    potatoLink.setFocusTraversable(false);
+    sweetsLink.setFocusTraversable(false);
+    nutsLink.setFocusTraversable(false);
+    drinkLink.setFocusTraversable(false);
+    fishLink.setFocusTraversable(false);
+    spiceLink.setFocusTraversable(false);
+    vegetablesLink.setFocusTraversable(false);
+    pastaLink.setFocusTraversable(false);
+    fruitLink.setFocusTraversable(false);
     
+    riceLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        imat.getCenterController().changeToRiceView();
+        riceLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    meatLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        imat.getCenterController().changeToMeatView();
+        meatLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    pastaLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToPastaView();
+        pastaLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    breadLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToBreadView();
+        breadLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    drinkLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToDrinkView();
+        drinkLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    fruitLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToFruitView();
+        fruitLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    fishLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToFishView();
+        fishLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    vegetablesLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToVegetablesView();
+        vegetablesLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    spiceLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToSpiceView();
+        spiceLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    dairiesLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToDairiesView();
+        dairiesLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    nutsLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToNutsView();
+        nutsLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    potatoLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToPotatoView();
+        potatoLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+    sweetsLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        //imat.getCenterController().changeToSweetsView();
+        sweetsLink.setVisited(false);
+        event.consume();
+      }
+    });
+    
+  }
   
   /**
    * Is called by the main application to give a reference back to itself.
@@ -160,10 +191,5 @@ public class KategoriMenyController implements Initializable {
   public void setMainApp(IMat imat) {
     this.imat = imat;
   } 
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    
-  }
   
 }

@@ -6,6 +6,7 @@
 package imat.view;
 
 import imat.IMat;
+import imat.IMatController;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -70,13 +71,22 @@ public class ToppController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     setImage(logoImage, "test_bild.jpg");
+    registerUser.setFocusTraversable(false);
+    
     logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
      @Override
      public void handle(MouseEvent event) {
          imat.getCenterController().changeToStartPageView();
          event.consume();
      }
+    });
+    
+    registerUser.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        registerUser.setVisited(false);
+        event.consume();
+      }
     });
   }
   
@@ -112,35 +122,33 @@ public class ToppController implements Initializable {
     
     username = usernameTextField.getCharacters().toString();
     password = passwordTextField.getCharacters().toString();
-
-    loggedInUser.setText("  " + username);
     
-    int size = loginStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = loginStackPane.getChildren().get(i).getId();
-      if (id.compareTo("logoutPane") == 0) {
-        loginStackPane.getChildren().get(i).toFront();
-        loginStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        loginStackPane.getChildren().get(i).setVisible(false);
+    if (IMatController.validAccount(username, password)) {
+      loggedInUser.setText("  " + username);
+      int size = loginStackPane.getChildren().size();
+      String id;
+      for (int i = 0; i < size; i++) {
+        id = loginStackPane.getChildren().get(i).getId();
+        if (id.compareTo("logoutPane") == 0) {
+          loginStackPane.getChildren().get(i).toFront();
+          loginStackPane.getChildren().get(i).setVisible(true);
+        } else {
+          loginStackPane.getChildren().get(i).setVisible(false);
+        }
       }
+
+      usernameTextField.setVisible(false);
+      passwordTextField.setVisible(false);
+      loginButton.setVisible(false);
+      registerUser.setVisible(false);
+
+      logoutButton.setVisible(true);
+      loggedInUser.setVisible(true);
+      loggedInLabel.setVisible(true);
+    } else {
+      // Inform user that it's not a valid user/password combination
     }
-    
-    usernameTextField.setVisible(false);
-    passwordTextField.setVisible(false);
-    loginButton.setVisible(false);
-    registerUser.setVisible(false);
-    
-    logoutButton.setVisible(true);
-    loggedInUser.setVisible(true);
-    loggedInLabel.setVisible(true);
-    
-    
-    
-    // Check if this username/password combination exists in database
-    // If they do, change the view to "logged in"
-    // Otherwise, print "wrong username or password"
+   
   }
   
   /**

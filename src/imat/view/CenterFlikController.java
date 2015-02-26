@@ -544,13 +544,13 @@ public class CenterFlikController implements Initializable {
     // Store first name if entered
     if (firstNameTextField.getLength() > 0) {
       String firstName = firstNameTextField.getText();
-      IMatController.insertStatement("useraccount","firstname", firstName);
+      IMatController.insertStatement("FIRSTNAME", firstName);
     }
     
     // Store last name if entered
     if (lastNameTextField.getLength() > 0) {
       String lastName = lastNameTextField.getText();
-      IMatController.insertStatement("useraccount","lastname", lastName);
+      IMatController.insertStatement("LASTNAME", lastName);
     }
     
     // Check if civicTextField contains valid data
@@ -585,13 +585,13 @@ public class CenterFlikController implements Initializable {
     // Store email address if entered
     if (emailTextField.getLength() > 0) {
       String email = emailTextField.getText();
-      IMatController.insertStatement("useraccount","email", email);
+      IMatController.insertStatement("EMAIL", email);
     }
     
     // Store street address if entered
     if (streetTextField.getLength() > 0) {
       String street = streetTextField.getText();
-      IMatController.insertStatement("useraccount","street", street);
+      IMatController.insertStatement("STREET", street);
     }
     
     // Check if postalTextField contains valid data
@@ -612,7 +612,7 @@ public class CenterFlikController implements Initializable {
     // Store name of city if entered
     if (cityTextField.getLength() > 0) {
       String city = cityTextField.getText();
-      IMatController.insertStatement("useraccount","city", city);
+      IMatController.insertStatement("CITY",city);
     }
     
     // Check if cardNumberTextField contains valid data

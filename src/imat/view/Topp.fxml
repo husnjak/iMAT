@@ -49,6 +49,9 @@
                            <padding>
                               <Insets right="20.0" />
                            </padding>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
                         </Hyperlink>
                         <Button fx:id="logoutButton" layoutX="374.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleLogout" text="Logga ut" />
                      </children>

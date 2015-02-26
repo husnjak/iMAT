@@ -10,6 +10,7 @@ import imat.view.KategoriMenyController;
 import imat.view.ToppController;
 import imat.view.VarukorgController;
 import java.net.URL;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -17,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,7 +59,10 @@ public class IMatController implements Initializable {
   private IMatUserAccount currentAccount;
  
   // Used for inserting statements into the database
-  static PreparedStatement psInsert;
+  private static PreparedStatement psInsert;
+  
+  // Used for selecting information from the database
+  private static PreparedStatement psSelect;
   
   // Used for communication with the database
   static Connection conn;
@@ -149,7 +154,7 @@ public class IMatController implements Initializable {
         }
     } catch (ClassNotFoundException | SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+      }
     }
   }
   
@@ -170,21 +175,90 @@ public class IMatController implements Initializable {
     }
   }
   
-    /**
-   * Inserts a value into a given attribute in a given table.
-   * 
-   * @param table       the table for which the attribute exists
-   * @param attribute   the attribute in given table for which to insert a value
-   * @param value       the value to be inserted
-   */
-  public static synchronized void insertStatement(String table, String attribute, String value) {
+  public static void insertTestAccount(String table, String attribute, String value) {
     try {
       createDatabaseConnection();
-      psInsert = conn.prepareStatement("insert into " + table
-          + "("+ attribute +") values ("+ value +")");
+      Statement statement = conn.createStatement();
+      //psInsert = conn.prepareStatement("insert into " + table
+      //    + "("+ attribute +") values (?)");
+      //psInsert.setString(1,value);
+      //psInsert.executeUpdate();
+      statement.execute("insert into " + table + " values (" +
+                    attribute + ",'" + value + "','" + value +"')");
+      statement.close();
     } catch (SQLException | ClassNotFoundException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
+  }
+  
+  /**
+   * Create a new record in the table
+   * 
+   * @param attribute   the attribute in given table for which to insert a value
+   * @param value       the value to be inserted
+   */
+  public static synchronized void insertStatement(String attribute, String value) {
+    try {
+      createDatabaseConnection();
+      psInsert = conn.prepareStatement("insert into USERACCOUNT("+ attribute +") values (?)");
+      psInsert.setString(1, value);
+      psInsert.executeUpdate();
+      psInsert.close();
+      conn.close();
+    } catch (SQLException | ClassNotFoundException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  /**
+   * Updates given attribute with desired value.
+   * 
+   * @param attribute
+   * @param value 
+   */
+  public static void updateAccount(String attribute, String value) {
+    try {
+      createDatabaseConnection();
+      String updateString = "update USERACCOUNT set PASSWORD = ? where USERNAME = ?";
+      PreparedStatement updateSales = conn.prepareStatement(updateString);
+      updateSales.setString(1, value);
+      updateSales.setString(2, attribute);
+      updateSales.executeUpdate();
+      updateSales.close();
+      conn.close();
+    } catch (SQLException | ClassNotFoundException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  public static boolean validAccount(String username, String password) {
+    try {
+      createDatabaseConnection();
+      String selectSQL = "select USERNAME, PASSWORD from USERACCOUNT where USERNAME = ?";
+      psSelect = conn.prepareStatement(selectSQL);
+      psSelect.setString(1, username);
+      ResultSet rs = psSelect.executeQuery();
+      while (rs.next()) {
+          String user = rs.getString("USERNAME");
+          String pass = rs.getString("PASSWORD");
+          if (user.compareTo(username) == 0) {
+            System.out.println("user exists");
+            if (pass.compareTo(password) == 0) {
+              System.out.println("pass is correct");
+              rs.close();
+              psSelect.close();
+              conn.close();
+              return true;
+            }
+          }
+      }
+      rs.close();
+      psSelect.close();
+      conn.close();
+    } catch (SQLException | ClassNotFoundException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return false;
   }
   
   /**

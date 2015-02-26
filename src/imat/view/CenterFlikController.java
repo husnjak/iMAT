@@ -144,6 +144,9 @@ public class CenterFlikController implements Initializable {
   // Used for handling product images
   String imageName;
   
+  // Used to identify which pane should be visible
+  String currentPane;
+  
   @FXML
   private Button minusBread00;
   @FXML
@@ -554,6 +557,7 @@ public class CenterFlikController implements Initializable {
             createUserNameLabel.setText("Användarnamnet existerar redan");
           } else {
             IMatController.createAccount(username, password);
+            IMatController.setCurrentUser(username);
           }
           
         }
@@ -598,9 +602,9 @@ public class CenterFlikController implements Initializable {
     // Ändra så att man väljer datum etc i combobox?
     if (civicTextField.getLength() > 0 && civicTextField.getLength() == 10) {
       try {
-        int civic = Integer.parseInt(civicTextField.getText());
+        Integer civic = Integer.parseInt(civicTextField.getText());
         civicLabel.setText("");
-        IMatController.insertStatement("useraccount","civic", civic);
+        IMatController.updateAccount("CIVIC", civic.toString());
       } catch (NumberFormatException e) {
         civicLabel.setText("Ange personnummer med 10 siffror");
       }
@@ -613,9 +617,9 @@ public class CenterFlikController implements Initializable {
     // Check if phoneTextField contains valid data
     if (phoneTextField.getLength() > 0 && phoneTextField.getLength() < 16) {
       try {
-        int phone = Integer.parseInt(phoneTextField.getText());
+        Integer phone = Integer.parseInt(phoneTextField.getText());
         phoneLabel.setText("");
-        IMatController.insertStatement("useraccount","phone", phone);
+        IMatController.updateAccount("PHONE", phone.toString());
       } catch (NumberFormatException e) {
         phoneLabel.setText("Ange maximalt 15 siffror");
       }
@@ -638,9 +642,9 @@ public class CenterFlikController implements Initializable {
     // Check if postalTextField contains valid data
     if (postalTextField.getLength() > 0 && postalTextField.getLength() == 5) {
       try {
-        int postal = Integer.parseInt(postalTextField.getText());
+        Integer postal = Integer.parseInt(postalTextField.getText());
         postalLabel.setText("");
-        IMatController.insertStatement("useraccount","postal", postal);
+        IMatController.updateAccount("POSTAL", postal.toString());
       } catch (NumberFormatException e) {
         postalLabel.setText("Ange postadress med 5 stycken siffror");
       }
@@ -653,15 +657,15 @@ public class CenterFlikController implements Initializable {
     // Store name of city if entered
     if (cityTextField.getLength() > 0) {
       String city = cityTextField.getText();
-      IMatController.updateAccount("CITY",city);
+      IMatController.updateAccount("CITY", city);
     }
     
     // Check if cardNumberTextField contains valid data
     if (cardNumberTextField.getLength() > 0) {
       try {
-        int cardNumber = Integer.parseInt(cardNumberTextField.getText());
+        Integer cardNumber = Integer.parseInt(cardNumberTextField.getText());
         cardNumberLabel.setText("");
-        IMatController.insertStatement("useraccount","cardnumber", cardNumber);
+        IMatController.updateAccount("CARDNUMBER", cardNumber.toString());
       } catch (NumberFormatException e) {
         cardNumberLabel.setText("Ange kortnummer med siffror");
       }
@@ -672,9 +676,9 @@ public class CenterFlikController implements Initializable {
     // Check if yearTextField contains valid data
     if (yearTextField.getLength() > 0 && yearTextField.getLength() == 2) {
       try {
-        int validYear = Integer.parseInt(yearTextField.getText());
+        Integer validYear = Integer.parseInt(yearTextField.getText());
         yearLabel.setText("");
-        IMatController.insertStatement("useraccount","validyear", validYear);
+        IMatController.updateAccount("VALIDYEAR", validYear.toString());
       } catch (NumberFormatException e) {
         yearLabel.setText("Ange år med två siffror");
       }
@@ -687,9 +691,9 @@ public class CenterFlikController implements Initializable {
     // Check if monthTextField contains valid data
     if (monthTextField.getLength() > 0 && monthTextField.getLength() == 2) {
       try {
-        int validMonth = Integer.parseInt(monthTextField.getText());
+        Integer validMonth = Integer.parseInt(monthTextField.getText());
         monthLabel.setText("");
-        IMatController.insertStatement("useraccount","validmonth", validMonth);
+        IMatController.updateAccount("VALIDMONTH", validMonth.toString());
       } catch (NumberFormatException e) {
         monthLabel.setText("Ange månad med två siffror");
       }
@@ -702,9 +706,9 @@ public class CenterFlikController implements Initializable {
     // Check if cvvTextField contains valid data
     if (cvvTextField.getLength() > 0 && cvvTextField.getLength() == 3) {
       try {
-        int cvv = Integer.parseInt(cvvTextField.getText());
+        Integer cvv = Integer.parseInt(cvvTextField.getText());
         cvvLabel.setText("");
-        IMatController.insertStatement("useraccount","cvv", cvv);
+        IMatController.updateAccount("CVV", cvv.toString());
       } catch (NumberFormatException e) {
         cvvLabel.setText("Ange cvv med tre siffror");
       }
@@ -753,7 +757,6 @@ public class CenterFlikController implements Initializable {
     } catch (IOException ex) {
       Logger.getLogger(CenterFlikController.class.getName()).log(Level.SEVERE, null, ex);
     }
-
   }
   
   /**
@@ -812,19 +815,19 @@ public class CenterFlikController implements Initializable {
         String newNumber = inc.toString();
         field.setText(newNumber);
     }
-
   }
   
   /**
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    currentPane = "startPage";
     hideOtherPanes();
     int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
       id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("startPage") == 0) {
+      if (id.compareTo(currentPane) == 0) {
         handlaStackPane.getChildren().get(i).toFront();
         handlaStackPane.getChildren().get(i).setVisible(true);
       } else {
@@ -838,7 +841,7 @@ public class CenterFlikController implements Initializable {
     String id;
     for (int i = 0; i < size; i++) {
       id = mainStackPane.getChildren().get(i).getId();
-      if (id.compareTo("tabPane") == 0) {
+      if (id.compareTo(currentPane) == 0) {
         mainStackPane.getChildren().get(i).toFront();
         mainStackPane.getChildren().get(i).setVisible(true);
       } else {
@@ -851,15 +854,17 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the register page.
    */
   public void changeToRegisterView() {
-    int size = mainStackPane.getChildren().size();
+    currentPane = "registerPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
-      id = mainStackPane.getChildren().get(i).getId();
-      if (id.compareTo("registerPane") == 0) {
-        mainStackPane.getChildren().get(i).toFront();
-        mainStackPane.getChildren().get(i).setVisible(true);
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
       } else {
-        mainStackPane.getChildren().get(i).setVisible(false);
+        handlaStackPane.getChildren().get(i).setVisible(false);
       }
     }
   }
@@ -869,6 +874,7 @@ public class CenterFlikController implements Initializable {
    * If Rice link has been clicked, show rice products in Handla view.
    */
   public void changeToRiceView() {
+    currentPane = "tabPane";
     hideOtherPanes();
     int size = handlaStackPane.getChildren().size();
     String id;
@@ -910,6 +916,7 @@ public class CenterFlikController implements Initializable {
    * If Meat link has been clicked, show meat products in Handla view.
    */
   public void changeToMeatView() {
+    currentPane = "tabPane";
     hideOtherPanes();
     int size = handlaStackPane.getChildren().size();
     String id;

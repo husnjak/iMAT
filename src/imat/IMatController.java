@@ -10,7 +10,6 @@ import imat.view.KategoriMenyController;
 import imat.view.ToppController;
 import imat.view.VarukorgController;
 import java.net.URL;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -18,7 +17,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,11 +56,14 @@ public class IMatController implements Initializable {
   // The account of the currently logged in user
   private IMatUserAccount currentAccount;
  
-  // Used for inserting statements into the database
+  // Used for creating an account in the database
   private static PreparedStatement psInsert;
   
-  // Used for selecting information from the database
+  // Used for retrieving information from the database
   private static PreparedStatement psSelect;
+  
+  // Used for updating information in the database
+  private static PreparedStatement psUpdate;
   
   // Used for communication with the database
   static Connection conn;
@@ -70,9 +71,17 @@ public class IMatController implements Initializable {
   // Used to check if user is logged in
   private boolean loggedIn;
   
+  // The username of the currently logged in user
+  public static String currentUser;
+  
   @Override
   public void initialize(URL url, ResourceBundle rb) {
 
+  }
+  
+  // Set the username of the currently logged in user
+  public static void setCurrentUser(String user) {
+    currentUser = user;
   }
   
   /**
@@ -94,18 +103,19 @@ public class IMatController implements Initializable {
     return imatProducts;
   }
   
-  /*
-  * The method creates a Connection object. Loads the embedded driver,
-  * starts and connects to the database using the connection URL.
-  */
-  public static void createDatabaseConnection()
-        throws SQLException, ClassNotFoundException {
-    String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-    Class.forName(driver);
-    
-    // TODO: should be given username and pass as properties
-    String url = "jdbc:derby:imatDB";
-    conn = DriverManager.getConnection(url);
+  /**
+   * The method creates a Connection object. Loads the embedded driver,
+   * starts and connects to the database using the connection URL.
+   */
+  public static void createDatabaseConnection() {
+    try {
+      String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+      Class.forName(driver);
+      String url = "jdbc:derby:imatDB";
+      conn = DriverManager.getConnection(url);
+    } catch (ClassNotFoundException | SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
   
   /**
@@ -148,8 +158,7 @@ public class IMatController implements Initializable {
           statement.execute(createString);
           tables.close();
           statement.close();
-          conn.close();
-          System.out.println("Database created");   // For testing purposes
+          System.out.println("Database created");
           // Also create table for favorite products
         }
     } catch (ClassNotFoundException | SQLException ex) {
@@ -159,58 +168,19 @@ public class IMatController implements Initializable {
   }
   
   /**
-   * Inserts a value into a given attribute in a given table.
-   * 
-   * @param table       the table for which the attribute exists
-   * @param attribute   the attribute in given table for which to insert a value
-   * @param value       the value to be inserted
-   */
-  public static synchronized void insertStatement(String table, String attribute, int value) {
-    try {
-      createDatabaseConnection();
-      psInsert = conn.prepareStatement("insert into " + table
-          + "("+ attribute +") values ("+ value +")");
-    } catch (SQLException | ClassNotFoundException ex) {
-      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-  }
-  
-  public static void insertTestAccount(String table, String attribute, String value) {
-    try {
-      createDatabaseConnection();
-      Statement statement = conn.createStatement();
-      //psInsert = conn.prepareStatement("insert into " + table
-      //    + "("+ attribute +") values (?)");
-      //psInsert.setString(1,value);
-      //psInsert.executeUpdate();
-      statement.execute("insert into " + table + " values (" +
-                    attribute + ",'" + value + "','" + value +"')");
-      statement.close();
-    } catch (SQLException | ClassNotFoundException ex) {
-      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-  }
-  
-  /**
    * Create a new record in the table
    * 
-   * @param username   the attribute in given table for which to insert a value
-   * @param password       the value to be inserted
+   * @param username   the username of the account
+   * @param password   the password of the account
    */
   public static void createAccount(String username, String password) {
     try {
-      createDatabaseConnection();
-      psInsert = conn.prepareStatement("insert into USERACCOUNT(USERNAME) values (?)");
+      psInsert = conn.prepareStatement("insert into USERACCOUNT(USERNAME,PASSWORD) values (?,?)");
       psInsert.setString(1, username);
+      psInsert.setString(2, password);
       psInsert.execute();
-      String updateString = "update USERACCOUNT set PASSWORD = ? where USERNAME = ?";
-      psInsert = conn.prepareStatement(updateString);
-      psInsert.setString(1, password);
-      psInsert.setString(2, username);
-      psInsert.executeUpdate();
       psInsert.close();
-      conn.close();
-    } catch (SQLException | ClassNotFoundException ex) {
+    } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
@@ -218,29 +188,32 @@ public class IMatController implements Initializable {
   /**
    * Updates given attribute with desired value.
    * 
-   * @param attribute
-   * @param value 
+   * @param attribute the desired attribute to update
+   * @param value     the new value for the attribute
    */
-  public static boolean updateAccount(String attribute, String value) {
+  public static synchronized void updateAccount(String attribute, String value) {
     try {
-      createDatabaseConnection();
-      String updateString = "update USERACCOUNT set PASSWORD = ? where USERNAME = ?";
-      PreparedStatement updateSales = conn.prepareStatement(updateString);
-      updateSales.setString(1, value);
-      updateSales.setString(2, attribute);
-      updateSales.executeUpdate();
-      updateSales.close();
-      conn.close();
-    } catch (SQLException | ClassNotFoundException ex) {
+      String updateString = "update USERACCOUNT set " + attribute + " = ? where USERNAME = ?";
+      psUpdate = conn.prepareStatement(updateString);
+      psUpdate.setString(1, value);
+      psUpdate.setString(2, currentUser);
+      psUpdate.executeUpdate();
+      psUpdate.close();
+    } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
-      return false;
     }
-    return true;
   }
   
+  /**
+   * Checks if there exists an account corresponding to the given username
+   * and password combination.
+   * 
+   * @param username  the name of the account
+   * @param password  the password of the account
+   * @return          informs whether the account is valid or not 
+   */
   public static String validAccount(String username, String password) {
     try {
-      createDatabaseConnection();
       String selectSQL = "select USERNAME, PASSWORD from USERACCOUNT where USERNAME = ?";
       psSelect = conn.prepareStatement(selectSQL);
       psSelect.setString(1, username);
@@ -252,19 +225,16 @@ public class IMatController implements Initializable {
             if (pass.compareTo(password) == 0) {
               rs.close();
               psSelect.close();
-              conn.close();
               return "validAccount";
             }
             rs.close();
             psSelect.close();
-            conn.close();
             return "invalidPassword";
           }
       }
       rs.close();
       psSelect.close();
-      conn.close();
-    } catch (SQLException | ClassNotFoundException ex) {
+    } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
     return "invalidUsername";

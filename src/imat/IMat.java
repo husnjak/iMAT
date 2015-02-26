@@ -10,15 +10,19 @@ import imat.view.KategoriMenyController;
 import imat.view.ToppController;
 import imat.view.VarukorgController;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * This class set up the default views of the program.
@@ -41,12 +45,21 @@ public class IMat extends Application {
     this.primaryStage = stage;
     primaryStage.setTitle("iMat");
     primaryStage.setResizable(false);
+    primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+      @Override public void handle(WindowEvent t) {
+        try {
+          IMatController.conn.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(IMat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+    });
     
     IMatController.createDatabase();
-    //System.out.println(IMatController.validAccount("rusta", "losen"));
-    //IMatController.updateAccount("rusta", "losen");
-    //IMatController.insertTestAccount("USERACCOUNT", "USERNAME", "PASSWORD");
-    //IMatController.insertStatement("PASSWORD", "hemligt");
+    if (IMatController.conn == null) {
+      IMatController.createDatabaseConnection();
+    }
+    
  
     initRootLayout();
     initKategoriMeny();
@@ -187,7 +200,6 @@ public class IMat extends Application {
     }
   }
   
-
   /**
    * @param args the command line arguments
    */

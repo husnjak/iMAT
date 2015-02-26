@@ -9,7 +9,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <StackPane fx:id="mainStackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.CenterFlikController">
    <children>
       <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
@@ -477,19 +476,6 @@
                               </AnchorPane>
                           </content>
                         </ScrollPane>
-                        <ScrollPane fx:id="startPage" StackPane.alignment="CENTER">
-                          <content>
-                            <AnchorPane>
-                                 <children>
-                                    <Text layoutX="185.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STARTSIDA" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="104.0">
-                                       <font>
-                                          <Font size="36.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </ScrollPane>
                         <ScrollPane fx:id="meatScrollPane" visible="false" StackPane.alignment="CENTER">
                           <content>
                             <AnchorPane>
@@ -801,21 +787,33 @@
           </Tab>
           <Tab fx:id="favoritvarorFlik" text="Favoritvaror">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <ScrollPane prefViewportHeight="430.0" prefViewportWidth="672.0">
+                     <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
             </content>
           </Tab>
             <Tab fx:id="inkopslistorFlik" text="Inköpslistor">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <ScrollPane prefViewportHeight="430.0" prefViewportWidth="672.0">
+                     <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
               </content>
             </Tab>
             <Tab fx:id="historikFlik" text="Historik">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Text layoutX="162.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gggg" />
-                     </children>
-                  </AnchorPane>
+                  <ScrollPane prefViewportHeight="430.0" prefViewportWidth="672.0">
+                     <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="162.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gggg" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
               </content>
             </Tab>
                   <Tab fx:id="kontouppgifterFlik" closable="false" text="Kontouppgifter">
@@ -1059,6 +1057,19 @@
                      </children>
                   </HBox>
                   <Button fx:id="createAccountButton" layoutX="260.0" layoutY="215.0" mnemonicParsing="false" text="Skapa" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="215.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="startPage" StackPane.alignment="CENTER">
+         <content>
+            <AnchorPane>
+               <children>
+                  <Text layoutX="185.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STARTSIDA" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="104.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </content>

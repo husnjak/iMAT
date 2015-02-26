@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
-Thu Feb 26 21:21:56 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-c78d-85cf-00000256e440 
+Thu Feb 26 21:52:59 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-c7a9-f388-00000258f1e0 
 on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@1f96302 
-Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run1277441054/lib/derby.jar
+Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run96246571/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_31-b13
 user.dir=/home/joel/NetBeansProjects/iMAT

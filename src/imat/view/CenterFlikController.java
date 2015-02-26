@@ -25,12 +25,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Product;
@@ -374,6 +374,13 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label createUserNameLabel;
   
+  public Tab getHandlaFlik() {
+    return handlaFlik;
+  }
+  
+  public TabPane getTabPane() {
+    return tabPane;
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -559,12 +566,9 @@ public class CenterFlikController implements Initializable {
             IMatController.createAccount(username, password);
             IMatController.setCurrentUser(username);
           }
-          
         }
       }
     });
-    
-    
   }
   
   /**
@@ -575,7 +579,6 @@ public class CenterFlikController implements Initializable {
   public void setMainApp(IMat imat) {
     this.imat = imat;
   }
-  
 
   /**
    * Stores given account information in the database. Before the data is
@@ -836,6 +839,9 @@ public class CenterFlikController implements Initializable {
     }
   }
   
+  /**
+   * Used for hiding panes in the whole tree.
+   */
   public void hideOtherPanes() {
     int size = mainStackPane.getChildren().size();
     String id;
@@ -869,7 +875,6 @@ public class CenterFlikController implements Initializable {
     }
   }
     
-  
   /**
    * If Rice link has been clicked, show rice products in Handla view.
    */
@@ -887,7 +892,6 @@ public class CenterFlikController implements Initializable {
         handlaStackPane.getChildren().get(i).setVisible(false);
       }
     }
-
     products = IMatController.getIMatProducts().getRiceList();
     product = products.get(0);
     riceLabel00.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
@@ -909,7 +913,6 @@ public class CenterFlikController implements Initializable {
     imageName = product.getImageName();
     setImage(imageOneZeroRice, imageName);
     totalCostRice10.setText("Pris: " + (int)product.getPrice() + " kr");
-
   }
   
   /**
@@ -929,7 +932,6 @@ public class CenterFlikController implements Initializable {
         handlaStackPane.getChildren().get(i).setVisible(false);
       }
     }
-
     products = IMatController.getIMatProducts().getMeatList();
     product = products.get(0);
     meatLabel00.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
@@ -961,7 +963,6 @@ public class CenterFlikController implements Initializable {
     imageName = product.getImageName();
     setImage(imageOneTwoMeat, imageName);
     totalCostMeat12.setText("Pris: " + (int)product.getPrice() + " kr");
-    
   }
   
 }

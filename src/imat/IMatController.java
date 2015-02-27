@@ -136,7 +136,7 @@ public class IMatController implements Initializable {
    * be created.
    */
   public static void createDatabase(){
-    // imatBackend.resetFirstRun();   // For testing purposes only
+     imatBackend.resetFirstRun();   // For testing purposes only
     if (imatBackend.isFirstRun()) {
       try {
         String driver = "org.apache.derby.jdbc.EmbeddedDriver";
@@ -169,6 +169,46 @@ public class IMatController implements Initializable {
           + " CVV INT) " ;
 
           statement.execute(createString);
+        }
+        
+        // Check if "orders" table exist
+        tables = dbm.getTables(null, null, "ORDERS", null);
+        if (!tables.next()) {
+          String createString = "CREATE TABLE ORDERS("
+          + " ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,"
+          + " USERNAME VARCHAR(30), "
+          + " PASSWORD VARCHAR(30), "
+          + " PRODUCT1 VARCHAR(30), "
+          + " UNITS1 INT, "
+          + " PRODUCT2 VARCHAR(30), "
+          + " UNITS2 INT, "
+          + " PRODUCT3 VARCHAR(30), "
+          + " UNITS3 INT, "
+          + " PRODUCT4 VARCHAR(30), "
+          + " UNITS4 INT, "
+          + " PRODUCT5 VARCHAR(30), "
+          + " UNITS5 INT, "
+          + " PRODUCT6 VARCHAR(30), "
+          + " UNITS6 INT, "
+          + " PRODUCT7 VARCHAR(30), "
+          + " UNITS7 INT, "
+          + " PRODUCT8 VARCHAR(30), "
+          + " UNITS8 INT, "
+          + " PRODUCT9 VARCHAR(30), "
+          + " UNITS9 INT, "
+          + " PRODUCT10 VARCHAR(30), "
+          + " UNITS10 INT, "
+          + " PRODUCT11 VARCHAR(30), "
+          + " UNITS11 INT, "
+          + " PRODUCT12 VARCHAR(30), "
+          + " UNITS12 INT, "
+          + " PRODUCT13 VARCHAR(30), "
+          + " UNITS13 INT, "
+          + " PRODUCT14 VARCHAR(30), "
+          + " UNITS14 INT) " ;
+
+          statement.execute(createString);
+          
           tables.close();
           statement.close();
           System.out.println("Database created");

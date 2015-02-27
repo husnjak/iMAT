@@ -583,6 +583,7 @@ public class CenterFlikController implements Initializable {
   /**
    * Load stored information for users.
    */
+  @SuppressWarnings("ConvertToTryWithResources")
   public void loadCustomerInformation() {
     if (IMatController.currentUser == null) {
       firstNameTextField.setText(IMatController.getIMatBackend().getCustomer().getFirstName());

@@ -192,6 +192,8 @@ public class ToppController implements Initializable {
     IMatController.setCurrentUser(null);
     imat.getCenterController().loadCustomerInformation();
     
+    usernameTextField.setText("");
+    passwordTextField.setText("");
   }
 
   

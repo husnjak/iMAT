@@ -19,14 +19,14 @@
          <children>
             <AnchorPane fx:id="loginPane" prefWidth="200.0" StackPane.alignment="CENTER_RIGHT">
                <children>
-                  <HBox layoutX="151.0" layoutY="17.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
+                  <HBox layoutX="151.0" layoutY="17.0" spacing="5.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                      <children>
                         <TextField fx:id="usernameTextField" layoutX="151.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Användarnamn" AnchorPane.topAnchor="17.0" />
                         <TextField fx:id="passwordTextField" layoutX="278.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Lösenord" AnchorPane.topAnchor="17.0" />
                         <Button fx:id="loginButton" layoutX="414.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleLogin" text="Logga in" AnchorPane.topAnchor="19.0" />
                      </children>
                   </HBox>
-                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" text="Skapa konto" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="45.0" />
+                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" text="Skapa konto" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="45.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="logoutPane" prefWidth="200.0" visible="false" StackPane.alignment="CENTER_RIGHT">

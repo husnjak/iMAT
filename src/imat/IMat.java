@@ -62,7 +62,6 @@ public class IMat extends Application {
     if (IMatController.getConnection() == null) {
       IMatController.createDatabaseConnection();
     }
-    
  
     initRootLayout();
     initKategoriMeny();

@@ -11,29 +11,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
    <children>
-      <HBox layoutX="250.0" layoutY="91.0" spacing="5.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="40.0" />
       <ImageView fx:id="logoImage" fitHeight="80.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
          <image>
             <Image url="@../../../imat-logga1.png" />
          </image></ImageView>
-      <StackPane fx:id="loginStackPane" alignment="CENTER_RIGHT" layoutX="799.0" layoutY="3.0" maxHeight="120.0" maxWidth="500.0" minHeight="120.0" minWidth="500.0" prefHeight="120.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0">
+      <StackPane fx:id="loginStackPane" alignment="CENTER_RIGHT" layoutX="799.0" layoutY="3.0" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <AnchorPane fx:id="loginPane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER_RIGHT">
+            <AnchorPane fx:id="loginPane" prefWidth="200.0" StackPane.alignment="CENTER_RIGHT">
                <children>
-                  <VBox layoutX="60.0" layoutY="48.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="35.0">
+                  <HBox layoutX="151.0" layoutY="17.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <HBox alignment="CENTER_RIGHT" layoutX="60.0" layoutY="48.0" spacing="5.0" VBox.vgrow="NEVER" />
+                        <TextField fx:id="usernameTextField" layoutX="151.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Användarnamn" AnchorPane.topAnchor="17.0" />
+                        <TextField fx:id="passwordTextField" layoutX="278.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Lösenord" AnchorPane.topAnchor="17.0" />
+                        <Button fx:id="loginButton" layoutX="414.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleLogin" text="Logga in" AnchorPane.topAnchor="19.0" />
                      </children>
-                  </VBox>
-                  <TextField fx:id="usernameTextField" layoutX="151.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Användarnamn" AnchorPane.topAnchor="17.0" />
-                  <TextField fx:id="passwordTextField" layoutX="278.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Lösenord" AnchorPane.topAnchor="17.0" />
-                  <Button fx:id="loginButton" layoutX="414.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleLogin" text="Logga in" AnchorPane.topAnchor="19.0" />
-                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" text="Skapa konto" />
+                  </HBox>
+                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" text="Skapa konto" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="45.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="logoutPane" prefHeight="200.0" prefWidth="200.0" visible="false" StackPane.alignment="CENTER_RIGHT">
+            <AnchorPane fx:id="logoutPane" prefWidth="200.0" visible="false" StackPane.alignment="CENTER_RIGHT">
                <children>
-                  <HBox alignment="CENTER_RIGHT" layoutX="213.0" layoutY="35.0" AnchorPane.rightAnchor="35.0">
+                  <HBox alignment="CENTER_RIGHT" layoutX="213.0" layoutY="35.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                      <children>
                         <Label fx:id="loggedInLabel" layoutX="213.0" layoutY="40.0" text="Inloggad som">
                            <padding>
@@ -55,7 +53,11 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <TextField fx:id="searchTextField" layoutX="336.0" layoutY="24.0" prefHeight="25.0" prefWidth="284.0" AnchorPane.leftAnchor="336.0" />
-      <Button fx:id="searchButton" layoutX="610.0" layoutY="24.0" mnemonicParsing="false" text="Sök" />
+      <HBox layoutX="336.0" layoutY="24.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <TextField fx:id="searchTextField" layoutX="336.0" layoutY="24.0" prefHeight="25.0" prefWidth="284.0" AnchorPane.leftAnchor="336.0" />
+            <Button fx:id="searchButton" layoutX="610.0" layoutY="24.0" mnemonicParsing="false" text="Sök" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

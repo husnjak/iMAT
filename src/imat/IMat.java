@@ -49,6 +49,9 @@ public class IMat extends Application {
       @Override public void handle(WindowEvent t) {
         try {
           IMatController.conn.close();
+          if (IMatController.currentUser == null) {
+            IMatController.getIMatBackend().shutDown();
+          }
         } catch (SQLException ex) {
           Logger.getLogger(IMat.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -154,6 +157,9 @@ public class IMat extends Application {
 
       // Put start into the center part of root layout.
       rootLayout.setCenter(centerFlik);
+      
+      // Load stored information for the user that is not logged in
+      centerController.loadUnknownCustomerInformation();
       
     } catch (IOException e) {
         e.printStackTrace();

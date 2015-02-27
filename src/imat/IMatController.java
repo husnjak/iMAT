@@ -79,7 +79,11 @@ public class IMatController implements Initializable {
 
   }
   
-  // Set the username of the currently logged in user
+  /**
+   * Set the username of the currently logged in user
+   * 
+   * @param user  the logged in user 
+   */
   public static void setCurrentUser(String user) {
     currentUser = user;
   }

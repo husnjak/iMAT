@@ -1,15 +1,8 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-Fri Feb 27 13:56:14 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-cb1b-d711-0000025695d8 
+Fri Feb 27 15:10:46 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-cb60-1105-0000025886c0 
 on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@1f96302 
-Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run202592779/lib/derby.jar
-=======
-Fri Feb 27 13:51:11 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-cb17-3801-00000258aec8 
-on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@1f96302 
-Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run569841485/lib/derby.jar
->>>>>>> 4d7eecea2ea79e19ab4f0a3ef0bf411a0c354c6d
+Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run751897532/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_31-b13
 user.dir=/home/joel/NetBeansProjects/iMAT
@@ -17,9 +10,4 @@ os.name=Linux
 os.arch=i386
 os.version=3.13.0-46-generic
 derby.system.home=null
-------------  Begin Error Message -------------
-
-System may be in a inconsistent state, missing file /home/joel/NetBeansProjects/iMAT/imatDB/log/log4.dat
-------------  End Error Message -------------
-
 Database Class Loader started - derby.database.classpath=''

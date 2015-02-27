@@ -15,10 +15,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,11 +35,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -146,6 +155,9 @@ public class CenterFlikController implements Initializable {
   
   // Used to identify which pane should be visible
   String currentPane;
+  
+  // Stores order history
+  private ObservableList<Order> orders;
   
   @FXML
   private Button minusBread00;
@@ -373,6 +385,14 @@ public class CenterFlikController implements Initializable {
   private StackPane mainStackPane;
   @FXML
   private Label createUserNameLabel;
+  @FXML
+  private TableView<Order> orderTable;
+  @FXML
+  private TableColumn<Order, Integer> orderIdColumn;
+  @FXML
+  private TableColumn<Order, Date> orderDateColumn;
+  @FXML
+  private TableColumn<String, Integer> orderCostColumn;
   
   public Tab getHandlaFlik() {
     return handlaFlik;
@@ -576,6 +596,33 @@ public class CenterFlikController implements Initializable {
         }
       }
     });
+    
+        // Initialize the person table
+    orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
+    orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+    orderCostColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+    
+    // Listen for selection changes
+    orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Order>() {
+
+    @Override
+    public void changed(ObservableValue<? extends Order> observable, Order oldValue, Order newValue) {
+      //mainApp.showRecipeDetails(newValue);
+    }
+    });
+    
+    buyRice00.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getMeatList().get(0));
+        Order orderCart = IMatController.getIMatBackend().placeOrder();
+        List<Order> order;
+        order = IMatController.getIMatBackend().getOrders();
+        orders = FXCollections.observableArrayList(order);
+        orderTable.setItems(orders);
+      }
+    });
+    
   }
   
   /**
@@ -641,7 +688,6 @@ public class CenterFlikController implements Initializable {
               yearTextField.setText(rs.getString("VALIDYEAR"));
               monthTextField.setText(rs.getString("VALIDMONTH"));
               cvvTextField.setText(rs.getString("CVV"));
-              
             }
             rs.close();
             psSelect.close();
@@ -891,7 +937,6 @@ public class CenterFlikController implements Initializable {
         } else {
           IMatController.getIMatBackend().getCreditCard().setVerificationCode(cvv);
         }
-        
       } catch (NumberFormatException e) {
         cvvLabel.setText("Ange cvv med tre siffror");
       }
@@ -905,7 +950,6 @@ public class CenterFlikController implements Initializable {
         IMatController.getIMatBackend().getCreditCard().setVerificationCode(000);
       }
     }
-    
   }
   
   /**
@@ -1125,4 +1169,11 @@ public class CenterFlikController implements Initializable {
     totalCostMeat12.setText("Pris: " + (int)product.getPrice() + " kr");
   }
   
+  public void getOrders() {
+    List<Order> order;
+    order = IMatController.getIMatBackend().getOrders();
+    orders = FXCollections.observableArrayList(order);
+    orderTable.setItems(orders);
+  }
+
 }

@@ -97,6 +97,10 @@ public class IMatController implements Initializable {
     return conn;
   }
   
+  public static ShoppingCart getShoppingCart() {
+    return shoppingCart;
+  }
+  
   /**
    * Retrieve a reference to the iMat backend.
    * 

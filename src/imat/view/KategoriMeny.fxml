@@ -8,18 +8,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
    <children>
-      <Hyperlink fx:id="riceLink" text="Ris" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="380.0" />
-      <Hyperlink fx:id="pastaLink" text="Pasta" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="320.0" />
-      <Hyperlink fx:id="breadLink" layoutX="10.0" layoutY="46.0" text="Bröd" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
-      <Hyperlink fx:id="drinkLink" text="Dryck" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="80.0" />
-      <Hyperlink fx:id="fruitLink" text="Frukt &amp; bär" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="110.0" />
-      <Hyperlink fx:id="fishLink" text="Fisk" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="140.0" />
-      <Hyperlink fx:id="vegetablesLink" text="Grönsaker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="170.0" />
-      <Hyperlink fx:id="spiceLink" text="Kryddor &amp; Örter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0" />
-      <Hyperlink fx:id="meatLink" text="Kött" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="230.0" />
-      <Hyperlink fx:id="dairiesLink" text="Mejeriprodukter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="260.0" />
-      <Hyperlink fx:id="nutsLink" text="Nötter &amp; Frön" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="290.0" />
-      <Hyperlink fx:id="potatoLink" text="Potatis &amp; Rotfrukter" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="350.0" />
-      <Hyperlink fx:id="sweetsLink" text="Sötsaker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="410.0" />
+      <Hyperlink fx:id="riceLink" layoutX="14.0" layoutY="344.0" text="Ris" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="344.0" />
+      <Hyperlink fx:id="pastaLink" layoutX="14.0" layoutY="284.0" text="Pasta" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="284.0" />
+      <Hyperlink fx:id="breadLink" layoutX="14.0" layoutY="14.0" text="Bröd" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Hyperlink fx:id="drinkLink" layoutX="14.0" layoutY="44.0" text="Dryck" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="44.0" />
+      <Hyperlink fx:id="fruitLink" layoutX="14.0" layoutY="74.0" text="Frukt &amp; bär" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="74.0" />
+      <Hyperlink fx:id="fishLink" layoutX="14.0" layoutY="104.0" text="Fisk" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="104.0" />
+      <Hyperlink fx:id="vegetablesLink" layoutX="14.0" layoutY="134.0" text="Grönsaker" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="134.0" />
+      <Hyperlink fx:id="spiceLink" layoutX="14.0" layoutY="164.0" text="Kryddor &amp; Örter" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="164.0" />
+      <Hyperlink fx:id="meatLink" layoutX="14.0" layoutY="194.0" text="Kött" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="194.0" />
+      <Hyperlink fx:id="dairiesLink" layoutX="14.0" layoutY="224.0" text="Mejeriprodukter" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="224.0" />
+      <Hyperlink fx:id="nutsLink" layoutX="14.0" layoutY="254.0" text="Nötter &amp; Frön" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="254.0" />
+      <Hyperlink fx:id="potatoLink" layoutX="14.0" layoutY="314.0" text="Potatis &amp; Rotfrukter" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="314.0" />
+      <Hyperlink fx:id="sweetsLink" layoutX="14.0" layoutY="374.0" text="Sötsaker" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="374.0" />
    </children>
 </AnchorPane>

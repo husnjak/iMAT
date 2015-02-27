@@ -70,7 +70,7 @@ public class ToppController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    setImage(logoImage, "test_bild.jpg");
+    setImage(logoImage, "imat-logga1.png");
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
     

@@ -136,7 +136,7 @@ public class IMatController implements Initializable {
    * be created.
    */
   public static void createDatabase(){
-     imatBackend.resetFirstRun();   // For testing purposes only
+    //imatBackend.resetFirstRun();   // For testing purposes only
     if (imatBackend.isFirstRun()) {
       try {
         String driver = "org.apache.derby.jdbc.EmbeddedDriver";

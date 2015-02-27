@@ -97,6 +97,15 @@ public class IMat extends Application {
   }
   
   /**
+   * Return a ToppController reference.
+   * 
+   * @return a reference of the controller
+   */
+  public ToppController getToppController() {
+    return toppController;
+  }
+  
+  /**
    * Makes the root layout the scene of the stage. All default views are
    * placed within the root layout.
    * 

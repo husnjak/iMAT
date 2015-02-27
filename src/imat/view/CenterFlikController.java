@@ -565,6 +565,13 @@ public class CenterFlikController implements Initializable {
           } else {
             IMatController.createAccount(username, password);
             IMatController.setCurrentUser(username);
+            createUserNameTextField.setText("");
+            createPasswordTextField.setText("");
+            createPasswordRepeatTextField.setText("");
+            changeToStartPageView();
+            imat.getToppController().setUsername(username);
+            imat.getToppController().setPassword(password);
+            imat.getToppController().changeLoginScreen();
           }
         }
       }

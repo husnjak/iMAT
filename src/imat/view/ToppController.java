@@ -67,6 +67,54 @@ public class ToppController implements Initializable {
   String password;
   @FXML
   private Hyperlink registerUser;
+  
+  /**
+   * Set the username of the newly created account.
+   * 
+   * @param username the new username
+   */
+  public void setUsername(String username) {
+    this.username = username;
+  }
+  
+  /**
+   * Set the password of the newly created account.
+   * 
+   * @param password the new password
+   */
+  public void setPassword(String password) {
+    this.password = password;
+  }
+  
+  /**
+   * Change the login/logout screen from another part of the program.
+   * 
+   */
+  public void changeLoginScreen() {
+      loggedInUser.setText("  " + username);
+      IMatController.setCurrentUser(username);
+      imat.getCenterController().loadCustomerInformation();
+      int size = loginStackPane.getChildren().size();
+      String id;
+      for (int i = 0; i < size; i++) {
+        id = loginStackPane.getChildren().get(i).getId();
+        if (id.compareTo("logoutPane") == 0) {
+          loginStackPane.getChildren().get(i).toFront();
+          loginStackPane.getChildren().get(i).setVisible(true);
+        } else {
+          loginStackPane.getChildren().get(i).setVisible(false);
+        }
+      }
+
+      usernameTextField.setVisible(false);
+      passwordTextField.setVisible(false);
+      loginButton.setVisible(false);
+      registerUser.setVisible(false);
+
+      logoutButton.setVisible(true);
+      loggedInUser.setVisible(true);
+      loggedInLabel.setVisible(true);
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

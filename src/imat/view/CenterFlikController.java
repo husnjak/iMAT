@@ -95,8 +95,6 @@ public class CenterFlikController implements Initializable {
   private Label civicLabel;
   
   private IMat imat;
-  @FXML
-  private Button rensaButton;
   
   // Used for deciding if to show the list view of products or not
   private boolean listView;
@@ -721,31 +719,6 @@ public class CenterFlikController implements Initializable {
       cvvLabel.setText("");
     }
     
-  }
-  
-  /**
-   * This method clears all visible data in the text fields.
-   */
-  @FXML
-  public void rensaButton() {
-    firstNameTextField.clear();
-    lastNameTextField.clear();
-    civicTextField.clear();
-    civicLabel.setText("");
-    emailTextField.clear();
-    phoneTextField.clear();
-    streetTextField.clear();
-    postalTextField.clear();
-    postalLabel.setText("");
-    cityTextField.clear();
-    cardNumberTextField.clear();
-    cardNumberLabel.setText("");
-    yearTextField.clear();
-    yearLabel.setText("");
-    monthTextField.clear();
-    monthLabel.setText("");
-    cvvTextField.clear();
-    cvvLabel.setText("");
   }
   
   /**

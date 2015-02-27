@@ -121,7 +121,6 @@ public class ToppController implements Initializable {
     } catch (IOException ex) {
       Logger.getLogger(CenterFlikController.class.getName()).log(Level.SEVERE, null, ex);
     }
-
   }
   
   /**

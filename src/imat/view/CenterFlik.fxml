@@ -994,7 +994,6 @@
                                  </children>
                               </HBox>
                               <Button fx:id="storeInfoButton" layoutX="198.0" layoutY="617.0" mnemonicParsing="false" onAction="#storeInformation" text="Spara uppgifter" AnchorPane.leftAnchor="193.0" />
-                              <Button fx:id="rensaButton" layoutX="46.0" layoutY="617.0" mnemonicParsing="false" onAction="#rensaButton" text="Rensa" AnchorPane.leftAnchor="35.0" />
                              </children>
                         </AnchorPane>
                      </content>

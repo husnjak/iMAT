@@ -469,7 +469,7 @@
                                     </GridPane>
                                     <Label text="Ris" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
                                        <font>
-                                          <Font size="33.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -774,7 +774,7 @@
                                     </GridPane>
                                     <Label text="Kött" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
                                        <font>
-                                          <Font size="33.0" />
+                                          <Font size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -803,19 +803,24 @@
                   </ScrollPane>
               </content>
             </Tab>
-            <Tab fx:id="historikFlik" text="Historik">
+            <Tab fx:id="historikFlik" onSelectionChanged="#showOrderHistory" text="Historik">
               <content>
                   <ScrollPane prefViewportHeight="430.0" prefViewportWidth="672.0">
                      <content>
                       <AnchorPane>
                            <children>
-                              <TableView fx:id="orderTable" prefHeight="200.0" prefWidth="243.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="40.0">
+                              <TableView fx:id="orderTable" prefHeight="400.0" prefWidth="243.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
                                 <columns>
                                   <TableColumn fx:id="orderIdColumn" minWidth="75.0" prefWidth="75.0" text="OrderID" />
                                   <TableColumn fx:id="orderDateColumn" prefWidth="90.0" text="Datum" />
                                     <TableColumn fx:id="orderCostColumn" prefWidth="75.0" text="Kostnad" />
                                 </columns>
                               </TableView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Orderhistorik" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
                            </children></AnchorPane>
                      </content>
                   </ScrollPane>

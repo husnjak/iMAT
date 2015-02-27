@@ -7,6 +7,7 @@ package imat.view;
 
 import imat.IMat;
 import imat.IMatController;
+import imat.IMatOrder;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -158,6 +159,7 @@ public class CenterFlikController implements Initializable {
   
   // Stores order history
   private ObservableList<Order> orders;
+  private ObservableList<IMatOrder> imatOrders;
   
   @FXML
   private Button minusBread00;
@@ -386,13 +388,13 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label createUserNameLabel;
   @FXML
-  private TableView<Order> orderTable;
+  private TableView<IMatOrder> orderTable;
   @FXML
-  private TableColumn<Order, Integer> orderIdColumn;
+  private TableColumn<IMatOrder, Integer> orderIdColumn;
   @FXML
-  private TableColumn<Order, Date> orderDateColumn;
+  private TableColumn<IMatOrder, Date> orderDateColumn;
   @FXML
-  private TableColumn<String, Integer> orderCostColumn;
+  private TableColumn<IMatOrder, Integer> orderCostColumn;
   
   public Tab getHandlaFlik() {
     return handlaFlik;
@@ -603,11 +605,11 @@ public class CenterFlikController implements Initializable {
     orderCostColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
     
     // Listen for selection changes
-    orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Order>() {
+    orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<IMatOrder>() {
 
     @Override
-    public void changed(ObservableValue<? extends Order> observable, Order oldValue, Order newValue) {
-      //mainApp.showRecipeDetails(newValue);
+    public void changed(ObservableValue<? extends IMatOrder> observable, IMatOrder oldOrder, IMatOrder newOrder) {
+      //showOrderProducts(newOrder);
     }
     });
     
@@ -616,10 +618,10 @@ public class CenterFlikController implements Initializable {
       public void handle(ActionEvent event) {
         IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getMeatList().get(0));
         Order orderCart = IMatController.getIMatBackend().placeOrder();
-        List<Order> order;
-        order = IMatController.getIMatBackend().getOrders();
-        orders = FXCollections.observableArrayList(order);
-        orderTable.setItems(orders);
+        //List<Order> order;
+        //order = IMatController.getIMatBackend().getOrders();
+        //orders = FXCollections.observableArrayList(order);
+        //orderTable.setItems(orders);
       }
     });
     
@@ -1078,6 +1080,41 @@ public class CenterFlikController implements Initializable {
       }
     }
   }
+  
+  /**
+   * Display the user's order history.
+   */
+  @FXML
+  public void showOrderHistory() {
+    if (IMatController.currentUser != null) {
+      try {
+        String selectSQL = "select ID, DATE, COST, PRODUCT1, UNITS1, PRODUCT2, "+
+          "UNITS2, PRODUCT3, UNITS3, PRODUCT4, UNITS4, PRODUCT5, UNITS5, PRODUCT6, "+
+          "UNITS6, PRODUCT7, UNITS7, PRODUCT8, UNITS8, PRODUCT9, UNITS9, PRODUCT10, "+
+          " UNITS10, PRODUCT11, UNITS11, PRODUCT12, UNITS12, PRODUCT13, UNITS13, "+
+          " PRODUCT14, UNITS14 from ORDERS where USERNAME = ?";
+          PreparedStatement psSelect = IMatController.getConnection().prepareStatement(selectSQL);
+          psSelect.setString(1, IMatController.currentUser);
+          ResultSet rs = psSelect.executeQuery();
+          while (rs.next()) {
+            Order order = new Order();
+            order.setOrderNumber(Integer.parseInt(rs.getString("ID")));
+            Date orderDate = new Date(rs.getString("DATE"));
+            order.setDate(orderDate);
+            
+            
+            // Add rest of products to show
+
+          }
+          rs.close();
+          psSelect.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } else {
+      getOrders();
+    }
+  }
     
   /**
    * If Rice link has been clicked, show rice products in Handla view.
@@ -1169,11 +1206,22 @@ public class CenterFlikController implements Initializable {
     totalCostMeat12.setText("Pris: " + (int)product.getPrice() + " kr");
   }
   
+  /**
+   * Used for retrieving order from the backend. Used for the user that is
+   * not logged in.
+   */
   public void getOrders() {
     List<Order> order;
+    List<IMatOrder> imatOrderList = new ArrayList();
+    IMatOrder imatOrder;
     order = IMatController.getIMatBackend().getOrders();
-    orders = FXCollections.observableArrayList(order);
-    orderTable.setItems(orders);
+    for (int i = 0; i < order.size(); i++) {
+      imatOrder = new IMatOrder(order.get(i).getOrderNumber(), null, order.get(i).getDate());
+      imatOrderList.add(imatOrder);
+      System.out.println(imatOrder.getOrderNumber());
+    }
+    imatOrders = FXCollections.observableArrayList(imatOrderList);
+    orderTable.setItems(imatOrders);
   }
 
 }

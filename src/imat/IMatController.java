@@ -182,6 +182,8 @@ public class IMatController implements Initializable {
           + " ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,"
           + " USERNAME VARCHAR(30), "
           + " PASSWORD VARCHAR(30), "
+          + " DATE DATE, "
+          + " COST INT, "    
           + " PRODUCT1 VARCHAR(30), "
           + " UNITS1 INT, "
           + " PRODUCT2 VARCHAR(30), "

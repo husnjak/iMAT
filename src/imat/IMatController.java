@@ -66,7 +66,7 @@ public class IMatController implements Initializable {
   private static PreparedStatement psUpdate;
   
   // Used for communication with the database
-  static Connection conn;
+  private static Connection conn;
   
   // Used to check if user is logged in
   private boolean loggedIn;
@@ -86,6 +86,15 @@ public class IMatController implements Initializable {
    */
   public static void setCurrentUser(String user) {
     currentUser = user;
+  }
+  
+  /**
+   * Retrieve the reference to the database.
+   * 
+   * @return  database reference 
+   */
+  public static Connection getConnection() {
+    return conn;
   }
   
   /**

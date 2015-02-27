@@ -11,6 +11,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,7 +28,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -579,37 +581,66 @@ public class CenterFlikController implements Initializable {
   }
     
   /**
-   * Load stored information for user that is not logged in.
+   * Load stored information for users.
    */
-  public void loadUnknownCustomerInformation() {
-    firstNameTextField.setText(IMatController.getIMatBackend().getCustomer().getFirstName());
-    lastNameTextField.setText(IMatController.getIMatBackend().getCustomer().getLastName());
-    civicTextField.setText(IMatController.getIMatBackend().getCustomer().getMobilePhoneNumber());
-    phoneTextField.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
-    emailTextField.setText(IMatController.getIMatBackend().getCustomer().getEmail());
-    streetTextField.setText(IMatController.getIMatBackend().getCustomer().getAddress());
-    postalTextField.setText(IMatController.getIMatBackend().getCustomer().getPostCode());
-    cityTextField.setText(IMatController.getIMatBackend().getCustomer().getPostAddress());
-    cardNumberTextField.setText(IMatController.getIMatBackend().getCreditCard().getCardNumber());
-    Integer year = IMatController.getIMatBackend().getCreditCard().getValidYear();
-    if (year != 0) {
-      yearTextField.setText(year.toString());
+  public void loadCustomerInformation() {
+    if (IMatController.currentUser == null) {
+      firstNameTextField.setText(IMatController.getIMatBackend().getCustomer().getFirstName());
+      lastNameTextField.setText(IMatController.getIMatBackend().getCustomer().getLastName());
+      civicTextField.setText(IMatController.getIMatBackend().getCustomer().getMobilePhoneNumber());
+      phoneTextField.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
+      emailTextField.setText(IMatController.getIMatBackend().getCustomer().getEmail());
+      streetTextField.setText(IMatController.getIMatBackend().getCustomer().getAddress());
+      postalTextField.setText(IMatController.getIMatBackend().getCustomer().getPostCode());
+      cityTextField.setText(IMatController.getIMatBackend().getCustomer().getPostAddress());
+      cardNumberTextField.setText(IMatController.getIMatBackend().getCreditCard().getCardNumber());
+      Integer year = IMatController.getIMatBackend().getCreditCard().getValidYear();
+      if (year != 0) {
+        yearTextField.setText(year.toString());
+      } else {
+        yearTextField.setText("");
+      }
+      Integer month = IMatController.getIMatBackend().getCreditCard().getValidMonth();
+      if (month != 0) {
+        monthTextField.setText(month.toString());
+      } else {
+        monthTextField.setText("");
+      }
+      Integer cvv = IMatController.getIMatBackend().getCreditCard().getVerificationCode();
+      if (cvv != 0) {
+        cvvTextField.setText(cvv.toString());
+      } else {
+        cvvTextField.setText("");
+      }
     } else {
-      yearTextField.setText("");
+        try {
+          String selectSQL = "select FIRSTNAME, LASTNAME, CIVIC, EMAIL, "+
+              "PHONE, STREET, POSTAL, CITY, CARDNUMBER, VALIDYEAR, VALIDMONTH, "+
+              "CVV from USERACCOUNT where USERNAME = ?";
+          PreparedStatement psSelect = IMatController.getConnection().prepareStatement(selectSQL);
+          psSelect.setString(1, IMatController.currentUser);
+            ResultSet rs = psSelect.executeQuery();
+            while (rs.next()) {
+              firstNameTextField.setText(rs.getString("FIRSTNAME"));
+              lastNameTextField.setText(rs.getString("LASTNAME"));
+              civicTextField.setText(rs.getString("CIVIC"));
+              emailTextField.setText(rs.getString("EMAIL"));
+              phoneTextField.setText(rs.getString("PHONE"));
+              streetTextField.setText(rs.getString("STREET"));
+              postalTextField.setText(rs.getString("POSTAL"));
+              cityTextField.setText(rs.getString("CITY"));
+              cardNumberTextField.setText(rs.getString("CARDNUMBER"));
+              yearTextField.setText(rs.getString("VALIDYEAR"));
+              monthTextField.setText(rs.getString("VALIDMONTH"));
+              cvvTextField.setText(rs.getString("CVV"));
+              
+            }
+            rs.close();
+            psSelect.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    Integer month = IMatController.getIMatBackend().getCreditCard().getValidMonth();
-    if (month != 0) {
-      monthTextField.setText(month.toString());
-    } else {
-      monthTextField.setText("");
-    }
-    Integer cvv = IMatController.getIMatBackend().getCreditCard().getVerificationCode();
-    if (cvv != 0) {
-      cvvTextField.setText(cvv.toString());
-    } else {
-      cvvTextField.setText("");
-    }
-    
   }
 
   /**

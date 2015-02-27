@@ -48,7 +48,7 @@ public class IMat extends Application {
     primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
       @Override public void handle(WindowEvent t) {
         try {
-          IMatController.conn.close();
+          IMatController.getConnection().close();
           if (IMatController.currentUser == null) {
             IMatController.getIMatBackend().shutDown();
           }
@@ -59,7 +59,7 @@ public class IMat extends Application {
     });
     
     IMatController.createDatabase();
-    if (IMatController.conn == null) {
+    if (IMatController.getConnection() == null) {
       IMatController.createDatabaseConnection();
     }
     
@@ -159,7 +159,7 @@ public class IMat extends Application {
       rootLayout.setCenter(centerFlik);
       
       // Load stored information for the user that is not logged in
-      centerController.loadUnknownCustomerInformation();
+      centerController.loadCustomerInformation();
       
     } catch (IOException e) {
         e.printStackTrace();

@@ -34,16 +34,16 @@
                   <HBox alignment="CENTER_RIGHT" layoutX="213.0" layoutY="35.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                      <children>
                         <Label fx:id="loggedInLabel" layoutX="213.0" layoutY="40.0" text="Inloggad som">
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                         <Hyperlink fx:id="loggedInUser" layoutX="301.0" layoutY="36.0">
                            <padding>
                               <Insets right="20.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Hyperlink>
                         <Button fx:id="logoutButton" layoutX="374.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleLogout" text="Logga ut" />

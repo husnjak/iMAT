@@ -167,6 +167,7 @@ public class CenterFlikController implements Initializable {
   
   // Contains products in a given IMatOrder
   private ObservableList<IMatShoppingItem> productsInOrder;
+  private ObservableList<IMatShoppingItem> productsInDatabase;
   
   @FXML
   private Button minusBread00;
@@ -413,7 +414,10 @@ public class CenterFlikController implements Initializable {
   int totalCost;
   
   // Contains the converted orders for a user who is not logged in
-  List<IMatOrder> imatOrderList = new ArrayList();
+  List<IMatOrder> imatOrderList;
+  
+  // Contains shopping items related to a IMat order (for logged in users)
+  List<IMatShoppingItem> imatItemList;
   
   @FXML
   private TableView<IMatShoppingItem> productTable;
@@ -446,6 +450,22 @@ public class CenterFlikController implements Initializable {
   
   public TabPane getTabPane() {
     return tabPane;
+  }
+  
+  public Tab getHistorikFlik() {
+    return historikFlik;
+  }
+  
+  public TableView<IMatOrder> getOrderTable() {
+    return orderTable;
+  }
+  
+  public TableView<IMatShoppingItem> getProductTable() {
+    return productTable;
+  }
+  
+  public ObservableList<IMatOrder> getIMatOrders() {
+    return imatOrders;
   }
 
   @Override
@@ -658,7 +678,9 @@ public class CenterFlikController implements Initializable {
 
     @Override
     public void changed(ObservableValue<? extends IMatOrder> observable, IMatOrder oldOrder, IMatOrder newOrder) {
-      showIMatOrderDetails(newOrder.getAllProducts());
+      if (newOrder != null) {
+        showIMatOrderDetails(newOrder.getAllProducts());
+      }
     }
     });
     
@@ -1334,8 +1356,22 @@ public class CenterFlikController implements Initializable {
             Date orderDate = new Date(rs.getLong("DATE"));
             IMatOrder imatOrder = new IMatOrder(rs.getInt("ID"), rs.getInt("COST"), orderDate);
             imatOrderList.add(imatOrder);
-
-            // Add rest of products to show
+            boolean iterate = true;
+            int index = 0;
+            while (iterate) {
+              index++;
+              if (!(rs.getString("PRODUCT"+index) == null)) {
+                String productName = rs.getString("PRODUCT"+index);
+                int units = rs.getInt("UNITS"+index);
+                List<Product> products = IMatController.getIMatBackend().findProducts(productName);
+                int price = (int)products.get(0).getPrice();
+                int sum = price*units;
+                IMatShoppingItem item = new IMatShoppingItem(products.get(0), units, sum);
+                imatOrder.addShoppingItem(item);
+              } else{
+                iterate = false;
+              }
+            }
 
           }
           imatOrders = FXCollections.observableArrayList(imatOrderList);
@@ -1445,6 +1481,8 @@ public class CenterFlikController implements Initializable {
    * not logged in.
    */
   public void getOrders() {
+    imatOrderList = new ArrayList();
+    
     List<Order> order;
     IMatOrder imatOrder;
     order = IMatController.getIMatBackend().getOrders();
@@ -1467,7 +1505,9 @@ public class CenterFlikController implements Initializable {
   
   public void showIMatOrderDetails(List<IMatShoppingItem> list) {
     if (IMatController.currentUser != null) {
-      
+      productsInOrder = FXCollections.observableArrayList(list);
+      productTable.setItems(productsInOrder);
+      productTable.setVisible(true);
     } else {
       productsInOrder = FXCollections.observableArrayList(list);
       productTable.setItems(productsInOrder);

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  * This class represents an IMat order.
@@ -41,6 +40,10 @@ public class IMatOrder {
     shoppingItems.add(new IMatShoppingItem(product, amount, sum));
   }
   
+  public void addShoppingItem(IMatShoppingItem item) {
+    shoppingItems.add(item);
+  }
+  
   public List<IMatShoppingItem> getAllProducts() {
     return shoppingItems;
   }
@@ -51,6 +54,10 @@ public class IMatOrder {
   
   public Integer getOrderNumber() {
     return orderNumber;
+  }
+  
+  public void setShoppingItem(IMatShoppingItem item, int index) {
+    shoppingItems.add(index, item);
   }
   
   public Integer getCost() {

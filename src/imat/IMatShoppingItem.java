@@ -14,12 +14,14 @@ import se.chalmers.ait.dat215.project.Product;
 public class IMatShoppingItem {
   
   private String productName;
+  private Product product;
   private Integer amount;
   private Integer sum;
   
-  public IMatShoppingItem(Product productName, Integer amount, Integer sum) {
-    this.productName = IMatController.getIMatBackend().getProduct(productName.getProductId()).getName();
+  public IMatShoppingItem(Product product, Integer amount, Integer sum) {
+    this.productName = IMatController.getIMatBackend().getProduct(product.getProductId()).getName();
     this.amount = amount;
+    this.product = product;
     this.sum = sum;
   }
 
@@ -28,6 +30,14 @@ public class IMatShoppingItem {
    */
   public String getProductName() {
     return productName;
+  }
+  
+  public Product getProduct() {
+    return product;
+  }
+  
+  public void setProduct(Product product) {
+    this.product = product;
   }
 
   /**

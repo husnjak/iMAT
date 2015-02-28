@@ -239,7 +239,7 @@ public class ToppController implements Initializable {
     } else {
       // Inform user that it's not a valid user/password combination
     }
-   
+   imat.getCenterController().getProductTable().setVisible(false);
   }
   
   /**
@@ -275,7 +275,9 @@ public class ToppController implements Initializable {
     usernameTextField.setText("");
     passwordTextField.setText("");
     
-    imat.getCenterController().showOrderHistory();
+    imat.getCenterController().getOrders();
+
+    imat.getCenterController().getProductTable().setVisible(false);
   }
 
   

@@ -1,19 +1,13 @@
 ----------------------------------------------------------------
-Sat Feb 28 12:23:10 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (???): instance a816c00e-014b-cfec-fb8f-0000021160e8 
-on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@14f79cb 
-Loaded from file:/usr/share/java/derby.jar
+Sat Feb 28 13:49:18 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-d03b-d90f-00000254f860 
+on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@1f96302 
+Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run1886805040/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_76-b13
+java.runtime.version=1.8.0_31-b13
 user.dir=/home/joel/NetBeansProjects/iMAT
 os.name=Linux
 os.arch=i386
 os.version=3.13.0-46-generic
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Sat Feb 28 12:23:24 CET 2015: Shutting down Derby engine
-----------------------------------------------------------------
-Sat Feb 28 12:23:25 CET 2015:
-Shutting down instance a816c00e-014b-cfec-fb8f-0000021160e8 on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@14f79cb 
-----------------------------------------------------------------

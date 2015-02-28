@@ -46,6 +46,7 @@ import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -1253,7 +1254,13 @@ public class CenterFlikController implements Initializable {
     IMatOrder imatOrder;
     order = IMatController.getIMatBackend().getOrders();
     for (int i = 0; i < order.size(); i++) {
+      List<ShoppingItem> orderItems = order.get(i).getItems();
+      int totalSum = 0;
+      for (int j = 0; j < orderItems.size(); j++) {
+        totalSum += (int)orderItems.get(j).getTotal();
+      }
       imatOrder = new IMatOrder(order.get(i).getOrderNumber(), null, order.get(i).getDate());
+      imatOrder.setCost(totalSum);
       imatOrderList.add(imatOrder);
     }
     imatOrders = FXCollections.observableArrayList(imatOrderList);

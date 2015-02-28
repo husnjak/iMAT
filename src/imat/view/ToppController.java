@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +25,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -146,7 +149,35 @@ public class ToppController implements Initializable {
         event.consume();
       }
     });
+    
+    logoutButton.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        handleLogout();
+        event.consume();
+      }
+    });
+    
+    loginButton.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        handleLogin();
+        event.consume();
+      }
+    });
+    
+    logoutButton.addEventHandler(KeyEvent.KEY_PRESSED, keyListener);
   }
+  
+  private EventHandler<KeyEvent> keyListener = new EventHandler<KeyEvent>() {
+    @Override
+    public void handle(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER) {
+            handleLogout();
+            event.consume();
+        } 
+    }
+};
   
   /**
    * Is called by the main application to give a reference back to itself.

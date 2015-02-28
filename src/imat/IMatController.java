@@ -227,7 +227,7 @@ public class IMatController implements Initializable {
   }
   
   /**
-   * Create a new record in the table
+   * Create a new record in the tables.
    * 
    * @param username   the username of the account
    * @param password   the password of the account
@@ -235,6 +235,10 @@ public class IMatController implements Initializable {
   public static void createAccount(String username, String password) {
     try {
       psInsert = conn.prepareStatement("insert into USERACCOUNT(USERNAME,PASSWORD) values (?,?)");
+      psInsert.setString(1, username);
+      psInsert.setString(2, password);
+      psInsert.execute();
+      psInsert = conn.prepareStatement("insert into ORDERS(USERNAME,PASSWORD) values (?,?)");
       psInsert.setString(1, username);
       psInsert.setString(2, password);
       psInsert.execute();

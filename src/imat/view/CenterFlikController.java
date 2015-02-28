@@ -687,6 +687,177 @@ public class CenterFlikController implements Initializable {
       }
     });
     
+    buyRice01.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(1);
+        productUnits = Integer.parseInt(textFieldRice01.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+
+      }
+    });
+    
+    buyRice02.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(2);
+        productUnits = Integer.parseInt(textFieldRice02.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyRice10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(3);
+        productUnits = Integer.parseInt(textFieldRice10.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyMeat00.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(0);
+        productUnits = Integer.parseInt(textFieldMeat00.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyMeat01.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(1);
+        productUnits = Integer.parseInt(textFieldMeat01.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyMeat02.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(2);
+        productUnits = Integer.parseInt(textFieldMeat02.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyMeat10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(3);
+        productUnits = Integer.parseInt(textFieldMeat10.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyMeat11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(4);
+        productUnits = Integer.parseInt(textFieldMeat11.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
+    
+    buyMeat12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getMeatList().get(5);
+        productUnits = Integer.parseInt(textFieldMeat12.getText());
+        if (IMatController.currentUser != null) {
+          productNr++;
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
+          
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        }
+      }
+    });
   }
   
   /**

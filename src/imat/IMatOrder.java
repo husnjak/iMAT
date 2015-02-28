@@ -5,8 +5,11 @@
  */
 package imat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  * This class represents an IMat order.
@@ -24,11 +27,26 @@ public class IMatOrder {
   private Integer units1, units2, units3, units4, units5, units6, units7, units8,
       units9, units10, units11, units12, units13, units14;
   
+  List<IMatShoppingItem> shoppingItems;
+  
   
   public IMatOrder(Integer orderNumber, Integer cost, Date date) {
     this.date = date;
     this.cost = cost;
     this.orderNumber = orderNumber;
+    shoppingItems = new ArrayList();
+  }
+  
+  public void addShoppingItem(Product product, Integer amount, Integer sum) {
+    shoppingItems.add(new IMatShoppingItem(product, amount, sum));
+  }
+  
+  public List<IMatShoppingItem> getAllProducts() {
+    return shoppingItems;
+  }
+  
+  public void setShoppingItemList(List<IMatShoppingItem> shoppingItems) {
+    this.shoppingItems = shoppingItems;
   }
   
   public Integer getOrderNumber() {

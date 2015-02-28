@@ -8,6 +8,7 @@ package imat.view;
 import imat.IMat;
 import imat.IMatController;
 import imat.IMatOrder;
+import imat.IMatShoppingItem;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +18,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -161,6 +164,9 @@ public class CenterFlikController implements Initializable {
   // Stores order history
   private ObservableList<Order> orders;
   private ObservableList<IMatOrder> imatOrders;
+  
+  // Contains products in a given IMatOrder
+  private ObservableList<IMatShoppingItem> productsInOrder;
   
   @FXML
   private Button minusBread00;
@@ -406,6 +412,18 @@ public class CenterFlikController implements Initializable {
   // Stores the total sum of all products in the shopping cart
   int totalCost;
   
+  // Contains the converted orders for a user who is not logged in
+  List<IMatOrder> imatOrderList = new ArrayList();
+  
+  @FXML
+  private TableView<IMatShoppingItem> productTable;
+  @FXML
+  private TableColumn<IMatShoppingItem, String> productNameColumn;
+  @FXML
+  private TableColumn<IMatShoppingItem, Integer> productUnitsColumn;
+  @FXML
+  private TableColumn<IMatShoppingItem, Integer> productCostColumn;
+  
   public Integer getProductNr() {
     return productNr;
   }
@@ -625,17 +643,22 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    // Initialize the person table
+    // Initialize the order table
     orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
     orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
     orderCostColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+    
+    // Initialize the shopping item table
+    productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+    productUnitsColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+    productCostColumn.setCellValueFactory(new PropertyValueFactory<>("sum"));
     
     // Listen for selection changes
     orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<IMatOrder>() {
 
     @Override
     public void changed(ObservableValue<? extends IMatOrder> observable, IMatOrder oldOrder, IMatOrder newOrder) {
-      //showOrderProducts(newOrder);
+      showIMatOrderDetails(newOrder.getAllProducts());
     }
     });
     
@@ -652,13 +675,15 @@ public class CenterFlikController implements Initializable {
           totalCost += sum;
           IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           
-        }
+        } else {      
         IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getRiceList().get(0));
-        //Order orderCart = IMatController.getIMatBackend().placeOrder();
+        Order orderCart = IMatController.getIMatBackend().placeOrder();
         //List<Order> order;
         //order = IMatController.getIMatBackend().getOrders();
         //orders = FXCollections.observableArrayList(order);
         //orderTable.setItems(orders);
+        }
+
       }
     });
     
@@ -1150,7 +1175,7 @@ public class CenterFlikController implements Initializable {
           Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
         }
     } else {
-      getOrders();
+      //getOrders();
     }
   }
     
@@ -1250,21 +1275,33 @@ public class CenterFlikController implements Initializable {
    */
   public void getOrders() {
     List<Order> order;
-    List<IMatOrder> imatOrderList = new ArrayList();
     IMatOrder imatOrder;
     order = IMatController.getIMatBackend().getOrders();
     for (int i = 0; i < order.size(); i++) {
+      List<IMatShoppingItem> imatItems = new ArrayList();
       List<ShoppingItem> orderItems = order.get(i).getItems();
       int totalSum = 0;
       for (int j = 0; j < orderItems.size(); j++) {
-        totalSum += (int)orderItems.get(j).getTotal();
+        ShoppingItem item = orderItems.get(j);
+        imatItems.add(new IMatShoppingItem(item.getProduct(), (int)item.getAmount(), (int)item.getTotal()));
+        totalSum += (int)item.getTotal();
       }
-      imatOrder = new IMatOrder(order.get(i).getOrderNumber(), null, order.get(i).getDate());
-      imatOrder.setCost(totalSum);
+      imatOrder = new IMatOrder(order.get(i).getOrderNumber(), totalSum, order.get(i).getDate());
+      imatOrder.setShoppingItemList(imatItems);
       imatOrderList.add(imatOrder);
     }
     imatOrders = FXCollections.observableArrayList(imatOrderList);
     orderTable.setItems(imatOrders);
+  }
+  
+  public void showIMatOrderDetails(List<IMatShoppingItem> list) {
+    if (IMatController.currentUser != null) {
+      
+    } else {
+      productsInOrder = FXCollections.observableArrayList(list);
+      productTable.setItems(productsInOrder);
+      productTable.setVisible(true);
+      }
   }
 
 }

@@ -168,6 +168,7 @@ public class IMat extends Application {
       
       // Load stored information for the user that is not logged in
       centerController.loadCustomerInformation();
+      centerController.getOrders();
       
     } catch (IOException e) {
         e.printStackTrace();

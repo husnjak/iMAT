@@ -17,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +66,9 @@ public class IMatController implements Initializable {
   
   // Used for updating information in the database
   private static PreparedStatement psUpdate;
+  
+  // Used when counting rows in orders table
+  private static Statement select;
   
   // Used for communication with the database
   private static Connection conn;
@@ -272,6 +277,7 @@ public class IMatController implements Initializable {
   
   public static void addProductToIMatOrder(Integer productNr, Integer productUnits, String value, Integer totalCost) {
       try {
+        productNr++;
         String updateString = "update ORDERS set PRODUCT" + productNr + " = ? where USERNAME = ?";
         psUpdate = conn.prepareStatement(updateString);
         psUpdate.setString(1, value);
@@ -327,6 +333,57 @@ public class IMatController implements Initializable {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
     return "invalidUsername";
+  }
+  
+  /**
+   * Retrieves the number of records existing in a table in the database.
+   * 
+   * @return  the number of records 
+   */
+  public static int getNumberOfRecords() {
+    int records = 0;
+    try {
+      select = conn.createStatement();
+      ResultSet rs = select.executeQuery("SELECT * FROM orders");
+      records = rs.getFetchSize();
+      rs.close();
+      select.close();
+    } catch (SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ++records;
+  }
+  
+  /**
+   * When the products in the shopping cart has been paid for, the receipt is
+   * stored in the database as an order (order history).
+   * 
+   * @param imatOrder the order representing a performed payment
+   */
+  public static void createPaidOrder(IMatOrder imatOrder) {
+    try {
+      psInsert = conn.prepareStatement("insert into ORDERS(USERNAME,DATE,COST) values (?,?,?)");
+      psInsert.setString(1, currentUser);
+      System.out.println(imatOrder.getOrderNumber());
+      Date date = new Date();
+      imatOrder.setDate(date);
+      psInsert.setString(2, imatOrder.getDate().toString());
+      List<IMatShoppingItem> list = imatOrder.getAllProducts();
+      int sum = 0;
+      for (int i = 0; i < list.size(); i++) {
+        sum += list.get(i).getSum();
+      }
+      imatOrder.setCost(sum);
+      psInsert.setInt(3, sum);
+      psInsert.execute();
+      int amountOfProducts = imatOrder.getAllProducts().size();
+      for (int i = 0; i < amountOfProducts; i++) {
+        addProductToIMatOrder(i, imatOrder.getAllProducts().get(i).getAmount(), imatOrder.getAllProducts().get(i).getProductName(), imatOrder.getCost());
+      }
+      psInsert.close();
+    } catch (SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
   
   /**

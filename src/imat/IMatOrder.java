@@ -11,7 +11,8 @@ import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
- * This class represents an IMat order.
+ * This class represents an IMat order. It is used for decorating Orders, and
+ * also to create orders stored in the database for use in the History table.
  * 
  * @author group 11
  */
@@ -33,6 +34,10 @@ public class IMatOrder {
     this.date = date;
     this.cost = cost;
     this.orderNumber = orderNumber;
+    shoppingItems = new ArrayList();
+  }
+  
+  public IMatOrder() {
     shoppingItems = new ArrayList();
   }
   

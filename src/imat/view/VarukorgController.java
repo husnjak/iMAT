@@ -7,6 +7,7 @@ package imat.view;
 
 import imat.IMat;
 import imat.IMatController;
+import imat.IMatShoppingCart;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,6 +25,8 @@ public class VarukorgController implements Initializable {
   
   // Reference to the main application
   private IMat imat;
+  
+  private IMatShoppingCart imatCart = new IMatShoppingCart();
   @FXML
   private Button cartBuyButton;
   
@@ -42,7 +45,12 @@ public class VarukorgController implements Initializable {
     cartBuyButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Order orderCart = IMatController.getIMatBackend().placeOrder();
+        if (IMatController.currentUser != null) {
+          IMatController.createPaidOrder(imatCart.getCart());
+        } else {
+          Order orderCart = IMatController.getIMatBackend().placeOrder();
+        }
+        
       }
     });
 

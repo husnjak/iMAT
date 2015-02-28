@@ -68,6 +68,8 @@ public class IMat extends Application {
     initCenterFlik();
     initTopp();
     initVarukorg();
+    
+    new IMatShoppingCart();
   }
   
   /**

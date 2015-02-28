@@ -183,6 +183,7 @@ public class ToppController implements Initializable {
     if ((IMatController.validAccount(username, password).compareTo("validAccount") == 0)) {
       loggedInUser.setText("  " + username);
       IMatController.setCurrentUser(username);
+      imat.getCenterController().showOrderHistory();
       imat.getCenterController().loadCustomerInformation();
       int size = loginStackPane.getChildren().size();
       String id;
@@ -242,6 +243,8 @@ public class ToppController implements Initializable {
     
     usernameTextField.setText("");
     passwordTextField.setText("");
+    
+    imat.getCenterController().showOrderHistory();
   }
 
   

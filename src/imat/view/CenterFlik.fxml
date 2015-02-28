@@ -813,7 +813,7 @@
                                 <columns>
                                   <TableColumn fx:id="orderIdColumn" minWidth="75.0" prefWidth="75.0" text="OrderID" />
                                   <TableColumn fx:id="orderDateColumn" prefWidth="90.0" text="Datum" />
-                                    <TableColumn fx:id="orderCostColumn" prefWidth="75.0" text="Kostnad" />
+                                    <TableColumn fx:id="orderCostColumn" prefWidth="75.0" text="Summa" />
                                 </columns>
                               </TableView>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Orderhistorik" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">

@@ -402,6 +402,9 @@ public class CenterFlikController implements Initializable {
   // Used to keep track the number of units of the added product
   Integer productUnits;
   
+  // Stores the total sum of all products in the shopping cart
+  int totalCost;
+  
   public Integer getProductNr() {
     return productNr;
   }
@@ -639,12 +642,17 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         if (IMatController.currentUser != null) {
+          Product product = IMatController.getIMatProducts().getRiceList().get(0);
           productUnits = Integer.parseInt(textFieldRice00.getText());
           productNr++;
-          IMatController.testOrders(productNr, productUnits, riceLabel00.getText());
+          String productName = product.getName();
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCost += sum;
+          IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           
         }
-        //IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getMeatList().get(0));
+        IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getRiceList().get(0));
         //Order orderCart = IMatController.getIMatBackend().placeOrder();
         //List<Order> order;
         //order = IMatController.getIMatBackend().getOrders();

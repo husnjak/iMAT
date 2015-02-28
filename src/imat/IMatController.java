@@ -74,6 +74,9 @@ public class IMatController implements Initializable {
   // The username of the currently logged in user
   public static String currentUser;
   
+  // Keeps track of the current IMat order
+  public static Integer CurrentIMatOrderID;
+  
   @Override
   public void initialize(URL url, ResourceBundle rb) {
 
@@ -267,7 +270,7 @@ public class IMatController implements Initializable {
     }
   }
   
-  public static void testOrders(Integer productNr, Integer productUnits, String value) {
+  public static void addProductToIMatOrder(Integer productNr, Integer productUnits, String value, Integer totalCost) {
       try {
         String updateString = "update ORDERS set PRODUCT" + productNr + " = ? where USERNAME = ?";
         psUpdate = conn.prepareStatement(updateString);
@@ -276,7 +279,12 @@ public class IMatController implements Initializable {
         psUpdate.executeUpdate();
         updateString = "update ORDERS set UNITS" + productNr + " = ? where USERNAME = ?";
         psUpdate = conn.prepareStatement(updateString);
-        psUpdate.setString(1, productUnits.toString());
+        psUpdate.setInt(1, productUnits);
+        psUpdate.setString(2, currentUser);
+        psUpdate.executeUpdate();
+        updateString = "update ORDERS set COST = ? where USERNAME = ?";
+        psUpdate = conn.prepareStatement(updateString);
+        psUpdate.setInt(1, totalCost);
         psUpdate.setString(2, currentUser);
         psUpdate.executeUpdate();
         psUpdate.close();

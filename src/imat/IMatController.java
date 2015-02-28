@@ -278,20 +278,20 @@ public class IMatController implements Initializable {
   public static void addProductToIMatOrder(Integer productNr, Integer productUnits, String value, Integer totalCost) {
       try {
         productNr++;
-        String updateString = "update ORDERS set PRODUCT" + productNr + " = ? where USERNAME = ?";
+        String updateString = "update ORDERS set PRODUCT" + productNr + " = ? where ID = ?";
         psUpdate = conn.prepareStatement(updateString);
         psUpdate.setString(1, value);
-        psUpdate.setString(2, currentUser);
+        psUpdate.setInt(2, IMatShoppingCart.cart.getOrderNumber());
         psUpdate.executeUpdate();
-        updateString = "update ORDERS set UNITS" + productNr + " = ? where USERNAME = ?";
+        updateString = "update ORDERS set UNITS" + productNr + " = ? where ID = ?";
         psUpdate = conn.prepareStatement(updateString);
         psUpdate.setInt(1, productUnits);
-        psUpdate.setString(2, currentUser);
+        psUpdate.setInt(2, IMatShoppingCart.cart.getOrderNumber());
         psUpdate.executeUpdate();
-        updateString = "update ORDERS set COST = ? where USERNAME = ?";
+        updateString = "update ORDERS set COST = ? where ID = ?";
         psUpdate = conn.prepareStatement(updateString);
         psUpdate.setInt(1, totalCost);
-        psUpdate.setString(2, currentUser);
+        psUpdate.setInt(2, IMatShoppingCart.cart.getOrderNumber());
         psUpdate.executeUpdate();
         psUpdate.close();
       } catch (SQLException ex) {
@@ -345,7 +345,9 @@ public class IMatController implements Initializable {
     try {
       select = conn.createStatement();
       ResultSet rs = select.executeQuery("SELECT * FROM orders");
-      records = rs.getFetchSize();
+      while (rs.next()) {
+        records++;
+      }
       rs.close();
       select.close();
     } catch (SQLException ex) {
@@ -364,7 +366,6 @@ public class IMatController implements Initializable {
     try {
       psInsert = conn.prepareStatement("insert into ORDERS(USERNAME,DATE,COST) values (?,?,?)");
       psInsert.setString(1, currentUser);
-      System.out.println(imatOrder.getOrderNumber());
       Date date = new Date();
       imatOrder.setDate(date);
       psInsert.setString(2, imatOrder.getDate().toString());
@@ -384,6 +385,7 @@ public class IMatController implements Initializable {
     } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
+    IMatShoppingCart.newCart();
   }
   
   /**

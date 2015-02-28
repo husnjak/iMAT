@@ -26,12 +26,17 @@ public class IMatShoppingCart {
     return cart;
   }
   
+  public static void newCart() {
+    cart = new IMatOrder();
+    cart.setOrderNumber(setOrderID());
+  }
+  
   /**
    * Create a unique id for the order.
    * 
    * @return  the unique id 
    */
-  private int setOrderID() {
+  private static int setOrderID() {
     return IMatController.getNumberOfRecords();
   }
   

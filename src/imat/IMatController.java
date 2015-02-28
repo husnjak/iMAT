@@ -140,7 +140,7 @@ public class IMatController implements Initializable {
    * be created.
    */
   public static void createDatabase(){
-    //imatBackend.resetFirstRun();   // For testing purposes only
+    imatBackend.resetFirstRun();   // For testing purposes only
     if (imatBackend.isFirstRun()) {
       try {
         String driver = "org.apache.derby.jdbc.EmbeddedDriver";
@@ -182,7 +182,7 @@ public class IMatController implements Initializable {
           + " ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,"
           + " USERNAME VARCHAR(30), "
           + " PASSWORD VARCHAR(30), "
-          + " DATE DATE, "
+          + " DATE VARCHAR(30), "
           + " COST INT, "    
           + " PRODUCT1 VARCHAR(30), "
           + " UNITS1 INT, "
@@ -265,6 +265,24 @@ public class IMatController implements Initializable {
     } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
+  }
+  
+  public static void testOrders(Integer productNr, Integer productUnits, String value) {
+      try {
+        String updateString = "update ORDERS set PRODUCT" + productNr + " = ? where USERNAME = ?";
+        psUpdate = conn.prepareStatement(updateString);
+        psUpdate.setString(1, value);
+        psUpdate.setString(2, currentUser);
+        psUpdate.executeUpdate();
+        updateString = "update ORDERS set UNITS" + productNr + " = ? where USERNAME = ?";
+        psUpdate = conn.prepareStatement(updateString);
+        psUpdate.setString(1, productUnits.toString());
+        psUpdate.setString(2, currentUser);
+        psUpdate.executeUpdate();
+        psUpdate.close();
+      } catch (SQLException ex) {
+        Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
   
   /**

@@ -15,8 +15,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -396,6 +396,28 @@ public class CenterFlikController implements Initializable {
   @FXML
   private TableColumn<IMatOrder, Integer> orderCostColumn;
   
+  // Used to keep track which number the recently added product has in order
+  Integer productNr = 0;
+  
+  // Used to keep track the number of units of the added product
+  Integer productUnits;
+  
+  public Integer getProductNr() {
+    return productNr;
+  }
+  
+  public void setProductNr(Integer productNr) {
+    this.productNr = productNr;
+  }
+  
+  public Integer getProductUnits() {
+    return productUnits;
+  }
+  
+  public void setProductUnits(Integer productUnits) {
+    this.productUnits = productUnits;
+  }
+  
   public Tab getHandlaFlik() {
     return handlaFlik;
   }
@@ -599,7 +621,7 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-        // Initialize the person table
+    // Initialize the person table
     orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
     orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
     orderCostColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
@@ -616,8 +638,14 @@ public class CenterFlikController implements Initializable {
     buyRice00.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getMeatList().get(0));
-        Order orderCart = IMatController.getIMatBackend().placeOrder();
+        if (IMatController.currentUser != null) {
+          productUnits = Integer.parseInt(textFieldRice00.getText());
+          productNr++;
+          IMatController.testOrders(productNr, productUnits, riceLabel00.getText());
+          
+        }
+        //IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getMeatList().get(0));
+        //Order orderCart = IMatController.getIMatBackend().placeOrder();
         //List<Order> order;
         //order = IMatController.getIMatBackend().getOrders();
         //orders = FXCollections.observableArrayList(order);
@@ -1096,16 +1124,17 @@ public class CenterFlikController implements Initializable {
           PreparedStatement psSelect = IMatController.getConnection().prepareStatement(selectSQL);
           psSelect.setString(1, IMatController.currentUser);
           ResultSet rs = psSelect.executeQuery();
+          List<IMatOrder> imatOrderList = new ArrayList();
           while (rs.next()) {
-            Order order = new Order();
-            order.setOrderNumber(Integer.parseInt(rs.getString("ID")));
-            Date orderDate = new Date(rs.getString("DATE"));
-            order.setDate(orderDate);
-            
-            
+            Date orderDate = new Date(rs.getLong("DATE"));
+            IMatOrder imatOrder = new IMatOrder(rs.getInt("ID"), rs.getInt("COST"), orderDate);
+            imatOrderList.add(imatOrder);
+
             // Add rest of products to show
 
           }
+          imatOrders = FXCollections.observableArrayList(imatOrderList);
+          orderTable.setItems(imatOrders);
           rs.close();
           psSelect.close();
         } catch (SQLException ex) {
@@ -1218,7 +1247,6 @@ public class CenterFlikController implements Initializable {
     for (int i = 0; i < order.size(); i++) {
       imatOrder = new IMatOrder(order.get(i).getOrderNumber(), null, order.get(i).getDate());
       imatOrderList.add(imatOrder);
-      System.out.println(imatOrder.getOrderNumber());
     }
     imatOrders = FXCollections.observableArrayList(imatOrderList);
     orderTable.setItems(imatOrders);

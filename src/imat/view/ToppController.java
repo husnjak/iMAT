@@ -71,6 +71,8 @@ public class ToppController implements Initializable {
   String password;
   @FXML
   private Hyperlink registerUser;
+  @FXML
+  private Label loginLabel;
   
   /**
    * Set the username of the newly created account.
@@ -208,11 +210,16 @@ public class ToppController implements Initializable {
   */
   @FXML
   private void handleLogin() {
-    
+    loginLabel.setText("");
     username = usernameTextField.getCharacters().toString();
     password = passwordTextField.getCharacters().toString();
+    String valid = IMatController.validAccount(username, password);
     
-    if ((IMatController.validAccount(username, password).compareTo("validAccount") == 0)) {
+    if (username.length() == 0) {
+      loginLabel.setText("Fyll i användarnamn");
+    } else if (password.length() == 0) {
+      loginLabel.setText("Fyll i lösenord");
+    } else if ((valid.compareTo("validAccount") == 0)) {
       loggedInUser.setText("  " + username);
       IMatController.setCurrentUser(username);
       imat.getCenterController().showOrderHistory();
@@ -240,8 +247,10 @@ public class ToppController implements Initializable {
       
       imat.getVarukorgController().updateTotalCostBackend(0);
       imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
+    } else if (valid.compareTo("invalidUsername") == 0) {
+      loginLabel.setText("Felaktigt användarnamn");
     } else {
-      // Inform user that it's not a valid user/password combination
+      loginLabel.setText("Felaktigt lösenord");
     }
    imat.getCenterController().getProductTable().setVisible(false);
   }
@@ -249,7 +258,6 @@ public class ToppController implements Initializable {
   /**
   * Called when the user clicks the logout button. 
   */
-  @FXML
   private void handleLogout() {
     
     int size = loginStackPane.getChildren().size();

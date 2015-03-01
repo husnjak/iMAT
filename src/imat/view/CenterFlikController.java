@@ -473,6 +473,7 @@ public class CenterFlikController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     products = new ArrayList<>();
+    productTable.setMouseTransparent(true);
     
     plusRice00.setOnAction(new EventHandler<ActionEvent>() {
       @Override

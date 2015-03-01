@@ -19,7 +19,7 @@
                </font>
             </Label>
             <Hyperlink layoutX="218.0" layoutY="22.0" text="Spara" AnchorPane.leftAnchor="218.0" />
-            <ListView layoutX="10.0" layoutY="52.0" minWidth="250.0" prefHeight="351.0" prefWidth="250.0">
+            <ListView fx:id="shoppingCartListView" layoutX="10.0" layoutY="52.0" minWidth="250.0" prefHeight="351.0" prefWidth="250.0">
                <effect>
                   <DropShadow />
                </effect>

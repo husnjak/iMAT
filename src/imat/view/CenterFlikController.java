@@ -658,6 +658,7 @@ public class CenterFlikController implements Initializable {
             imat.getToppController().setUsername(username);
             imat.getToppController().setPassword(password);
             imat.getToppController().changeLoginScreen();
+            showOrderHistory();
           }
         }
       }

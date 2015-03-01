@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import se.chalmers.ait.dat215.project.Order;
 
 /**
@@ -29,6 +30,8 @@ public class VarukorgController implements Initializable {
   private IMatShoppingCart imatCart = new IMatShoppingCart();
   @FXML
   private Button cartBuyButton;
+  @FXML
+  private Label totalCostLabel;
   
   /**
   * Is called by the main application to give a reference back to itself.
@@ -48,14 +51,31 @@ public class VarukorgController implements Initializable {
         if (IMatController.currentUser != null) {
           IMatController.createPaidOrder(imatCart.getCart());
           imat.getCenterController().showOrderHistory();
+          totalCostLabel.setText("0 kr");
         } else {
           Order orderCart = IMatController.getIMatBackend().placeOrder();
           imat.getCenterController().getOrders();
+          totalCostLabel.setText("0 kr");
         }
-        
       }
     });
 
+  }
+  
+  /**
+   * Updates the total sum of the shopping cart of a logged in user.
+   */
+  public void updateTotalCost() {
+    totalCostLabel.setText(IMatShoppingCart.cart.getCost().toString()+ " kr");
+  }
+  
+  /**
+   * Update the total sum of the shopping cart of a user who is not logged in.
+   * 
+   * @param totalSum the new sum of the shopping cart
+   */
+  public void updateTotalCostBackend(Integer totalSum) {
+    totalCostLabel.setText(totalSum.toString() + " kr");
   }
         
 }

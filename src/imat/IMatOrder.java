@@ -19,7 +19,7 @@ import se.chalmers.ait.dat215.project.Product;
 public class IMatOrder {
   
   private Date date;
-  private Integer cost;
+  private Integer cost = 0;
   private Integer orderNumber;
   private Product product1, product2, product3, product4, product5, product6,
       product7, product8, product9, product10, product11, product12,
@@ -43,6 +43,8 @@ public class IMatOrder {
   
   public void addShoppingItem(Product product, Integer amount, Integer sum) {
     shoppingItems.add(new IMatShoppingItem(product, amount, sum));
+    int newCost = this.cost.intValue() + sum;
+    this.cost = newCost;
   }
   
   public void addShoppingItem(IMatShoppingItem item) {
@@ -85,6 +87,16 @@ public class IMatOrder {
    */
   public void setCost(Integer cost) {
     this.cost = cost;
+  }
+  
+  /**
+   * Adds a sum to the total cost of the shopping cart.
+   * 
+   * @param cost the sum to add to the total cost
+   */
+  public void addCost(int cost) {
+    int newCost = this.cost + cost;
+    this.cost = newCost;
   }
 
   /**

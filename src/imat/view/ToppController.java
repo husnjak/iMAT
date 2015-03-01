@@ -240,6 +240,8 @@ public class ToppController implements Initializable {
       // Inform user that it's not a valid user/password combination
     }
    imat.getCenterController().getProductTable().setVisible(false);
+   imat.getVarukorgController().updateTotalCostBackend(0);
+   //imat.getVarukorgController().updateTotalCost();
   }
   
   /**
@@ -278,6 +280,8 @@ public class ToppController implements Initializable {
     imat.getCenterController().getOrders();
 
     imat.getCenterController().getProductTable().setVisible(false);
+    Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+    imat.getVarukorgController().updateTotalCostBackend(totalSum);
   }
 
   

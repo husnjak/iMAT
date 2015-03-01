@@ -695,8 +695,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {      
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -712,8 +715,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
 
       }
@@ -730,8 +736,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -747,8 +756,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -764,8 +776,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -781,8 +796,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -798,8 +816,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -815,8 +836,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -832,8 +856,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });
@@ -849,8 +876,11 @@ public class CenterFlikController implements Initializable {
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
         }
       }
     });

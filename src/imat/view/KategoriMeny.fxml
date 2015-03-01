@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
    <children>
       <Hyperlink fx:id="riceLink" layoutX="14.0" layoutY="344.0" text="Ris" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="344.0" />
       <Hyperlink fx:id="pastaLink" layoutX="14.0" layoutY="284.0" text="Pasta" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="284.0" />
@@ -22,4 +23,7 @@
       <Hyperlink fx:id="potatoLink" layoutX="14.0" layoutY="314.0" text="Potatis &amp; Rotfrukter" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="314.0" />
       <Hyperlink fx:id="sweetsLink" layoutX="14.0" layoutY="374.0" text="Sötsaker" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="374.0" />
    </children>
+   <padding>
+      <Insets top="80.0" />
+   </padding>
 </AnchorPane>

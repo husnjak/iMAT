@@ -382,6 +382,7 @@ public class IMatController implements Initializable {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
     IMatShoppingCart.newCart();
+    
   }
   
   /**

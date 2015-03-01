@@ -34,6 +34,7 @@ public class IMat extends Application {
   private Stage primaryStage;
   private Parent root;
   private BorderPane rootLayout;
+  private Integer totalSum;
   private KategoriMenyController kategoriController;
   private CenterFlikController centerController;
   private ToppController toppController;
@@ -70,6 +71,8 @@ public class IMat extends Application {
     initVarukorg();
     
     new IMatShoppingCart();
+    totalSum = (int)IMatController.getShoppingCart().getTotal();
+    varukorgController.updateTotalCostBackend(totalSum);
   }
   
   /**
@@ -105,6 +108,15 @@ public class IMat extends Application {
    */
   public ToppController getToppController() {
     return toppController;
+  }
+  
+  /**
+   * Return a VarukorgController reference.
+   * 
+   * @return a reference of the controller
+   */
+  public VarukorgController getVarukorgController() {
+    return varukorgController;
   }
   
   /**

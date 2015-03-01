@@ -47,8 +47,10 @@ public class VarukorgController implements Initializable {
       public void handle(ActionEvent event) {
         if (IMatController.currentUser != null) {
           IMatController.createPaidOrder(imatCart.getCart());
+          imat.getCenterController().showOrderHistory();
         } else {
           Order orderCart = IMatController.getIMatBackend().placeOrder();
+          imat.getCenterController().getOrders();
         }
         
       }

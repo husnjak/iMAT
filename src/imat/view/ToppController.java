@@ -237,12 +237,13 @@ public class ToppController implements Initializable {
       logoutButton.setVisible(true);
       loggedInUser.setVisible(true);
       loggedInLabel.setVisible(true);
+      
+      imat.getVarukorgController().updateTotalCostBackend(0);
+      imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
     } else {
       // Inform user that it's not a valid user/password combination
     }
    imat.getCenterController().getProductTable().setVisible(false);
-   imat.getVarukorgController().updateTotalCostBackend(0);
-   imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
   }
   
   /**

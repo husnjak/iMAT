@@ -137,7 +137,7 @@ public class VarukorgController implements Initializable {
           protected void updateItem(IMatShoppingItem t, boolean bln) {
             super.updateItem(t, bln);
             if (t != null) {
-              setText(t.getProductName() + "  antal: " + t.getAmount() + "  pris: " + t.getSum());
+              setText(t.getAmount() + " st  " + t.getProductName() + "   " + t.getSum() + " kr");
             }
           }
         };

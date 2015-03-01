@@ -26,6 +26,9 @@ public class IMatShoppingCart {
     return cart;
   }
   
+  /**
+   * A new IMatOrder is created after each payment (represents an empty cart)
+   */
   public static void newCart() {
     cart = new IMatOrder();
     cart.setOrderNumber(setOrderID());

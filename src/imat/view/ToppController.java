@@ -7,6 +7,7 @@ package imat.view;
 
 import imat.IMat;
 import imat.IMatController;
+import imat.IMatShoppingCart;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -241,7 +242,7 @@ public class ToppController implements Initializable {
     }
    imat.getCenterController().getProductTable().setVisible(false);
    imat.getVarukorgController().updateTotalCostBackend(0);
-   //imat.getVarukorgController().updateTotalCost();
+   imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
   }
   
   /**
@@ -282,6 +283,7 @@ public class ToppController implements Initializable {
     imat.getCenterController().getProductTable().setVisible(false);
     Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
     imat.getVarukorgController().updateTotalCostBackend(totalSum);
+    imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
   }
 
   

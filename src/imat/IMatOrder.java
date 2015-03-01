@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,7 @@ import se.chalmers.ait.dat215.project.Product;
  */
 public class IMatOrder {
   
-  private Date date;
+  private LocalDate date;
   private Integer cost = 0;
   private Integer orderNumber;
   private Product product1, product2, product3, product4, product5, product6,
@@ -30,7 +31,7 @@ public class IMatOrder {
   List<IMatShoppingItem> shoppingItems;
   
   
-  public IMatOrder(Integer orderNumber, Integer cost, Date date) {
+  public IMatOrder(Integer orderNumber, Integer cost, LocalDate date) {
     this.date = date;
     this.cost = cost;
     this.orderNumber = orderNumber;
@@ -71,14 +72,14 @@ public class IMatOrder {
     return cost;
   }
   
-  public Date getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
   /**
    * @param date the date to set
    */
-  public void setDate(Date date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 

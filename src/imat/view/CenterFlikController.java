@@ -17,6 +17,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -400,7 +402,7 @@ public class CenterFlikController implements Initializable {
   @FXML
   private TableColumn<IMatOrder, Integer> orderIdColumn;
   @FXML
-  private TableColumn<IMatOrder, Date> orderDateColumn;
+  private TableColumn<IMatOrder, LocalDate> orderDateColumn;
   @FXML
   private TableColumn<IMatOrder, Integer> orderCostColumn;
   
@@ -1390,9 +1392,10 @@ public class CenterFlikController implements Initializable {
           while (rs.next()) {
             String storedDate = rs.getString("DATE");
             Date orderDate = new Date();
+            LocalDate date = orderDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Calendar cal = Calendar.getInstance();
             cal.setTime(orderDate);
-            IMatOrder imatOrder = new IMatOrder(rs.getInt("ID"), rs.getInt("COST"), orderDate);
+            IMatOrder imatOrder = new IMatOrder(rs.getInt("ID"), rs.getInt("COST"), date);
             imatOrderList.add(imatOrder);
             boolean iterate = true;
             int index = 0;
@@ -1533,7 +1536,9 @@ public class CenterFlikController implements Initializable {
         imatItems.add(new IMatShoppingItem(item.getProduct(), (int)item.getAmount(), (int)item.getTotal()));
         totalSum += (int)item.getTotal();
       }
-      imatOrder = new IMatOrder(order.get(i).getOrderNumber(), totalSum, order.get(i).getDate());
+      Date orderDate = order.get(i).getDate();
+      LocalDate date = orderDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+      imatOrder = new IMatOrder(order.get(i).getOrderNumber(), totalSum, date);
       imatOrder.setShoppingItemList(imatItems);
       imatOrderList.add(imatOrder);
     }

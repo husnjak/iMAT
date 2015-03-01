@@ -17,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -362,7 +364,8 @@ public class IMatController implements Initializable {
     try {
       psInsert = conn.prepareStatement("insert into ORDERS(USERNAME,DATE,COST) values (?,?,?)");
       psInsert.setString(1, currentUser);
-      Date date = new Date();
+      Date orderDate = new Date();
+      LocalDate date = orderDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
       imatOrder.setDate(date);
       psInsert.setString(2, imatOrder.getDate().toString());
       List<IMatShoppingItem> list = imatOrder.getAllProducts();

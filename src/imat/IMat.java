@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -216,7 +217,7 @@ public class IMat extends Application {
     try {
       // Load varukorg view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/Varukorg.fxml"));
-      AnchorPane varukorg = (AnchorPane) loader.load();
+      Pane varukorg = (Pane) loader.load();
       
       varukorgController = loader.getController();
       varukorgController.setMainApp(this);

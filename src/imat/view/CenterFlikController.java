@@ -687,25 +687,17 @@ public class CenterFlikController implements Initializable {
     buyRice00.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        Product product = IMatController.getIMatProducts().getRiceList().get(0);
+        productUnits = Integer.parseInt(textFieldRice00.getText());
         if (IMatController.currentUser != null) {
-          Product product = IMatController.getIMatProducts().getRiceList().get(0);
-          productUnits = Integer.parseInt(textFieldRice00.getText());
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {      
-        IMatController.getShoppingCart().addProduct(IMatController.getIMatProducts().getRiceList().get(0));
-        Order orderCart = IMatController.getIMatBackend().placeOrder();
-        //List<Order> order;
-        //order = IMatController.getIMatBackend().getOrders();
-        //orders = FXCollections.observableArrayList(order);
-        //orderTable.setItems(orders);
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
         }
-
       }
     });
     
@@ -716,11 +708,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldRice01.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -736,11 +726,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldRice02.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -755,13 +743,10 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldRice10.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
-          
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
         }
@@ -775,11 +760,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldMeat00.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -794,11 +777,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldMeat01.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -813,11 +794,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldMeat02.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -832,11 +811,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldMeat10.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -851,11 +828,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldMeat11.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
@@ -870,11 +845,9 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textFieldMeat12.getText());
         if (IMatController.currentUser != null) {
           productNr++;
-          String productName = product.getName();
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
           totalCost += sum;
-          //IMatController.addProductToIMatOrder(productNr, productUnits, productName, totalCost);
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));

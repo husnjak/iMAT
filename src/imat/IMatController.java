@@ -224,11 +224,31 @@ public class IMatController implements Initializable {
           + " UNITS14 INT) " ;
 
           statement.execute(createString);
+        }
           
+        // Check if "favorites" table exist
+        tables = dbm.getTables(null, null, "FAVORITES", null);
+        if (!tables.next()) {
+          String createString = "CREATE TABLE FAVORITES("
+          + " ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,"
+          + " USERNAME VARCHAR(30), "
+          + " FAVORITE1 VARCHAR(30), "
+          + " FAVORITE2 VARCHAR(30), "
+          + " FAVORITE3 VARCHAR(30), "
+          + " FAVORITE4 VARCHAR(30), "
+          + " FAVORITE5 VARCHAR(30), "
+          + " FAVORITE6 VARCHAR(30), "
+          + " FAVORITE7 VARCHAR(30), "
+          + " FAVORITE8 VARCHAR(30), "
+          + " FAVORITE9 VARCHAR(30), "
+          + " FAVORITE10 VARCHAR(30), "
+          + " FAVORITE11 VARCHAR(30), "
+          + " FAVORITE12 VARCHAR(30)) " ;
+
+          statement.execute(createString);
           tables.close();
           statement.close();
           System.out.println("Database created");
-          // Also create table for favorite products
         }
     } catch (ClassNotFoundException | SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
@@ -249,6 +269,25 @@ public class IMatController implements Initializable {
       psInsert.setString(2, password);
       psInsert.execute();
       psInsert.close();
+    } catch (SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+    /**
+   * Adds a product as a favorite in the database.
+   * 
+   * @param favorite  the product to be added as a favorite
+   * @param index the number of the favorite product among the favorites
+   */
+  public static synchronized void addFavorite(String favorite, int index) {
+    try {
+      String updateString = "update FAVORITES set PRODUCT" + index + " = ? where USERNAME = ?";
+      psUpdate = conn.prepareStatement(updateString);
+      psUpdate.setString(1, favorite);
+      psUpdate.setString(2, currentUser);
+      psUpdate.executeUpdate();
+      psUpdate.close();
     } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }

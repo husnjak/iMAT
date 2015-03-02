@@ -963,6 +963,19 @@ public class CenterFlikController implements Initializable {
     productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
     
+    productFavorite.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(0);
+        if (IMatController.currentUser != null) {
+          
+        } else {
+          IMatController.getIMatBackend().addFavorite(product);
+        }
+        
+      }
+    });
+    
     plus.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
@@ -4096,6 +4109,8 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
+    
+    
     
     //show used favorite panes
     favoritePane.setVisible(false);

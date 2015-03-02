@@ -133,67 +133,10 @@ public class CenterFlikController implements Initializable {
   // Contains products in a given IMatOrder
   private ObservableList<IMatShoppingItem> productsInOrder;
   private ObservableList<IMatShoppingItem> productsInDatabase;
-  
-  private Label riceLabel00;
-  private Label riceLabel01;
-  private Label riceLabel02;
-  private TextField textFieldRice00;
-  private Button plusRice00;
-  private Button minusRice00;
-  private Label totalCostRice00;
-  private Label totalCostRice01;
-  private Label totalCostRice02;
-  private Button buyRice00;
-  private Button buyRice01;
-  private TextField textFieldRice01;
-  private Button plusRice01;
-  private Button minusRice01;
-  private Button plusRice02;
-  private Button minusRice02;
-  private TextField textFieldRice02;
-  private Button buyRice02;
-  private Label riceLabel10;
-  private TextField textFieldRice10;
-  private Button plusRice10;
-  private Button minusRice10;
-  private Button buyRice10;
-  private Label totalCostRice10;
-  private ImageView imageZeroZeroRice;
-  private ImageView imageZeroOneRice;
-  private ImageView imageZeroTwoRice;
-  private ImageView imageOneZeroRice;
+ 
   @FXML
   private ScrollPane startPage;
-  private TextField textFieldMeat00;
-  private Button plusMeat00;
-  private Button minusMeat00;
-  private Label totalCostMeat00;
-  private Label totalCostMeat01;
-  private Label totalCostMeat02;
-  private Button buyMeat00;
-  private Button buyMeat01;
-  private TextField textFieldMeat01;
-  private Button plusMeat01;
-  private Button minusMeat01;
-  private Button plusMeat02;
-  private Button minusMeat02;
-  private TextField textFieldMeat02;
-  private Button buyMeat02;
-  private TextField textFieldMeat10;
-  private Button plusMeat10;
-  private Button minusMeat10;
-  private Button buyMeat10;
-  private Label totalCostMeat10;
-  private TextField textFieldMeat11;
-  private Button plusMeat11;
-  private Button minusMeat11;
-  private Button buyMeat11;
-  private Label totalCostMeat11;
-  private Button plusMeat12;
-  private Button minusMeat12;
-  private Button buyMeat12;
-  private Label totalCostMeat12;
-  private TextField textFieldMeat12;
+ 
   @FXML
   private ScrollPane registerPane;
   @FXML
@@ -782,15 +725,197 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Button favoritvarorButton;
   @FXML
-  private ScrollPane tom1;
-  @FXML
-  private ScrollPane tom2;
-  @FXML
-  private ScrollPane tom3;
-  @FXML
   private ScrollPane orderHistorikPane;
   @FXML
   private ScrollPane kontouppgifterPane;
+  @FXML
+  private ScrollPane favoriteScrollPane;
+  @FXML
+  private GridPane favoriteGrid;
+  @FXML
+  private AnchorPane favoritePane;
+  @FXML
+  private AnchorPane favoritePane1;
+  @FXML
+  private AnchorPane favoritePane2;
+  @FXML
+  private AnchorPane favoritePane3;
+  @FXML
+  private Button buy31;
+  @FXML
+  private ImageView productImage31;
+  @FXML
+  private Label productLabel31;
+  @FXML
+  private CheckBox productFavorite31;
+  @FXML
+  private TextField textField31;
+  @FXML
+  private Button plus31;
+  @FXML
+  private Button minus31;
+  @FXML
+  private Label totalCost31;
+  @FXML
+  private AnchorPane favoritePane4;
+  @FXML
+  private Button buy41;
+  @FXML
+  private ImageView productImage41;
+  @FXML
+  private Label productLabel41;
+  @FXML
+  private CheckBox productFavorite41;
+  @FXML
+  private TextField textField41;
+  @FXML
+  private Button plus41;
+  @FXML
+  private Button minus41;
+  @FXML
+  private Label totalCost41;
+  @FXML
+  private AnchorPane favoritePane5;
+  @FXML
+  private Button buy51;
+  @FXML
+  private ImageView productImage51;
+  @FXML
+  private Label productLabel51;
+  @FXML
+  private CheckBox productFavorite51;
+  @FXML
+  private TextField textField51;
+  @FXML
+  private Button plus51;
+  @FXML
+  private Button minus51;
+  @FXML
+  private Label totalCost51;
+  @FXML
+  private AnchorPane favoritePane6;
+  @FXML
+  private Button buy61;
+  @FXML
+  private ImageView productImage61;
+  @FXML
+  private Label productLabel61;
+  @FXML
+  private CheckBox productFavorite61;
+  @FXML
+  private TextField textField61;
+  @FXML
+  private Button plus61;
+  @FXML
+  private Button minus61;
+  @FXML
+  private Label totalCost61;
+  @FXML
+  private AnchorPane favoritePane7;
+  @FXML
+  private Button buy71;
+  @FXML
+  private ImageView productImage71;
+  @FXML
+  private Label productLabel71;
+  @FXML
+  private CheckBox productFavorite71;
+  @FXML
+  private TextField textField71;
+  @FXML
+  private Button plus71;
+  @FXML
+  private Button minus71;
+  @FXML
+  private Label totalCost71;
+  @FXML
+  private AnchorPane favoritePane8;
+  @FXML
+  private Button buy81;
+  @FXML
+  private ImageView productImage81;
+  @FXML
+  private Label productLabel81;
+  @FXML
+  private CheckBox productFavorite81;
+  @FXML
+  private TextField textField81;
+  @FXML
+  private Button plus81;
+  @FXML
+  private Button minus81;
+  @FXML
+  private Label totalCost81;
+  @FXML
+  private AnchorPane favoritePane9;
+  @FXML
+  private Button buy91;
+  @FXML
+  private ImageView productImage91;
+  @FXML
+  private Label productLabel91;
+  @FXML
+  private CheckBox productFavorite91;
+  @FXML
+  private TextField textField91;
+  @FXML
+  private Button plus91;
+  @FXML
+  private Button minus91;
+  @FXML
+  private Label totalCost91;
+  @FXML
+  private AnchorPane favoritePane10;
+  @FXML
+  private Button buy101;
+  @FXML
+  private ImageView productImage101;
+  @FXML
+  private Label productLabel101;
+  @FXML
+  private CheckBox productFavorite101;
+  @FXML
+  private TextField textField101;
+  @FXML
+  private Button plus101;
+  @FXML
+  private Button minus101;
+  @FXML
+  private Label totalCost101;
+  @FXML
+  private AnchorPane favoritePane11;
+  @FXML
+  private Button buy111;
+  @FXML
+  private ImageView productImage111;
+  @FXML
+  private Label productLabel111;
+  @FXML
+  private CheckBox productFavorite111;
+  @FXML
+  private TextField textField111;
+  @FXML
+  private Button plus111;
+  @FXML
+  private Button minus111;
+  @FXML
+  private Label totalCost111;
+  @FXML
+  private Button buyfavorite;
+  @FXML
+  private ImageView favoriteImage;
+  @FXML
+  private Label favoriteLabel;
+  @FXML
+  private CheckBox favoriteFavorite;
+  @FXML
+  private TextField textFieldFavorite;
+  @FXML
+  private Button plusfavorite;
+  @FXML
+  private Button minusfavorite;
+  @FXML
+  private Label totalCostFavorite;
   
   public Integer getProductNr() {
     return productNr;
@@ -2069,6 +2194,15 @@ public class CenterFlikController implements Initializable {
         event.consume();
       }
     });
+    
+    favoritvarorButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToFavoriteView();
+        event.consume();
+      }
+    });
+    
   }
   
   /**
@@ -3947,5 +4081,37 @@ public class CenterFlikController implements Initializable {
       }
     }
   }
-
+  
+  public void changeToFavoriteView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "favoriteScrollPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+    
+    //show used favorite panes
+    favoritePane.setVisible(false);
+    favoritePane1.setVisible(false);
+    favoritePane2.setVisible(false);
+    favoritePane3.setVisible(false);
+    favoritePane4.setVisible(false);
+    favoritePane5.setVisible(false);
+    favoritePane6.setVisible(false);
+    
+    //hides unused favorite panes
+    favoritePane7.setVisible(false);
+    favoritePane8.setVisible(false);
+    favoritePane9.setVisible(false);
+    favoritePane10.setVisible(false);
+    favoritePane11.setVisible(false);
+    
+  }
 }

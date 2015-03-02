@@ -22,7 +22,7 @@
          <content>
             <AnchorPane layoutY="40.0" maxHeight="700.0" maxWidth="750.0" minHeight="700.0" prefHeight="700.0" prefWidth="750.0">
                <children>
-                  <GridPane fx:id="productGrid" alignment="BASELINE_CENTER" AnchorPane.topAnchor="100.0">
+                  <GridPane fx:id="productGrid" alignment="CENTER_RIGHT" AnchorPane.topAnchor="100.0">
                      <children>
                         <AnchorPane fx:id="productPane" prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -906,6 +906,280 @@
                      </children>
                   </HBox>
                   <Button fx:id="createAccountButton" layoutX="260.0" layoutY="215.0" mnemonicParsing="false" text="Skapa" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="215.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="favoriteScrollPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" maxHeight="550.0" maxWidth="750.0" minHeight="550.0" minWidth="750.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <content>
+            <AnchorPane layoutY="40.0" maxHeight="700.0" maxWidth="750.0" minHeight="700.0" prefHeight="700.0" prefWidth="750.0">
+               <children>
+                  <GridPane fx:id="favoriteGrid" alignment="CENTER_RIGHT" AnchorPane.topAnchor="100.0">
+                     <children>
+                        <AnchorPane fx:id="favoritePane" prefHeight="200.0" prefWidth="200.0" visible="false">
+                           <children>
+                              <Button fx:id="buyfavorite" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="favoriteImage" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="favoriteLabel" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="favoriteFavorite" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textFieldFavorite" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plusfavorite" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minusfavorite" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCostFavorite" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane1" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1">
+                           <children>
+                              <Button fx:id="buy11" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage11" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel11" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite11" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField11" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus11" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus11" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost11" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane2" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2">
+                           <children>
+                              <Button fx:id="buy21" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage21" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel21" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite21" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField21" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus21" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus21" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost21" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane3" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.rowIndex="1">
+                           <children>
+                              <Button fx:id="buy31" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage31" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel31" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite31" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField31" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus31" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus31" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost31" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane4" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Button fx:id="buy41" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage41" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel41" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite41" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField41" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus41" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus41" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost41" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane5" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Button fx:id="buy51" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage51" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel51" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite51" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField51" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus51" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus51" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost51" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane6" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.rowIndex="2">
+                           <children>
+                              <Button fx:id="buy61" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage61" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel61" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite61" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField61" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus61" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus61" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost61" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane7" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Button fx:id="buy71" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage71" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel71" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite71" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField71" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus71" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus71" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost71" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane8" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Button fx:id="buy81" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage81" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel81" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite81" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField81" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus81" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus81" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost81" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane9" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.rowIndex="3">
+                           <children>
+                              <Button fx:id="buy91" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage91" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel91" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite91" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField91" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus91" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus91" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost91" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane10" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Button fx:id="buy101" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage101" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel101" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite101" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField101" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus101" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus101" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost101" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="favoritePane11" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <children>
+                              <Button fx:id="buy111" mnemonicParsing="false" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
+                              <ImageView fx:id="productImage111" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
+                              <Label fx:id="productLabel111" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
+                              <CheckBox fx:id="productFavorite111" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <TextField fx:id="textField111" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
+                              <Button fx:id="plus111" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="+" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus111" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" text="-" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="188.0">
+                                 <font>
+                                    <Font name="System Bold" size="8.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="totalCost111" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Label fx:id="favoriteLabel" text="Favoritvaror" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </content>

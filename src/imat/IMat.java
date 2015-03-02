@@ -172,7 +172,7 @@ public class IMat extends Application {
   public void initCenterFlik() {
     try {
       // Load start view.
-      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/VaraListVy.fxml"));
+      FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
       AnchorPane centerFlik = (AnchorPane) loader.load();
       
       centerController = loader.getController();

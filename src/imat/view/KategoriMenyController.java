@@ -73,8 +73,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToRiceView();
         riceLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -84,8 +82,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToMeatView();
         meatLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -95,8 +91,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToPastaView();
         pastaLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -106,8 +100,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToBreadView();
         breadLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -117,8 +109,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToDrinkView();
         drinkLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -128,8 +118,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToFruitView();
         fruitLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -139,8 +127,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToFishView();
         fishLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -150,8 +136,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToVegetablesView();
         vegetablesLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -161,8 +145,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToSpiceView();
         spiceLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -172,8 +154,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToDairiesView();
         dairiesLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -183,8 +163,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToNutsView();
         nutsLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -194,8 +172,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToPotatoView();
         potatoLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });
@@ -205,8 +181,6 @@ public class KategoriMenyController implements Initializable {
       public void handle(MouseEvent event) {
         imat.getCenterController().changeToSweetsView();
         sweetsLink.setVisited(false);
-        handla = imat.getCenterController().getHandlaFlik();
-        imat.getCenterController().getTabPane().getSelectionModel().select(handla);
         event.consume();
       }
     });

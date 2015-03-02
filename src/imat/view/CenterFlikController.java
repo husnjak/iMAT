@@ -45,9 +45,11 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -62,17 +64,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CenterFlikController implements Initializable {
   
-  @FXML
   private Tab handlaFlik;
-  @FXML
-  private Tab favoritvarorFlik;
-  @FXML
-  private Tab inkopslistorFlik;
-  @FXML
   private Tab historikFlik;
-  @FXML
-  private Tab kontouppgifterFlik;
-  @FXML
   private TabPane tabPane;
   @FXML
   private TextField emailTextField;
@@ -122,7 +115,6 @@ public class CenterFlikController implements Initializable {
   
   // Used for holding products from specific categories
   private List<Product> products;
-  @FXML
   private StackPane handlaStackPane;
   
   // Used for handling products
@@ -214,8 +206,6 @@ public class CenterFlikController implements Initializable {
   private Label createPasswordLabel;
   @FXML
   private Button createAccountButton;
-  @FXML
-  private StackPane mainStackPane;
   @FXML
   private Label createUserNameLabel;
   @FXML
@@ -781,6 +771,26 @@ public class CenterFlikController implements Initializable {
   private Label totalCost28;
   @FXML
   private Label categoryLabel;
+  @FXML
+  private AnchorPane varaListVyParent;
+  @FXML
+  private ToolBar toolBar;
+  @FXML
+  private Button kontouppgifterButton;
+  @FXML
+  private Button orderhistorikButton;
+  @FXML
+  private Button favoritvarorButton;
+  @FXML
+  private ScrollPane tom1;
+  @FXML
+  private ScrollPane tom2;
+  @FXML
+  private ScrollPane tom3;
+  @FXML
+  private ScrollPane orderHistorikPane;
+  @FXML
+  private ScrollPane kontouppgifterPane;
   
   public Integer getProductNr() {
     return productNr;
@@ -2042,6 +2052,22 @@ public class CenterFlikController implements Initializable {
         }
       }
     });
+    
+    kontouppgifterButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToKontoView();
+        event.consume();
+      }
+    });
+    
+    orderhistorikButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToOrderHistorikView();
+        event.consume();
+      }
+    });
   }
   
   /**
@@ -2482,17 +2508,17 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    int size = varaListVyParent.getChildren().size();
     currentPane = "startPage";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
+      id = varaListVyParent.getChildren().get(i).getId();
       if (id.compareTo(currentPane) == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
       } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
+        varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
   }
@@ -2501,15 +2527,15 @@ public class CenterFlikController implements Initializable {
    * Used for hiding panes in the whole tree.
    */
   public void hideOtherPanes() {
-    int size = mainStackPane.getChildren().size();
+    int size = varaListVyParent.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
-      id = mainStackPane.getChildren().get(i).getId();
+      id = varaListVyParent.getChildren().get(i).getId();
       if (id.compareTo(currentPane) == 0) {
-        mainStackPane.getChildren().get(i).toFront();
-        mainStackPane.getChildren().get(i).setVisible(true);
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
       } else {
-        mainStackPane.getChildren().get(i).setVisible(false);
+        varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
   }
@@ -2518,17 +2544,17 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the register page.
    */
   public void changeToRegisterView() {
+    int size = varaListVyParent.getChildren().size();
     currentPane = "registerPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
     String id;
     for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
+      id = varaListVyParent.getChildren().get(i).getId();
       if (id.compareTo(currentPane) == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
       } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
+        varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
   }
@@ -2590,19 +2616,7 @@ public class CenterFlikController implements Initializable {
    * If Rice link has been clicked, show rice products in Handla view.
    */
   public void changeToRiceView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Ris");
     products = IMatController.getIMatProducts().getRiceList();
@@ -2665,19 +2679,7 @@ public class CenterFlikController implements Initializable {
    * If Meat link has been clicked, show meat products in Handla view.
    */
   public void changeToMeatView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Kött");
     products = IMatController.getIMatProducts().getMeatList();
@@ -2746,20 +2748,8 @@ public class CenterFlikController implements Initializable {
     productPane28.setVisible(false);
   }
   
-    public void changeToPastaView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToPastaView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Pasta");
     products = IMatController.getIMatProducts().getPastaList();
@@ -2835,19 +2825,7 @@ public class CenterFlikController implements Initializable {
   }
     
   public void changeToBreadView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Bröd");
     products = IMatController.getIMatProducts().getBreadList();
@@ -2934,22 +2912,10 @@ public class CenterFlikController implements Initializable {
     productPane26.setVisible(false);
     productPane27.setVisible(false);
     productPane28.setVisible(false);
-    }
+  }
   
-    public void changeToDrinkView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToDrinkView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Dryck");
     products = IMatController.getIMatProducts().getDrinkList();
@@ -3056,22 +3022,10 @@ public class CenterFlikController implements Initializable {
     productPane26.setVisible(false);
     productPane27.setVisible(false);
     productPane28.setVisible(false);
-    }
+  }
     
-    public void changeToFruitView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToFruitView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Frukt & bär");
     products = IMatController.getIMatProducts().getFruitList();
@@ -3251,22 +3205,10 @@ public class CenterFlikController implements Initializable {
     productPane26.setVisible(true);
     productPane27.setVisible(true);
     productPane28.setVisible(true);
-    }
+  }
     
-    public void changeToFishView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToFishView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Fisk");
     products = IMatController.getIMatProducts().getFishList();
@@ -3340,20 +3282,8 @@ public class CenterFlikController implements Initializable {
     productPane28.setVisible(false);
     }
     
-    public void changeToVegetablesView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToVegetablesView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Grönsaker");
     products = IMatController.getIMatProducts().getVegetableList();
@@ -3470,22 +3400,10 @@ public class CenterFlikController implements Initializable {
     productPane26.setVisible(false);
     productPane27.setVisible(false);
     productPane28.setVisible(false);
-    }
+  }
     
-    public void changeToSpiceView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToSpiceView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Kryddor & örter");
     products = IMatController.getIMatProducts().getSpiceList();
@@ -3569,20 +3487,8 @@ public class CenterFlikController implements Initializable {
     productPane28.setVisible(false);
     }
     
-    public void changeToDairiesView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToDairiesView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Mejeriprodukter");
     products = IMatController.getIMatProducts().getDairieList();
@@ -3666,20 +3572,8 @@ public class CenterFlikController implements Initializable {
     productPane28.setVisible(false);
     }
     
-    public void changeToNutsView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToNutsView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Nötter & frön");
     products = IMatController.getIMatProducts().getNutsList();
@@ -3761,22 +3655,10 @@ public class CenterFlikController implements Initializable {
     productPane26.setVisible(false);
     productPane27.setVisible(false);
     productPane28.setVisible(false);
-    }
+  }
     
-    public void changeToPotatoView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToPotatoView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Potatis & rotfrukter");
     products = IMatController.getIMatProducts().getPotatoList();
@@ -3875,20 +3757,8 @@ public class CenterFlikController implements Initializable {
     productPane28.setVisible(false);
     }
     
-    public void changeToSweetsView() {
-    currentPane = "tabPane";
-    hideOtherPanes();
-    int size = handlaStackPane.getChildren().size();
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("productScrollPane") == 0) {
-        handlaStackPane.getChildren().get(i).toFront();
-        handlaStackPane.getChildren().get(i).setVisible(true);
-      } else {
-        handlaStackPane.getChildren().get(i).setVisible(false);
-      }
-    }
+  public void changeToSweetsView() {
+    changeToCategoryView();
     setAllUnitsToOne();
     categoryLabel.setText("Sötsaker");
     products = IMatController.getIMatProducts().getSweetsList();
@@ -4011,6 +3881,70 @@ public class CenterFlikController implements Initializable {
       productTable.setItems(productsInOrder);
       productTable.setVisible(true);
       }
+  }
+  
+  public void testAccountView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "registerPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
+  
+  public void changeToKontoView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "kontouppgifterPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
+  
+  public void changeToOrderHistorikView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "orderHistorikPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
+  
+  public void changeToCategoryView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "productScrollPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
   }
 
 }

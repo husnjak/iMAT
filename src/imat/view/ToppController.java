@@ -149,6 +149,7 @@ public class ToppController implements Initializable {
       @Override
       public void handle(MouseEvent event) {
         loggedInUser.setVisited(false);
+        imat.getCenterController().changeToKontoView();
         event.consume();
       }
     });

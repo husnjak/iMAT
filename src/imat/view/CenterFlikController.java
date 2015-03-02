@@ -4750,6 +4750,19 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToFavoriteView() {
+    favoritePane.setVisible(false);
+    favoritePane1.setVisible(false);
+    favoritePane2.setVisible(false);
+    favoritePane3.setVisible(false);
+    favoritePane4.setVisible(false);
+    favoritePane5.setVisible(false);
+    favoritePane6.setVisible(false);
+    favoritePane7.setVisible(false);
+    favoritePane8.setVisible(false);
+    favoritePane9.setVisible(false);
+    favoritePane10.setVisible(false);
+    favoritePane11.setVisible(false);
+    
     int size = varaListVyParent.getChildren().size();
     currentPane = "favoriteScrollPane";
     String id;
@@ -4764,23 +4777,44 @@ public class CenterFlikController implements Initializable {
       }
     }
     
-    
-    
-    //show used favorite panes
-    favoritePane.setVisible(false);
-    favoritePane1.setVisible(false);
-    favoritePane2.setVisible(false);
-    favoritePane3.setVisible(false);
-    favoritePane4.setVisible(false);
-    favoritePane5.setVisible(false);
-    favoritePane6.setVisible(false);
-    
-    //hides unused favorite panes
-    favoritePane7.setVisible(false);
-    favoritePane8.setVisible(false);
-    favoritePane9.setVisible(false);
-    favoritePane10.setVisible(false);
-    favoritePane11.setVisible(false);
+    List<Product> favorites = IMatController.getIMatBackend().favorites();
+    int nrOfFavorites = favorites.size();
+    int keepCount = 0;
+    for (int i = 0; i < nrOfFavorites; i++) {
+      product = favorites.get(i);
+      productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+      imageName = product.getImageName();
+      setImage(productImage, imageName);
+      totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+      keepCount = i;
+      switch(keepCount) {
+        case 0: favoritePane.setVisible(true);
+                break;
+        case 1: favoritePane1.setVisible(true);
+                break;
+        case 2: favoritePane2.setVisible(true);
+                break;
+        case 3: favoritePane3.setVisible(true);
+                break;        
+        case 4: favoritePane4.setVisible(true);
+                break;
+        case 5: favoritePane5.setVisible(true);
+                break;
+        case 6: favoritePane6.setVisible(true);
+                break;
+        case 7: favoritePane7.setVisible(true);
+                break;    
+        case 8: favoritePane8.setVisible(true);
+                break;
+        case 9: favoritePane9.setVisible(true);
+                break;
+        case 10: favoritePane10.setVisible(true);
+                break;
+        case 11: favoritePane11.setVisible(true);
+                break;           
+      }
+          
+    }
     
   }
 }

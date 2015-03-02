@@ -40,7 +40,7 @@ public class IMatShoppingCart {
    * @return  the unique id 
    */
   private static int setOrderID() {
-    return IMatController.getNumberOfRecords();
+    return IMatController.getNumberOfRecords("orders");
   }
   
   public void setCart(IMatOrder cart) {

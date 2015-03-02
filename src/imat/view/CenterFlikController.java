@@ -968,11 +968,665 @@ public class CenterFlikController implements Initializable {
       public void handle(ActionEvent event) {
         Product product = products.get(0);
         if (IMatController.currentUser != null) {
-          
+          if (productFavorite.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
         } else {
-          IMatController.getIMatBackend().addFavorite(product);
+          if (productFavorite.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
         }
-        
+      }
+    });
+    
+    productFavorite1.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(1);
+        if (IMatController.currentUser != null) {
+          if (productFavorite1.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite1.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite2.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(2);
+        if (IMatController.currentUser != null) {
+          if (productFavorite2.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite2.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite3.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(3);
+        if (IMatController.currentUser != null) {
+          if (productFavorite3.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite3.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite4.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(4);
+        if (IMatController.currentUser != null) {
+          if (productFavorite4.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite4.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite5.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(5);
+        if (IMatController.currentUser != null) {
+          if (productFavorite5.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite5.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite6.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(6);
+        if (IMatController.currentUser != null) {
+          if (productFavorite6.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite6.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite7.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(7);
+        if (IMatController.currentUser != null) {
+          if (productFavorite7.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite7.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite8.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(8);
+        if (IMatController.currentUser != null) {
+          if (productFavorite8.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite8.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite9.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(9);
+        if (IMatController.currentUser != null) {
+          if (productFavorite9.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite9.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(10);
+        if (IMatController.currentUser != null) {
+          if (productFavorite10.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite10.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(11);
+        if (IMatController.currentUser != null) {
+          if (productFavorite11.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite11.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(12);
+        if (IMatController.currentUser != null) {
+          if (productFavorite12.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite12.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite13.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(13);
+        if (IMatController.currentUser != null) {
+          if (productFavorite13.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite13.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite14.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(14);
+        if (IMatController.currentUser != null) {
+          if (productFavorite14.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite14.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite15.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(15);
+        if (IMatController.currentUser != null) {
+          if (productFavorite15.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite15.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite16.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(16);
+        if (IMatController.currentUser != null) {
+          if (productFavorite16.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite16.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite17.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(17);
+        if (IMatController.currentUser != null) {
+          if (productFavorite17.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite17.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite18.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(18);
+        if (IMatController.currentUser != null) {
+          if (productFavorite18.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite18.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite19.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(19);
+        if (IMatController.currentUser != null) {
+          if (productFavorite19.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite19.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite20.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(20);
+        if (IMatController.currentUser != null) {
+          if (productFavorite20.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite20.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite21.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(21);
+        if (IMatController.currentUser != null) {
+          if (productFavorite21.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite21.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite22.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(22);
+        if (IMatController.currentUser != null) {
+          if (productFavorite22.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite22.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite23.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(23);
+        if (IMatController.currentUser != null) {
+          if (productFavorite23.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite23.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite24.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(24);
+        if (IMatController.currentUser != null) {
+          if (productFavorite24.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite24.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite25.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(25);
+        if (IMatController.currentUser != null) {
+          if (productFavorite25.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite25.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite26.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(26);
+        if (IMatController.currentUser != null) {
+          if (productFavorite26.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite26.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite27.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(27);
+        if (IMatController.currentUser != null) {
+          if (productFavorite27.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite27.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
+      }
+    });
+    
+    productFavorite28.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(28);
+        if (IMatController.currentUser != null) {
+          if (productFavorite28.isSelected()) {
+            int index = IMatController.getNumberOfRecords(product.toString());
+            IMatController.addFavorite(product.toString(), ++index);
+          } else {
+            // Implement how to find correct index
+            int index = 1;
+            IMatController.removeFavorite(product.toString(), index);
+          }
+        } else {
+          if (productFavorite28.isSelected()) {
+            IMatController.getIMatBackend().addFavorite(product);
+          } else {
+            IMatController.getIMatBackend().removeFavorite(product);
+          }
+        }
       }
     });
     

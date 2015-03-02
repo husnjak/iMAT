@@ -312,6 +312,24 @@ public class IMatController implements Initializable {
     }
   }
   
+  /**
+   * Removes an existing favorite product from the database.
+   * 
+   * @param favorite  the product to be removed
+   */
+  public static synchronized void removeFavorite(String favorite, int index) {
+    try {
+      String updateString = "update FAVORITES set FAVORITE" + index + " = ? where USERNAME = ?";
+      psUpdate = conn.prepareStatement(updateString);
+      psUpdate.setString(1, null);
+      psUpdate.setString(2, currentUser);
+      psUpdate.executeUpdate();
+      psUpdate.close();
+    } catch (SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
   public static void addProductToIMatOrder(Integer productNr, Integer productUnits, String value, Integer totalCost) {
       try {
         productNr++;
@@ -377,11 +395,11 @@ public class IMatController implements Initializable {
    * 
    * @return  the number of records 
    */
-  public static int getNumberOfRecords() {
+  public static int getNumberOfRecords(String table) {
     int records = 0;
     try {
       select = conn.createStatement();
-      ResultSet rs = select.executeQuery("SELECT * FROM orders");
+      ResultSet rs = select.executeQuery("SELECT * FROM " + table);
       while (rs.next()) {
         records++;
       }

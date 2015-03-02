@@ -173,7 +173,7 @@ public class IMat extends Application {
     try {
       // Load start view.
       FXMLLoader loader = new FXMLLoader(IMat.class.getResource("view/CenterFlik.fxml"));
-      StackPane centerFlik = loader.load();
+      StackPane centerFlik = (StackPane) loader.load();
       
       centerController = loader.getController();
       centerController.setMainApp(this);
@@ -184,7 +184,6 @@ public class IMat extends Application {
       // Load stored information for the user that is not logged in
       centerController.loadCustomerInformation();
       centerController.getOrders();
-      
     } catch (IOException e) {
         e.printStackTrace();
     }

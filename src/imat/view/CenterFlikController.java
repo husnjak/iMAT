@@ -35,6 +35,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -47,6 +48,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
@@ -116,43 +119,11 @@ public class CenterFlikController implements Initializable {
   
   // Used for deciding if to show the list view of products or not
   private boolean listView;
-  @FXML
-  private ImageView imageOneOne;
   
   // Used for holding products from specific categories
   private List<Product> products;
   @FXML
-  private ImageView imageOneTwo;
-  @FXML
-  private ImageView imageOneThree;
-  @FXML
-  private ScrollPane breadScrollPane;
-  @FXML
-  private ImageView imageOneOne1;
-  @FXML
-  private ImageView imageOneTwo1;
-  @FXML
-  private ImageView imageOneThree1;
-  @FXML
-  private ScrollPane meatScrollPane;
-  @FXML
   private StackPane handlaStackPane;
-  @FXML
-  private Label breadLabel00;
-  @FXML
-  private Label breadLabel01;
-  @FXML
-  private Label breadLabel02;
-  @FXML
-  private CheckBox breadFavorite00;
-  @FXML
-  private CheckBox breadFavorite01;
-  @FXML
-  private CheckBox breadFavorite02;
-  @FXML
-  private TextField textFieldBread00;
-  @FXML
-  private Button plusBread00;
   
   // Used for handling products
   Product product;
@@ -171,215 +142,65 @@ public class CenterFlikController implements Initializable {
   private ObservableList<IMatShoppingItem> productsInOrder;
   private ObservableList<IMatShoppingItem> productsInDatabase;
   
-  @FXML
-  private Button minusBread00;
-  @FXML
-  private Label totalCostBread00;
-  @FXML
-  private Label totalCostBread01;
-  @FXML
-  private Label totalCostBread02;
-  @FXML
-  private Button buyBread00;
-  @FXML
-  private Button buyBread01;
-  @FXML
-  private TextField textFieldBread01;
-  @FXML
-  private Button plusBread01;
-  @FXML
-  private Button minusBread01;
-  @FXML
-  private Button plusBread02;
-  @FXML
-  private Button minusBread02;
-  @FXML
-  private TextField textFieldBread02;
-  @FXML
-  private Button buyBread02;
-  @FXML
-  private ImageView imageTwoOne;
-  @FXML
-  private Label breadLabel10;
-  @FXML
-  private CheckBox breadFavorite10;
-  @FXML
-  private TextField textFieldBread10;
-  @FXML
-  private Button plusBread10;
-  @FXML
-  private Button minusBread10;
-  @FXML
-  private Button buyBread10;
-  @FXML
-  private Label totalCostBread10;
-  @FXML
   private Label riceLabel00;
-  @FXML
   private Label riceLabel01;
-  @FXML
   private Label riceLabel02;
-  @FXML
-  private CheckBox riceFavorite00;
-  @FXML
-  private CheckBox riceFavorite01;
-  @FXML
-  private CheckBox riceFavorite02;
-  @FXML
   private TextField textFieldRice00;
-  @FXML
   private Button plusRice00;
-  @FXML
   private Button minusRice00;
-  @FXML
   private Label totalCostRice00;
-  @FXML
   private Label totalCostRice01;
-  @FXML
   private Label totalCostRice02;
-  @FXML
   private Button buyRice00;
-  @FXML
   private Button buyRice01;
-  @FXML
   private TextField textFieldRice01;
-  @FXML
   private Button plusRice01;
-  @FXML
   private Button minusRice01;
-  @FXML
   private Button plusRice02;
-  @FXML
   private Button minusRice02;
-  @FXML
   private TextField textFieldRice02;
-  @FXML
   private Button buyRice02;
-  @FXML
   private Label riceLabel10;
-  @FXML
-  private CheckBox riceFavorite10;
-  @FXML
   private TextField textFieldRice10;
-  @FXML
   private Button plusRice10;
-  @FXML
   private Button minusRice10;
-  @FXML
   private Button buyRice10;
-  @FXML
   private Label totalCostRice10;
-  @FXML
-  private ScrollPane riceScrollPane;
-  @FXML
   private ImageView imageZeroZeroRice;
-  @FXML
   private ImageView imageZeroOneRice;
-  @FXML
   private ImageView imageZeroTwoRice;
-  @FXML
   private ImageView imageOneZeroRice;
   @FXML
   private ScrollPane startPage;
-  @FXML
-  private ImageView imageZeroZeroMeat;
-  @FXML
-  private ImageView imageZeroOneMeat;
-  @FXML
-  private ImageView imageZeroTwoMeat;
-  @FXML
-  private Label meatLabel00;
-  @FXML
-  private Label meatLabel01;
-  @FXML
-  private Label meatLabel02;
-  @FXML
-  private CheckBox meatFavorite00;
-  @FXML
-  private CheckBox meatFavorite01;
-  @FXML
-  private CheckBox meatFavorite02;
-  @FXML
   private TextField textFieldMeat00;
-  @FXML
   private Button plusMeat00;
-  @FXML
   private Button minusMeat00;
-  @FXML
   private Label totalCostMeat00;
-  @FXML
   private Label totalCostMeat01;
-  @FXML
   private Label totalCostMeat02;
-  @FXML
   private Button buyMeat00;
-  @FXML
   private Button buyMeat01;
-  @FXML
   private TextField textFieldMeat01;
-  @FXML
   private Button plusMeat01;
-  @FXML
   private Button minusMeat01;
-  @FXML
   private Button plusMeat02;
-  @FXML
   private Button minusMeat02;
-  @FXML
   private TextField textFieldMeat02;
-  @FXML
   private Button buyMeat02;
-  @FXML
-  private ImageView imageOneZeroMeat;
-  @FXML
-  private Label meatLabel10;
-  @FXML
-  private CheckBox meatFavorite10;
-  @FXML
   private TextField textFieldMeat10;
-  @FXML
   private Button plusMeat10;
-  @FXML
   private Button minusMeat10;
-  @FXML
   private Button buyMeat10;
-  @FXML
   private Label totalCostMeat10;
-  @FXML
-  private ScrollPane test;
-  @FXML
-  private ScrollPane test2;
-  @FXML
-  private ImageView imageOneOneMeat;
-  @FXML
-  private Label meatLabel11;
-  @FXML
-  private CheckBox meatFavorite11;
-  @FXML
   private TextField textFieldMeat11;
-  @FXML
   private Button plusMeat11;
-  @FXML
   private Button minusMeat11;
-  @FXML
   private Button buyMeat11;
-  @FXML
   private Label totalCostMeat11;
-  @FXML
-  private ImageView imageOneTwoMeat;
-  @FXML
-  private Label meatLabel12;
-  @FXML
-  private CheckBox meatFavorite12;
-  @FXML
   private Button plusMeat12;
-  @FXML
   private Button minusMeat12;
-  @FXML
   private Button buyMeat12;
-  @FXML
   private Label totalCostMeat12;
-  @FXML
   private TextField textFieldMeat12;
   @FXML
   private ScrollPane registerPane;
@@ -413,13 +234,16 @@ public class CenterFlikController implements Initializable {
   Integer productUnits;
   
   // Stores the total sum of all products in the shopping cart
-  int totalCost;
+  int totalCostInt;
   
   // Contains the converted orders for a user who is not logged in
   List<IMatOrder> imatOrderList;
   
   // Contains shopping items related to a IMat order (for logged in users)
   List<IMatShoppingItem> imatItemList;
+  
+  // Used to keep track of which category is selected
+  Product currentProductCategory;
   
   @FXML
   private TableView<IMatShoppingItem> productTable;
@@ -429,6 +253,534 @@ public class CenterFlikController implements Initializable {
   private TableColumn<IMatShoppingItem, Integer> productUnitsColumn;
   @FXML
   private TableColumn<IMatShoppingItem, Integer> productCostColumn;
+  @FXML
+  private ScrollPane productScrollPane;
+  @FXML
+  private GridPane productGrid;
+  @FXML
+  private AnchorPane productPane;
+  @FXML
+  private Button buy;
+  @FXML
+  private ImageView productImage;
+  @FXML
+  private Label productLabel;
+  @FXML
+  private CheckBox productFavorite;
+  @FXML
+  private TextField textField;
+  @FXML
+  private Button plus;
+  @FXML
+  private Button minus;
+  @FXML
+  private Label totalCost;
+  @FXML
+  private AnchorPane productPane1;
+  @FXML
+  private Button buy1;
+  @FXML
+  private ImageView productImage1;
+  @FXML
+  private Label productLabel1;
+  @FXML
+  private CheckBox productFavorite1;
+  @FXML
+  private TextField textField1;
+  @FXML
+  private Button plus1;
+  @FXML
+  private Button minus1;
+  @FXML
+  private Label totalCost1;
+  @FXML
+  private AnchorPane productPane2;
+  @FXML
+  private Button buy2;
+  @FXML
+  private ImageView productImage2;
+  @FXML
+  private Label productLabel2;
+  @FXML
+  private CheckBox productFavorite2;
+  @FXML
+  private TextField textField2;
+  @FXML
+  private Button plus2;
+  @FXML
+  private Button minus2;
+  @FXML
+  private Label totalCost2;
+  @FXML
+  private AnchorPane productPane3;
+  @FXML
+  private Button buy3;
+  @FXML
+  private ImageView productImage3;
+  @FXML
+  private Label productLabel3;
+  @FXML
+  private CheckBox productFavorite3;
+  @FXML
+  private TextField textField3;
+  @FXML
+  private Button plus3;
+  @FXML
+  private Button minus3;
+  @FXML
+  private Label totalCost3;
+  @FXML
+  private AnchorPane productPane4;
+  @FXML
+  private Button buy4;
+  @FXML
+  private ImageView productImage4;
+  @FXML
+  private Label productLabel4;
+  @FXML
+  private CheckBox productFavorite4;
+  @FXML
+  private TextField textField4;
+  @FXML
+  private Button plus4;
+  @FXML
+  private Button minus4;
+  @FXML
+  private Label totalCost4;
+  @FXML
+  private AnchorPane productPane5;
+  @FXML
+  private Button buy5;
+  @FXML
+  private ImageView productImage5;
+  @FXML
+  private Label productLabel5;
+  @FXML
+  private CheckBox productFavorite5;
+  @FXML
+  private TextField textField5;
+  @FXML
+  private Button plus5;
+  @FXML
+  private Button minus5;
+  @FXML
+  private Label totalCost5;
+  @FXML
+  private AnchorPane productPane6;
+  @FXML
+  private Button buy6;
+  @FXML
+  private ImageView productImage6;
+  @FXML
+  private Label productLabel6;
+  @FXML
+  private CheckBox productFavorite6;
+  @FXML
+  private TextField textField6;
+  @FXML
+  private Button plus6;
+  @FXML
+  private Button minus6;
+  @FXML
+  private Label totalCost6;
+  @FXML
+  private AnchorPane productPane7;
+  @FXML
+  private Button buy7;
+  @FXML
+  private ImageView productImage7;
+  @FXML
+  private Label productLabel7;
+  @FXML
+  private CheckBox productFavorite7;
+  @FXML
+  private TextField textField7;
+  @FXML
+  private Button plus7;
+  @FXML
+  private Button minus7;
+  @FXML
+  private Label totalCost7;
+  @FXML
+  private AnchorPane productPane8;
+  @FXML
+  private Button buy8;
+  @FXML
+  private ImageView productImage8;
+  @FXML
+  private Label productLabel8;
+  @FXML
+  private CheckBox productFavorite8;
+  @FXML
+  private TextField textField8;
+  @FXML
+  private Button plus8;
+  @FXML
+  private Button minus8;
+  @FXML
+  private Label totalCost8;
+  @FXML
+  private AnchorPane productPane9;
+  @FXML
+  private Button buy9;
+  @FXML
+  private ImageView productImage9;
+  @FXML
+  private Label productLabel9;
+  @FXML
+  private CheckBox productFavorite9;
+  @FXML
+  private TextField textField9;
+  @FXML
+  private Button plus9;
+  @FXML
+  private Button minus9;
+  @FXML
+  private Label totalCost9;
+  @FXML
+  private AnchorPane productPane10;
+  @FXML
+  private Button buy10;
+  @FXML
+  private ImageView productImage10;
+  @FXML
+  private Label productLabel10;
+  @FXML
+  private CheckBox productFavorite10;
+  @FXML
+  private TextField textField10;
+  @FXML
+  private Button plus10;
+  @FXML
+  private Button minus10;
+  @FXML
+  private Label totalCost10;
+  @FXML
+  private AnchorPane productPane11;
+  @FXML
+  private Button buy11;
+  @FXML
+  private ImageView productImage11;
+  @FXML
+  private Label productLabel11;
+  @FXML
+  private CheckBox productFavorite11;
+  @FXML
+  private TextField textField11;
+  @FXML
+  private Button plus11;
+  @FXML
+  private Button minus11;
+  @FXML
+  private Label totalCost11;
+  @FXML
+  private AnchorPane productPane12;
+  @FXML
+  private Button buy12;
+  @FXML
+  private ImageView productImage12;
+  @FXML
+  private Label productLabel12;
+  @FXML
+  private CheckBox productFavorite12;
+  @FXML
+  private TextField textField12;
+  @FXML
+  private Button plus12;
+  @FXML
+  private Button minus12;
+  @FXML
+  private Label totalCost12;
+  @FXML
+  private AnchorPane productPane13;
+  @FXML
+  private Button buy13;
+  @FXML
+  private ImageView productImage13;
+  @FXML
+  private Label productLabel13;
+  @FXML
+  private CheckBox productFavorite13;
+  @FXML
+  private TextField textField13;
+  @FXML
+  private Button plus13;
+  @FXML
+  private Button minus13;
+  @FXML
+  private Label totalCost13;
+  @FXML
+  private AnchorPane productPane14;
+  @FXML
+  private Button buy14;
+  @FXML
+  private ImageView productImage14;
+  @FXML
+  private Label productLabel14;
+  @FXML
+  private CheckBox productFavorite14;
+  @FXML
+  private TextField textField14;
+  @FXML
+  private Button plus14;
+  @FXML
+  private Button minus14;
+  @FXML
+  private Label totalCost14;
+  @FXML
+  private AnchorPane productPane15;
+  @FXML
+  private Button buy15;
+  @FXML
+  private ImageView productImage15;
+  @FXML
+  private Label productLabel15;
+  @FXML
+  private CheckBox productFavorite15;
+  @FXML
+  private TextField textField15;
+  @FXML
+  private Button plus15;
+  @FXML
+  private Button minus15;
+  @FXML
+  private Label totalCost15;
+  @FXML
+  private AnchorPane productPane16;
+  @FXML
+  private Button buy16;
+  @FXML
+  private ImageView productImage16;
+  @FXML
+  private Label productLabel16;
+  @FXML
+  private CheckBox productFavorite16;
+  @FXML
+  private TextField textField16;
+  @FXML
+  private Button plus16;
+  @FXML
+  private Button minus16;
+  @FXML
+  private Label totalCost16;
+  @FXML
+  private AnchorPane productPane17;
+  @FXML
+  private Button buy17;
+  @FXML
+  private ImageView productImage17;
+  @FXML
+  private Label productLabel17;
+  @FXML
+  private CheckBox productFavorite17;
+  @FXML
+  private TextField textField17;
+  @FXML
+  private Button plus17;
+  @FXML
+  private Button minus17;
+  @FXML
+  private Label totalCost17;
+  @FXML
+  private AnchorPane productPane18;
+  @FXML
+  private Button buy18;
+  @FXML
+  private ImageView productImage18;
+  @FXML
+  private Label productLabel18;
+  @FXML
+  private CheckBox productFavorite18;
+  @FXML
+  private TextField textField18;
+  @FXML
+  private Button plus18;
+  @FXML
+  private Button minus18;
+  @FXML
+  private Label totalCost18;
+  @FXML
+  private AnchorPane productPane19;
+  @FXML
+  private Button buy19;
+  @FXML
+  private ImageView productImage19;
+  @FXML
+  private Label productLabel19;
+  @FXML
+  private CheckBox productFavorite19;
+  @FXML
+  private TextField textField19;
+  @FXML
+  private Button plus19;
+  @FXML
+  private Button minus19;
+  @FXML
+  private Label totalCost19;
+  @FXML
+  private AnchorPane productPane20;
+  @FXML
+  private Button buy20;
+  @FXML
+  private ImageView productImage20;
+  @FXML
+  private Label productLabel20;
+  @FXML
+  private CheckBox productFavorite20;
+  @FXML
+  private TextField textField20;
+  @FXML
+  private Button plus20;
+  @FXML
+  private Button minus20;
+  @FXML
+  private Label totalCost20;
+  @FXML
+  private AnchorPane productPane21;
+  @FXML
+  private Button buy21;
+  @FXML
+  private ImageView productImage21;
+  @FXML
+  private Label productLabel21;
+  @FXML
+  private CheckBox productFavorite21;
+  @FXML
+  private TextField textField21;
+  @FXML
+  private Button plus21;
+  @FXML
+  private Button minus21;
+  @FXML
+  private Label totalCost21;
+  @FXML
+  private AnchorPane productPane22;
+  @FXML
+  private Button buy22;
+  @FXML
+  private ImageView productImage22;
+  @FXML
+  private Label productLabel22;
+  @FXML
+  private CheckBox productFavorite22;
+  @FXML
+  private TextField textField22;
+  @FXML
+  private Button plus22;
+  @FXML
+  private Button minus22;
+  @FXML
+  private Label totalCost22;
+  @FXML
+  private AnchorPane productPane23;
+  @FXML
+  private Button buy23;
+  @FXML
+  private ImageView productImage23;
+  @FXML
+  private Label productLabel23;
+  @FXML
+  private CheckBox productFavorite23;
+  @FXML
+  private TextField textField23;
+  @FXML
+  private Button plus23;
+  @FXML
+  private Button minus23;
+  @FXML
+  private Label totalCost23;
+  @FXML
+  private AnchorPane productPane24;
+  @FXML
+  private Button buy24;
+  @FXML
+  private ImageView productImage24;
+  @FXML
+  private Label productLabel24;
+  @FXML
+  private CheckBox productFavorite24;
+  @FXML
+  private TextField textField24;
+  @FXML
+  private Button plus24;
+  @FXML
+  private Button minus24;
+  @FXML
+  private Label totalCost24;
+  @FXML
+  private AnchorPane productPane25;
+  @FXML
+  private Button buy25;
+  @FXML
+  private ImageView productImage25;
+  @FXML
+  private Label productLabel25;
+  @FXML
+  private CheckBox productFavorite25;
+  @FXML
+  private TextField textField25;
+  @FXML
+  private Button plus25;
+  @FXML
+  private Button minus25;
+  @FXML
+  private Label totalCost25;
+  @FXML
+  private AnchorPane productPane26;
+  @FXML
+  private Button buy26;
+  @FXML
+  private ImageView productImage26;
+  @FXML
+  private Label productLabel26;
+  @FXML
+  private CheckBox productFavorite26;
+  @FXML
+  private TextField textField26;
+  @FXML
+  private Button plus26;
+  @FXML
+  private Button minus26;
+  @FXML
+  private Label totalCost26;
+  @FXML
+  private AnchorPane productPane27;
+  @FXML
+  private Button buy27;
+  @FXML
+  private ImageView productImage27;
+  @FXML
+  private Label productLabel27;
+  @FXML
+  private CheckBox productFavorite27;
+  @FXML
+  private TextField textField27;
+  @FXML
+  private Button plus27;
+  @FXML
+  private Button minus27;
+  @FXML
+  private Label totalCost27;
+  @FXML
+  private AnchorPane productPane28;
+  @FXML
+  private Button buy28;
+  @FXML
+  private ImageView productImage28;
+  @FXML
+  private Label productLabel28;
+  @FXML
+  private CheckBox productFavorite28;
+  @FXML
+  private TextField textField28;
+  @FXML
+  private Button plus28;
+  @FXML
+  private Button minus28;
+  @FXML
+  private Label totalCost28;
+  @FXML
+  private Label categoryLabel;
   
   public Integer getProductNr() {
     return productNr;
@@ -475,163 +827,467 @@ public class CenterFlikController implements Initializable {
     products = new ArrayList<>();
     productTable.setMouseTransparent(true);
     
-    plusRice00.setOnAction(new EventHandler<ActionEvent>() {
+    plus.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(0);
-        increment(textFieldRice00, totalCostRice00, product);
+        Product product = products.get(0);
+        increment(textField, totalCost, product);
       }
     });
     
-    minusRice00.setOnAction(new EventHandler<ActionEvent>() {
+    minus.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(0);
-        decrement(textFieldRice00, totalCostRice00, product);
+        Product product = products.get(0);
+        decrement(textField, totalCost, product);
       }
     });
     
-    plusRice01.setOnAction(new EventHandler<ActionEvent>() {
+    plus1.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(1);
-        increment(textFieldRice01, totalCostRice01, product);
+        Product product = products.get(1);
+        increment(textField1, totalCost1, product);
       }
     });
     
-    minusRice01.setOnAction(new EventHandler<ActionEvent>() {
+    minus1.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(1);
-        decrement(textFieldRice01, totalCostRice01, product);
+        Product product = products.get(1);
+        decrement(textField1, totalCost1, product);
       }
     });
     
-    plusRice02.setOnAction(new EventHandler<ActionEvent>() {
+    plus2.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(2);
-        increment(textFieldRice02, totalCostRice02, product);
+        Product product = products.get(2);
+        increment(textField2, totalCost2, product);
       }
     });
     
-    minusRice02.setOnAction(new EventHandler<ActionEvent>() {
+    minus2.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(2);
-        decrement(textFieldRice02, totalCostRice02, product);
+        Product product = products.get(2);
+        decrement(textField2, totalCost2, product);
       }
     });
     
-    plusRice10.setOnAction(new EventHandler<ActionEvent>() {
+    plus3.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(3);
-        increment(textFieldRice10, totalCostRice10, product);
+        Product product = products.get(3);
+        increment(textField3, totalCost3, product);
       }
     });
     
-    minusRice10.setOnAction(new EventHandler<ActionEvent>() {
+    minus3.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(3);
-        decrement(textFieldRice10, totalCostRice10, product);
+        Product product = products.get(3);
+        decrement(textField3, totalCost3, product);
       }
     });
     
-    plusMeat00.setOnAction(new EventHandler<ActionEvent>() {
+    plus4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(0);
-        increment(textFieldMeat00, totalCostMeat00, product);
+        Product product = products.get(4);
+        increment(textField4, totalCost4, product);
       }
     });
     
-    minusMeat00.setOnAction(new EventHandler<ActionEvent>() {
+    minus4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(0);
-        decrement(textFieldMeat00, totalCostMeat00, product);
+        Product product = products.get(4);
+        decrement(textField4, totalCost4, product);
       }
     });
     
-    plusMeat01.setOnAction(new EventHandler<ActionEvent>() {
+    plus5.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(1);
-        increment(textFieldMeat01, totalCostMeat01, product);
+        Product product = products.get(5);
+        increment(textField5, totalCost5, product);
       }
     });
     
-    minusMeat01.setOnAction(new EventHandler<ActionEvent>() {
+    minus5.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(1);
-        decrement(textFieldMeat01, totalCostMeat01, product);
+        Product product = products.get(5);
+        decrement(textField5, totalCost5, product);
       }
     });
     
-    plusMeat02.setOnAction(new EventHandler<ActionEvent>() {
+    plus6.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(2);
-        increment(textFieldMeat02, totalCostMeat02, product);
+        Product product = products.get(6);
+        increment(textField6, totalCost6, product);
       }
     });
     
-    minusMeat02.setOnAction(new EventHandler<ActionEvent>() {
+    minus6.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(2);
-        decrement(textFieldMeat02, totalCostMeat02, product);
+        Product product = products.get(6);
+        decrement(textField6, totalCost6, product);
       }
     });
     
-    plusMeat10.setOnAction(new EventHandler<ActionEvent>() {
+    plus7.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(3);
-        increment(textFieldMeat10, totalCostMeat10, product);
+        Product product = products.get(7);
+        increment(textField7, totalCost7, product);
       }
     });
     
-    minusMeat10.setOnAction(new EventHandler<ActionEvent>() {
+    minus7.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(3);
-        decrement(textFieldMeat10, totalCostMeat10, product);
+        Product product = products.get(7);
+        decrement(textField7, totalCost7, product);
       }
     });
     
-    plusMeat11.setOnAction(new EventHandler<ActionEvent>() {
+    plus8.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(4);
-        increment(textFieldMeat11, totalCostMeat11, product);
+        Product product = products.get(8);
+        increment(textField8, totalCost8, product);
       }
     });
     
-    minusMeat11.setOnAction(new EventHandler<ActionEvent>() {
+    minus8.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(4);
-        decrement(textFieldMeat11, totalCostMeat11, product);
+        Product product = products.get(8);
+        decrement(textField8, totalCost8, product);
       }
     });
     
-    plusMeat12.setOnAction(new EventHandler<ActionEvent>() {
+    plus9.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(5);
-        increment(textFieldMeat12, totalCostMeat12, product);
+        Product product = products.get(9);
+        increment(textField9, totalCost9, product);
       }
     });
     
-    minusMeat12.setOnAction(new EventHandler<ActionEvent>() {
+    minus9.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(5);
-        decrement(textFieldMeat12, totalCostMeat12, product);
+        Product product = products.get(9);
+        decrement(textField9, totalCost9, product);
+      }
+    });
+    
+    plus10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(10);
+        increment(textField10, totalCost10, product);
+      }
+    });
+    
+    minus10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(10);
+        decrement(textField10, totalCost10, product);
+      }
+    });
+    
+    plus11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(11);
+        increment(textField11, totalCost11, product);
+      }
+    });
+    
+    minus11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(11);
+        decrement(textField11, totalCost11, product);
+      }
+    });
+    
+    plus12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(12);
+        increment(textField12, totalCost12, product);
+      }
+    });
+    
+    minus12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(12);
+        decrement(textField12, totalCost12, product);
+      }
+    });
+    
+    plus13.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(13);
+        increment(textField13, totalCost13, product);
+      }
+    });
+    
+    minus13.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(13);
+        decrement(textField13, totalCost13, product);
+      }
+    });
+    
+    plus14.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(14);
+        increment(textField14, totalCost14, product);
+      }
+    });
+    
+    minus14.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(14);
+        decrement(textField14, totalCost14, product);
+      }
+    });
+    
+    plus15.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(15);
+        increment(textField15, totalCost15, product);
+      }
+    });
+    
+    minus15.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(15);
+        decrement(textField15, totalCost15, product);
+      }
+    });
+    
+    plus16.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(16);
+        increment(textField16, totalCost16, product);
+      }
+    });
+    
+    minus16.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(16);
+        decrement(textField16, totalCost16, product);
+      }
+    });
+    
+    plus17.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(17);
+        increment(textField17, totalCost17, product);
+      }
+    });
+    
+    minus17.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(17);
+        decrement(textField17, totalCost17, product);
+      }
+    });
+    
+    plus18.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(18);
+        increment(textField18, totalCost18, product);
+      }
+    });
+    
+    minus18.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(18);
+        decrement(textField18, totalCost18, product);
+      }
+    });
+    
+    plus19.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(19);
+        increment(textField19, totalCost19, product);
+      }
+    });
+    
+    minus19.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(19);
+        decrement(textField19, totalCost19, product);
+      }
+    });
+    
+    plus20.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(20);
+        increment(textField20, totalCost20, product);
+      }
+    });
+    
+    minus20.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(20);
+        decrement(textField20, totalCost20, product);
+      }
+    });
+    
+    plus21.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(21);
+        increment(textField21, totalCost21, product);
+      }
+    });
+    
+    minus21.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(21);
+        decrement(textField21, totalCost21, product);
+      }
+    });
+    
+    plus22.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(22);
+        increment(textField22, totalCost22, product);
+      }
+    });
+    
+    minus22.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(22);
+        decrement(textField22, totalCost22, product);
+      }
+    });
+    
+    plus23.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(23);
+        increment(textField23, totalCost23, product);
+      }
+    });
+    
+    minus23.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(23);
+        decrement(textField23, totalCost23, product);
+      }
+    });
+    
+    plus24.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(24);
+        increment(textField24, totalCost24, product);
+      }
+    });
+    
+    minus24.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(24);
+        decrement(textField24, totalCost24, product);
+      }
+    });
+    
+    plus25.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(25);
+        increment(textField25, totalCost25, product);
+      }
+    });
+    
+    minus25.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(25);
+        decrement(textField25, totalCost25, product);
+      }
+    });
+    
+    plus26.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(26);
+        increment(textField26, totalCost26, product);
+      }
+    });
+    
+    minus26.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(26);
+        decrement(textField26, totalCost26, product);
+      }
+    });
+    
+    plus27.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(27);
+        increment(textField27, totalCost27, product);
+      }
+    });
+    
+    minus27.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(27);
+        decrement(textField27, totalCost27, product);
+      }
+    });
+    
+    plus28.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(28);
+        increment(textField28, totalCost28, product);
+      }
+    });
+    
+    minus28.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(28);
+        decrement(textField28, totalCost28, product);
       }
     });
     
@@ -688,16 +1344,17 @@ public class CenterFlikController implements Initializable {
     }
     });
     
-    buyRice00.setOnAction(new EventHandler<ActionEvent>() {
+    buy.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(0);
-        productUnits = Integer.parseInt(textFieldRice00.getText());
+        Product product = products.get(0);
+        productUnits = Integer.parseInt(textField.getText());
+        textField.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -711,16 +1368,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyRice01.setOnAction(new EventHandler<ActionEvent>() {
+    buy1.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(1);
-        productUnits = Integer.parseInt(textFieldRice01.getText());
+        Product product = products.get(1);
+        productUnits = Integer.parseInt(textField1.getText());
+        textField1.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -735,16 +1393,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyRice02.setOnAction(new EventHandler<ActionEvent>() {
+    buy2.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(2);
-        productUnits = Integer.parseInt(textFieldRice02.getText());
+        Product product = products.get(2);
+        productUnits = Integer.parseInt(textField2.getText());
+        textField2.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -758,16 +1417,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyRice10.setOnAction(new EventHandler<ActionEvent>() {
+    buy3.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getRiceList().get(3);
-        productUnits = Integer.parseInt(textFieldRice10.getText());
+        Product product = products.get(3);
+        productUnits = Integer.parseInt(textField3.getText());
+        textField3.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -781,16 +1441,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyMeat00.setOnAction(new EventHandler<ActionEvent>() {
+    buy4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(0);
-        productUnits = Integer.parseInt(textFieldMeat00.getText());
+        Product product = products.get(4);
+        productUnits = Integer.parseInt(textField4.getText());
+        textField4.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -804,16 +1465,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyMeat01.setOnAction(new EventHandler<ActionEvent>() {
+    buy5.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(1);
-        productUnits = Integer.parseInt(textFieldMeat01.getText());
+        Product product = products.get(5);
+        productUnits = Integer.parseInt(textField5.getText());
+        textField5.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -827,16 +1489,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyMeat02.setOnAction(new EventHandler<ActionEvent>() {
+    buy6.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(2);
-        productUnits = Integer.parseInt(textFieldMeat02.getText());
+        Product product = products.get(6);
+        productUnits = Integer.parseInt(textField6.getText());
+        textField6.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -850,16 +1513,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyMeat10.setOnAction(new EventHandler<ActionEvent>() {
+    buy7.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(3);
-        productUnits = Integer.parseInt(textFieldMeat10.getText());
+        Product product = products.get(7);
+        productUnits = Integer.parseInt(textField7.getText());
+        textField7.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -873,16 +1537,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyMeat11.setOnAction(new EventHandler<ActionEvent>() {
+    buy8.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(4);
-        productUnits = Integer.parseInt(textFieldMeat11.getText());
+        Product product = products.get(8);
+        productUnits = Integer.parseInt(textField8.getText());
+        textField8.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -896,16 +1561,17 @@ public class CenterFlikController implements Initializable {
       }
     });
     
-    buyMeat12.setOnAction(new EventHandler<ActionEvent>() {
+    buy9.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = IMatController.getIMatProducts().getMeatList().get(5);
-        productUnits = Integer.parseInt(textFieldMeat12.getText());
+        Product product = products.get(9);
+        productUnits = Integer.parseInt(textField9.getText());
+        textField9.setText("1");
         if (IMatController.currentUser != null) {
           productNr++;
           int cost = (int)product.getPrice();
           int sum = productUnits*cost;
-          totalCost += sum;
+          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
@@ -918,6 +1584,499 @@ public class CenterFlikController implements Initializable {
         }
       }
     });
+  
+    buy10.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(0);
+        productUnits = Integer.parseInt(textField.getText());
+        textField10.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {      
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(11);
+        productUnits = Integer.parseInt(textField11.getText());
+        textField11.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+
+      }
+    });
+    
+    buy12.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(12);
+        productUnits = Integer.parseInt(textField12.getText());
+        textField12.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy13.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(13);
+        productUnits = Integer.parseInt(textField13.getText());
+        textField13.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy14.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(14);
+        productUnits = Integer.parseInt(textField14.getText());
+        textField14.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy15.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(15);
+        productUnits = Integer.parseInt(textField15.getText());
+        textField15.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy16.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(16);
+        productUnits = Integer.parseInt(textField16.getText());
+        textField16.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy17.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(17);
+        productUnits = Integer.parseInt(textField17.getText());
+        textField17.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy18.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(18);
+        productUnits = Integer.parseInt(textField18.getText());
+        textField18.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy19.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(19);
+        productUnits = Integer.parseInt(textField19.getText());
+        textField19.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy21.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(21);
+        productUnits = Integer.parseInt(textField21.getText());
+        textField21.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+
+      }
+    });
+    
+    buy22.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(22);
+        productUnits = Integer.parseInt(textField22.getText());
+        textField22.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy23.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(23);
+        productUnits = Integer.parseInt(textField23.getText());
+        textField23.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy24.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(24);
+        productUnits = Integer.parseInt(textField24.getText());
+        textField24.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy25.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(25);
+        productUnits = Integer.parseInt(textField25.getText());
+        textField25.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy26.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(26);
+        productUnits = Integer.parseInt(textField26.getText());
+        textField26.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy27.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(27);
+        productUnits = Integer.parseInt(textField27.getText());
+        textField27.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy28.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(28);
+        productUnits = Integer.parseInt(textField28.getText());
+        textField28.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
+    buy20.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        Product product = products.get(20);
+        productUnits = Integer.parseInt(textField20.getText());
+        textField20.setText("1");
+        if (IMatController.currentUser != null) {
+          productNr++;
+          int cost = (int)product.getPrice();
+          int sum = productUnits*cost;
+          totalCostInt += sum;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+        } else {
+          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+  }
+  
+  /**
+   * Used when entering a new product category view.
+   */
+  public void setAllUnitsToOne() {
+    textField.setText("1");
+    textField1.setText("1");
+    textField2.setText("1");
+    textField3.setText("1");
+    textField4.setText("1");
+    textField5.setText("1");
+    textField6.setText("1");
+    textField7.setText("1");
+    textField8.setText("1");
+    textField9.setText("1");
+    textField10.setText("1");
+    textField11.setText("1");
+    textField12.setText("1");
+    textField13.setText("1");
+    textField14.setText("1");
+    textField15.setText("1");
+    textField16.setText("1");
+    textField17.setText("1");
+    textField18.setText("1");
+    textField19.setText("1");
+    textField20.setText("1");
+    textField21.setText("1");
+    textField22.setText("1");
+    textField23.setText("1");
+    textField24.setText("1");
+    textField25.setText("1");
+    textField26.setText("1");
+    textField27.setText("1");
+    textField28.setText("1");
   }
   
   /**
@@ -1377,7 +2536,6 @@ public class CenterFlikController implements Initializable {
   /**
    * Display the user's order history.
    */
-  @FXML
   public void showOrderHistory() {
     if (IMatController.currentUser != null) {
       try {
@@ -1427,7 +2585,7 @@ public class CenterFlikController implements Initializable {
       //getOrders();
     }
   }
-    
+  
   /**
    * If Rice link has been clicked, show rice products in Handla view.
    */
@@ -1438,34 +2596,69 @@ public class CenterFlikController implements Initializable {
     String id;
     for (int i = 0; i < size; i++) {
       id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("riceScrollPane") == 0) {
+      if (id.compareTo("productScrollPane") == 0) {
         handlaStackPane.getChildren().get(i).toFront();
         handlaStackPane.getChildren().get(i).setVisible(true);
       } else {
         handlaStackPane.getChildren().get(i).setVisible(false);
       }
     }
+    setAllUnitsToOne();
+    categoryLabel.setText("Ris");
     products = IMatController.getIMatProducts().getRiceList();
     product = products.get(0);
-    riceLabel00.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageZeroZeroRice, imageName);
-    totalCostRice00.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(1);
-    riceLabel01.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageZeroOneRice, imageName);
-    totalCostRice01.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(2);
-    riceLabel02.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageZeroTwoRice, imageName);
-    totalCostRice02.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(3);
-    riceLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageOneZeroRice, imageName);
-    totalCostRice10.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    
+    //hides unused product panes
+    productPane4.setVisible(false);
+    productPane5.setVisible(false);
+    productPane6.setVisible(false);
+    productPane7.setVisible(false);
+    productPane8.setVisible(false);
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
   }
   
   /**
@@ -1478,45 +2671,1306 @@ public class CenterFlikController implements Initializable {
     String id;
     for (int i = 0; i < size; i++) {
       id = handlaStackPane.getChildren().get(i).getId();
-      if (id.compareTo("meatScrollPane") == 0) {
+      if (id.compareTo("productScrollPane") == 0) {
         handlaStackPane.getChildren().get(i).toFront();
         handlaStackPane.getChildren().get(i).setVisible(true);
       } else {
         handlaStackPane.getChildren().get(i).setVisible(false);
       }
     }
+    setAllUnitsToOne();
+    categoryLabel.setText("Kött");
     products = IMatController.getIMatProducts().getMeatList();
     product = products.get(0);
-    meatLabel00.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageZeroZeroMeat, imageName);
-    totalCostMeat00.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(1);
-    meatLabel01.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageZeroOneMeat, imageName);
-    totalCostMeat01.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(2);
-    meatLabel02.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageZeroTwoMeat, imageName);
-    totalCostMeat02.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(3);
-    meatLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageOneZeroMeat, imageName);
-    totalCostMeat10.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(4);
-    meatLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageOneOneMeat, imageName);
-    totalCostMeat11.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
     product = products.get(5);
-    meatLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
     imageName = product.getImageName();
-    setImage(imageOneTwoMeat, imageName);
-    totalCostMeat12.setText("Pris: " + (int)product.getPrice() + " kr");
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    
+    //hides unused product panes
+    productPane6.setVisible(false);
+    productPane7.setVisible(false);
+    productPane8.setVisible(false);
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
   }
+  
+    public void changeToPastaView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Pasta");
+    products = IMatController.getIMatProducts().getPastaList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    
+    //hides unused product panes
+    productPane7.setVisible(false);
+    productPane8.setVisible(false);
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    
+  }
+    
+  public void changeToBreadView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Bröd");
+    products = IMatController.getIMatProducts().getBreadList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(9);
+    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage9, imageName);
+    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    productPane9.setVisible(true);
+    
+    //hides unused product panes
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+  
+    public void changeToDrinkView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Dryck");
+    products = IMatController.getIMatProducts().getDrinkList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(9);
+    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage9, imageName);
+    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(10);
+    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage10, imageName);
+    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(11);
+    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage11, imageName);
+    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(12);
+    productLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage12, imageName);
+    totalCost12.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(13);
+    productLabel13.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage13, imageName);
+    totalCost13.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    productPane9.setVisible(true);
+    productPane10.setVisible(true);
+    productPane11.setVisible(true);
+    productPane12.setVisible(true);
+    productPane13.setVisible(true);
+    
+    //hides unused product panes
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToFruitView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Frukt & bär");
+    products = IMatController.getIMatProducts().getFruitList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(9);
+    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage9, imageName);
+    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(10);
+    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage10, imageName);
+    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(11);
+    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage11, imageName);
+    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(12);
+    productLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage12, imageName);
+    totalCost12.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(13);
+    productLabel13.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage13, imageName);
+    totalCost13.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(14);
+    productLabel14.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage14, imageName);
+    totalCost14.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(15);
+    productLabel15.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage15, imageName);
+    totalCost15.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(16);
+    productLabel16.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage16, imageName);
+    totalCost16.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(17);
+    productLabel17.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage17, imageName);
+    totalCost17.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(18);
+    productLabel18.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage18, imageName);
+    totalCost18.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(19);
+    productLabel19.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage19, imageName);
+    totalCost19.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(20);
+    productLabel20.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage20, imageName);
+    totalCost20.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(21);
+    productLabel21.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage21, imageName);
+    totalCost21.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(22);
+    productLabel22.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage22, imageName);
+    totalCost22.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(23);
+    productLabel23.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage23, imageName);
+    totalCost23.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(24);
+    productLabel24.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage24, imageName);
+    totalCost24.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(25);
+    productLabel25.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage25, imageName);
+    totalCost25.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(26);
+    productLabel26.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage26, imageName);
+    totalCost26.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(27);
+    productLabel27.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage27, imageName);
+    totalCost27.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(28);
+    productLabel28.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage28, imageName);
+    totalCost28.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    productPane9.setVisible(true);
+    productPane10.setVisible(true);
+    productPane11.setVisible(true);
+    productPane12.setVisible(true);
+    productPane13.setVisible(true);
+    productPane14.setVisible(true);
+    productPane15.setVisible(true);
+    productPane16.setVisible(true);
+    productPane17.setVisible(true);
+    productPane18.setVisible(true);
+    productPane19.setVisible(true);
+    productPane20.setVisible(true);
+    productPane21.setVisible(true);
+    productPane22.setVisible(true);
+    productPane23.setVisible(true);
+    productPane24.setVisible(true);
+    productPane25.setVisible(true);
+    productPane26.setVisible(true);
+    productPane27.setVisible(true);
+    productPane28.setVisible(true);
+    }
+    
+    public void changeToFishView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Fisk");
+    products = IMatController.getIMatProducts().getFishList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    
+    //hides unused product panes
+    productPane7.setVisible(false);
+    productPane8.setVisible(false);
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToVegetablesView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Grönsaker");
+    products = IMatController.getIMatProducts().getVegetableList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(9);
+    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage9, imageName);
+    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(10);
+    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage10, imageName);
+    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(11);
+    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage11, imageName);
+    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(12);
+    productLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage12, imageName);
+    totalCost12.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(13);
+    productLabel13.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage13, imageName);
+    totalCost13.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(14);
+    productLabel14.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage14, imageName);
+    totalCost14.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(15);
+    productLabel15.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage15, imageName);
+    totalCost15.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    productPane9.setVisible(true);
+    productPane10.setVisible(true);
+    productPane11.setVisible(true);
+    productPane12.setVisible(true);
+    productPane13.setVisible(true);
+    productPane14.setVisible(true);
+    productPane15.setVisible(true);
+    
+    //hides unused product panes
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToSpiceView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Kryddor & örter");
+    products = IMatController.getIMatProducts().getSpiceList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    
+    //hides unused product panes
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToDairiesView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Mejeriprodukter");
+    products = IMatController.getIMatProducts().getDairieList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    
+    //hides unused product panes
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToNutsView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Nötter & frön");
+    products = IMatController.getIMatProducts().getNutsList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    
+    //hides unused product panes
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToPotatoView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Potatis & rotfrukter");
+    products = IMatController.getIMatProducts().getPotatoList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(9);
+    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage9, imageName);
+    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(10);
+    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage10, imageName);
+    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(11);
+    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage11, imageName);
+    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    productPane9.setVisible(true);
+    productPane10.setVisible(true);
+    productPane11.setVisible(true);
+    
+    //hides unused product panes
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
+    
+    public void changeToSweetsView() {
+    currentPane = "tabPane";
+    hideOtherPanes();
+    int size = handlaStackPane.getChildren().size();
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = handlaStackPane.getChildren().get(i).getId();
+      if (id.compareTo("productScrollPane") == 0) {
+        handlaStackPane.getChildren().get(i).toFront();
+        handlaStackPane.getChildren().get(i).setVisible(true);
+      } else {
+        handlaStackPane.getChildren().get(i).setVisible(false);
+      }
+    }
+    setAllUnitsToOne();
+    categoryLabel.setText("Sötsaker");
+    products = IMatController.getIMatProducts().getSweetsList();
+    product = products.get(0);
+    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage, imageName);
+    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(1);
+    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage1, imageName);
+    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(2);
+    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage2, imageName);
+    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(3);
+    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage3, imageName);
+    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(4);
+    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage4, imageName);
+    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(5);
+    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage5, imageName);
+    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(6);
+    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage6, imageName);
+    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(7);
+    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage7, imageName);
+    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+    product = products.get(8);
+    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    imageName = product.getImageName();
+    setImage(productImage8, imageName);
+    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    
+    //show used product panes
+    productPane.setVisible(true);
+    productPane1.setVisible(true);
+    productPane2.setVisible(true);
+    productPane3.setVisible(true);
+    productPane4.setVisible(true);
+    productPane5.setVisible(true);
+    productPane6.setVisible(true);
+    productPane7.setVisible(true);
+    productPane8.setVisible(true);
+    
+    //hides unused product panes
+    productPane9.setVisible(false);
+    productPane10.setVisible(false);
+    productPane11.setVisible(false);
+    productPane12.setVisible(false);
+    productPane13.setVisible(false);
+    productPane14.setVisible(false);
+    productPane15.setVisible(false);
+    productPane16.setVisible(false);
+    productPane17.setVisible(false);
+    productPane18.setVisible(false);
+    productPane19.setVisible(false);
+    productPane20.setVisible(false);
+    productPane21.setVisible(false);
+    productPane22.setVisible(false);
+    productPane23.setVisible(false);
+    productPane24.setVisible(false);
+    productPane25.setVisible(false);
+    productPane26.setVisible(false);
+    productPane27.setVisible(false);
+    productPane28.setVisible(false);
+    }
   
   /**
    * Used for retrieving order from the backend. Used for the user that is

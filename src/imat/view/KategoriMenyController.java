@@ -93,7 +93,7 @@ public class KategoriMenyController implements Initializable {
     pastaLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToPastaView();
+        imat.getCenterController().changeToPastaView();
         pastaLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -104,7 +104,7 @@ public class KategoriMenyController implements Initializable {
     breadLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToBreadView();
+        imat.getCenterController().changeToBreadView();
         breadLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -115,7 +115,7 @@ public class KategoriMenyController implements Initializable {
     drinkLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToDrinkView();
+        imat.getCenterController().changeToDrinkView();
         drinkLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -126,7 +126,7 @@ public class KategoriMenyController implements Initializable {
     fruitLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToFruitView();
+        imat.getCenterController().changeToFruitView();
         fruitLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -137,7 +137,7 @@ public class KategoriMenyController implements Initializable {
     fishLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToFishView();
+        imat.getCenterController().changeToFishView();
         fishLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -148,7 +148,7 @@ public class KategoriMenyController implements Initializable {
     vegetablesLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToVegetablesView();
+        imat.getCenterController().changeToVegetablesView();
         vegetablesLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -159,7 +159,7 @@ public class KategoriMenyController implements Initializable {
     spiceLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToSpiceView();
+        imat.getCenterController().changeToSpiceView();
         spiceLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -170,7 +170,7 @@ public class KategoriMenyController implements Initializable {
     dairiesLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToDairiesView();
+        imat.getCenterController().changeToDairiesView();
         dairiesLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -181,7 +181,7 @@ public class KategoriMenyController implements Initializable {
     nutsLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToNutsView();
+        imat.getCenterController().changeToNutsView();
         nutsLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -192,7 +192,7 @@ public class KategoriMenyController implements Initializable {
     potatoLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToPotatoView();
+        imat.getCenterController().changeToPotatoView();
         potatoLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);
@@ -203,7 +203,7 @@ public class KategoriMenyController implements Initializable {
     sweetsLink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        //imat.getCenterController().changeToSweetsView();
+        imat.getCenterController().changeToSweetsView();
         sweetsLink.setVisited(false);
         handla = imat.getCenterController().getHandlaFlik();
         imat.getCenterController().getTabPane().getSelectionModel().select(handla);

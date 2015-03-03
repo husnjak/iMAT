@@ -54,6 +54,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
@@ -2928,21 +2929,37 @@ public class CenterFlikController implements Initializable {
     paymentForOrderButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        if (IMatController.currentUser != null) {
-          IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
-          imat.getCenterController().showOrderHistory();
-          imat.getVarukorgController().setTotalCostLabel("0 kr");
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
-          
+        if (isRequiredFieldsEntered()) {
+          if (IMatController.currentUser != null) {
+            IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
+            imat.getCenterController().showOrderHistory();
+            imat.getVarukorgController().setTotalCostLabel("0 kr");
+            imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+
+          } else {
+            Order orderCart = IMatController.getIMatBackend().placeOrder();
+            imat.getCenterController().getOrders();
+            imat.getVarukorgController().setTotalCostLabel("0 kr");
+            imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          }
         } else {
-          Order orderCart = IMatController.getIMatBackend().placeOrder();
-          imat.getCenterController().getOrders();
-          imat.getVarukorgController().setTotalCostLabel("0 kr");
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
-        }
+      // Inform user to enter required fields
+      }
       }
     });
-    
+}  
+  
+  public boolean isRequiredFieldsEntered() {
+    if (firstNameTextField1.getLength() > 0 && lastNameTextField1.getLength() > 0
+        && civicTextField1.getLength() > 0 && postalTextField1.getLength() > 0
+        && cityTextField1.getLength() > 0 && cardNumberTextField1.getLength() > 0
+        && yearTextField1.getLength() > 0 && monthTextField1.getLength() > 0
+        && (emailTextField1.getLength() > 0|| phoneTextField1.getLength() > 0)
+        && cvvTextField1.getLength() > 0 && streetTextField1.getLength() > 0 ) {
+      return true;
+    } else {
+      return false;
+    }
   }
   
   /**
@@ -3043,6 +3060,69 @@ public class CenterFlikController implements Initializable {
               yearTextField.setText(rs.getString("VALIDYEAR"));
               monthTextField.setText(rs.getString("VALIDMONTH"));
               cvvTextField.setText(rs.getString("CVV"));
+            }
+            rs.close();
+            psSelect.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+  }
+  
+    /**
+   * Load stored information for users.
+   */
+  @SuppressWarnings("ConvertToTryWithResources")
+  public void loadCustomerInformationPayment() {
+    if (IMatController.currentUser == null) {
+      firstNameTextField1.setText(IMatController.getIMatBackend().getCustomer().getFirstName());
+      lastNameTextField1.setText(IMatController.getIMatBackend().getCustomer().getLastName());
+      civicTextField1.setText(IMatController.getIMatBackend().getCustomer().getMobilePhoneNumber());
+      phoneTextField1.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
+      emailTextField1.setText(IMatController.getIMatBackend().getCustomer().getEmail());
+      streetTextField1.setText(IMatController.getIMatBackend().getCustomer().getAddress());
+      postalTextField1.setText(IMatController.getIMatBackend().getCustomer().getPostCode());
+      cityTextField1.setText(IMatController.getIMatBackend().getCustomer().getPostAddress());
+      cardNumberTextField1.setText(IMatController.getIMatBackend().getCreditCard().getCardNumber());
+      Integer year = IMatController.getIMatBackend().getCreditCard().getValidYear();
+      if (year != 0) {
+        yearTextField1.setText(year.toString());
+      } else {
+        yearTextField1.setText("");
+      }
+      Integer month = IMatController.getIMatBackend().getCreditCard().getValidMonth();
+      if (month != 0) {
+        monthTextField1.setText(month.toString());
+      } else {
+        monthTextField1.setText("");
+      }
+      Integer cvv = IMatController.getIMatBackend().getCreditCard().getVerificationCode();
+      if (cvv != 0) {
+        cvvTextField1.setText(cvv.toString());
+      } else {
+        cvvTextField1.setText("");
+      }
+    } else {
+        try {
+          String selectSQL = "select FIRSTNAME, LASTNAME, CIVIC, EMAIL, "+
+              "PHONE, STREET, POSTAL, CITY, CARDNUMBER, VALIDYEAR, VALIDMONTH, "+
+              "CVV from USERACCOUNT where USERNAME = ?";
+          PreparedStatement psSelect = IMatController.getConnection().prepareStatement(selectSQL);
+          psSelect.setString(1, IMatController.currentUser);
+            ResultSet rs = psSelect.executeQuery();
+            while (rs.next()) {
+              firstNameTextField1.setText(rs.getString("FIRSTNAME"));
+              lastNameTextField1.setText(rs.getString("LASTNAME"));
+              civicTextField1.setText(rs.getString("CIVIC"));
+              emailTextField1.setText(rs.getString("EMAIL"));
+              phoneTextField1.setText(rs.getString("PHONE"));
+              streetTextField1.setText(rs.getString("STREET"));
+              postalTextField1.setText(rs.getString("POSTAL"));
+              cityTextField1.setText(rs.getString("CITY"));
+              cardNumberTextField1.setText(rs.getString("CARDNUMBER"));
+              yearTextField1.setText(rs.getString("VALIDYEAR"));
+              monthTextField1.setText(rs.getString("VALIDMONTH"));
+              cvvTextField1.setText(rs.getString("CVV"));
             }
             rs.close();
             psSelect.close();
@@ -4836,6 +4916,7 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
+    loadCustomerInformationPayment();
   }
   
   public void changeToFavoriteView() {

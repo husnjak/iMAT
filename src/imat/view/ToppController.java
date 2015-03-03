@@ -225,6 +225,7 @@ public class ToppController implements Initializable {
       IMatController.setCurrentUser(username);
       imat.getCenterController().showOrderHistory();
       imat.getCenterController().loadCustomerInformation();
+      imat.getCenterController().loadCustomerInformationPayment();
       int size = loginStackPane.getChildren().size();
       String id;
       for (int i = 0; i < size; i++) {
@@ -284,6 +285,7 @@ public class ToppController implements Initializable {
 
     IMatController.setCurrentUser(null);
     imat.getCenterController().loadCustomerInformation();
+    imat.getCenterController().loadCustomerInformationPayment();
     
     usernameTextField.setText("");
     passwordTextField.setText("");

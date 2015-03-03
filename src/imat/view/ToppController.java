@@ -162,6 +162,14 @@ public class ToppController implements Initializable {
       }
     });
     
+    searchButton.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        handleSearch();
+        event.consume();
+      }
+    });
+    
     loginButton.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
@@ -206,6 +214,20 @@ public class ToppController implements Initializable {
     }
   }
   
+  
+  
+  /**
+   * Called when the user clicks the search button.
+   */
+  @FXML
+  private void handleSearch() {
+      if (searchTextField.getText().getClass() == String.class){
+          imat.getCenterController().changeToSearchView(searchTextField.getText());
+      }else {
+          //give some sort of feedback
+      }
+      
+  }
   /**
   * Called when the user clicks the login button. 
   */

@@ -34,6 +34,6 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="200.0" layoutY="199.0" mnemonicParsing="false" text="Lägg till" />
+      <Button layoutX="200.0" layoutY="199.0" mnemonicParsing="false" style="-fx-background-color: royalblue; -fx-text-fill: white;" styleClass="köpButton" stylesheets="@ButtonCSS.css" text="Lägg till" textFill="WHITE" />
    </children>
 </AnchorPane>

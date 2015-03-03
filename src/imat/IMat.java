@@ -134,7 +134,7 @@ public class IMat extends Application {
       
       // Show the scene containing the root layout
       Scene scene = new Scene(root);
-      
+      scene.getStylesheets().add(getClass().getResource("view/ButtonCSS.css").toExternalForm()); // Load the Stylesheets
       // Used for placing different views inside Root Layout
       rootLayout = (BorderPane) root;
       

@@ -6,6 +6,11 @@
     -fx-background-image: url(../..//Images/Subtract.png);  
 }
 
+.BuyButton{
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+}
+
 .background {
     -fx-background-color: white;
 }

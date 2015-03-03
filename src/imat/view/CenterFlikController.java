@@ -2255,6 +2255,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
 
       }
@@ -2281,6 +2282,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2306,6 +2308,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2331,6 +2334,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2356,6 +2360,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2381,6 +2386,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2406,6 +2412,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2431,6 +2438,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2456,6 +2464,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2481,6 +2490,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -2506,6 +2516,7 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
 
       }

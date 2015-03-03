@@ -178,6 +178,14 @@ public class ToppController implements Initializable {
       }
     });
     
+    searchTextField.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        handleSearch();
+        event.consume();
+      }
+    });
+    
     logoutButton.addEventHandler(KeyEvent.KEY_PRESSED, keyListener);
   }
   

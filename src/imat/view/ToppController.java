@@ -271,6 +271,7 @@ public class ToppController implements Initializable {
       
       imat.getVarukorgController().updateTotalCostBackend(0);
       imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
+      imat.getCenterController().initCheckoutCart(IMatShoppingCart.cart.getAllProducts());
     } else if (valid.compareTo("invalidUsername") == 0) {
       loginLabel.setText("Felaktigt användarnamn");
     } else {
@@ -318,6 +319,7 @@ public class ToppController implements Initializable {
     Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
     imat.getVarukorgController().updateTotalCostBackend(totalSum);
     imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+    imat.getCenterController().initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
   }
 
   

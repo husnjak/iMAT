@@ -2223,11 +2223,13 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {      
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     });
@@ -5037,7 +5039,6 @@ public class CenterFlikController implements Initializable {
     }
   }
   
-<<<<<<< HEAD
   public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
     ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
     checkOutCartListView.setItems(cartList);
@@ -5057,8 +5058,7 @@ public class CenterFlikController implements Initializable {
       }
     });
   }
-  
-=======
+
   public void changeToSearchView(String searchText) {
         changeToCategoryView();
         setAllUnitsToOne();
@@ -5684,5 +5684,4 @@ public class CenterFlikController implements Initializable {
             productPane11.setVisible(true);
         }
     }
->>>>>>> f19c1e8c765074d3ea50a5683a04beb1824797c9
 }

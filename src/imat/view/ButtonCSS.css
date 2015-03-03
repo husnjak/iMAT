@@ -1,9 +1,9 @@
 .Addbutton{
-    -fx-background-image: url(/Add.png);    
+    -fx-background-image: url("Add.png");    
 }
 
 .SubButton{
-    -fx-background-image: url(/Subtract.png);  
+    -fx-background-image: url("Subtract.png");  
 }
 
 .BuyButton{

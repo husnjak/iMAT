@@ -224,7 +224,7 @@ public class ToppController implements Initializable {
       if (searchTextField.getText().getClass() == String.class){
           imat.getCenterController().changeToSearchView(searchTextField.getText());
       }else {
-          
+          //give some sort of feedback
       }
       
   }

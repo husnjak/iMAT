@@ -5042,4 +5042,630 @@ public class CenterFlikController implements Initializable {
     }
     
   }
+  
+  public void changeToSearchView(String searchText) {
+        changeToCategoryView();
+        setAllUnitsToOne();
+        categoryLabel.setText("Sökresultat för: " + searchText);
+        products = IMatController.imatBackend.findProducts(searchText);
+        if (products.size() == 0) {
+            //hide unused products
+            productPane.setVisible(false);
+            productPane1.setVisible(false);
+            productPane2.setVisible(false);
+            productPane3.setVisible(false);
+            productPane4.setVisible(false);
+            productPane5.setVisible(false);
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+        }else if(products.size() == 1) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            //show used product panes
+            productPane.setVisible(true);
+            
+            //hide unused product panes
+            productPane1.setVisible(false);
+            productPane2.setVisible(false);
+            productPane3.setVisible(false);
+            productPane4.setVisible(false);
+            productPane5.setVisible(false);
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 2) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            
+            //hide unused product panes
+            productPane2.setVisible(false);
+            productPane3.setVisible(false);
+            productPane4.setVisible(false);
+            productPane5.setVisible(false);
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 3) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            
+            //hide unused product panes
+            productPane3.setVisible(false);
+            productPane4.setVisible(false);
+            productPane5.setVisible(false);
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 4) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            
+            //hide unused product panes
+            productPane4.setVisible(false);
+            productPane5.setVisible(false);
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 5) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            
+            //hide unused product panes
+            productPane5.setVisible(false);
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 6) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            
+            //hide unused product panes
+            productPane6.setVisible(false);
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 7) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(6);
+            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage6, imageName);
+            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            productPane6.setVisible(true);
+            
+            //hide unused product panes
+            productPane7.setVisible(false);
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 8) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(6);
+            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage6, imageName);
+            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(7);
+            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage7, imageName);
+            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            productPane6.setVisible(true);
+            productPane7.setVisible(true);
+            
+            //hide unused product panes
+            productPane8.setVisible(false);
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 9) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(6);
+            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage6, imageName);
+            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(7);
+            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage7, imageName);
+            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+            //hide and show
+            product = products.get(8);
+            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage8, imageName);
+            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            productPane6.setVisible(true);
+            productPane7.setVisible(true);
+            productPane8.setVisible(true);
+            
+            //hide unused product panes
+            productPane9.setVisible(false);
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+            
+        }else if(products.size() == 10) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(6);
+            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage6, imageName);
+            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(7);
+            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage7, imageName);
+            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+            //hide and show
+            product = products.get(8);
+            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage8, imageName);
+            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(9);
+            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage9, imageName);
+            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            productPane6.setVisible(true);
+            productPane7.setVisible(true);
+            productPane8.setVisible(true);
+            productPane9.setVisible(true);
+            
+            //hide unused product panes
+            productPane10.setVisible(false);
+            productPane11.setVisible(false);
+           
+        }else if(products.size() == 11) {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(6);
+            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage6, imageName);
+            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(7);
+            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage7, imageName);
+            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+            //hide and show
+            product = products.get(8);
+            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage8, imageName);
+            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(9);
+            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage9, imageName);
+            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(10);
+            productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage10, imageName);
+            totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            productPane6.setVisible(true);
+            productPane7.setVisible(true);
+            productPane8.setVisible(true);
+            productPane9.setVisible(true);
+            productPane10.setVisible(true);
+            
+            //hide unsed product panes
+            productPane11.setVisible(false);
+        }else {
+            product = products.get(0);
+            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage, imageName);
+            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(1);
+            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage1, imageName);
+            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(2);
+            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage2, imageName);
+            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(3);
+            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage3, imageName);
+            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(4);
+            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage4, imageName);
+            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(5);
+            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage5, imageName);
+            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(6);
+            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage6, imageName);
+            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(7);
+            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage7, imageName);
+            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
+            //hide and show
+            product = products.get(8);
+            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage8, imageName);
+            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(9);
+            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage9, imageName);
+            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(10);
+            productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage10, imageName);
+            totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
+            product = products.get(11);
+            productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+            imageName = product.getImageName();
+            setImage(productImage11, imageName);
+            totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
+            
+            //show used product panes
+            productPane.setVisible(true);
+            productPane1.setVisible(true);
+            productPane2.setVisible(true);
+            productPane3.setVisible(true);
+            productPane4.setVisible(true);
+            productPane5.setVisible(true);
+            productPane6.setVisible(true);
+            productPane7.setVisible(true);
+            productPane8.setVisible(true);
+            productPane9.setVisible(true);
+            productPane10.setVisible(true);
+            productPane11.setVisible(true);
+        }
+    }
 }

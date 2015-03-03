@@ -20,7 +20,7 @@
       </ToolBar>
       <ScrollPane fx:id="productScrollPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" maxHeight="550.0" minHeight="550.0" prefHeight="550.0" prefWidth="674.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <content>
-            <AnchorPane layoutY="40.0" maxHeight="700.0" maxWidth="750.0" minHeight="700.0" prefHeight="700.0" prefWidth="750.0">
+            <AnchorPane layoutY="40.0" maxWidth="750.0" minHeight="-Infinity" prefHeight="850.0" prefWidth="750.0">
                <children>
                   <GridPane fx:id="productGrid" alignment="CENTER_RIGHT" hgap="10.0" layoutX="40.0" vgap="10.0" AnchorPane.topAnchor="50.0">
                      <children>

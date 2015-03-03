@@ -119,6 +119,7 @@ public class VarukorgController implements Initializable {
    * @param cartProducts  the cart containing the products to be displayed
    */
   public void initShoppingCart(List<IMatShoppingItem> cartProducts) {
+    shoppingCartListView.setMouseTransparent(true);
     ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
     shoppingCartListView.setItems(cartList);
     shoppingCartListView.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>(){
@@ -137,5 +138,6 @@ public class VarukorgController implements Initializable {
       }
     });
   }
+  
         
 }

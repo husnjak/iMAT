@@ -35,11 +35,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -54,7 +55,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
+import javafx.util.Callback;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
@@ -963,14 +964,6 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label monthLabel1;
   @FXML
-  private TableView<?> productPaymentTable;
-  @FXML
-  private TableColumn<?, ?> productNameColumn1;
-  @FXML
-  private TableColumn<?, ?> productUnitsColumn1;
-  @FXML
-  private TableColumn<?, ?> productCostColumn1;
-  @FXML
   private Hyperlink removeProductPaymentLink;
   @FXML
   private Label cityLabel1;
@@ -982,6 +975,8 @@ public class CenterFlikController implements Initializable {
   private Label firstNameLabel1;
   @FXML
   private Label emailLabel1;
+  @FXML
+  private ListView<IMatShoppingItem> checkOutCartListView = new ListView();
   
   public Integer getProductNr() {
     return productNr;
@@ -5040,6 +5035,26 @@ public class CenterFlikController implements Initializable {
       }
           
     }
-    
   }
+  
+  public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
+    ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
+    checkOutCartListView.setItems(cartList);
+    checkOutCartListView.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>(){
+      @Override
+      public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> p) {
+        ListCell<IMatShoppingItem> cell = new ListCell<IMatShoppingItem>(){
+          @Override
+          protected void updateItem(IMatShoppingItem t, boolean bln) {
+            super.updateItem(t, bln);
+            if (t != null) {
+              setText(t.getAmount() + " st  " + t.getProductName() + "   " + t.getSum() + " kr");
+            }
+          }
+        };
+      return cell;
+      }
+    });
+  }
+  
 }

@@ -1363,19 +1363,13 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="productPaymentTable" layoutY="40.0" prefHeight="400.0" prefWidth="243.0" AnchorPane.rightAnchor="40.0">
-                     <columns>
-                        <TableColumn fx:id="productNameColumn1" minWidth="75.0" prefWidth="110.0" text="Vara" />
-                        <TableColumn fx:id="productUnitsColumn1" prefWidth="55.0" text="Antal" />
-                        <TableColumn fx:id="productCostColumn1" prefWidth="75.0" text="Kostnad" />
-                     </columns>
-                  </TableView>
                   <Hyperlink fx:id="removeProductPaymentLink" layoutX="465.0" layoutY="451.0" text="Ta bort" AnchorPane.rightAnchor="230.0" />
                   <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kassan" AnchorPane.leftAnchor="40.0">
                      <font>
                         <Font size="29.0" />
                      </font>
                   </Text>
+                  <ListView fx:id="checkOutCartListView" layoutX="461.0" layoutY="80.0" prefHeight="351.0" prefWidth="250.0" AnchorPane.rightAnchor="40.0" />
                </children>
             </AnchorPane>
         </content>

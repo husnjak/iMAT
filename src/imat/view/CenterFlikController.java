@@ -977,6 +977,12 @@ public class CenterFlikController implements Initializable {
   private Label emailLabel1;
   @FXML
   private ListView<IMatShoppingItem> checkOutCartListView = new ListView();
+  @FXML
+  private ScrollPane receiptPane;
+  @FXML
+  private Label nameOrderLabel;
+  @FXML
+  private Label orderNumberReceiptLabel;
   
   public Integer getProductNr() {
     return productNr;
@@ -1023,6 +1029,21 @@ public class CenterFlikController implements Initializable {
     products = new ArrayList<>();
     productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
+    removeProductPaymentLink.setFocusTraversable(false);
+    removeProductPaymentLink.setVisited(false);
+    
+    //removeProductPaymentLink.setOnAction(new EventHandler<ActionEvent>() {
+      //@Override public void handle(ActionEvent event) {
+        //final int selectedIdx = checkOutCartListView.getSelectionModel().getSelectedIndex();
+        //if (selectedIdx != -1) {
+          //IMatShoppingItem itemToRemove = checkOutCartListView.getSelectionModel().getSelectedItem();
+          //final int newSelectedIdx = (selectedIdx == checkOutCartListView.getItems().size() - 1)
+        //? selectedIdx - 1 : selectedIdx;
+          //checkOutCartListView.getItems().remove(selectedIdx);
+          //checkOutCartListView.getSelectionModel().select(newSelectedIdx);
+        //}
+    //}
+    //});
     
     productFavorite.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -2964,12 +2985,14 @@ public class CenterFlikController implements Initializable {
             imat.getCenterController().showOrderHistory();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
             imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+            initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
             changeToReceiptView();
           } else {
             Order orderCart = IMatController.getIMatBackend().placeOrder();
             imat.getCenterController().getOrders();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
             imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+            initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
             changeToReceiptView();
           }
         } else {
@@ -5723,7 +5746,6 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
-    
   }
   
 }

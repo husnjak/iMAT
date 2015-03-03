@@ -1374,7 +1374,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <ScrollPane fx:id="receiptPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane fx:id="receiptPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>

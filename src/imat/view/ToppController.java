@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -127,6 +128,10 @@ public class ToppController implements Initializable {
     setImage(logoImage, "imat-logga1.png");
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
+    passwordTextField.alignmentProperty().setValue(Pos.CENTER_RIGHT);
+    usernameTextField.alignmentProperty().setValue(Pos.CENTER_RIGHT);
+    searchTextField.alignmentProperty().setValue(Pos.CENTER_RIGHT);
+    searchTextField.setPromptText("Sök vara");
     
     logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
      @Override

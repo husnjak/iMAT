@@ -6,9 +6,9 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="411.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="imat.view.VarukorgsVaraViewController">
+<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.VarukorgsVaraViewController">
    <children>
       <Button graphicTextGap="1.0" layoutX="4.0" layoutY="29.0" mnemonicParsing="false" style="-fx-background-color: RED;" text="X" textFill="WHITE">
          <font>

@@ -1,3 +1,11 @@
-#Addbutton{
--fx-background-image: url('file://C:\Users\Filip\Documents\Chalmers\DAT216 - Design och Konstruktion av grafiska gränssnitt\Projekt\iMAT\Add.png');
+.Addbutton{
+    -fx-background-image: url(../..//Images/Add.png);    
+}
+
+.SubButton{
+    -fx-background-image: url(../..//Images/Subtract.png);  
+}
+
+.background {
+    -fx-background-color: white;
 }

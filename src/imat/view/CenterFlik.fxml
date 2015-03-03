@@ -674,7 +674,7 @@
       </ScrollPane>
       <ScrollPane fx:id="kontouppgifterPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" maxHeight="550.0" maxWidth="750.0" minHeight="550.0" minWidth="750.0" prefHeight="550.0" prefViewportWidth="650.0" prefWidth="750.0" vbarPolicy="ALWAYS" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <content>
-            <AnchorPane layoutY="40.0" prefWidth="750.0">
+            <AnchorPane prefWidth="750.0">
                <children>
                   <Text layoutX="33.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontouppgifter" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
                      <font>
@@ -686,34 +686,34 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <HBox layoutX="35.0" layoutY="135.0" spacing="5.0" AnchorPane.leftAnchor="77.0">
+                  <HBox layoutX="60.0" layoutY="132.0" prefHeight="25.0" prefWidth="205.0" spacing="5.0" AnchorPane.leftAnchor="61.0">
                      <children>
                         <Text layoutX="69.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Förnamn" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="140.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="firstNameTextField" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
+                        <TextField fx:id="firstNameTextField" layoutX="157.0" layoutY="135.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="140.0" />
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="160.0" spacing="5.0" AnchorPane.leftAnchor="66.0">
+                  <HBox layoutX="54.0" layoutY="163.0" prefHeight="25.0" prefWidth="213.0" spacing="5.0" AnchorPane.leftAnchor="54.0">
                      <children>
                         <Text layoutX="58.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternamn" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="165.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="lastNameTextField" layoutX="157.0" layoutY="160.0" AnchorPane.leftAnchor="140.0" />
+                        <TextField fx:id="lastNameTextField" layoutX="157.0" layoutY="160.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="140.0" />
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="185.0" spacing="5.0" AnchorPane.leftAnchor="35.0">
+                  <HBox layoutX="29.0" layoutY="195.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0" AnchorPane.leftAnchor="29.0">
                      <children>
                         <Text layoutX="30.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="190.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="civicTextField" layoutX="157.0" layoutY="185.0" promptText="ÅÅMMDDNNNN" AnchorPane.leftAnchor="140.0" />
+                        <TextField fx:id="civicTextField" layoutX="157.0" layoutY="185.0" prefHeight="25.0" prefWidth="150.0" promptText="ÅÅMMDDNNNN" AnchorPane.leftAnchor="140.0" />
                         <Label fx:id="civicLabel" textFill="#ee0707">
                            <HBox.margin>
                               <Insets top="5.0" />
@@ -721,14 +721,14 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="34.9619140625" layoutY="210.0" spacing="5.0" AnchorPane.leftAnchor="86.0">
+                  <HBox layoutX="68.0" layoutY="226.0" prefWidth="250.0" spacing="5.0" AnchorPane.leftAnchor="69.0">
                      <children>
                         <Text layoutX="80.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="215.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="phoneTextField" layoutX="157.0" layoutY="210.0" AnchorPane.leftAnchor="140.0" />
+                        <TextField fx:id="phoneTextField" layoutX="157.0" layoutY="210.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="140.0" />
                         <Label fx:id="phoneLabel" textFill="#eb0303">
                            <HBox.margin>
                               <Insets top="5.0" />
@@ -736,14 +736,14 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="235.0" spacing="5.0" AnchorPane.leftAnchor="94.0">
+                  <HBox layoutX="75.0" layoutY="257.0" prefHeight="25.0" prefWidth="193.0" spacing="5.0" AnchorPane.leftAnchor="75.0">
                      <children>
                         <Text layoutX="101.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="240.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="emailTextField" layoutX="157.0" layoutY="235.0" AnchorPane.leftAnchor="140.0" />
+                        <TextField fx:id="emailTextField" layoutX="157.0" layoutY="235.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="140.0" />
                      </children>
                   </HBox>
                   <Text layoutX="47.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leveransadress" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="300.0">
@@ -751,7 +751,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <HBox layoutX="35.0" layoutY="335.0" spacing="5.0" AnchorPane.leftAnchor="65.0">
+                  <HBox layoutX="50.0" layoutY="335.0" spacing="5.0" AnchorPane.leftAnchor="50.0">
                      <children>
                         <Text layoutX="81.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gatuadress" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="340.0">
                            <HBox.margin>
@@ -761,7 +761,7 @@
                         <TextField fx:id="streetTextField" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="360.0" spacing="5.0" AnchorPane.leftAnchor="57.0">
+                  <HBox layoutX="42.0" layoutY="366.0" spacing="5.0" AnchorPane.leftAnchor="42.0">
                      <children>
                         <Text layoutX="95.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="365.0">
                            <HBox.margin>
@@ -776,7 +776,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="385.0" spacing="5.0" AnchorPane.leftAnchor="110.0">
+                  <HBox layoutX="83.0" layoutY="398.0" spacing="5.0" AnchorPane.leftAnchor="85.0">
                      <children>
                         <Text layoutX="105.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="390.0">
                            <HBox.margin>
@@ -791,7 +791,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <HBox layoutX="35.0" layoutY="485.0" spacing="5.0" AnchorPane.leftAnchor="57.0">
+                  <HBox layoutX="43.0" layoutY="485.0" spacing="5.0" AnchorPane.leftAnchor="43.0">
                      <children>
                         <Text layoutX="100.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="490.0">
                            <HBox.margin>
@@ -806,7 +806,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="510.0" spacing="5.0" AnchorPane.leftAnchor="125.0">
+                  <HBox layoutX="102.0" layoutY="517.0" spacing="5.0" AnchorPane.leftAnchor="102.0">
                      <children>
                         <Text layoutX="91.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="År" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="515.0">
                            <HBox.margin>
@@ -821,7 +821,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="535.0" spacing="5.0" AnchorPane.leftAnchor="96.0">
+                  <HBox layoutX="75.0" layoutY="548.0" spacing="5.0" AnchorPane.leftAnchor="76.0">
                      <children>
                         <Text layoutX="73.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Månad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="540.0">
                            <HBox.margin>
@@ -836,7 +836,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="35.0" layoutY="560.0" spacing="5.0" AnchorPane.leftAnchor="113.0">
+                  <HBox layoutX="92.0" layoutY="580.0" spacing="5.0" AnchorPane.leftAnchor="89.0">
                      <children>
                         <Text layoutX="92.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="565.0">
                            <HBox.margin>

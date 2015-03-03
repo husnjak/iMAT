@@ -12,5 +12,10 @@
 }
 
 .background {
-    -fx-background-color: white;
+    //-fx-background-color: white;
+}
+
+/** Hover styles **/
+.background:hover{
+    -fx-background-color: lightblue;
 }

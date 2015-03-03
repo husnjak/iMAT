@@ -2203,6 +2203,8 @@ public class CenterFlikController implements Initializable {
             imat.getToppController().setPassword(password);
             imat.getToppController().changeLoginScreen();
             showOrderHistory();
+            imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+            initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
           }
         }
       }

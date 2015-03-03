@@ -25,7 +25,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="238.0" layoutY="13.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="24.0" style="-fx-background-color: GreenYellow;" text="+" textFill="WHITE">
+      <Button id="Addbutton" layoutX="238.0" layoutY="13.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="24.0" stylesheets="@ButtonCSS.css" text="+" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>

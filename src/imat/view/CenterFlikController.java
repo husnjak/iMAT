@@ -2249,6 +2249,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2274,6 +2275,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2298,6 +2300,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2322,6 +2325,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2346,6 +2350,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2370,6 +2375,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2394,6 +2400,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2418,6 +2425,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2442,6 +2450,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2466,6 +2475,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {      
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
@@ -2490,6 +2500,7 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
         } else {
           IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();

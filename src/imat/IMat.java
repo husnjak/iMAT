@@ -9,6 +9,7 @@ import imat.view.CenterFlikController;
 import imat.view.KategoriMenyController;
 import imat.view.ToppController;
 import imat.view.VarukorgController;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -134,7 +135,10 @@ public class IMat extends Application {
       
       // Show the scene containing the root layout
       Scene scene = new Scene(root);
-      scene.getStylesheets().add(getClass().getResource("view/ButtonCSS.css").toExternalForm()); // Load the Stylesheets
+      File f = new File("ButtonCSS.css");
+      scene.getStylesheets().clear();
+      scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+      //scene.getStylesheets().add(getClass().getResource("view/ButtonCSS.css").toExternalForm()); // Load the Stylesheets
       // Used for placing different views inside Root Layout
       rootLayout = (BorderPane) root;
       

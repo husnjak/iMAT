@@ -236,6 +236,7 @@ public class ToppController implements Initializable {
   private void handleSearch() {
       if (searchTextField.getText().getClass() == String.class){
           imat.getCenterController().changeToSearchView(searchTextField.getText());
+          searchTextField.setText("");
       }else {
           //give some sort of feedback
       }
@@ -285,6 +286,7 @@ public class ToppController implements Initializable {
       imat.getVarukorgController().updateTotalCostBackend(0);
       imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
       imat.getCenterController().initCheckoutCart(IMatShoppingCart.cart.getAllProducts());
+      loginLabel.setText("");
     } else if (valid.compareTo("invalidUsername") == 0) {
       loginLabel.setText("Felaktigt användarnamn");
     } else {

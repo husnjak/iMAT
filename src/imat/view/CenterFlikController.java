@@ -972,6 +972,16 @@ public class CenterFlikController implements Initializable {
   private TableColumn<?, ?> productCostColumn1;
   @FXML
   private Hyperlink removeProductPaymentLink;
+  @FXML
+  private Label cityLabel1;
+  @FXML
+  private Label streetLabel1;
+  @FXML
+  private Label lastNameLabel1;
+  @FXML
+  private Label firstNameLabel1;
+  @FXML
+  private Label emailLabel1;
   
   public Integer getProductNr() {
     return productNr;
@@ -2950,6 +2960,18 @@ public class CenterFlikController implements Initializable {
 }  
   
   public boolean isRequiredFieldsEntered() {
+    civicLabel1.setText("");
+    firstNameLabel1.setText("");
+    yearLabel1.setText("");
+    monthLabel1.setText("");
+    phoneLabel1.setText("");
+    cvvLabel1.setText("");
+    cardNumberLabel1.setText("");
+    postalLabel1.setText("");
+    streetLabel1.setText("");
+    cityLabel1.setText("");
+    lastNameLabel1.setText("");
+    
     if (firstNameTextField1.getLength() > 0 && lastNameTextField1.getLength() > 0
         && civicTextField1.getLength() > 0 && postalTextField1.getLength() > 0
         && cityTextField1.getLength() > 0 && cardNumberTextField1.getLength() > 0
@@ -2958,6 +2980,39 @@ public class CenterFlikController implements Initializable {
         && cvvTextField1.getLength() > 0 && streetTextField1.getLength() > 0 ) {
       return true;
     } else {
+      if (civicTextField1.getLength() == 0) {
+        civicLabel1.setText("*");
+      }
+      if (firstNameTextField1.getLength() == 0) {
+        firstNameLabel1.setText("*");
+      }
+      if (yearTextField1.getLength() == 0) {
+        yearLabel1.setText("*");
+      }
+      if (monthTextField1.getLength() == 0) {
+        monthLabel1.setText("*");
+      }
+      if (emailTextField1.getLength() == 0 && phoneTextField1.getLength() == 0) {
+        phoneLabel1.setText("*");
+      }
+      if (cardNumberTextField1.getLength() == 0) {
+        cardNumberLabel1.setText("*");
+      }
+      if (cvvTextField1.getLength() == 0) {
+        cvvLabel1.setText("*");
+      }
+      if (lastNameTextField1.getLength() == 0) {
+        lastNameLabel1.setText("*");
+      }
+      if (cityTextField1.getLength() == 0) {
+        cityLabel1.setText("*");
+      }
+      if (streetTextField1.getLength() == 0) {
+        streetLabel1.setText("*");
+      }
+      if (postalTextField1.getLength() == 0) {
+        postalLabel1.setText("*");
+      }
       return false;
     }
   }

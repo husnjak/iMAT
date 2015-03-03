@@ -1265,6 +1265,7 @@
                            </HBox.margin>
                         </Text>
                         <TextField fx:id="cityTextField1" layoutX="150.0" layoutY="385.0" AnchorPane.leftAnchor="140.0" />
+                        <Label fx:id="cityLabel1" textFill="#ee0707" />
                      </children>
                   </HBox>
                   <HBox layoutX="75.0" layoutY="260.0" spacing="5.0" AnchorPane.leftAnchor="60.0">
@@ -1275,6 +1276,7 @@
                            </HBox.margin>
                         </Text>
                         <TextField fx:id="streetTextField1" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
+                        <Label fx:id="streetLabel1" textFill="#ee0707" />
                      </children>
                   </HBox>
                   <HBox layoutX="76.0" layoutY="160.0" spacing="5.0" AnchorPane.leftAnchor="66.0">
@@ -1285,6 +1287,7 @@
                            </HBox.margin>
                         </Text>
                         <TextField fx:id="lastNameTextField1" layoutX="157.0" layoutY="160.0" AnchorPane.leftAnchor="140.0" />
+                        <Label fx:id="lastNameLabel1" textFill="#ee0707" />
                      </children>
                   </HBox>
                   <HBox layoutX="67.0" layoutY="335.0" spacing="5.0" AnchorPane.leftAnchor="52.0">
@@ -1325,6 +1328,7 @@
                            </HBox.margin>
                         </Text>
                         <TextField fx:id="firstNameTextField1" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
+                        <Label fx:id="firstNameLabel1" textFill="#ee0707" />
                      </children>
                   </HBox>
                   <Button fx:id="paymentForOrderButton" layoutX="203.0" layoutY="450.0" mnemonicParsing="false" text="Betala" AnchorPane.rightAnchor="40.0" />
@@ -1336,6 +1340,7 @@
                            </HBox.margin>
                         </Text>
                         <TextField fx:id="emailTextField1" layoutX="157.0" layoutY="235.0" AnchorPane.leftAnchor="140.0" />
+                        <Label fx:id="emailLabel1" textFill="#ee0707" />
                      </children>
                   </HBox>
                   <HBox layoutX="106.0" layoutY="385.0" spacing="5.0" AnchorPane.leftAnchor="91.0">

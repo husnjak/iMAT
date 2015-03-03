@@ -1,0 +1,21 @@
+.Addbutton{
+    -fx-background-image: url(/Add.png);    
+}
+
+.SubButton{
+    -fx-background-image: url(/Subtract.png);  
+}
+
+.BuyButton{
+    -fx-background-color: royalblue;
+    -fx-text-fill: white;
+}
+
+.background {
+    //-fx-background-color: white;
+}
+
+/** Hover styles **/
+.background:hover{
+    -fx-background-color: lightblue;
+}

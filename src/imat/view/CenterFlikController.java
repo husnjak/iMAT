@@ -2964,12 +2964,13 @@ public class CenterFlikController implements Initializable {
             imat.getCenterController().showOrderHistory();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
             imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
-
+            changeToReceiptView();
           } else {
             Order orderCart = IMatController.getIMatBackend().placeOrder();
             imat.getCenterController().getOrders();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
             imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+            changeToReceiptView();
           }
         } else {
       // Inform user to enter required fields
@@ -5706,4 +5707,23 @@ public class CenterFlikController implements Initializable {
             productPane11.setVisible(true);
         }
     }
+  
+  
+  public void changeToReceiptView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "receiptPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+    
+  }
+  
 }

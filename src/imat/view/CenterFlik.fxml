@@ -851,7 +851,8 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Button fx:id="storeInfoButton" layoutX="198.0" layoutY="617.0" mnemonicParsing="false" onAction="#storeInformation" text="Spara uppgifter" AnchorPane.leftAnchor="193.0" />
+                  <Button fx:id="storeInfoButton" layoutX="198.0" layoutY="617.0" mnemonicParsing="false" onAction="#storeInformation" text="Spara uppgifter" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="617.0" />
+                  <Label fx:id="saveInformationLabel" textFill="#07dd24" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="617.0" />
                </children>
             </AnchorPane>
          </content>

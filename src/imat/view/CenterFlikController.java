@@ -983,6 +983,8 @@ public class CenterFlikController implements Initializable {
   private Label nameOrderLabel;
   @FXML
   private Label orderNumberReceiptLabel;
+  @FXML
+  private Label saveInformationLabel;
   
   public Integer getProductNr() {
     return productNr;
@@ -3240,7 +3242,7 @@ public class CenterFlikController implements Initializable {
    */
   @FXML
   public void storeInformation() {
-    
+    saveInformationLabel.setText("");
     // Store first name if entered
     if (firstNameTextField.getLength() > 0) {
       String firstName = firstNameTextField.getText();
@@ -3485,6 +3487,14 @@ public class CenterFlikController implements Initializable {
         IMatController.getIMatBackend().getCreditCard().setVerificationCode(000);
       }
     }
+    
+    if (cvvLabel.getText().equals("") && civicLabel.getText().equals("") &&
+        phoneLabel.getText().equals("") && postalLabel.getText().equals("")
+        && monthLabel.getText().equals("") && yearLabel.getText().equals("")
+        && cardNumberLabel.getText().equals("")) {
+      saveInformationLabel.setText("Uppgifter sparade");
+    }
+    
   }
   
   /**
@@ -4968,6 +4978,7 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
+    saveInformationLabel.setText("");
   }
   
   public void changeToOrderHistorikView() {

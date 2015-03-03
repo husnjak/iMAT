@@ -63,6 +63,10 @@ public class VarukorgController implements Initializable {
   public IMatShoppingCart getIMatShoppingCart() {
     return imatCart;
   }
+  
+  public void setTotalCostLabel(String totalCost) {
+    totalCostLabel.setText(totalCost);
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -70,18 +74,7 @@ public class VarukorgController implements Initializable {
     cartBuyButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        if (IMatController.currentUser != null) {
-          IMatController.createPaidOrder(imatCart.getCart());
-          imat.getCenterController().showOrderHistory();
-          totalCostLabel.setText("0 kr");
-          initShoppingCart(imatCart.getCart().getAllProducts());
-          
-        } else {
-          Order orderCart = IMatController.getIMatBackend().placeOrder();
-          imat.getCenterController().getOrders();
-          totalCostLabel.setText("0 kr");
-          initShoppingCart(convertBackendToIMat());
-        }
+        imat.getCenterController().changeToPaymentView();
       }
     });
 

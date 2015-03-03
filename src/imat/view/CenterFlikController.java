@@ -38,6 +38,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
@@ -916,6 +917,60 @@ public class CenterFlikController implements Initializable {
   private Button minusfavorite;
   @FXML
   private Label totalCostFavorite;
+  @FXML
+  private ScrollPane checkoutPane;
+  @FXML
+  private AnchorPane paymentInformationPane;
+  @FXML
+  private TextField civicTextField1;
+  @FXML
+  private Label civicLabel1;
+  @FXML
+  private TextField yearTextField1;
+  @FXML
+  private Label yearLabel1;
+  @FXML
+  private TextField phoneTextField1;
+  @FXML
+  private Label phoneLabel1;
+  @FXML
+  private TextField postalTextField1;
+  @FXML
+  private Label postalLabel1;
+  @FXML
+  private TextField cityTextField1;
+  @FXML
+  private TextField streetTextField1;
+  @FXML
+  private TextField lastNameTextField1;
+  @FXML
+  private TextField cardNumberTextField1;
+  @FXML
+  private Label cardNumberLabel1;
+  @FXML
+  private TextField cvvTextField1;
+  @FXML
+  private Label cvvLabel1;
+  @FXML
+  private TextField firstNameTextField1;
+  @FXML
+  private Button paymentForOrderButton;
+  @FXML
+  private TextField emailTextField1;
+  @FXML
+  private TextField monthTextField1;
+  @FXML
+  private Label monthLabel1;
+  @FXML
+  private TableView<?> productPaymentTable;
+  @FXML
+  private TableColumn<?, ?> productNameColumn1;
+  @FXML
+  private TableColumn<?, ?> productUnitsColumn1;
+  @FXML
+  private TableColumn<?, ?> productCostColumn1;
+  @FXML
+  private Hyperlink removeProductPaymentLink;
   
   public Integer getProductNr() {
     return productNr;
@@ -2870,6 +2925,24 @@ public class CenterFlikController implements Initializable {
       }
     });
     
+    paymentForOrderButton.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        if (IMatController.currentUser != null) {
+          IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
+          imat.getCenterController().showOrderHistory();
+          imat.getVarukorgController().setTotalCostLabel("0 kr");
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+          
+        } else {
+          Order orderCart = IMatController.getIMatBackend().placeOrder();
+          imat.getCenterController().getOrders();
+          imat.getVarukorgController().setTotalCostLabel("0 kr");
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    });
+    
   }
   
   /**
@@ -4736,6 +4809,22 @@ public class CenterFlikController implements Initializable {
   public void changeToCategoryView() {
     int size = varaListVyParent.getChildren().size();
     currentPane = "productScrollPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+  }
+  
+  public void changeToPaymentView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "checkoutPane";
     String id;
     for (int i = 0; i < size; i++) {
       id = varaListVyParent.getChildren().get(i).getId();

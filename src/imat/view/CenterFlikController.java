@@ -1283,21 +1283,36 @@ public class CenterFlikController implements Initializable {
     buy.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        boolean existed = false;
         Product product = products.get(0);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField.getText());
         textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
-        } else {      
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+        } else {
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
@@ -1309,289 +1324,452 @@ public class CenterFlikController implements Initializable {
     buy1.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        boolean existed = false;
         Product product = products.get(1);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField1.getText());
-        textField1.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-
       }
     });
     
     buy2.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        boolean existed = false;
         Product product = products.get(2);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField2.getText());
-        textField2.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy3.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+          boolean existed = false;
         Product product = products.get(3);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField3.getText());
-        textField3.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        boolean existed = false;
         Product product = products.get(4);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField4.getText());
-        textField4.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy5.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+          boolean existed = false;
         Product product = products.get(5);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField5.getText());
-        textField5.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy6.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+          boolean existed = false;
         Product product = products.get(6);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField6.getText());
-        textField6.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy7.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+           boolean existed = false;
         Product product = products.get(7);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField7.getText());
-        textField7.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy8.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        boolean existed = false;
         Product product = products.get(8);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField8.getText());
-        textField8.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
     
     buy9.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        boolean existed = false;
         Product product = products.get(9);
+        ShoppingItem productItem;
         productUnits = Integer.parseInt(textField9.getText());
-        textField9.setText("1");
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-      }
+    }
     });
   
     buy10.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        Product product = products.get(0);
-        productUnits = Integer.parseInt(textField.getText());
-        textField10.setText("1");
+        boolean existed = false;
+        Product product = products.get(10);
+        ShoppingItem productItem;
+        productUnits = Integer.parseInt(textField10.getText());
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
-          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
-          initCheckoutCart(list);
-        } else {      
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-      }
-    });
-    
-    buy11.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(11);
-        productUnits = Integer.parseInt(textField11.getText());
-        textField11.setText("1");
-        if (IMatController.currentUser != null) {
-          productNr++;
-          int cost = (int)product.getPrice();
-          int sum = productUnits*cost;
-          totalCostInt += sum;
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().initShoppingCart(list);
           initCheckoutCart(list);
         } else {
-          IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
-
-      }
+    }
+    });
+    
+    buy11.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+          boolean existed = false;
+        Product product = products.get(11);
+        ShoppingItem productItem;
+        productUnits = Integer.parseInt(textField11.getText());
+        textField.setText("1");
+        int cost = (int)product.getPrice();
+        int sum = productUnits*cost;
+        totalCostInt += sum;
+        if (IMatController.currentUser != null) {
+          productNr++;
+          IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().initShoppingCart(list);
+          initCheckoutCart(list);
+        } else {
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product, newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
+          }
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+    }
     });
 
     kontouppgifterButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

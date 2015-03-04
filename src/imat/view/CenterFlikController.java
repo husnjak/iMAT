@@ -410,312 +410,6 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label totalCost11;
   @FXML
-  private AnchorPane productPane12;
-  @FXML
-  private Button buy12;
-  @FXML
-  private ImageView productImage12;
-  @FXML
-  private Label productLabel12;
-  @FXML
-  private CheckBox productFavorite12;
-  @FXML
-  private TextField textField12;
-  @FXML
-  private Button plus12;
-  @FXML
-  private Button minus12;
-  @FXML
-  private Label totalCost12;
-  @FXML
-  private AnchorPane productPane13;
-  @FXML
-  private Button buy13;
-  @FXML
-  private ImageView productImage13;
-  @FXML
-  private Label productLabel13;
-  @FXML
-  private CheckBox productFavorite13;
-  @FXML
-  private TextField textField13;
-  @FXML
-  private Button plus13;
-  @FXML
-  private Button minus13;
-  @FXML
-  private Label totalCost13;
-  @FXML
-  private AnchorPane productPane14;
-  @FXML
-  private Button buy14;
-  @FXML
-  private ImageView productImage14;
-  @FXML
-  private Label productLabel14;
-  @FXML
-  private CheckBox productFavorite14;
-  @FXML
-  private TextField textField14;
-  @FXML
-  private Button plus14;
-  @FXML
-  private Button minus14;
-  @FXML
-  private Label totalCost14;
-  @FXML
-  private AnchorPane productPane15;
-  @FXML
-  private Button buy15;
-  @FXML
-  private ImageView productImage15;
-  @FXML
-  private Label productLabel15;
-  @FXML
-  private CheckBox productFavorite15;
-  @FXML
-  private TextField textField15;
-  @FXML
-  private Button plus15;
-  @FXML
-  private Button minus15;
-  @FXML
-  private Label totalCost15;
-  @FXML
-  private AnchorPane productPane16;
-  @FXML
-  private Button buy16;
-  @FXML
-  private ImageView productImage16;
-  @FXML
-  private Label productLabel16;
-  @FXML
-  private CheckBox productFavorite16;
-  @FXML
-  private TextField textField16;
-  @FXML
-  private Button plus16;
-  @FXML
-  private Button minus16;
-  @FXML
-  private Label totalCost16;
-  @FXML
-  private AnchorPane productPane17;
-  @FXML
-  private Button buy17;
-  @FXML
-  private ImageView productImage17;
-  @FXML
-  private Label productLabel17;
-  @FXML
-  private CheckBox productFavorite17;
-  @FXML
-  private TextField textField17;
-  @FXML
-  private Button plus17;
-  @FXML
-  private Button minus17;
-  @FXML
-  private Label totalCost17;
-  @FXML
-  private AnchorPane productPane18;
-  @FXML
-  private Button buy18;
-  @FXML
-  private ImageView productImage18;
-  @FXML
-  private Label productLabel18;
-  @FXML
-  private CheckBox productFavorite18;
-  @FXML
-  private TextField textField18;
-  @FXML
-  private Button plus18;
-  @FXML
-  private Button minus18;
-  @FXML
-  private Label totalCost18;
-  @FXML
-  private AnchorPane productPane19;
-  @FXML
-  private Button buy19;
-  @FXML
-  private ImageView productImage19;
-  @FXML
-  private Label productLabel19;
-  @FXML
-  private CheckBox productFavorite19;
-  @FXML
-  private TextField textField19;
-  @FXML
-  private Button plus19;
-  @FXML
-  private Button minus19;
-  @FXML
-  private Label totalCost19;
-  @FXML
-  private AnchorPane productPane20;
-  @FXML
-  private Button buy20;
-  @FXML
-  private ImageView productImage20;
-  @FXML
-  private Label productLabel20;
-  @FXML
-  private CheckBox productFavorite20;
-  @FXML
-  private TextField textField20;
-  @FXML
-  private Button plus20;
-  @FXML
-  private Button minus20;
-  @FXML
-  private Label totalCost20;
-  @FXML
-  private AnchorPane productPane21;
-  @FXML
-  private Button buy21;
-  @FXML
-  private ImageView productImage21;
-  @FXML
-  private Label productLabel21;
-  @FXML
-  private CheckBox productFavorite21;
-  @FXML
-  private TextField textField21;
-  @FXML
-  private Button plus21;
-  @FXML
-  private Button minus21;
-  @FXML
-  private Label totalCost21;
-  @FXML
-  private AnchorPane productPane22;
-  @FXML
-  private Button buy22;
-  @FXML
-  private ImageView productImage22;
-  @FXML
-  private Label productLabel22;
-  @FXML
-  private CheckBox productFavorite22;
-  @FXML
-  private TextField textField22;
-  @FXML
-  private Button plus22;
-  @FXML
-  private Button minus22;
-  @FXML
-  private Label totalCost22;
-  @FXML
-  private AnchorPane productPane23;
-  @FXML
-  private Button buy23;
-  @FXML
-  private ImageView productImage23;
-  @FXML
-  private Label productLabel23;
-  @FXML
-  private CheckBox productFavorite23;
-  @FXML
-  private TextField textField23;
-  @FXML
-  private Button plus23;
-  @FXML
-  private Button minus23;
-  @FXML
-  private Label totalCost23;
-  @FXML
-  private AnchorPane productPane24;
-  @FXML
-  private Button buy24;
-  @FXML
-  private ImageView productImage24;
-  @FXML
-  private Label productLabel24;
-  @FXML
-  private CheckBox productFavorite24;
-  @FXML
-  private TextField textField24;
-  @FXML
-  private Button plus24;
-  @FXML
-  private Button minus24;
-  @FXML
-  private Label totalCost24;
-  @FXML
-  private AnchorPane productPane25;
-  @FXML
-  private Button buy25;
-  @FXML
-  private ImageView productImage25;
-  @FXML
-  private Label productLabel25;
-  @FXML
-  private CheckBox productFavorite25;
-  @FXML
-  private TextField textField25;
-  @FXML
-  private Button plus25;
-  @FXML
-  private Button minus25;
-  @FXML
-  private Label totalCost25;
-  @FXML
-  private AnchorPane productPane26;
-  @FXML
-  private Button buy26;
-  @FXML
-  private ImageView productImage26;
-  @FXML
-  private Label productLabel26;
-  @FXML
-  private CheckBox productFavorite26;
-  @FXML
-  private TextField textField26;
-  @FXML
-  private Button plus26;
-  @FXML
-  private Button minus26;
-  @FXML
-  private Label totalCost26;
-  @FXML
-  private AnchorPane productPane27;
-  @FXML
-  private Button buy27;
-  @FXML
-  private ImageView productImage27;
-  @FXML
-  private Label productLabel27;
-  @FXML
-  private CheckBox productFavorite27;
-  @FXML
-  private TextField textField27;
-  @FXML
-  private Button plus27;
-  @FXML
-  private Button minus27;
-  @FXML
-  private Label totalCost27;
-  @FXML
-  private AnchorPane productPane28;
-  @FXML
-  private Button buy28;
-  @FXML
-  private ImageView productImage28;
-  @FXML
-  private Label productLabel28;
-  @FXML
-  private CheckBox productFavorite28;
-  @FXML
-  private TextField textField28;
-  @FXML
-  private Button plus28;
-  @FXML
-  private Button minus28;
-  @FXML
-  private Label totalCost28;
-  @FXML
   private Label categoryLabel;
   @FXML
   private AnchorPane varaListVyParent;
@@ -2008,23 +1702,6 @@ public class CenterFlikController implements Initializable {
     textField9.setText("1");
     textField10.setText("1");
     textField11.setText("1");
-    textField12.setText("1");
-    textField13.setText("1");
-    textField14.setText("1");
-    textField15.setText("1");
-    textField16.setText("1");
-    textField17.setText("1");
-    textField18.setText("1");
-    textField19.setText("1");
-    textField20.setText("1");
-    textField21.setText("1");
-    textField22.setText("1");
-    textField23.setText("1");
-    textField24.setText("1");
-    textField25.setText("1");
-    textField26.setText("1");
-    textField27.setText("1");
-    textField28.setText("1");
   }
   
   /**
@@ -2649,23 +2326,7 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
+
   }
   
   /**
@@ -2722,23 +2383,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
   }
   
   public void changeToPastaView() {
@@ -2797,23 +2441,7 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
+
     
   }
     
@@ -2888,23 +2516,6 @@ public class CenterFlikController implements Initializable {
     //hides unused product panes
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
   }
   
   public void changeToDrinkView() {
@@ -2972,16 +2583,6 @@ public class CenterFlikController implements Initializable {
     imageName = product.getImageName();
     setImage(productImage11, imageName);
     totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(12);
-    productLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage12, imageName);
-    totalCost12.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(13);
-    productLabel13.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage13, imageName);
-    totalCost13.setText("Pris: " + (int)product.getPrice() + " kr");
     
     //show used product panes
     productPane.setVisible(true);
@@ -2996,25 +2597,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
-    productPane12.setVisible(true);
-    productPane13.setVisible(true);
-    
-    //hides unused product panes
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
   }
     
   public void changeToFruitView() {
@@ -3082,91 +2664,6 @@ public class CenterFlikController implements Initializable {
     imageName = product.getImageName();
     setImage(productImage11, imageName);
     totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(12);
-    productLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage12, imageName);
-    totalCost12.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(13);
-    productLabel13.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage13, imageName);
-    totalCost13.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(14);
-    productLabel14.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage14, imageName);
-    totalCost14.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(15);
-    productLabel15.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage15, imageName);
-    totalCost15.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(16);
-    productLabel16.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage16, imageName);
-    totalCost16.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(17);
-    productLabel17.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage17, imageName);
-    totalCost17.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(18);
-    productLabel18.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage18, imageName);
-    totalCost18.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(19);
-    productLabel19.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage19, imageName);
-    totalCost19.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(20);
-    productLabel20.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage20, imageName);
-    totalCost20.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(21);
-    productLabel21.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage21, imageName);
-    totalCost21.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(22);
-    productLabel22.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage22, imageName);
-    totalCost22.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(23);
-    productLabel23.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage23, imageName);
-    totalCost23.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(24);
-    productLabel24.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage24, imageName);
-    totalCost24.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(25);
-    productLabel25.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage25, imageName);
-    totalCost25.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(26);
-    productLabel26.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage26, imageName);
-    totalCost26.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(27);
-    productLabel27.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage27, imageName);
-    totalCost27.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(28);
-    productLabel28.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage28, imageName);
-    totalCost28.setText("Pris: " + (int)product.getPrice() + " kr");
     
     //show used product panes
     productPane.setVisible(true);
@@ -3181,23 +2678,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
-    productPane12.setVisible(true);
-    productPane13.setVisible(true);
-    productPane14.setVisible(true);
-    productPane15.setVisible(true);
-    productPane16.setVisible(true);
-    productPane17.setVisible(true);
-    productPane18.setVisible(true);
-    productPane19.setVisible(true);
-    productPane20.setVisible(true);
-    productPane21.setVisible(true);
-    productPane22.setVisible(true);
-    productPane23.setVisible(true);
-    productPane24.setVisible(true);
-    productPane25.setVisible(true);
-    productPane26.setVisible(true);
-    productPane27.setVisible(true);
-    productPane28.setVisible(true);
   }
     
   public void changeToFishView() {
@@ -3256,23 +2736,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
     }
     
   public void changeToVegetablesView() {
@@ -3340,26 +2803,6 @@ public class CenterFlikController implements Initializable {
     imageName = product.getImageName();
     setImage(productImage11, imageName);
     totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(12);
-    productLabel12.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage12, imageName);
-    totalCost12.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(13);
-    productLabel13.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage13, imageName);
-    totalCost13.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(14);
-    productLabel14.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage14, imageName);
-    totalCost14.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(15);
-    productLabel15.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage15, imageName);
-    totalCost15.setText("Pris: " + (int)product.getPrice() + " kr");
     
     //show used product panes
     productPane.setVisible(true);
@@ -3374,25 +2817,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
-    productPane12.setVisible(true);
-    productPane13.setVisible(true);
-    productPane14.setVisible(true);
-    productPane15.setVisible(true);
-    
-    //hides unused product panes
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
   }
     
   public void changeToSpiceView() {
@@ -3461,23 +2885,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
     }
     
   public void changeToDairiesView() {
@@ -3546,23 +2953,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
     }
     
   public void changeToNutsView() {
@@ -3631,23 +3021,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
   }
     
   public void changeToPotatoView() {
@@ -3729,25 +3102,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
-    
-    //hides unused product panes
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
     }
     
   public void changeToSweetsView() {
@@ -3816,23 +3170,6 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
-    productPane12.setVisible(false);
-    productPane13.setVisible(false);
-    productPane14.setVisible(false);
-    productPane15.setVisible(false);
-    productPane16.setVisible(false);
-    productPane17.setVisible(false);
-    productPane18.setVisible(false);
-    productPane19.setVisible(false);
-    productPane20.setVisible(false);
-    productPane21.setVisible(false);
-    productPane22.setVisible(false);
-    productPane23.setVisible(false);
-    productPane24.setVisible(false);
-    productPane25.setVisible(false);
-    productPane26.setVisible(false);
-    productPane27.setVisible(false);
-    productPane28.setVisible(false);
     }
   
   /**

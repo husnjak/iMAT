@@ -679,6 +679,22 @@ public class CenterFlikController implements Initializable {
   private Label orderNumberReceiptLabel;
   @FXML
   private Label saveInformationLabel;
+  @FXML
+  private Button buy21;
+  @FXML
+  private ImageView productImage21;
+  @FXML
+  private Label productLabel21;
+  @FXML
+  private CheckBox productFavorite21;
+  @FXML
+  private TextField textField21;
+  @FXML
+  private Button plus21;
+  @FXML
+  private Button minus21;
+  @FXML
+  private Label totalCost21;
   
   public Integer getProductNr() {
     return productNr;

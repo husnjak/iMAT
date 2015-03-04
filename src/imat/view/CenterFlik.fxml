@@ -275,12 +275,6 @@
                         <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
                      </rowConstraints>
                   </GridPane>
                   <Label fx:id="categoryLabel" text="Kött" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
@@ -824,12 +818,6 @@
                         <ColumnConstraints hgrow="NEVER" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="NEVER" />

@@ -67,9 +67,6 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CenterFlikController implements Initializable {
   
-  private Tab handlaFlik;
-  private Tab historikFlik;
-  private TabPane tabPane;
   @FXML
   private TextField emailTextField;
   @FXML
@@ -695,6 +692,8 @@ public class CenterFlikController implements Initializable {
   private Button minus21;
   @FXML
   private Label totalCost21;
+  @FXML
+  private ScrollPane checkCartCheckoutPane;
   
   public Integer getProductNr() {
     return productNr;
@@ -710,18 +709,6 @@ public class CenterFlikController implements Initializable {
   
   public void setProductUnits(Integer productUnits) {
     this.productUnits = productUnits;
-  }
-  
-  public Tab getHandlaFlik() {
-    return handlaFlik;
-  }
-  
-  public TabPane getTabPane() {
-    return tabPane;
-  }
-  
-  public Tab getHistorikFlik() {
-    return historikFlik;
   }
   
   public TableView<IMatOrder> getOrderTable() {

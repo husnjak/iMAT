@@ -186,7 +186,7 @@ public class ToppController implements Initializable {
     searchTextField.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        handleSearch();
+        imat.getCenterController().changeToSearchView(searchTextField.getText());
         event.consume();
       }
     });

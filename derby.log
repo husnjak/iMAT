@@ -1,21 +1,13 @@
-<<<<<<< HEAD
 ----------------------------------------------------------------
-Thu Mar 05 10:52:22 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-e959-a971-0000024deaf8 
+Thu Mar 05 11:26:48 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-e979-2e2f-0000024a0d28 
 on database directory /home/joel/NetBeansProjects/iMAT/imatDB with class loader sun.misc.Launcher$AppClassLoader@1f96302 
-Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run549862447/lib/derby.jar
-=======
-----------------------------------------------------------------
-Thu Mar 05 09:29:48 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014b-e90e-122f-00000661f480 
-on database directory C:\Users\Filip\Documents\Chalmers\DAT216 - Design och Konstruktion av grafiska gränssnitt\Projekt\iMAT\imatDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
-Loaded from file:/C:/Users/Filip/Documents/Chalmers/DAT216%20-%20Design%20och%20Konstruktion%20av%20grafiska%20gr%c3%a4nssnitt/Projekt/iMAT/dist/run1214152730/lib/derby.jar
->>>>>>> d9ad106689cb0f1bba82dac97f2072c99f6bb770
+Loaded from file:/home/joel/NetBeansProjects/iMAT/dist/run347242726/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_25-b18
-user.dir=C:\Users\Filip\Documents\Chalmers\DAT216 - Design och Konstruktion av grafiska gränssnitt\Projekt\iMAT
-os.name=Windows 8.1
-os.arch=amd64
-os.version=6.3
+java.runtime.version=1.8.0_31-b13
+user.dir=/home/joel/NetBeansProjects/iMAT
+os.name=Linux
+os.arch=i386
+os.version=3.13.0-46-generic
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

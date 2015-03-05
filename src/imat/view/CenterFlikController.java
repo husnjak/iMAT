@@ -711,6 +711,10 @@ public class CenterFlikController implements Initializable {
     return productUnits;
   }
   
+  public ListView<String> getCheckoutView() {
+    return lv;
+  }
+  
   public void setProductUnits(Integer productUnits) {
     this.productUnits = productUnits;
   }
@@ -2398,6 +2402,7 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the register page.
    */
   public void changeToRegisterView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "registerPane";
     String id;
@@ -3602,8 +3607,8 @@ public class CenterFlikController implements Initializable {
     }
   
   public void populateCheckoutCart() {
-    lv = getCheckoutList();
-    lv.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+      lv = getCheckoutList();
+      lv.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
         @Override
         public ListCell<String> call(ListView<String> param) {
             return new CenterFlikController.XCell();
@@ -3611,6 +3616,7 @@ public class CenterFlikController implements Initializable {
     });
     
     getListVyPane().getChildren().add(lv);
+
   }
     
   public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
@@ -4301,13 +4307,22 @@ public class CenterFlikController implements Initializable {
   }
   
   public ListView<String> getCheckoutList() {
-    List<ShoppingItem> items = IMatController.getShoppingCart().getItems();
-    int size = items.size();
+    List<ShoppingItem> items;
+    List<IMatShoppingItem> imatItems;
     List<String> names = new ArrayList();
-    for (int i = 0; i < size; i++) {
-      names.add(items.get(i).getProduct().getName());
+    if (IMatController.currentUser != null) {
+      imatItems = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+      int size = imatItems.size();
+      for (int i = 0; i < size; i++) {
+        names.add(imatItems.get(i).getProduct().getName());
+      }
+    } else {
+      items = IMatController.getShoppingCart().getItems();
+      int size = items.size();
+      for (int i = 0; i < size; i++) {
+        names.add(items.get(i).getProduct().getName());
+      }
     }
-    
     ObservableList<String> itemNames = FXCollections.observableArrayList(names); 
     checkOutCartListView = new ListView(itemNames);
     checkOutCartListView.setLayoutY(100);

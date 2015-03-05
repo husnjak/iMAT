@@ -287,6 +287,10 @@ public class ToppController implements Initializable {
       imat.getVarukorgController().initShoppingCart(IMatShoppingCart.cart.getAllProducts());
       imat.getCenterController().initCheckoutCart(IMatShoppingCart.cart.getAllProducts());
       loginLabel.setText("");
+      if (imat.getCenterController().currentPane.equals("checkCartCheckoutPane")) {
+        imat.getCenterController().getListVyPane().getChildren().remove(imat.getCenterController().getCheckoutView());
+        imat.getCenterController().populateCheckoutCart();
+      }
     } else if (valid.compareTo("invalidUsername") == 0) {
       loginLabel.setText("Felaktigt användarnamn");
     } else {
@@ -335,6 +339,11 @@ public class ToppController implements Initializable {
     imat.getVarukorgController().updateTotalCostBackend(totalSum);
     imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
     imat.getCenterController().initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+    if (imat.getCenterController().currentPane.equals("checkCartCheckoutPane")) {
+      imat.getCenterController().getListVyPane().getChildren().remove(imat.getCenterController().getCheckoutView());
+      imat.getCenterController().populateCheckoutCart();
+    }
+  
   }
 
   

@@ -20,3 +20,7 @@
 .background:hover{
     -fx-background-color: lightblue;
 }
+
+.backgroundColor{
+    -fx-background-color: white;
+}

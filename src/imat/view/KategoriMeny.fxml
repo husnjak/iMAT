@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="150.0" style="-fx-border-color: black;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.KategoriMenyController">
    <children>
       <Hyperlink fx:id="riceLink" layoutX="18.0" layoutY="350.0" text="Ris" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="350.0" />
       <Hyperlink fx:id="pastaLink" layoutX="18.0" layoutY="290.0" text="Pasta" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="290.0" />

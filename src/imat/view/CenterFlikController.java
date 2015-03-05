@@ -3559,7 +3559,6 @@ public class CenterFlikController implements Initializable {
     public static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
         Label label = new Label("(empty)");
-        VBox vbox = new VBox();
         Pane pane1 = new Pane();
         Pane pane2 = new Pane();
         Pane pane3 = new Pane();
@@ -3571,15 +3570,8 @@ public class CenterFlikController implements Initializable {
 
         public XCell() {
             super();
-            plusButton.setMaxHeight(5);
-            plusButton.setMaxWidth(5);
-            minusButton.setMaxHeight(5);
-            minusButton.setMaxWidth(5);
-            vbox.setMaxHeight(5);
-            vbox.getChildren().addAll(plusButton, minusButton);
-            vbox.setMaxHeight(5);
             hbox.setMaxHeight(15);
-            hbox.getChildren().addAll(deleteButton, pane1, label, pane2, vbox, pane3);
+            hbox.getChildren().addAll(deleteButton, pane1, label, pane2, minusButton, plusButton, pane3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);
             HBox.setHgrow(pane3, Priority.ALWAYS);

@@ -1327,7 +1327,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(1);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField1.getText());
-        textField.setText("1");
+        textField1.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1368,7 +1368,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(2);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField2.getText());
-        textField.setText("1");
+        textField2.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1409,7 +1409,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(3);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField3.getText());
-        textField.setText("1");
+        textField3.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1450,7 +1450,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(4);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField4.getText());
-        textField.setText("1");
+        textField4.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1491,7 +1491,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(5);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField5.getText());
-        textField.setText("1");
+        textField5.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1532,7 +1532,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(6);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField6.getText());
-        textField.setText("1");
+        textField6.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1573,7 +1573,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(7);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField7.getText());
-        textField.setText("1");
+        textField7.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1614,7 +1614,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(8);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField8.getText());
-        textField.setText("1");
+        textField8.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1655,7 +1655,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(9);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField9.getText());
-        textField.setText("1");
+        textField9.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1696,7 +1696,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(10);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField10.getText());
-        textField.setText("1");
+        textField10.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -1737,7 +1737,7 @@ public class CenterFlikController implements Initializable {
         Product product = products.get(11);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField11.getText());
-        textField.setText("1");
+        textField11.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -3594,7 +3594,7 @@ public class CenterFlikController implements Initializable {
                 List<ShoppingItem> shopI = new ArrayList();
                 shopI.addAll(IMatController.getShoppingCart().getItems());
                 int size = shopI.size();
-                for (int i = 0; i < size; i++) {
+                for (int i = 0; i < shopI.size(); i++) {
                   if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
                     shopI.remove(i);
                     i++;

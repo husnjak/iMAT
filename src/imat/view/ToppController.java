@@ -128,10 +128,10 @@ public class ToppController implements Initializable {
     setImage(logoImage, "imat-logga1.png");
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
-    passwordTextField.alignmentProperty().setValue(Pos.CENTER_RIGHT);
-    usernameTextField.alignmentProperty().setValue(Pos.CENTER_RIGHT);
-    searchTextField.alignmentProperty().setValue(Pos.CENTER_RIGHT);
-    searchTextField.setPromptText("Sök vara");
+    passwordTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
+    usernameTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
+    searchTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
+    searchTextField.setPromptText("Sök efter produkter här...");
     
     logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
      @Override

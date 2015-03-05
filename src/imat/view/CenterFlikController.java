@@ -42,8 +42,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -58,7 +56,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
@@ -115,6 +112,8 @@ public class CenterFlikController implements Initializable {
   private IMat imat;
   
   ListView<IMatShoppingItem> lv;
+  
+  static int cellIndex = 0;
   
   // Used for deciding if to show the list view of products or not
   private boolean listView;
@@ -672,6 +671,7 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label emailLabel1;
   private ListView<IMatShoppingItem> checkOutCartListView;
+  static String action = "init";
   @FXML
   private ScrollPane receiptPane;
   @FXML
@@ -698,6 +698,8 @@ public class CenterFlikController implements Initializable {
   private Label totalCost21;
   @FXML
   private ScrollPane checkCartCheckoutPane;
+  
+  ObservableList<IMatShoppingItem> nn;
   
   public Integer getProductNr() {
     return productNr;
@@ -3556,7 +3558,7 @@ public class CenterFlikController implements Initializable {
           
     }
   }
-    public static class XCell extends ListCell<IMatShoppingItem> {
+    public class XCell extends ListCell<IMatShoppingItem> {
         HBox hbox = new HBox();
         Label label1 = new Label("(empty)");
         Label label2 = new Label("(empty)");
@@ -3564,25 +3566,95 @@ public class CenterFlikController implements Initializable {
         Pane pane1 = new Pane();
         Pane pane2 = new Pane();
         Pane pane3 = new Pane();
-        Button button = new Button("(>)");
         Button plusButton = new Button("+");
         Button minusButton = new Button("-");
         Button deleteButton = new Button("X");
         String lastItem;
+        int index = 0;
+        //IMatShoppingItem item;
 
         public XCell() {
             super();
+            index = cellIndex;
+            cellIndex++;
             hbox.setMaxHeight(15);
             hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, minusButton, label2, plusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);
             HBox.setHgrow(pane3, Priority.ALWAYS);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    System.out.println(lastItem + " : " + event);
+            deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent event) {
+                lv.getSelectionModel().selectIndices(index-1);
+                IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
+                List<ShoppingItem> shopI = new ArrayList();
+                shopI.addAll(IMatController.getShoppingCart().getItems());
+                int size = shopI.size();
+                for (int i = 0; i < size; i++) {
+                  if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                    shopI.remove(i);
+                    System.out.println(size);
+                    IMatController.getShoppingCart().clear();
+                  }
                 }
+                for (int i = 0; i < size-1; i++) {
+                  System.out.println("test");
+                  IMatController.getShoppingCart().addItem(shopI.get(i));
+                }
+                populateCheckoutCart();
+              }
             });
+            minusButton.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent event) {
+                                lv.getSelectionModel().selectIndices(index-1);
+                int currentAmount = lv.getSelectionModel().getSelectedItem().getAmount();
+                int newAmount = --currentAmount;
+                lv.getSelectionModel().getSelectedItem().setAmount(newAmount);
+                IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
+                List<ShoppingItem> shopI = new ArrayList();
+                shopI.addAll(IMatController.getShoppingCart().getItems());
+                int size = shopI.size();
+                for (int i = 0; i < size; i++) {
+                  if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                    shopI.get(i).setAmount(newAmount);
+                    System.out.println(size);
+                    IMatController.getShoppingCart().clear();
+                  }
+                }
+                for (int i = 0; i < size; i++) {
+                  System.out.println("test");
+                  IMatController.getShoppingCart().addItem(shopI.get(i));
+                }
+                populateCheckoutCart();
+              }
+            });
+            plusButton.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent event) {
+                lv.getSelectionModel().selectIndices(index-1);
+                int currentAmount = lv.getSelectionModel().getSelectedItem().getAmount();
+                int newAmount = ++currentAmount;
+                lv.getSelectionModel().getSelectedItem().setAmount(newAmount);
+                IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
+                List<ShoppingItem> shopI = new ArrayList();
+                shopI.addAll(IMatController.getShoppingCart().getItems());
+                int size = shopI.size();
+                for (int i = 0; i < size; i++) {
+                  if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                    shopI.get(i).setAmount(newAmount);
+                    System.out.println(size);
+                    IMatController.getShoppingCart().clear();
+                  }
+                }
+                for (int i = 0; i < size; i++) {
+                  System.out.println("test");
+                  IMatController.getShoppingCart().addItem(shopI.get(i));
+                }
+                populateCheckoutCart();
+              }
+            });
+       
         }
 
         @Override
@@ -3590,27 +3662,34 @@ public class CenterFlikController implements Initializable {
             super.updateItem(item, empty);
             setText(null);  // No text in label of super class
             if (empty) {
+              
                 lastItem = null;
                 setGraphic(null);
             } else {
-                lastItem = item.getProductName();
-                label1.setText(item.getProductName() !=null ? item.getProductName() : "<null>");
-                label2.setText(item.getProductName() !=null ? "  "+item.getAmount().toString()+" st  " : "<null>");
-                label3.setText(item.getProductName() !=null ? item.getSum().toString()+" kr" : "<null>");
-                setGraphic(hbox);
+              String productName = item.getProductName();
+              Integer productUnits = item.getAmount();
+              lastItem = item.getProductName();
+              label1.setText(productName !=null ? productName : "<null>");
+              label2.setText(item.getProductName() !=null ? "  "+productUnits.toString()+" st  " : "<null>");
+              label3.setText(item.getProductName() !=null ? item.getSum().toString()+" kr" : "<null>");
+              setGraphic(hbox);
             }
         }
     }
   
   public void populateCheckoutCart() {
+    if (getListVyPane().getChildren().contains(lv)) {
+      getListVyPane().getChildren().remove(lv);
+    }
       lv = getCheckoutList();
       lv.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>() {
         @Override
         public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> param) {
-            return new CenterFlikController.XCell();
+            XCell cell = new XCell();
+            return cell;
         }
     });
-    
+    cellIndex = 0;
     getListVyPane().getChildren().add(lv);
 
   }
@@ -4309,7 +4388,7 @@ public class CenterFlikController implements Initializable {
     } else {
       imatItems = imat.getVarukorgController().convertBackendToIMat();
     }
-    ObservableList<IMatShoppingItem> nn = FXCollections.observableArrayList(imatItems);
+    nn = FXCollections.observableArrayList(imatItems);
     checkOutCartListView = new ListView(nn);
     checkOutCartListView.setLayoutY(100);
     checkOutCartListView.setLayoutX(100);

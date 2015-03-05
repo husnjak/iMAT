@@ -35,6 +35,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
@@ -704,6 +705,10 @@ public class CenterFlikController implements Initializable {
   Label totalCheckoutSum;
   @FXML
   private Label totalCostCartLabel;
+  @FXML
+  private Button toPayInfoButton;
+  @FXML
+  private Button paymentForOrderButton1;
   
   public Integer getProductNr() {
     return productNr;
@@ -743,18 +748,21 @@ public class CenterFlikController implements Initializable {
     productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
     
-    //removeProductPaymentLink.setOnAction(new EventHandler<ActionEvent>() {
-      //@Override public void handle(ActionEvent event) {
-        //final int selectedIdx = checkOutCartListView.getSelectionModel().getSelectedIndex();
-        //if (selectedIdx != -1) {
-          //IMatShoppingItem itemToRemove = checkOutCartListView.getSelectionModel().getSelectedItem();
-          //final int newSelectedIdx = (selectedIdx == checkOutCartListView.getItems().size() - 1)
-        //? selectedIdx - 1 : selectedIdx;
-          //checkOutCartListView.getItems().remove(selectedIdx);
-          //checkOutCartListView.getSelectionModel().select(newSelectedIdx);
-        //}
-    //}
-    //});
+    toPayInfoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToPaymentView();
+        event.consume();
+      }
+    });
+    
+    paymentForOrderButton1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToCheckoutView();
+        event.consume();
+      }
+    });
     
     productFavorite.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -3493,6 +3501,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToPaymentView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "checkoutPane";
     String id;
@@ -3601,6 +3610,7 @@ public class CenterFlikController implements Initializable {
             hbox.setMaxHeight(15);
             pane1.setPrefWidth(20);
             label1.setPrefWidth(120);
+            label2.setPrefWidth(50);
             pane2.setPrefWidth(20);
             pane3.setPrefWidth(20);
             label3.setPrefWidth(70);

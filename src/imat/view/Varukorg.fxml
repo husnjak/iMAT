@@ -19,7 +19,7 @@
                </effect>
             </ListView>
             <Button fx:id="cartBuyButton" layoutX="173.0" layoutY="426.0" mnemonicParsing="false" text="Till Kassan" AnchorPane.rightAnchor="26.0" />
-            <HBox layoutX="150.0" layoutY="376.0" spacing="5.0" AnchorPane.leftAnchor="140.0">
+            <HBox layoutX="150.0" layoutY="376.0" spacing="5.0" AnchorPane.leftAnchor="130.0">
                <children>
                   <Label text="Summa: " />
                   <Label fx:id="totalCostLabel" layoutX="145.0" layoutY="419.0" AnchorPane.leftAnchor="145.0">

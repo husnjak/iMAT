@@ -3575,13 +3575,17 @@ public class CenterFlikController implements Initializable {
         Button deleteButton = new Button("X");
         String lastItem;
         int index = 0;
-        //IMatShoppingItem item;
 
         public XCell() {
             super();
             index = cellIndex;
             cellIndex++;
             hbox.setMaxHeight(15);
+            pane1.setPrefWidth(20);
+            label1.setPrefWidth(120);
+            pane2.setPrefWidth(20);
+            pane3.setPrefWidth(20);
+            label3.setPrefWidth(50);
             hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, minusButton, label2, plusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);

@@ -3607,9 +3607,12 @@ public class CenterFlikController implements Initializable {
             minusButton.setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
-                                lv.getSelectionModel().selectIndices(index-1);
+                lv.getSelectionModel().selectIndices(index-1);
                 int currentAmount = lv.getSelectionModel().getSelectedItem().getAmount();
                 int newAmount = --currentAmount;
+                if (newAmount < 1) {
+                  newAmount = 1;
+                }
                 lv.getSelectionModel().getSelectedItem().setAmount(newAmount);
                 IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
                 List<ShoppingItem> shopI = new ArrayList();

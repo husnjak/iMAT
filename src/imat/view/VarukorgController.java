@@ -66,6 +66,10 @@ public class VarukorgController implements Initializable {
   public void setTotalCostLabel(String totalCost) {
     totalCostLabel.setText(totalCost);
   }
+  
+  public Button getCartBuyButton() {
+    return cartBuyButton;
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

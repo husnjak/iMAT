@@ -2371,6 +2371,9 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "startPage";
@@ -3409,6 +3412,9 @@ public class CenterFlikController implements Initializable {
   }
   
   public void testAccountView() {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "registerPane";
@@ -3426,6 +3432,9 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToKontoView() {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "kontouppgifterPane";
@@ -3444,6 +3453,9 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToOrderHistorikView() {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "orderHistorikPane";
@@ -3461,6 +3473,9 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToCategoryView() {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "productScrollPane";
@@ -3495,6 +3510,9 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToFavoriteView() {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
     favoritePane.setVisible(false);
     favoritePane1.setVisible(false);
@@ -3585,7 +3603,7 @@ public class CenterFlikController implements Initializable {
             label1.setPrefWidth(120);
             pane2.setPrefWidth(20);
             pane3.setPrefWidth(20);
-            label3.setPrefWidth(50);
+            label3.setPrefWidth(70);
             hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, minusButton, label2, plusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);
@@ -3717,7 +3735,6 @@ public class CenterFlikController implements Initializable {
     });
     cellIndex = 0;
     getListVyPane().getChildren().add(lv);
-
   }
     
   public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
@@ -3743,6 +3760,9 @@ public class CenterFlikController implements Initializable {
   }
 
   public void changeToSearchView(String searchText) {
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    }
     getListVyPane().getChildren().remove(lv);
         changeToCategoryView();
         setAllUnitsToOne();
@@ -4403,6 +4423,8 @@ public class CenterFlikController implements Initializable {
     populateCheckoutCart();
     Integer total = (int)IMatController.getShoppingCart().getTotal();
     totalCostCartLabel.setText(total.toString()+" kr");
+    imat.getVarukorgController().getCartBuyButton().setDisable(true);
+
   }
   
   public AnchorPane getListVyPane(){

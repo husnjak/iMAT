@@ -701,6 +701,10 @@ public class CenterFlikController implements Initializable {
   
   ObservableList<IMatShoppingItem> nn;
   
+  Label totalCheckoutSum;
+  @FXML
+  private Label totalCostCartLabel;
+  
   public Integer getProductNr() {
     return productNr;
   }
@@ -3593,6 +3597,7 @@ public class CenterFlikController implements Initializable {
                 for (int i = 0; i < size; i++) {
                   if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
                     shopI.remove(i);
+                    i++;
                     System.out.println(size);
                     IMatController.getShoppingCart().clear();
                   }
@@ -3602,6 +3607,8 @@ public class CenterFlikController implements Initializable {
                   IMatController.getShoppingCart().addItem(shopI.get(i));
                 }
                 populateCheckoutCart();
+                Integer total = (int)IMatController.getShoppingCart().getTotal();
+                totalCostCartLabel.setText(total.toString() + " kr");
               }
             });
             minusButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -3630,6 +3637,8 @@ public class CenterFlikController implements Initializable {
                   IMatController.getShoppingCart().addItem(shopI.get(i));
                 }
                 populateCheckoutCart();
+                Integer total = (int)IMatController.getShoppingCart().getTotal();
+                totalCostCartLabel.setText(total.toString()+" kr");
               }
             });
             plusButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -3655,6 +3664,8 @@ public class CenterFlikController implements Initializable {
                   IMatController.getShoppingCart().addItem(shopI.get(i));
                 }
                 populateCheckoutCart();
+                Integer total = (int)IMatController.getShoppingCart().getTotal();
+                totalCostCartLabel.setText(total.toString()+" kr");
               }
             });
        
@@ -4378,6 +4389,8 @@ public class CenterFlikController implements Initializable {
       }
     }
     populateCheckoutCart();
+    Integer total = (int)IMatController.getShoppingCart().getTotal();
+    totalCostCartLabel.setText(total.toString()+" kr");
   }
   
   public AnchorPane getListVyPane(){

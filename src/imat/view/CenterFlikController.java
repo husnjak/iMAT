@@ -54,7 +54,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
@@ -109,6 +113,8 @@ public class CenterFlikController implements Initializable {
   private Label civicLabel;
   
   private IMat imat;
+  
+  ListView<String> lv;
   
   // Used for deciding if to show the list view of products or not
   private boolean listView;
@@ -654,7 +660,6 @@ public class CenterFlikController implements Initializable {
   private TextField monthTextField1;
   @FXML
   private Label monthLabel1;
-  @FXML
   private Hyperlink removeProductPaymentLink;
   @FXML
   private Label cityLabel1;
@@ -666,8 +671,7 @@ public class CenterFlikController implements Initializable {
   private Label firstNameLabel1;
   @FXML
   private Label emailLabel1;
-  @FXML
-  private ListView<IMatShoppingItem> checkOutCartListView = new ListView();
+  private ListView<String> checkOutCartListView;
   @FXML
   private ScrollPane receiptPane;
   @FXML
@@ -728,8 +732,6 @@ public class CenterFlikController implements Initializable {
     products = new ArrayList<>();
     productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
-    removeProductPaymentLink.setFocusTraversable(false);
-    removeProductPaymentLink.setVisited(false);
     
     //removeProductPaymentLink.setOnAction(new EventHandler<ActionEvent>() {
       //@Override public void handle(ActionEvent event) {
@@ -2359,6 +2361,7 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "startPage";
     String id;
@@ -3395,6 +3398,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void testAccountView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "registerPane";
     String id;
@@ -3411,6 +3415,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToKontoView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "kontouppgifterPane";
     String id;
@@ -3428,6 +3433,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToOrderHistorikView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "orderHistorikPane";
     String id;
@@ -3444,6 +3450,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToCategoryView() {
+    getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "productScrollPane";
     String id;
@@ -3477,6 +3484,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToFavoriteView() {
+    getListVyPane().getChildren().remove(lv);
     favoritePane.setVisible(false);
     favoritePane1.setVisible(false);
     favoritePane2.setVisible(false);
@@ -3543,28 +3551,92 @@ public class CenterFlikController implements Initializable {
           
     }
   }
-  
-  public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
-    ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
-    checkOutCartListView.setItems(cartList);
-    checkOutCartListView.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>(){
-      @Override
-      public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> p) {
-        ListCell<IMatShoppingItem> cell = new ListCell<IMatShoppingItem>(){
-          @Override
-          protected void updateItem(IMatShoppingItem t, boolean bln) {
-            super.updateItem(t, bln);
-            if (t != null) {
-              setText(t.getAmount() + " st  " + t.getProductName() + "   " + t.getSum() + " kr");
+    public static class XCell extends ListCell<String> {
+        HBox hbox = new HBox();
+        Label label = new Label("(empty)");
+        VBox vbox = new VBox();
+        Pane pane1 = new Pane();
+        Pane pane2 = new Pane();
+        Pane pane3 = new Pane();
+        Button button = new Button("(>)");
+        Button plusButton = new Button("+");
+        Button minusButton = new Button("-");
+        Button deleteButton = new Button("X");
+        String lastItem;
+
+        public XCell() {
+            super();
+            plusButton.setMaxHeight(5);
+            plusButton.setMaxWidth(5);
+            minusButton.setMaxHeight(5);
+            minusButton.setMaxWidth(5);
+            vbox.setMaxHeight(5);
+            vbox.getChildren().addAll(plusButton, minusButton);
+            vbox.setMaxHeight(5);
+            hbox.setMaxHeight(15);
+            hbox.getChildren().addAll(deleteButton, pane1, label, pane2, vbox, pane3);
+            HBox.setHgrow(pane1, Priority.ALWAYS);
+            HBox.setHgrow(pane2, Priority.ALWAYS);
+            HBox.setHgrow(pane3, Priority.ALWAYS);
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println(lastItem + " : " + event);
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            setText(null);  // No text in label of super class
+            if (empty) {
+                lastItem = null;
+                setGraphic(null);
+            } else {
+                lastItem = item;
+                label.setText(item!=null ? item : "<null>");
+                setGraphic(hbox);
             }
-          }
-        };
-      return cell;
-      }
+        }
+    }
+  
+  public void populateCheckoutCart() {
+    lv = getCheckoutList();
+    lv.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+        @Override
+        public ListCell<String> call(ListView<String> param) {
+            return new CenterFlikController.XCell();
+        }
     });
+    
+    getListVyPane().getChildren().add(lv);
+  }
+    
+  public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
+    //List<IMatShoppingItem> cartProducts
+
+//    ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
+//    checkOutCartListView.setItems(cartList);
+//    checkOutCartListView.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>(){
+//      @Override
+//      public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> p) {
+//        ListCell<IMatShoppingItem> cell = new ListCell<IMatShoppingItem>(){
+//          @Override
+//          protected void updateItem(IMatShoppingItem t, boolean bln) {
+//            super.updateItem(t, bln);
+//            if (t != null) {
+//              setText(t.getAmount() + " st  " + t.getProductName() + "   " + t.getSum() + " kr");
+//            }
+//          }
+//        };
+//      return cell;
+//      }
+//    });
   }
 
   public void changeToSearchView(String searchText) {
+    getListVyPane().getChildren().remove(lv);
         changeToCategoryView();
         setAllUnitsToOne();
         categoryLabel.setText("Sökresultat för: " + searchText);
@@ -4205,6 +4277,43 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
+  }
+  
+  public void changeToCheckoutView() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "checkCartCheckoutPane";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+    populateCheckoutCart();
+  }
+  
+  public AnchorPane getListVyPane(){
+    return varaListVyParent;
+  }
+  
+  public ListView<String> getCheckoutList() {
+    List<ShoppingItem> items = IMatController.getShoppingCart().getItems();
+    int size = items.size();
+    List<String> names = new ArrayList();
+    for (int i = 0; i < size; i++) {
+      names.add(items.get(i).getProduct().getName());
+    }
+    
+    ObservableList<String> itemNames = FXCollections.observableArrayList(names); 
+    checkOutCartListView = new ListView(itemNames);
+    checkOutCartListView.setLayoutY(100);
+    checkOutCartListView.setLayoutX(100);
+    checkOutCartListView.setMinWidth(500);
+    return checkOutCartListView;
   }
   
 }

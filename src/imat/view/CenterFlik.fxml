@@ -1102,19 +1102,9 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
-      <ScrollPane fx:id="checkCartCheckoutPane" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane fx:id="checkCartCheckoutPane" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
-          <AnchorPane layoutY="40.0" maxHeight="423.0" maxWidth="750.0" minHeight="423.0" minWidth="750.0" prefHeight="423.0" prefWidth="750.0">
-               <children>
-                  <ListView fx:id="checkOutCartListView" prefHeight="351.0" prefWidth="250.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="40.0" />
-                  <Text layoutX="520.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Hyperlink fx:id="removeProductPaymentLink" layoutX="102.0" layoutY="400.0" text="Ta bort" />
-               </children>
-            </AnchorPane>
+          <AnchorPane layoutY="40.0" maxHeight="423.0" maxWidth="750.0" minHeight="423.0" minWidth="750.0" prefHeight="423.0" prefWidth="750.0" />
         </content>
       </ScrollPane>
    </children>

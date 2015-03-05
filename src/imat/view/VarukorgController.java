@@ -73,7 +73,7 @@ public class VarukorgController implements Initializable {
     cartBuyButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        imat.getCenterController().changeToPaymentView();
+        imat.getCenterController().changeToCheckoutView();
       }
     });
 

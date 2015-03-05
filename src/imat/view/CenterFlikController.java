@@ -114,7 +114,7 @@ public class CenterFlikController implements Initializable {
   
   private IMat imat;
   
-  ListView<String> lv;
+  ListView<IMatShoppingItem> lv;
   
   // Used for deciding if to show the list view of products or not
   private boolean listView;
@@ -671,7 +671,7 @@ public class CenterFlikController implements Initializable {
   private Label firstNameLabel1;
   @FXML
   private Label emailLabel1;
-  private ListView<String> checkOutCartListView;
+  private ListView<IMatShoppingItem> checkOutCartListView;
   @FXML
   private ScrollPane receiptPane;
   @FXML
@@ -711,7 +711,7 @@ public class CenterFlikController implements Initializable {
     return productUnits;
   }
   
-  public ListView<String> getCheckoutView() {
+  public ListView<IMatShoppingItem> getCheckoutView() {
     return lv;
   }
   
@@ -3556,9 +3556,11 @@ public class CenterFlikController implements Initializable {
           
     }
   }
-    public static class XCell extends ListCell<String> {
+    public static class XCell extends ListCell<IMatShoppingItem> {
         HBox hbox = new HBox();
-        Label label = new Label("(empty)");
+        Label label1 = new Label("(empty)");
+        Label label2 = new Label("(empty)");
+        Label label3 = new Label("(empty)");
         Pane pane1 = new Pane();
         Pane pane2 = new Pane();
         Pane pane3 = new Pane();
@@ -3571,7 +3573,7 @@ public class CenterFlikController implements Initializable {
         public XCell() {
             super();
             hbox.setMaxHeight(15);
-            hbox.getChildren().addAll(deleteButton, pane1, label, pane2, minusButton, plusButton, pane3);
+            hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, minusButton, label2, plusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);
             HBox.setHgrow(pane3, Priority.ALWAYS);
@@ -3584,15 +3586,17 @@ public class CenterFlikController implements Initializable {
         }
 
         @Override
-        protected void updateItem(String item, boolean empty) {
+        protected void updateItem(IMatShoppingItem item, boolean empty) {
             super.updateItem(item, empty);
             setText(null);  // No text in label of super class
             if (empty) {
                 lastItem = null;
                 setGraphic(null);
             } else {
-                lastItem = item;
-                label.setText(item!=null ? item : "<null>");
+                lastItem = item.getProductName();
+                label1.setText(item.getProductName() !=null ? item.getProductName() : "<null>");
+                label2.setText(item.getProductName() !=null ? "  "+item.getAmount().toString()+" st  " : "<null>");
+                label3.setText(item.getProductName() !=null ? item.getSum().toString()+" kr" : "<null>");
                 setGraphic(hbox);
             }
         }
@@ -3600,9 +3604,9 @@ public class CenterFlikController implements Initializable {
   
   public void populateCheckoutCart() {
       lv = getCheckoutList();
-      lv.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+      lv.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>() {
         @Override
-        public ListCell<String> call(ListView<String> param) {
+        public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> param) {
             return new CenterFlikController.XCell();
         }
     });
@@ -4298,25 +4302,15 @@ public class CenterFlikController implements Initializable {
     return varaListVyParent;
   }
   
-  public ListView<String> getCheckoutList() {
-    List<ShoppingItem> items;
+  public ListView<IMatShoppingItem> getCheckoutList() {
     List<IMatShoppingItem> imatItems;
-    List<String> names = new ArrayList();
     if (IMatController.currentUser != null) {
       imatItems = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-      int size = imatItems.size();
-      for (int i = 0; i < size; i++) {
-        names.add(imatItems.get(i).getProduct().getName());
-      }
     } else {
-      items = IMatController.getShoppingCart().getItems();
-      int size = items.size();
-      for (int i = 0; i < size; i++) {
-        names.add(items.get(i).getProduct().getName());
-      }
+      imatItems = imat.getVarukorgController().convertBackendToIMat();
     }
-    ObservableList<String> itemNames = FXCollections.observableArrayList(names); 
-    checkOutCartListView = new ListView(itemNames);
+    ObservableList<IMatShoppingItem> nn = FXCollections.observableArrayList(imatItems);
+    checkOutCartListView = new ListView(nn);
     checkOutCartListView.setLayoutY(100);
     checkOutCartListView.setLayoutX(100);
     checkOutCartListView.setMinWidth(500);

@@ -26,6 +26,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -36,6 +41,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
@@ -58,6 +64,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
@@ -710,6 +717,8 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Button paymentForOrderButton1;
   
+  FadeTransition fader;
+  
   public Integer getProductNr() {
     return productNr;
   }
@@ -747,6 +756,7 @@ public class CenterFlikController implements Initializable {
     products = new ArrayList<>();
     productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
+    fader = createFader(saveInformationLabel);
     
     toPayInfoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
@@ -2298,7 +2308,8 @@ public class CenterFlikController implements Initializable {
         phoneLabel.getText().equals("") && postalLabel.getText().equals("")
         && monthLabel.getText().equals("") && yearLabel.getText().equals("")
         && cardNumberLabel.getText().equals("")) {
-      saveInformationLabel.setText("Uppgifter sparade");
+      saveInformationLabel.setText("Sparat");
+      fader.play();
     }
     
   }
@@ -4455,5 +4466,13 @@ public class CenterFlikController implements Initializable {
     checkOutCartListView.setMinWidth(500);
     return checkOutCartListView;
   }
+  
+  private FadeTransition createFader(Node node) {
+    FadeTransition fade = new FadeTransition(Duration.seconds(4), node);
+    fade.setFromValue(1);
+    fade.setToValue(0);
+
+    return fade;
+}
   
 }

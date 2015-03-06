@@ -20,12 +20,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -48,6 +48,8 @@ public class VarukorgController implements Initializable {
   private Label totalCostLabel;
   @FXML
   private ListView<IMatShoppingItem> shoppingCartListView = new ListView();
+  @FXML
+  private Hyperlink resetShoppingCartLink;
   
   /**
   * Is called by the main application to give a reference back to itself.
@@ -77,6 +79,19 @@ public class VarukorgController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    resetShoppingCartLink.setFocusTraversable(false);
+    
+    resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        resetShoppingCartLink.setVisited(false);
+        resetShoppingCart();
+        if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
+          imat.getCenterController().changeToCheckoutView();
+        }
+        
+      }
+    });
     
     cartBuyButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -85,6 +100,14 @@ public class VarukorgController implements Initializable {
       }
     });
 
+  }
+  
+  public void resetShoppingCart() {
+    IMatController.getShoppingCart().clear();
+    Integer total = (int)IMatController.getShoppingCart().getTotal();
+    imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
+    updateTotalCostBackend(total);
+    populateCheckoutCart(convertBackendToIMat());
   }
   
   /**

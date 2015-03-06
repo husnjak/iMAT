@@ -29,6 +29,7 @@
                   </Label>
                </children>
             </HBox>
+            <Hyperlink fx:id="resetShoppingCartLink" layoutX="14.0" layoutY="373.0" text="Töm" AnchorPane.leftAnchor="10.0" />
          </children>
          <padding>
             <Insets bottom="59.0" />

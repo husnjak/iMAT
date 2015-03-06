@@ -767,6 +767,10 @@ public class CenterFlikController implements Initializable {
   public ObservableList<IMatOrder> getIMatOrders() {
     return imatOrders;
   }
+  
+  public Label getTotalCostCartLabel() {
+    return totalCostCartLabel;
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -1287,7 +1291,7 @@ public class CenterFlikController implements Initializable {
             imat.getToppController().setPassword(password);
             imat.getToppController().changeLoginScreen();
             showOrderHistory();
-            imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+            imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
             initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
           }
         }
@@ -1331,7 +1335,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1350,7 +1354,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
@@ -1372,7 +1376,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1391,7 +1395,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
@@ -1413,7 +1417,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1432,7 +1436,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1454,7 +1458,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1473,7 +1477,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1495,7 +1499,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1514,7 +1518,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1536,7 +1540,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1555,7 +1559,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1577,7 +1581,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1596,7 +1600,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1618,7 +1622,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1637,7 +1641,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1659,7 +1663,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1678,7 +1682,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1700,7 +1704,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1719,7 +1723,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1741,7 +1745,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1760,7 +1764,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1782,7 +1786,7 @@ public class CenterFlikController implements Initializable {
           IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().initShoppingCart(list);
+          imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -1801,7 +1805,7 @@ public class CenterFlikController implements Initializable {
           }
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
           initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
     }
@@ -1839,14 +1843,14 @@ public class CenterFlikController implements Initializable {
             IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
             imat.getCenterController().showOrderHistory();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
-            imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+            imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
             initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
             changeToReceiptView();
           } else {
             Order orderCart = IMatController.getIMatBackend().placeOrder();
             imat.getCenterController().getOrders();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
-            imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+            imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
             initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
             changeToReceiptView();
           }
@@ -3691,7 +3695,7 @@ public class CenterFlikController implements Initializable {
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString() + " kr");
                 imat.getVarukorgController().updateTotalCostBackend(total);
-                imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+                imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });
@@ -3724,7 +3728,7 @@ public class CenterFlikController implements Initializable {
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString()+" kr");
                 imat.getVarukorgController().updateTotalCostBackend(total);
-                imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+                imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });
@@ -3754,7 +3758,7 @@ public class CenterFlikController implements Initializable {
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString()+" kr");
                 imat.getVarukorgController().updateTotalCostBackend(total);
-                imat.getVarukorgController().initShoppingCart(imat.getVarukorgController().convertBackendToIMat());
+                imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });

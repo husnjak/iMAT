@@ -15,20 +15,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Callback;
 
 /**
  * This class set up the default views of the program.
@@ -78,8 +73,9 @@ public class IMat extends Application {
     
     totalSum = (int)IMatController.getShoppingCart().getTotal();
     varukorgController.updateTotalCostBackend(totalSum);
-    varukorgController.initShoppingCart(varukorgController.convertBackendToIMat());
+    //varukorgController.initShoppingCart(varukorgController.convertBackendToIMat());
     centerController.initCheckoutCart(varukorgController.convertBackendToIMat());
+    varukorgController.populateCheckoutCart(varukorgController.convertBackendToIMat());
   }
   
   /**

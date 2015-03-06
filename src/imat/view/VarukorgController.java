@@ -39,6 +39,7 @@ public class VarukorgController implements Initializable {
   // Reference to the main application
   private IMat imat;
   static int cellIndexV = 0;
+  static int firstTimeDelete = 0;
   
   // New cart created each time the application starts
   private IMatShoppingCart imatCart = new IMatShoppingCart();
@@ -190,15 +191,18 @@ public class VarukorgController implements Initializable {
             deleteButton.setCenterShape(false);
             deleteButton.setMaxHeight(5);
             deleteButton.setMaxWidth(5.0);
-            
-            
             pane1.setPrefWidth(5);
             pane2.setPrefWidth(5);
             hbox.getChildren().addAll(deleteButton, label1, label2, label3);
             deleteButton.setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
-                shoppingCartListView.getSelectionModel().selectIndices(index);
+                if (firstTimeDelete == 0) {
+                  shoppingCartListView.getSelectionModel().selectIndices(index-1);
+                  firstTimeDelete++;
+                } else {
+                  shoppingCartListView.getSelectionModel().selectIndices(index);
+                }
                 IMatShoppingItem item = shoppingCartListView.getSelectionModel().getSelectedItem();
                 List<ShoppingItem> shopI = new ArrayList();
                 shopI.addAll(IMatController.getShoppingCart().getItems());

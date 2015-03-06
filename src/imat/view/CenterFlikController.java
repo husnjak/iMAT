@@ -1328,6 +1328,8 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(textField.getText());
         textField.setText("1");
         int cost = (int)product.getPrice();
+        Integer oldCost = cost;
+        totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
         int sum = productUnits*cost;
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
@@ -1370,6 +1372,7 @@ public class CenterFlikController implements Initializable {
         textField1.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1411,6 +1414,7 @@ public class CenterFlikController implements Initializable {
         textField2.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1452,6 +1456,7 @@ public class CenterFlikController implements Initializable {
         textField3.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1493,6 +1498,7 @@ public class CenterFlikController implements Initializable {
         textField4.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1534,6 +1540,7 @@ public class CenterFlikController implements Initializable {
         textField5.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1575,6 +1582,7 @@ public class CenterFlikController implements Initializable {
         textField6.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1616,6 +1624,7 @@ public class CenterFlikController implements Initializable {
         textField7.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1657,6 +1666,7 @@ public class CenterFlikController implements Initializable {
         textField8.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1698,6 +1708,7 @@ public class CenterFlikController implements Initializable {
         textField9.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1739,6 +1750,7 @@ public class CenterFlikController implements Initializable {
         textField10.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;
@@ -1780,6 +1792,7 @@ public class CenterFlikController implements Initializable {
         textField11.setText("1");
         int cost = (int)product.getPrice();
         int sum = productUnits*cost;
+        totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
         totalCostInt += sum;
         if (IMatController.currentUser != null) {
           productNr++;

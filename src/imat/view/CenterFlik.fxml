@@ -431,7 +431,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                              <TextField fx:id="emailTextField" layoutX="157.0" layoutY="235.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="140.0">
+                              <TextField fx:id="emailTextField" layoutX="157.0" layoutY="235.0" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="140.0">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
@@ -445,7 +445,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Text>
-                              <TextField fx:id="streetTextField" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
+                              <TextField fx:id="streetTextField" layoutX="150.0" layoutY="335.0" maxWidth="150.0" AnchorPane.leftAnchor="140.0" />
                            </children>
                         </VBox>
                         <VBox>
@@ -516,7 +516,7 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <TextField fx:id="cardNumberTextField" layoutX="135.0" layoutY="485.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="cardNumberTextField" layoutX="135.0" layoutY="485.0" maxWidth="170.0" AnchorPane.leftAnchor="140.0" />
                                     <Label fx:id="cardNumberLabel" textFill="#e80303">
                                        <HBox.margin>
                                           <Insets top="5.0" />
@@ -544,7 +544,7 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <TextField fx:id="yearTextField" layoutX="135.0" layoutY="510.0" prefHeight="25.0" prefWidth="40.0" promptText="ÅÅ" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="yearTextField" layoutX="135.0" layoutY="510.0" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" promptText="ÅÅ" AnchorPane.leftAnchor="140.0" />
                                     <Label fx:id="yearLabel" textFill="#f20404">
                                        <HBox.margin>
                                           <Insets top="5.0" />
@@ -572,7 +572,7 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <TextField fx:id="monthTextField" layoutX="135.0" layoutY="535.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="monthTextField" layoutX="135.0" layoutY="535.0" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="140.0" />
                                     <Label fx:id="monthLabel" textFill="#f20808">
                                        <HBox.margin>
                                           <Insets top="5.0" />
@@ -600,7 +600,7 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <TextField fx:id="cvvTextField" layoutX="135.0" layoutY="560.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
+                                    <TextField fx:id="cvvTextField" layoutX="135.0" layoutY="560.0" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
                                     <Label fx:id="cvvLabel" textFill="#ee0707">
                                        <HBox.margin>
                                           <Insets top="5.0" />
@@ -959,7 +959,7 @@
         <content>
           <AnchorPane fx:id="paymentInformationPane" layoutY="40.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text layoutX="45.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betaluppgifter" AnchorPane.leftAnchor="135.0">
+                  <Text layoutX="45.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dina uppgifter" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="50.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -969,185 +969,308 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <HBox layoutX="50.0" layoutY="135.0" spacing="5.0" AnchorPane.leftAnchor="177.0">
+                  <VBox layoutX="49.9619140625" layoutY="80.0" spacing="8.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="100.0">
                      <children>
-                        <Text layoutX="69.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Förnamn" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="140.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="firstNameTextField1" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="firstNameLabel1" textFill="#ee0707" />
+                        <VBox layoutX="50.0" layoutY="80.0">
+                           <children>
+                              <Text layoutX="177.0" layoutY="152.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Förnamn" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="140.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="firstNameTextField1" layoutX="240.0" layoutY="135.0" maxWidth="150.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="firstNameLabel1" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="121.0">
+                           <children>
+                              <Text layoutX="166.0" layoutY="177.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternamn" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="165.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="lastNameTextField1" layoutX="240.0" layoutY="160.0" maxWidth="150.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="lastNameLabel1" layoutX="416.0" layoutY="160.0" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="162.0">
+                           <children>
+                              <Text layoutX="135.0" layoutY="202.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Personnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="190.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="civicTextField1" layoutX="240.0" layoutY="185.0" maxWidth="120.0" promptText="ÅÅMMDDNNNN" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="civicLabel1" layoutX="416.0" layoutY="190.0" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="203.0">
+                           <children>
+                              <Text layoutX="186.0" layoutY="227.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="215.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="phoneTextField1" layoutX="240.0" layoutY="210.0" maxWidth="150.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="phoneLabel1" layoutX="416.0" layoutY="215.0" textFill="#eb0303">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="244.0">
+                           <children>
+                              <Text layoutX="194.0" layoutY="252.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="240.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="emailTextField1" layoutX="240.0" layoutY="235.0" maxWidth="170.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="emailLabel1" layoutX="416.0" layoutY="235.0" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="285.0">
+                           <children>
+                              <Text layoutX="160.0" layoutY="277.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Gatuadress" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="340.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="streetTextField1" layoutX="240.0" layoutY="260.0" maxWidth="170.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="streetLabel1" layoutX="416.0" layoutY="260.0" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="326.0">
+                           <children>
+                              <Text layoutX="35.0" layoutY="302.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Postnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="365.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="postalTextField1" layoutX="118.0" layoutY="285.0" maxWidth="100.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="postalLabel1" layoutX="289.0" layoutY="290.0" textFill="#eb0202">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="367.0">
+                           <children>
+                              <Text layoutX="205.0" layoutY="327.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Stad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="390.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="cityTextField1" layoutX="240.0" layoutY="310.0" maxWidth="170.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="cityLabel1" layoutX="416.0" layoutY="310.0" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
-                  </HBox>
-                  <HBox layoutX="76.0" layoutY="160.0" spacing="5.0" AnchorPane.leftAnchor="166.0">
+                  </VBox>
+                  <VBox layoutX="519.0" layoutY="470.0" spacing="30.0" AnchorPane.bottomAnchor="40.0">
                      <children>
-                        <Text layoutX="58.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternamn" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="165.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="lastNameTextField1" layoutX="157.0" layoutY="160.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="lastNameLabel1" textFill="#ee0707" />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="45.0" layoutY="185.0" spacing="5.0" AnchorPane.leftAnchor="135.0">
-                     <children>
-                        <Text layoutX="30.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="190.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="civicTextField1" layoutX="157.0" layoutY="185.0" promptText="ÅÅMMDDNNNN" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="civicLabel1" textFill="#ee0707">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
+                        <Label fx:id="newRequirePaymentLabel" textFill="#f20101">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
                         </Label>
+                        <HBox layoutX="648.0" layoutY="470.0" spacing="25.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="470.0">
+                           <children>
+                              <Button fx:id="paymentForOrderButton1" layoutX="658.0" layoutY="480.0" mnemonicParsing="false" text="Tillbaka" />
+                              <Button fx:id="paymentForOrderButton" layoutX="203.0" layoutY="450.0" mnemonicParsing="false" text="Betala" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="470.0">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="1.0" />
-                     </padding>
-                  </HBox>
-                  <HBox layoutX="96.0" layoutY="210.0" spacing="5.0" AnchorPane.leftAnchor="186.0">
+                  </VBox>
+                  <Text layoutX="370.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betaluppgifter" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <VBox layoutX="50.0" layoutY="408.0" spacing="8.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="100.0">
                      <children>
-                        <Text layoutX="80.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="215.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="phoneTextField1" layoutX="157.0" layoutY="125.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="phoneLabel1" textFill="#eb0303">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
+                        <VBox layoutX="50.0" layoutY="408.0">
+                           <children>
+                              <Text layoutX="152.0" layoutY="352.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="490.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="cardNumberTextField1" layoutX="240.0" layoutY="335.0" maxWidth="170.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="cardNumberLabel1" layoutX="416.0" layoutY="340.0" textFill="#e80303">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="449.0">
+                           <children>
+                              <Text layoutX="220.0" layoutY="377.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="År" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="515.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="yearTextField1" layoutX="240.0" layoutY="360.0" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" promptText="ÅÅ" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="yearLabel1" layoutX="285.0" layoutY="365.0" textFill="#f20404">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="490.0">
+                           <children>
+                              <Text layoutX="191.0" layoutY="402.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Månad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="540.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="monthTextField1" layoutX="240.0" layoutY="385.0" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="monthLabel1" layoutX="285.0" layoutY="390.0" textFill="#f20808">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="50.0" layoutY="531.0">
+                           <children>
+                              <Text layoutX="208.0" layoutY="427.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="565.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="cvvTextField1" layoutX="240.0" layoutY="410.0" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
+                                    <Label fx:id="cvvLabel1" layoutX="285.0" layoutY="415.0" textFill="#ee0707">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="1.0" />
-                     </padding>
-                  </HBox>
-                  <HBox layoutX="104.0" layoutY="235.0" spacing="5.0" AnchorPane.leftAnchor="194.0">
-                     <children>
-                        <Text layoutX="101.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="240.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="emailTextField1" layoutX="157.0" layoutY="235.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="emailLabel1" textFill="#ee0707" />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="75.0" layoutY="260.0" spacing="5.0" AnchorPane.leftAnchor="160.0">
-                     <children>
-                        <Text layoutX="81.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gatuadress" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="340.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="streetTextField1" layoutX="150.0" layoutY="335.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="streetLabel1" textFill="#ee0707" />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="75.0" layoutY="285.0" spacing="5.0" AnchorPane.leftAnchor="152.0">
-                     <children>
-                        <Text layoutX="95.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="365.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="postalTextField1" layoutX="150.0" layoutY="360.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="postalLabel1" textFill="#eb0202">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="120.0" layoutY="310.0" spacing="5.0" AnchorPane.leftAnchor="205.0">
-                     <children>
-                        <Text layoutX="105.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="390.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="cityTextField1" layoutX="150.0" layoutY="385.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="cityLabel1" textFill="#ee0707" />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="67.0" layoutY="335.0" spacing="5.0" AnchorPane.leftAnchor="152.0">
-                     <children>
-                        <Text layoutX="100.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortnummer" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="490.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="cardNumberTextField1" layoutX="135.0" layoutY="485.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="cardNumberLabel1" textFill="#e80303">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="135.0" layoutY="360.0" spacing="5.0" AnchorPane.leftAnchor="220.0">
-                     <children>
-                        <Text layoutX="91.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="År" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="515.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="yearTextField1" layoutX="135.0" layoutY="510.0" prefHeight="25.0" prefWidth="40.0" promptText="ÅÅ" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="yearLabel1" textFill="#f20404">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="1.0" />
-                     </padding>
-                  </HBox>
-                  <HBox layoutX="106.0" layoutY="385.0" spacing="5.0" AnchorPane.leftAnchor="191.0">
-                     <children>
-                        <Text layoutX="73.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Månad" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="540.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="monthTextField1" layoutX="135.0" layoutY="535.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="monthLabel1" textFill="#f20808">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="123.0" layoutY="410.0" spacing="5.0" AnchorPane.leftAnchor="208.0">
-                     <children>
-                        <Text layoutX="92.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="565.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="cvvTextField1" layoutX="135.0" layoutY="560.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="140.0" />
-                        <Label fx:id="cvvLabel1" textFill="#ee0707">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="648.0" layoutY="470.0" spacing="25.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="470.0">
-                     <children>
-                        <Button fx:id="paymentForOrderButton1" layoutX="658.0" layoutY="480.0" mnemonicParsing="false" text="Tillbaka" />
-                        <Button fx:id="paymentForOrderButton" layoutX="203.0" layoutY="450.0" mnemonicParsing="false" text="Betala" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="470.0">
-                           <HBox.margin>
-                              <Insets left="25.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </VBox>
                </children>
             </AnchorPane>
         </content>

@@ -718,6 +718,7 @@ public class CenterFlikController implements Initializable {
   private Button paymentForOrderButton1;
   
   FadeTransition fader;
+  FadeTransition fader2;
   @FXML
   private Label newCivicLabel;
   @FXML
@@ -732,6 +733,8 @@ public class CenterFlikController implements Initializable {
   private Label newMonthLabel;
   @FXML
   private Label newCVVLabel;
+  @FXML
+  private Label newRequirePaymentLabel;
   
   public Integer getProductNr() {
     return productNr;
@@ -770,7 +773,8 @@ public class CenterFlikController implements Initializable {
     products = new ArrayList<>();
     productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
-    fader = createFader(saveInformationLabel);  
+    fader = createFader(saveInformationLabel);
+    fader2 = createFader(newRequirePaymentLabel);
     
     toPayInfoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
@@ -1907,6 +1911,8 @@ public class CenterFlikController implements Initializable {
       if (postalTextField1.getLength() == 0) {
         postalLabel1.setText("*");
       }
+      newRequirePaymentLabel.setText("* Obligatoriska fält");
+      fader2.play();
       return false;
     }
   }

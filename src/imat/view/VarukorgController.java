@@ -103,6 +103,7 @@ public class VarukorgController implements Initializable {
     resetShoppingCartLink.setFocusTraversable(false);
     changeCartLink.setFocusTraversable(false);
     shoppingCartListView.setMaxHeight(500);
+    shoppingCartListView.setPlaceholder(new Label("Varukorgen är tom"));
     
     resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {
       @Override

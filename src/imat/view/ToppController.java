@@ -283,7 +283,7 @@ public class ToppController implements Initializable {
       loggedInUser.setVisible(true);
       loggedInLabel.setVisible(true);
       
-      imat.getVarukorgController().updateTotalCostBackend(0);
+      imat.getVarukorgController().updateTotalCostBackend(IMatShoppingCart.cart.getCost());
       imat.getVarukorgController().populateCheckoutCart(IMatShoppingCart.cart.getAllProducts());
       imat.getCenterController().initCheckoutCart(IMatShoppingCart.cart.getAllProducts());
       loginLabel.setText("");
@@ -296,7 +296,7 @@ public class ToppController implements Initializable {
     } else {
       loginLabel.setText("Felaktigt lösenord");
     }
-   imat.getCenterController().getProductTable().setVisible(false);
+   //imat.getCenterController().getProductTable().setVisible(false);
    imat.getVarukorgController().getList().setFocusTraversable(true);
   }
   

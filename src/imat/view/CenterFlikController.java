@@ -1341,6 +1341,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1397,6 +1399,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1452,6 +1456,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1507,6 +1513,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1562,6 +1570,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1617,6 +1627,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1672,6 +1684,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1727,6 +1741,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1782,6 +1798,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1837,6 +1855,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1892,6 +1912,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -1947,6 +1969,8 @@ public class CenterFlikController implements Initializable {
               int oldProductUnits = (int)existingProducts.get(i).getAmount();
               int newProductUnits = productUnits + oldProductUnits;
               existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
               existed = true;
             }
           }
@@ -2604,6 +2628,7 @@ public class CenterFlikController implements Initializable {
     imat.getVarukorgController().getEmptyLink().setDisable(false);
     imat.getVarukorgController().getChangeLink().setDisable(false);
     if (IMatController.currentUser != null) {
+      imat.getVarukorgController().updateTotalCostBackend(IMatShoppingCart.cart.getCost());
       imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
       Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
       totalCostCartLabel.setText(total.toString()+" kr");

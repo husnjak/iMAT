@@ -75,4 +75,8 @@ public class IMatShoppingItem {
     this.sum = sum;
   }
   
+  public void addToSum(int add) {
+    this.sum += add;
+  }
+  
 }

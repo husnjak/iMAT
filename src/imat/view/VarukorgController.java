@@ -54,6 +54,8 @@ public class VarukorgController implements Initializable {
   @FXML
   private Hyperlink changeCartLink;
   
+  boolean added = false;
+  
   /**
   * Is called by the main application to give a reference back to itself.
   * 
@@ -86,6 +88,10 @@ public class VarukorgController implements Initializable {
   
   public Hyperlink getEmptyLink() {
     return resetShoppingCartLink;
+  }
+  
+  public void setAdded() {
+    added = true;
   }
   
   public Hyperlink getChangeLink() {
@@ -222,38 +228,60 @@ public class VarukorgController implements Initializable {
             deleteButton.setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
-                if (firstTimeDelete == 0) {
-                  shoppingCartListView.getSelectionModel().selectIndices(index-1);
-                  firstTimeDelete++;
+                if (firstTimeDelete == 0 && !added) {
+                    shoppingCartListView.getSelectionModel().selectIndices(index-1);
+                    firstTimeDelete++;
                 } else {
-                  shoppingCartListView.getSelectionModel().selectIndices(index);
+                    shoppingCartListView.getSelectionModel().selectIndices(index);
                 }
                 IMatShoppingItem item = shoppingCartListView.getSelectionModel().getSelectedItem();
-                List<ShoppingItem> shopI = new ArrayList();
-                shopI.addAll(IMatController.getShoppingCart().getItems());
-                int size = shopI.size();
-                System.out.println("shopI: "+size);
-                System.out.println(item.getProductName());
-                for (int i = 0; i < shopI.size(); i++) {
-                  if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
-                    shopI.remove(i);
-                    IMatController.getShoppingCart().clear();
+                if (IMatController.currentUser != null) {
+                  List<IMatShoppingItem> shopI = new ArrayList();
+                  shopI.addAll(getIMatShoppingCart().getCart().getAllProducts());
+                  int size = shopI.size();
+                  int totalSum = getIMatShoppingCart().getCart().getCost();
+                  for (int i = 0; i < shopI.size(); i++) {
+                    if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                      int sumToRemove = shopI.get(i).getSum();
+                      shopI.remove(i);
+                      getIMatShoppingCart().getCart().removeCost(sumToRemove);
+                      getIMatShoppingCart().getCart().setNewEmptyCart();
+                    }
                   }
-                }
-                for (int i = 0; i < size-1; i++) {
-                  IMatController.getShoppingCart().addItem(shopI.get(i));
-                }
-                if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
-                  imat.getCenterController().changeToCheckoutView();
-                }
-                
-                Integer total = (int)IMatController.getShoppingCart().getTotal();
-                imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
-                updateTotalCostBackend(total);
-                populateCheckoutCart(convertBackendToIMat());
-                //imat.getCenterController().initCheckoutCart(convertBackendToIMat());
+                  for (int i = 0; i < size-1; i++) {
+                    getIMatShoppingCart().getCart().setShoppingItem(shopI.get(i), i);
+                  }
+                  Integer total = getIMatShoppingCart().getCart().getCost();
+                  totalCostLabel.setText(total.toString()+ " kr");
+                  imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
+                  populateCheckoutCart(getIMatShoppingCart().getCart().getAllProducts());
+                } else {
+                    List<ShoppingItem> shopI = new ArrayList();
+                    shopI.addAll(IMatController.getShoppingCart().getItems());
+                    int size = shopI.size();
+                    for (int i = 0; i < shopI.size(); i++) {
+                      if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                        shopI.remove(i);
+                        IMatController.getShoppingCart().clear();
+                      }
+                    }
+                    for (int i = 0; i < size-1; i++) {
+                      IMatController.getShoppingCart().addItem(shopI.get(i));
+                    }
+                    if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
+                      imat.getCenterController().changeToCheckoutView();
+                    }
+
+                    Integer total = (int)IMatController.getShoppingCart().getTotal();
+                    imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
+                    updateTotalCostBackend(total);
+                    populateCheckoutCart(convertBackendToIMat());
+                  }
               }
-            });
+                });          
+                  
+                
+
         }
 
         @Override
@@ -274,6 +302,10 @@ public class VarukorgController implements Initializable {
             }
         }
     }
+      
+      public void setFirstTimeDelete(int value) {
+        firstTimeDelete = value;
+      }
   
   public void populateCheckoutCart(List<IMatShoppingItem> cartProducts) {
       ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
@@ -287,7 +319,6 @@ public class VarukorgController implements Initializable {
         }
     });
     cellIndexV = 0;
-    //imat.getCenterController().getListVyPane().getChildren().add(shoppingCartListView);
   }
   
         

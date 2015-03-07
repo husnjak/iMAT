@@ -1323,6 +1323,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(0);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField.getText());
@@ -1382,6 +1383,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(1);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField1.getText());
@@ -1439,6 +1441,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(2);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField2.getText());
@@ -1469,6 +1472,7 @@ public class CenterFlikController implements Initializable {
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
+          System.out.println(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() );
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
           for (int i = 0; i < existingProducts.size(); i++) {
@@ -1495,7 +1499,8 @@ public class CenterFlikController implements Initializable {
     buy3.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-          boolean existed = false;
+        boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(3);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField3.getText());
@@ -1553,6 +1558,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(4);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField4.getText());
@@ -1609,7 +1615,8 @@ public class CenterFlikController implements Initializable {
     buy5.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-          boolean existed = false;
+        boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(5);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField5.getText());
@@ -1666,7 +1673,8 @@ public class CenterFlikController implements Initializable {
     buy6.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-          boolean existed = false;
+        boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(6);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField6.getText());
@@ -1723,7 +1731,8 @@ public class CenterFlikController implements Initializable {
     buy7.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-           boolean existed = false;
+        boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(7);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField7.getText());
@@ -1781,6 +1790,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(8);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField8.getText());
@@ -1838,6 +1848,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(9);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField9.getText());
@@ -1895,6 +1906,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(10);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField10.getText());
@@ -1951,7 +1963,8 @@ public class CenterFlikController implements Initializable {
     buy11.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-          boolean existed = false;
+        boolean existed = false;
+        imat.getVarukorgController().setAdded();
         Product product = products.get(11);
         ShoppingItem productItem;
         productUnits = Integer.parseInt(textField11.getText());
@@ -3900,24 +3913,46 @@ public class CenterFlikController implements Initializable {
               public void handle(ActionEvent event) {
                 lv.getSelectionModel().selectIndices(index-1);
                 IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
-                List<ShoppingItem> shopI = new ArrayList();
-                shopI.addAll(IMatController.getShoppingCart().getItems());
-                int size = shopI.size();
-                for (int i = 0; i < shopI.size(); i++) {
-                  if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
-                    shopI.remove(i);
-                    System.out.println(size);
-                    IMatController.getShoppingCart().clear();
+                if (IMatController.currentUser != null) {
+                  List<IMatShoppingItem> shopI = new ArrayList();
+                  shopI.addAll(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+                  int size = shopI.size();
+                  int totalSum = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+                  for (int i = 0; i < shopI.size(); i++) {
+                    if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                      int sumToRemove = shopI.get(i).getSum();
+                      shopI.remove(i);
+                      imat.getVarukorgController().getIMatShoppingCart().getCart().removeCost(sumToRemove);
+                      imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
+                    }
                   }
+                  for (int i = 0; i < size-1; i++) {
+                    imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItem(shopI.get(i), i);
+                  }
+                  populateCheckoutCart();
+                  Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+                  totalCostCartLabel.setText(total.toString() + " kr");
+                  initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+                  
+                } else {
+                  List<ShoppingItem> shopI = new ArrayList();
+                  shopI.addAll(IMatController.getShoppingCart().getItems());
+                  int size = shopI.size();
+                  for (int i = 0; i < shopI.size(); i++) {
+                    if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                      shopI.remove(i);
+                      IMatController.getShoppingCart().clear();
+                    }
+                  }
+                  for (int i = 0; i < size-1; i++) {
+                    IMatController.getShoppingCart().addItem(shopI.get(i));
+                  }
+                  populateCheckoutCart();
+                  Integer total = (int)IMatController.getShoppingCart().getTotal();
+                  totalCostCartLabel.setText(total.toString() + " kr");
+                  initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 }
-                for (int i = 0; i < size-1; i++) {
-                  System.out.println("test");
-                  IMatController.getShoppingCart().addItem(shopI.get(i));
-                }
-                populateCheckoutCart();
-                Integer total = (int)IMatController.getShoppingCart().getTotal();
-                totalCostCartLabel.setText(total.toString() + " kr");
-                initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+  
               }
             });
             minusButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -3931,24 +3966,51 @@ public class CenterFlikController implements Initializable {
                 }
                 lv.getSelectionModel().getSelectedItem().setAmount(newAmount);
                 IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
+                if (IMatController.currentUser != null) {
+                  List<IMatShoppingItem> shopI = new ArrayList();
+                  shopI.addAll(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+                  int size = shopI.size();
+                  int totalSum = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+                  for (int i = 0; i < shopI.size(); i++) {
+                    if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                      if (shopI.get(i).getAmount() > 1) {
+                        int sumToRemove = (int)item.getProduct().getPrice();
+                        int newSum = (int)shopI.get(i).getSum()-sumToRemove;
+                        shopI.get(i).setSum(newSum);
+                        shopI.get(i).setAmount(newAmount);
+                        imat.getVarukorgController().getIMatShoppingCart().getCart().removeCost(sumToRemove);
+                        imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
+                      }
+       
+                    }
+                  }
+                  for (int i = 0; i < size; i++) {
+                    imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItem(shopI.get(i), i);
+                  }
+                  populateCheckoutCart();
+                  Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+                  totalCostCartLabel.setText(total.toString() + " kr");
+                  initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+                } else {
                 List<ShoppingItem> shopI = new ArrayList();
                 shopI.addAll(IMatController.getShoppingCart().getItems());
                 int size = shopI.size();
                 for (int i = 0; i < size; i++) {
                   if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
                     shopI.get(i).setAmount(newAmount);
-                    System.out.println(size);
                     IMatController.getShoppingCart().clear();
                   }
                 }
                 for (int i = 0; i < size; i++) {
-                  System.out.println("test");
                   IMatController.getShoppingCart().addItem(shopI.get(i));
                 }
                 populateCheckoutCart();
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString()+" kr");
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+                }
+                
+
               }
             });
             plusButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -3959,24 +4021,47 @@ public class CenterFlikController implements Initializable {
                 int newAmount = ++currentAmount;
                 lv.getSelectionModel().getSelectedItem().setAmount(newAmount);
                 IMatShoppingItem item = lv.getSelectionModel().getSelectedItem();
-                List<ShoppingItem> shopI = new ArrayList();
-                shopI.addAll(IMatController.getShoppingCart().getItems());
-                int size = shopI.size();
-                for (int i = 0; i < size; i++) {
-                  if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
-                    shopI.get(i).setAmount(newAmount);
-                    System.out.println(size);
-                    IMatController.getShoppingCart().clear();
+                if (IMatController.currentUser != null) {
+                   List<IMatShoppingItem> shopI = new ArrayList();
+                  shopI.addAll(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+                  int size = shopI.size();
+                  int totalSum = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+                  for (int i = 0; i < shopI.size(); i++) {
+                    if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                      int sumToAdd = (int)item.getProduct().getPrice();
+                      int newSum = (int)shopI.get(i).getSum()+sumToAdd;
+                      shopI.get(i).setSum(newSum);
+                      shopI.get(i).setAmount(newAmount);
+                      imat.getVarukorgController().getIMatShoppingCart().getCart().addCost(sumToAdd);
+                      imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
+                    }
                   }
+                  for (int i = 0; i < size; i++) {
+                    imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItem(shopI.get(i), i);
+                  }
+                  populateCheckoutCart();
+                  Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+                  totalCostCartLabel.setText(total.toString() + " kr");
+                  initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+                } else {
+                  List<ShoppingItem> shopI = new ArrayList();
+                  shopI.addAll(IMatController.getShoppingCart().getItems());
+                  int size = shopI.size();
+                  for (int i = 0; i < size; i++) {
+                    if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
+                      shopI.get(i).setAmount(newAmount);
+                      System.out.println(size);
+                      IMatController.getShoppingCart().clear();
+                    }
+                  }
+                  for (int i = 0; i < size; i++) {
+                    IMatController.getShoppingCart().addItem(shopI.get(i));
+                  }
+                  populateCheckoutCart();
+                  Integer total = (int)IMatController.getShoppingCart().getTotal();
+                  totalCostCartLabel.setText(total.toString()+" kr");
+                  initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 }
-                for (int i = 0; i < size; i++) {
-                  System.out.println("test");
-                  IMatController.getShoppingCart().addItem(shopI.get(i));
-                }
-                populateCheckoutCart();
-                Integer total = (int)IMatController.getShoppingCart().getTotal();
-                totalCostCartLabel.setText(total.toString()+" kr");
-                initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });
        

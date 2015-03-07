@@ -102,6 +102,11 @@ public class IMatOrder {
     int newCost = this.cost + cost;
     this.cost = newCost;
   }
+  
+  public void removeCost(int cost) {
+    int newCost = this.cost - cost;
+    this.cost = newCost;
+  }
 
   /**
    * @param orderNumber the orderNumber to set

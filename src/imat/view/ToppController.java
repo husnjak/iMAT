@@ -298,6 +298,7 @@ public class ToppController implements Initializable {
     }
    //imat.getCenterController().getProductTable().setVisible(false);
    imat.getVarukorgController().getList().setFocusTraversable(true);
+   
   }
   
   /**

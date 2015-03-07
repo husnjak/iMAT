@@ -13,9 +13,9 @@
    <children>
       <ToolBar fx:id="toolBar" layoutX="350.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <items>
-          <Button fx:id="kontouppgifterButton" alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Kontouppgifter" />
-            <Button fx:id="orderhistorikButton" mnemonicParsing="false" text="Orderhistorik" />
-            <Button fx:id="favoritvarorButton" mnemonicParsing="false" text="Favoritvaror" />
+            <ToggleButton fx:id="kontouppgifterButton" mnemonicParsing="false" text="Kontouppgifter" />
+            <ToggleButton fx:id="orderhistorikButton" mnemonicParsing="false" text="Orderhistorik" />
+            <ToggleButton fx:id="favoritvarorButton" mnemonicParsing="false" text="Favoritvaror" />
         </items>
       </ToolBar>
       <ScrollPane fx:id="productScrollPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" maxHeight="550.0" minHeight="550.0" prefHeight="550.0" prefWidth="674.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

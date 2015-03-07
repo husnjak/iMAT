@@ -38,6 +38,7 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -52,6 +53,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -426,11 +428,11 @@ public class CenterFlikController implements Initializable {
   @FXML
   private ToolBar toolBar;
   @FXML
-  private Button kontouppgifterButton;
+  private ToggleButton kontouppgifterButton;
   @FXML
-  private Button orderhistorikButton;
+  private ToggleButton orderhistorikButton;
   @FXML
-  private Button favoritvarorButton;
+  private ToggleButton favoritvarorButton;
   @FXML
   private ScrollPane orderHistorikPane;
   @FXML
@@ -2020,6 +2022,15 @@ public class CenterFlikController implements Initializable {
     kontouppgifterButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
+        if (kontouppgifterButton.isFocused()) {
+          kontouppgifterButton.setSelected(true);
+        }
+        if (orderhistorikButton.isSelected()) {
+          orderhistorikButton.setSelected(false);
+        }
+        if (favoritvarorButton.isSelected()) {
+          favoritvarorButton.setSelected(false);
+        }
         changeToKontoView();
         event.consume();
       }
@@ -2028,6 +2039,15 @@ public class CenterFlikController implements Initializable {
     orderhistorikButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
+        if (orderhistorikButton.isFocused()) {
+          orderhistorikButton.setSelected(true);
+        } 
+        if (kontouppgifterButton.isSelected()) {
+          kontouppgifterButton.setSelected(false);
+        }
+        if (favoritvarorButton.isSelected()) {
+          favoritvarorButton.setSelected(false);
+        }
         changeToOrderHistorikView();
         event.consume();
       }
@@ -2036,6 +2056,15 @@ public class CenterFlikController implements Initializable {
     favoritvarorButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
+        if (favoritvarorButton.isFocused()) {
+          favoritvarorButton.setSelected(true);
+        }
+        if (kontouppgifterButton.isSelected()) {
+          kontouppgifterButton.setSelected(false);
+        }
+        if (orderhistorikButton.isSelected()) {
+          orderhistorikButton.setSelected(false);
+        }
         changeToFavoriteView();
         event.consume();
       }
@@ -2658,6 +2687,7 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    deSelect();
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
@@ -2698,6 +2728,7 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the register page.
    */
   public void changeToRegisterView() {
+    deSelect();
     getListVyPane().getChildren().remove(lv);
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
      makeShoppingCartVisible();
@@ -3703,6 +3734,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void testAccountView() {
+    deSelect();
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       imat.getVarukorgController().getCartBuyButton().setDisable(false);
       Integer totaler = (int)IMatController.getShoppingCart().getTotal();
@@ -3730,6 +3762,15 @@ public class CenterFlikController implements Initializable {
   public void changeToKontoView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
+    }
+    if (!kontouppgifterButton.isSelected()) {
+      kontouppgifterButton.setSelected(true);
+    }
+    if (orderhistorikButton.isSelected()) {
+      orderhistorikButton.setSelected(false);
+    }
+    if (favoritvarorButton.isSelected()) {
+      favoritvarorButton.setSelected(false);
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -3769,6 +3810,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToCategoryView() {
+    deSelect();
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
@@ -3789,6 +3831,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToPaymentView() {
+    deSelect();
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "checkoutPane";
@@ -4796,7 +4839,7 @@ public class CenterFlikController implements Initializable {
       totalCostCartLabel.setText(total.toString()+" kr");
       setCartNotVisible();
     }
-
+  deSelect();
   }
   
   public void setCartNotVisible() {
@@ -4839,4 +4882,16 @@ public class CenterFlikController implements Initializable {
     return fade;
 }
   
+  public void deSelect() {
+    if (kontouppgifterButton.isSelected()) {
+      kontouppgifterButton.setSelected(false);
+    }
+    if (orderhistorikButton.isSelected()) {
+      orderhistorikButton.setSelected(false);
+    }
+    if (favoritvarorButton.isSelected()) {
+      favoritvarorButton.setSelected(false);
+    }
+  }
+
 }

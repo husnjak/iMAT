@@ -2601,11 +2601,21 @@ public class CenterFlikController implements Initializable {
   
   public void makeShoppingCartVisible() {
     imat.getVarukorgController().getCartBuyButton().setDisable(false);
-    Integer totaler = (int)IMatController.getShoppingCart().getTotal();
-    imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
     imat.getVarukorgController().getEmptyLink().setDisable(false);
     imat.getVarukorgController().getChangeLink().setDisable(false);
-    imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+    if (IMatController.currentUser != null) {
+      imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+      Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+      totalCostCartLabel.setText(total.toString()+" kr");
+    } else {
+      Integer totaler = (int)IMatController.getShoppingCart().getTotal();
+      imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
+      imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+    }
+    
+
+
+
   }
   
   /**
@@ -4667,10 +4677,19 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
-    populateCheckoutCart();
-    Integer total = (int)IMatController.getShoppingCart().getTotal();
-    totalCostCartLabel.setText(total.toString()+" kr");
-    setCartNotVisible();
+    
+    if (IMatController.currentUser != null) {
+      populateCheckoutCart();
+      Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+      totalCostCartLabel.setText(total.toString()+" kr");
+      setCartNotVisible();
+    } else {
+      populateCheckoutCart();
+      Integer total = (int)IMatController.getShoppingCart().getTotal();
+      totalCostCartLabel.setText(total.toString()+" kr");
+      setCartNotVisible();
+    }
+
   }
   
   public void setCartNotVisible() {
@@ -4689,10 +4708,11 @@ public class CenterFlikController implements Initializable {
     List<IMatShoppingItem> imatItems;
     if (IMatController.currentUser != null) {
       imatItems = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+      nn = FXCollections.observableArrayList(imatItems);
     } else {
       imatItems = imat.getVarukorgController().convertBackendToIMat();
+      nn = FXCollections.observableArrayList(imatItems);
     }
-    nn = FXCollections.observableArrayList(imatItems);
     checkOutCartListView = new ListView(nn);
     checkOutCartListView.setLayoutY(150);
     checkOutCartListView.setLayoutX(100);

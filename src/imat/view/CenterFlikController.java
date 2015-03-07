@@ -1472,7 +1472,6 @@ public class CenterFlikController implements Initializable {
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
-          System.out.println(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() );
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
           for (int i = 0; i < existingProducts.size(); i++) {
@@ -2650,10 +2649,9 @@ public class CenterFlikController implements Initializable {
       imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
       imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
     }
-    
-
-
-
+    imat.getVarukorgController().getList().setStyle("-fx-background-color: white;");
+    imat.getVarukorgController().getList().setPlaceholder(new Label("Varukorgen är tom"));
+    imat.getVarukorgController().getSummaLabel().setDisable(false);
   }
   
   /**
@@ -4050,7 +4048,6 @@ public class CenterFlikController implements Initializable {
                   for (int i = 0; i < size; i++) {
                     if (shopI.get(i).getProduct().getName().equals(item.getProductName())) {
                       shopI.get(i).setAmount(newAmount);
-                      System.out.println(size);
                       IMatController.getShoppingCart().clear();
                     }
                   }
@@ -4808,6 +4805,9 @@ public class CenterFlikController implements Initializable {
     imat.getVarukorgController().setTotalCostLabel("");
     imat.getVarukorgController().getEmptyLink().setDisable(true);
     imat.getVarukorgController().getChangeLink().setDisable(true);
+    imat.getVarukorgController().getList().setStyle("-fx-background-color: #F0F0F0 ;");
+    imat.getVarukorgController().getList().setPlaceholder(new Label(""));
+    imat.getVarukorgController().getSummaLabel().setDisable(true);
   }
   
   public AnchorPane getListVyPane(){

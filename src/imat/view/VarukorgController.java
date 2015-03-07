@@ -24,6 +24,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -55,6 +56,8 @@ public class VarukorgController implements Initializable {
   private Hyperlink changeCartLink;
   
   boolean added = false;
+  @FXML
+  private Label summaLabel;
   
   /**
   * Is called by the main application to give a reference back to itself.
@@ -104,6 +107,7 @@ public class VarukorgController implements Initializable {
     changeCartLink.setFocusTraversable(false);
     shoppingCartListView.setMaxHeight(500);
     shoppingCartListView.setPlaceholder(new Label("Varukorgen är tom"));
+    
     
     resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -320,6 +324,19 @@ public class VarukorgController implements Initializable {
         }
     });
     cellIndexV = 0;
+    if (cartList.size() == 0) {
+      cartBuyButton.setDisable(true);
+    } else {
+      cartBuyButton.setDisable(false);
+    }
+  }
+  
+  public void setSummaLabel(String newText) {
+    summaLabel.setText(newText);
+  }
+  
+  public Label getSummaLabel() {
+    return summaLabel;
   }
   
         

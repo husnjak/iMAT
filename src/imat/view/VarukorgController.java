@@ -51,6 +51,8 @@ public class VarukorgController implements Initializable {
   private ListView<IMatShoppingItem> shoppingCartListView = new ListView();
   @FXML
   private Hyperlink resetShoppingCartLink;
+  @FXML
+  private Hyperlink changeCartLink;
   
   /**
   * Is called by the main application to give a reference back to itself.
@@ -77,10 +79,23 @@ public class VarukorgController implements Initializable {
   public Button getCartBuyButton() {
     return cartBuyButton;
   }
+  
+  public ListView<IMatShoppingItem> getList() {
+    return shoppingCartListView;
+  }
+  
+  public Hyperlink getEmptyLink() {
+    return resetShoppingCartLink;
+  }
+  
+  public Hyperlink getChangeLink() {
+    return changeCartLink;
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     resetShoppingCartLink.setFocusTraversable(false);
+    changeCartLink.setFocusTraversable(false);
     shoppingCartListView.setMaxHeight(500);
     
     resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {

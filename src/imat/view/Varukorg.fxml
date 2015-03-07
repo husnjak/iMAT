@@ -40,6 +40,6 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="200.0" layoutY="24.0" text="Ändra" />
+      <Hyperlink fx:id="changeCartLink" layoutX="200.0" layoutY="24.0" text="Ändra" />
    </children>
 </Pane>

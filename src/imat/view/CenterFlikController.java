@@ -2442,12 +2442,21 @@ public class CenterFlikController implements Initializable {
     }
   }
   
+  public void makeShoppingCartVisible() {
+    imat.getVarukorgController().getCartBuyButton().setDisable(false);
+    Integer totaler = (int)IMatController.getShoppingCart().getTotal();
+    imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
+    imat.getVarukorgController().getEmptyLink().setDisable(false);
+    imat.getVarukorgController().getChangeLink().setDisable(false);
+    imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+  }
+  
   /**
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      makeShoppingCartVisible();
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -2487,6 +2496,10 @@ public class CenterFlikController implements Initializable {
    */
   public void changeToRegisterView() {
     getListVyPane().getChildren().remove(lv);
+    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+     makeShoppingCartVisible();
+    }
+    //imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
     int size = varaListVyParent.getChildren().size();
     currentPane = "registerPane";
     String id;
@@ -3489,6 +3502,11 @@ public class CenterFlikController implements Initializable {
   public void testAccountView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      Integer totaler = (int)IMatController.getShoppingCart().getTotal();
+      imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
+      imat.getVarukorgController().getEmptyLink().setDisable(false);
+      imat.getVarukorgController().getChangeLink().setDisable(false);
+      imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -3508,7 +3526,7 @@ public class CenterFlikController implements Initializable {
   
   public void changeToKontoView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      makeShoppingCartVisible();
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -3529,7 +3547,7 @@ public class CenterFlikController implements Initializable {
   
   public void changeToOrderHistorikView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      makeShoppingCartVisible();
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -3549,7 +3567,7 @@ public class CenterFlikController implements Initializable {
   
   public void changeToCategoryView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      makeShoppingCartVisible();
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -3587,7 +3605,7 @@ public class CenterFlikController implements Initializable {
   
   public void changeToFavoriteView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      makeShoppingCartVisible();
     }
     getListVyPane().getChildren().remove(lv);
     favoritePane.setVisible(false);
@@ -3707,8 +3725,6 @@ public class CenterFlikController implements Initializable {
                 populateCheckoutCart();
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString() + " kr");
-                imat.getVarukorgController().updateTotalCostBackend(total);
-                imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });
@@ -3740,8 +3756,6 @@ public class CenterFlikController implements Initializable {
                 populateCheckoutCart();
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString()+" kr");
-                imat.getVarukorgController().updateTotalCostBackend(total);
-                imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });
@@ -3770,8 +3784,6 @@ public class CenterFlikController implements Initializable {
                 populateCheckoutCart();
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString()+" kr");
-                imat.getVarukorgController().updateTotalCostBackend(total);
-                imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
               }
             });
@@ -3839,7 +3851,7 @@ public class CenterFlikController implements Initializable {
 
   public void changeToSearchView(String searchText) {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      makeShoppingCartVisible();
     }
     getListVyPane().getChildren().remove(lv);
         changeToCategoryView();
@@ -4501,8 +4513,15 @@ public class CenterFlikController implements Initializable {
     populateCheckoutCart();
     Integer total = (int)IMatController.getShoppingCart().getTotal();
     totalCostCartLabel.setText(total.toString()+" kr");
+    setCartNotVisible();
+  }
+  
+  public void setCartNotVisible() {
     imat.getVarukorgController().getCartBuyButton().setDisable(true);
-
+    imat.getVarukorgController().getList().getItems().clear();
+    imat.getVarukorgController().setTotalCostLabel("");
+    imat.getVarukorgController().getEmptyLink().setDisable(true);
+    imat.getVarukorgController().getChangeLink().setDisable(true);
   }
   
   public AnchorPane getListVyPane(){
@@ -4521,6 +4540,7 @@ public class CenterFlikController implements Initializable {
     checkOutCartListView.setLayoutY(150);
     checkOutCartListView.setLayoutX(100);
     checkOutCartListView.setMinWidth(500);
+    checkOutCartListView.setMaxHeight(300);
     return checkOutCartListView;
   }
   

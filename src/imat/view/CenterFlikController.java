@@ -1352,6 +1352,7 @@ public class CenterFlikController implements Initializable {
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().populateCheckoutCart(list);
           initCheckoutCart(list);
+          imat.getVarukorgController().getList().setFocusTraversable(true);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
           for (int i = 0; i < existingProducts.size(); i++) {

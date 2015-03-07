@@ -120,11 +120,20 @@ public class VarukorgController implements Initializable {
   }
   
   public void resetShoppingCart() {
-    IMatController.getShoppingCart().clear();
-    Integer total = (int)IMatController.getShoppingCart().getTotal();
-    imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
-    updateTotalCostBackend(total);
-    populateCheckoutCart(convertBackendToIMat());
+    if (IMatController.currentUser != null) {
+      imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
+      imat.getVarukorgController().getIMatShoppingCart().getCart().setCost(0);
+      List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+      populateCheckoutCart(list);
+      
+    } else {
+      IMatController.getShoppingCart().clear();
+      Integer total = (int)IMatController.getShoppingCart().getTotal();
+      imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
+      updateTotalCostBackend(total);
+      populateCheckoutCart(convertBackendToIMat());
+    }
+    
   }
   
   /**

@@ -297,6 +297,7 @@ public class ToppController implements Initializable {
       loginLabel.setText("Felaktigt lösenord");
     }
    imat.getCenterController().getProductTable().setVisible(false);
+   imat.getVarukorgController().getList().setFocusTraversable(true);
   }
   
   /**

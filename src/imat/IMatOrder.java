@@ -74,6 +74,10 @@ public class IMatOrder {
   public LocalDate getDate() {
     return date;
   }
+  
+  public void setNewEmptyCart() {
+    shoppingItems = new ArrayList();
+  }
 
   /**
    * @param date the date to set

@@ -959,7 +959,7 @@
         <content>
           <AnchorPane fx:id="paymentInformationPane" layoutY="40.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text layoutX="45.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dina uppgifter" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="50.0">
+                  <Text layoutX="45.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dina uppgifter" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -969,7 +969,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="49.9619140625" layoutY="80.0" spacing="8.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="100.0">
+                  <VBox layoutX="100.0" layoutY="80.0" spacing="8.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0">
                      <children>
                         <VBox layoutX="50.0" layoutY="80.0">
                            <children>
@@ -1149,7 +1149,7 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="519.0" layoutY="470.0" spacing="30.0" AnchorPane.bottomAnchor="40.0">
+                  <VBox layoutX="519.0" layoutY="470.0" spacing="30.0" AnchorPane.topAnchor="424.0">
                      <children>
                         <Label fx:id="newRequirePaymentLabel" textFill="#f20101">
                            <VBox.margin>
@@ -1306,7 +1306,7 @@
       </ScrollPane>
       <ScrollPane fx:id="checkCartCheckoutPane" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
-          <AnchorPane layoutY="40.0" maxHeight="423.0" maxWidth="750.0" minHeight="423.0" minWidth="750.0" prefHeight="423.0" prefWidth="750.0">
+          <AnchorPane layoutY="40.0" maxHeight="423.0" maxWidth="748.0" minHeight="423.0" minWidth="748.0" prefHeight="423.0" prefWidth="748.0">
                <children>
                   <HBox layoutX="450.0" layoutY="400.0" spacing="5.0" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="470.0">
                      <children>
@@ -1330,6 +1330,11 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kontrollera varukorgen" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
                </children></AnchorPane>
         </content>
       </ScrollPane>

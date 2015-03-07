@@ -3803,6 +3803,7 @@ public class CenterFlikController implements Initializable {
       getListVyPane().getChildren().remove(lv);
     }
       lv = getCheckoutList();
+      lv.setStyle("-fx-background-insets: 0 ;");
       lv.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>() {
         @Override
         public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> param) {
@@ -4517,7 +4518,7 @@ public class CenterFlikController implements Initializable {
     }
     nn = FXCollections.observableArrayList(imatItems);
     checkOutCartListView = new ListView(nn);
-    checkOutCartListView.setLayoutY(100);
+    checkOutCartListView.setLayoutY(150);
     checkOutCartListView.setLayoutX(100);
     checkOutCartListView.setMinWidth(500);
     return checkOutCartListView;

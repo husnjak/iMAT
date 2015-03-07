@@ -81,6 +81,7 @@ public class VarukorgController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     resetShoppingCartLink.setFocusTraversable(false);
+    shoppingCartListView.setMaxHeight(500);
     
     resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -236,7 +237,6 @@ public class VarukorgController implements Initializable {
             super.updateItem(item, empty);
             setText(null);  // No text in label of super class
             if (empty) {
-              
                 lastItem = null;
                 setGraphic(null);
             } else {

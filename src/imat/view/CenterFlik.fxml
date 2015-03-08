@@ -681,7 +681,11 @@
                                     <Insets left="56.0" />
                                  </HBox.margin>
                               </PasswordField>
-                              <Label fx:id="createPasswordLabel1" textFill="#f20303" />
+                              <Label fx:id="createPasswordLabel1" textFill="#f20303">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                            <VBox.margin>
                               <Insets bottom="1.0" />

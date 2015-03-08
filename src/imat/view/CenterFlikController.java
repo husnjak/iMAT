@@ -758,6 +758,10 @@ public class CenterFlikController implements Initializable {
   FadeTransition fader8;
   FadeTransition fader9;
   FadeTransition fader10;
+  FadeTransition fader11;
+  FadeTransition fader12;
+  FadeTransition fader13;
+  
   @FXML
   private Label createPasswordLabel1;
   
@@ -812,6 +816,9 @@ public class CenterFlikController implements Initializable {
     fader8 = createFader(lastNameLabel1);
     fader9 = createFader(streetLabel1);
     fader10 = createFader(postalLabel1);
+    fader11 = createFader(createUserNameLabel);
+    fader12 = createFader(createPasswordLabel);
+    fader13 = createFader(createPasswordLabel1);
     
     firstNameTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
       @Override
@@ -951,6 +958,7 @@ public class CenterFlikController implements Initializable {
         } else {
             if (createUserNameTextField.getLength() > 0) {
               createUserNameTextField.setStyle(defaultStyle);
+              createUserNameLabel.setText("");
             }
         }
       }
@@ -964,6 +972,7 @@ public class CenterFlikController implements Initializable {
         } else {
             if (createPasswordTextField.getLength() > 0) {
               createPasswordTextField.setStyle(defaultStyle);
+              createPasswordLabel1.setText("");
             }
         }
       }
@@ -977,6 +986,7 @@ public class CenterFlikController implements Initializable {
         } else {
             if (createPasswordRepeatTextField.getLength() > 0) {
               createPasswordRepeatTextField.setStyle(defaultStyle);
+              createPasswordLabel.setText("");
             }
         }
       }

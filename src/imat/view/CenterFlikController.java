@@ -67,6 +67,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javax.imageio.ImageIO;
@@ -628,10 +629,6 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label totalCostFavorite;
   @FXML
-  private ScrollPane checkoutPane;
-  @FXML
-  private AnchorPane paymentInformationPane;
-  @FXML
   private TextField civicTextField1;
   @FXML
   private Label civicLabel1;
@@ -639,9 +636,7 @@ public class CenterFlikController implements Initializable {
   private TextField yearTextField1;
   @FXML
   private Label yearLabel1;
-  @FXML
   private TextField phoneTextField1;
-  @FXML
   private Label phoneLabel1;
   @FXML
   private TextField postalTextField1;
@@ -665,14 +660,11 @@ public class CenterFlikController implements Initializable {
   private TextField firstNameTextField1;
   @FXML
   private Button paymentForOrderButton;
-  @FXML
   private TextField emailTextField1;
   @FXML
   private TextField monthTextField1;
-  @FXML
   private Label monthLabel1;
   private Hyperlink removeProductPaymentLink;
-  @FXML
   private Label cityLabel1;
   @FXML
   private Label streetLabel1;
@@ -680,8 +672,6 @@ public class CenterFlikController implements Initializable {
   private Label lastNameLabel1;
   @FXML
   private Label firstNameLabel1;
-  @FXML
-  private Label emailLabel1;
   private ListView<IMatShoppingItem> checkOutCartListView;
   static String action = "init";
   @FXML
@@ -714,9 +704,6 @@ public class CenterFlikController implements Initializable {
   Label totalCheckoutSum;
   @FXML
   private Label totalCostCartLabel;
-  //private Button toPayInfoButton;
-  @FXML
-  private Button paymentForOrderButton1;
   
   FadeTransition fader;
   FadeTransition fader2;
@@ -744,6 +731,24 @@ public class CenterFlikController implements Initializable {
   private Label checkOutLabel;
   @FXML
   private Label summaLabel;
+  @FXML
+  private Text firstNameText1;
+  @FXML
+  private Text lastNameText1;
+  @FXML
+  private Text civicText1;
+  @FXML
+  private Text addressText1;
+  @FXML
+  private Text postCityText1;
+  @FXML
+  private Text cardNumberText1;
+  @FXML
+  private Text yearMonthText1;
+  @FXML
+  private Text slashText1;
+  @FXML
+  private Text cvvText1;
   
   public Integer getProductNr() {
     return productNr;
@@ -788,22 +793,6 @@ public class CenterFlikController implements Initializable {
     varaListVyParent.setFocusTraversable(false);
     fader = createFader(saveInformationLabel);
     fader2 = createFader(newRequirePaymentLabel);
-    
-//    toPayInfoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-//      @Override
-//      public void handle(MouseEvent event) {
-//        changeToPaymentView();
-//        event.consume();
-//      }
-//    });
-    
-    paymentForOrderButton1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        changeToPagination();
-        event.consume();
-      }
-    });
     
     productFavorite.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -2107,20 +2096,16 @@ public class CenterFlikController implements Initializable {
     civicLabel1.setText("");
     firstNameLabel1.setText("");
     yearLabel1.setText("");
-    monthLabel1.setText("");
-    phoneLabel1.setText("");
     cvvLabel1.setText("");
     cardNumberLabel1.setText("");
     postalLabel1.setText("");
     streetLabel1.setText("");
-    cityLabel1.setText("");
     lastNameLabel1.setText("");
     
     if (firstNameTextField1.getLength() > 0 && lastNameTextField1.getLength() > 0
         && civicTextField1.getLength() > 0 && postalTextField1.getLength() > 0
         && cityTextField1.getLength() > 0 && cardNumberTextField1.getLength() > 0
         && yearTextField1.getLength() > 0 && monthTextField1.getLength() > 0
-        && (emailTextField1.getLength() > 0|| phoneTextField1.getLength() > 0)
         && cvvTextField1.getLength() > 0 && streetTextField1.getLength() > 0 ) {
       return true;
     } else {
@@ -2134,11 +2119,11 @@ public class CenterFlikController implements Initializable {
         yearLabel1.setText("*");
       }
       if (monthTextField1.getLength() == 0) {
-        monthLabel1.setText("*");
+        yearLabel1.setText("*");
       }
-      if (emailTextField1.getLength() == 0 && phoneTextField1.getLength() == 0) {
-        phoneLabel1.setText("*");
-      }
+      //if (emailTextField1.getLength() == 0 && phoneTextField1.getLength() == 0) {
+        //phoneLabel1.setText("*");
+      //}
       if (cardNumberTextField1.getLength() == 0) {
         cardNumberLabel1.setText("*");
       }
@@ -2188,6 +2173,10 @@ public class CenterFlikController implements Initializable {
    */
   public void setMainApp(IMat imat) {
     this.imat = imat;
+  }
+  
+  public Pagination getPagination() {
+    return pagination;
   }
     
   /**
@@ -2262,8 +2251,8 @@ public class CenterFlikController implements Initializable {
       firstNameTextField1.setText(IMatController.getIMatBackend().getCustomer().getFirstName());
       lastNameTextField1.setText(IMatController.getIMatBackend().getCustomer().getLastName());
       civicTextField1.setText(IMatController.getIMatBackend().getCustomer().getMobilePhoneNumber());
-      phoneTextField1.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
-      emailTextField1.setText(IMatController.getIMatBackend().getCustomer().getEmail());
+      //phoneTextField1.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
+      //emailTextField1.setText(IMatController.getIMatBackend().getCustomer().getEmail());
       streetTextField1.setText(IMatController.getIMatBackend().getCustomer().getAddress());
       postalTextField1.setText(IMatController.getIMatBackend().getCustomer().getPostCode());
       cityTextField1.setText(IMatController.getIMatBackend().getCustomer().getPostAddress());
@@ -2298,8 +2287,8 @@ public class CenterFlikController implements Initializable {
               firstNameTextField1.setText(rs.getString("FIRSTNAME"));
               lastNameTextField1.setText(rs.getString("LASTNAME"));
               civicTextField1.setText(rs.getString("CIVIC"));
-              emailTextField1.setText(rs.getString("EMAIL"));
-              phoneTextField1.setText(rs.getString("PHONE"));
+              //emailTextField1.setText(rs.getString("EMAIL"));
+              //phoneTextField1.setText(rs.getString("PHONE"));
               streetTextField1.setText(rs.getString("STREET"));
               postalTextField1.setText(rs.getString("POSTAL"));
               cityTextField1.setText(rs.getString("CITY"));
@@ -4925,11 +4914,13 @@ public class CenterFlikController implements Initializable {
           checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
           summaLabel.setText("Summa:");
           if (IMatController.currentUser != null) {
+            showPage2(false);
             populateCheckoutCart();
             Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
             totalCostCartLabel.setText(total.toString()+" kr");
             setCartNotVisible();
           } else {
+            showPage2(false);
             populateCheckoutCart();
             Integer total = (int)IMatController.getShoppingCart().getTotal();
             totalCostCartLabel.setText(total.toString()+" kr");
@@ -4937,6 +4928,7 @@ public class CenterFlikController implements Initializable {
           }
           deSelect();
         } else {
+          showPage2(true);
           summaLabel.setText("");
           totalCostCartLabel.setText("");
           checkOutLabel.setText("Steg 2/2: Kontrollera uppgifter");
@@ -4947,6 +4939,40 @@ public class CenterFlikController implements Initializable {
    });
     
     }
+    
+    public void showPage2(boolean show) {
+      postalLabel1.setText("");
+      civicLabel1.setText("");
+      firstNameLabel1.setText("");
+      yearLabel1.setText("");
+      cvvLabel1.setText("");
+      cardNumberLabel1.setText("");
+      streetLabel1.setText("");
+      lastNameLabel1.setText("");
+    
+      firstNameTextField1.setVisible(show);
+      lastNameTextField1.setVisible(show);
+      civicTextField1.setVisible(show);
+      postalTextField1.setVisible(show);
+      cityTextField1.setVisible(show);
+      cardNumberTextField1.setVisible(show);
+      yearTextField1.setVisible(show);
+      monthTextField1.setVisible(show);
+      cvvTextField1.setVisible(show);
+      streetTextField1.setVisible(show);
+      
+      paymentForOrderButton.setVisible(show);
+      
+      firstNameText1.setVisible(show);
+      lastNameText1.setVisible(show);
+      civicText1.setVisible(show);
+      postCityText1.setVisible(show);
+      cardNumberText1.setVisible(show);
+      yearMonthText1.setVisible(show);
+      addressText1.setVisible(show);
+      cvvText1.setVisible(show);
+      slashText1.setVisible(show);
   
+     }
 
 }

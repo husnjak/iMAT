@@ -53,6 +53,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -808,6 +810,136 @@ public class CenterFlikController implements Initializable {
     fader8 = createFader(lastNameLabel1);
     fader9 = createFader(streetLabel1);
     fader10 = createFader(postalLabel1);
+    
+    firstNameTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (firstNameTextField1.getLength() > 0) {
+              firstNameTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    lastNameTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (lastNameTextField1.getLength() > 0) {
+              lastNameTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    civicTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (civicTextField1.getLength() > 0) {
+              civicTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+      
+    yearTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (yearTextField1.getLength() > 0) {
+              yearTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    monthTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (monthTextField1.getLength() > 0) {
+              monthTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    streetTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (streetTextField1.getLength() > 0) {
+              streetTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    cityTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (cityTextField1.getLength() > 0) {
+              cityTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    cvvTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (cvvTextField1.getLength() > 0) {
+              cvvTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    postalTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (postalTextField1.getLength() > 0) {
+              postalTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    cardNumberTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (cardNumberTextField1.getLength() > 0) {
+              cardNumberTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
     
     productFavorite.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -2081,33 +2213,49 @@ public class CenterFlikController implements Initializable {
       }
     });
     
+    paymentForOrderButton.addEventHandler(KeyEvent.KEY_PRESSED, keyListener);
+    
     paymentForOrderButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        if (isRequiredFieldsEntered()) {
-          if (IMatController.currentUser != null) {
-            IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
-            imat.getCenterController().showOrderHistory();
-            imat.getVarukorgController().setTotalCostLabel("0 kr");
-            imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
-            initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
-            changeToReceiptView();
-          } else {
-            orderCart = IMatController.getIMatBackend().placeOrder();
-            imat.getCenterController().getOrders();
-            imat.getVarukorgController().setTotalCostLabel("0 kr");
-            imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-            initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-            changeToReceiptView();
-          }
-        } else {
-      // Inform user to enter required fields
-      }
+        handleOrder();
       }
     });
     
     defaultStyle = postalTextField1.getStyle();
-}  
+} 
+  
+  private EventHandler<KeyEvent> keyListener = new EventHandler<KeyEvent>() {
+    @Override
+    public void handle(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER) {
+            handleOrder();
+            event.consume();
+        } 
+    }
+};
+  
+  public void handleOrder() {
+    if (isRequiredFieldsEntered()) {
+      if (IMatController.currentUser != null) {
+        IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
+        imat.getCenterController().showOrderHistory();
+        imat.getVarukorgController().setTotalCostLabel("0 kr");
+        imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+        initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+        changeToReceiptView();
+      } else {
+        orderCart = IMatController.getIMatBackend().placeOrder();
+        imat.getCenterController().getOrders();
+        imat.getVarukorgController().setTotalCostLabel("0 kr");
+        imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+        initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+        changeToReceiptView();
+      }
+    } else {
+  // Inform user to enter required fields
+  }
+  }
   
   public boolean isRequiredFieldsEntered() {
     civicLabel1.setText("");
@@ -2170,9 +2318,9 @@ public class CenterFlikController implements Initializable {
       if (lastNameTextField1.getLength() == 0) {
         lastNameTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
-      //if (cityTextField1.getLength() == 0) {
-        //Label1.setText("*");
-      //}
+      if (cityTextField1.getLength() == 0) {
+        cityTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+      }
       if (streetTextField1.getLength() == 0) {
         streetTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }

@@ -32,10 +32,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 
 /**
  *

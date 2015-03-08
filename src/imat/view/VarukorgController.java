@@ -9,6 +9,7 @@ import imat.IMat;
 import imat.IMatController;
 import imat.IMatShoppingCart;
 import imat.IMatShoppingItem;
+import java.awt.Color;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,14 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -220,7 +225,7 @@ public class VarukorgController implements Initializable {
         Label label3 = new Label("(empty)");
         Pane pane1 = new Pane();
         Pane pane2 = new Pane();
-        Button deleteButton = new Button("X");
+        Button deleteButton = new Button();
         String lastItem;
         int index = 0;
 
@@ -231,8 +236,10 @@ public class VarukorgController implements Initializable {
             hbox.setMaxHeight(5);
             deleteButton.setManaged(true);
             deleteButton.setCenterShape(false);
-            deleteButton.setMaxHeight(5);
-            deleteButton.setMaxWidth(5.0);
+            deleteButton.setMinSize(USE_PREF_SIZE, USE_PREF_SIZE);
+            deleteButton.setPrefSize(15, 15);
+            deleteButton.setMaxSize(USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
+            deleteButton.getStyleClass().add("CancelButton");
             pane1.setPrefWidth(5);
             pane2.setPrefWidth(5);
             hbox.getChildren().addAll(deleteButton, label1, label2, label3);

@@ -11,6 +11,10 @@
     -fx-text-fill: white;
 }
 
+.CancelButton{
+    -fx-background-image: url("Cancel.png");
+}
+
 .background {
     //-fx-background-color: white;
     -fx-border-color: lightgray;
@@ -38,3 +42,6 @@
     -fx-background-image: url("Subtract_Hover.png");  
 }
 
+.CancelButton:hover{
+    -fx-background-image: url("Cancel_Hover.png");
+}

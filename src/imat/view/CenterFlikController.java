@@ -758,6 +758,8 @@ public class CenterFlikController implements Initializable {
   FadeTransition fader8;
   FadeTransition fader9;
   FadeTransition fader10;
+  @FXML
+  private Label createPasswordLabel1;
   
   public Integer getProductNr() {
     return productNr;
@@ -936,6 +938,45 @@ public class CenterFlikController implements Initializable {
         } else {
             if (cardNumberTextField1.getLength() > 0) {
               cardNumberTextField1.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    createUserNameTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (createUserNameTextField.getLength() > 0) {
+              createUserNameTextField.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    createPasswordTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (createPasswordTextField.getLength() > 0) {
+              createPasswordTextField.setStyle(defaultStyle);
+            }
+        }
+      }
+    });
+    
+    createPasswordRepeatTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (createPasswordRepeatTextField.getLength() > 0) {
+              createPasswordRepeatTextField.setStyle(defaultStyle);
             }
         }
       }
@@ -1412,20 +1453,32 @@ public class CenterFlikController implements Initializable {
     createAccountButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        createUserNameLabel.setText("");
+        createPasswordLabel.setText("");
+        createPasswordLabel1.setText("");
         String username = createUserNameTextField.getText();
         String password = createPasswordTextField.getText();
         String repeatPassword = createPasswordRepeatTextField.getText();
         if (username.length() < 1 ) {
           createUserNameLabel.setText("Fyll i användarnamn");
-        } else if (password.length() < 1 || repeatPassword.length() < 1) {
+          createUserNameTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+        } 
+        if (password.length() < 1) {
+          createPasswordLabel1.setText("Fyll i lösenord");
+          createPasswordTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+        } 
+        if (repeatPassword.length() < 1) {
           createPasswordLabel.setText("Fyll i lösenord");
+          createPasswordRepeatTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         } else if (password.compareTo(repeatPassword) != 0) {
           createPasswordLabel.setText("Felaktigt lösenord");
+          createPasswordRepeatTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         } else {
           String isValid = IMatController.validAccount(username, password);
           if (isValid.compareTo("invalidUsername") != 0) {
             createUserNameLabel.setText("Användarnamnet existerar redan");
-          } else {
+            createUserNameTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+          } else if (username.length() > 0) {
             IMatController.createAccount(username, password);
             IMatController.setCurrentUser(username);
             createUserNameTextField.setText("");
@@ -1438,6 +1491,9 @@ public class CenterFlikController implements Initializable {
             showOrderHistory();
             imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
             initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
+          } else {
+            createUserNameLabel.setText("Fyll i användarnamn");
+            createUserNameTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
           }
         }
       }
@@ -2941,6 +2997,15 @@ public class CenterFlikController implements Initializable {
    */
   public void changeToRegisterView() {
     deSelect();
+    createUserNameLabel.setText("");
+    createPasswordLabel.setText("");
+    createPasswordLabel1.setText("");
+    createUserNameTextField.setText("");
+    createPasswordTextField.setText("");
+    createPasswordRepeatTextField.setText("");
+    createUserNameTextField.setStyle(defaultStyle);
+    createPasswordTextField.setStyle(defaultStyle);
+    createPasswordRepeatTextField.setStyle(defaultStyle);
     getListVyPane().getChildren().remove(lv);
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
      makeShoppingCartVisible();

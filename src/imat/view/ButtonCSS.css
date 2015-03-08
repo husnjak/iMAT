@@ -30,4 +30,11 @@
     -fx-text-fill: white;
 }
 
+.Addbutton:hover{
+    -fx-background-image: url("Add_Hover.png");    
+}
+
+.SubButton:hover{
+    -fx-background-image: url("Subtract_Hover.png");  
+}
 

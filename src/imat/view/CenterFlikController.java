@@ -3942,7 +3942,23 @@ public class CenterFlikController implements Initializable {
             pane2.setPrefWidth(20);
             pane3.setPrefWidth(20);
             label3.setPrefWidth(70);
-            hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, minusButton, label2, plusButton, pane3, label3);
+            
+            // Styles for buttons
+            deleteButton.setMinSize(USE_PREF_SIZE, USE_PREF_SIZE);
+            deleteButton.setPrefSize(15, 15);
+            deleteButton.setMaxSize(USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
+            deleteButton.getStyleClass().add("CancelButton");
+            plusButton.setMinSize(USE_PREF_SIZE, USE_PREF_SIZE);
+            plusButton.setPrefSize(15, 15);
+            plusButton.setMaxSize(USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
+            plusButton.getStyleClass().add("Addbutton");
+            minusButton.setMinSize(USE_PREF_SIZE, USE_PREF_SIZE);
+            minusButton.setPrefSize(15, 15);
+            minusButton.setMaxSize(USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
+            minusButton.getStyleClass().add("SubButton");
+            // Styles for buttons
+            
+            hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, plusButton, label2, minusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);
             HBox.setHgrow(pane3, Priority.ALWAYS);

@@ -11,16 +11,38 @@
     -fx-text-fill: white;
 }
 
+.CancelButton{
+    -fx-background-image: url("Cancel.png");
+}
+
 .background {
     //-fx-background-color: white;
     -fx-border-color: lightgray;
 }
 
-/** Hover styles **/
-.background:hover{
-    -fx-background-color: lightblue;
-}
-
 .backgroundColor{
     -fx-background-color: white;
+}
+
+.LogoButton{
+   // -fx-background-image: url("iMAT_Logga.png");
+    -fx-border-color: transparent;
+}
+
+/** Hover styles **/
+.BuyButton:hover{
+    -fx-background-color: dodgerblue;
+    -fx-text-fill: white;
+}
+
+.Addbutton:hover{
+    -fx-background-image: url("Add_Hover.png");  
+}
+
+.SubButton:hover{
+    -fx-background-image: url("Subtract_Hover.png");  
+}
+
+.CancelButton:hover{
+    -fx-background-image: url("Cancel_Hover.png");
 }

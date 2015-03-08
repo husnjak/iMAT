@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -9,12 +10,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-border-color: black;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-background-color: e01e1e;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
    <children>
-      <ImageView fx:id="logoImage" fitHeight="80.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+      <ImageView fx:id="logoImage" fitHeight="75.0" fitWidth="200.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="LogoButton">
          <image>
-            <Image url="@../../../imat-logga1.png" />
-         </image></ImageView>
+            <Image url="@iMAT_Logga.png" />
+         </image>
+      </ImageView>
       <StackPane fx:id="loginStackPane" alignment="CENTER_RIGHT" layoutX="799.0" layoutY="3.0" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0">
          <children>
             <AnchorPane fx:id="loginPane" prefWidth="200.0" StackPane.alignment="CENTER_RIGHT">
@@ -26,7 +28,7 @@
                         <Button fx:id="loginButton" layoutX="414.0" layoutY="19.0" mnemonicParsing="false" text="Logga in" AnchorPane.topAnchor="19.0" />
                      </children>
                   </HBox>
-                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" text="Skapa konto" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="45.0" />
+                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" style="-fx-text-fill: darkblue;" text="Skapa konto" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="45.0" />
                   <Label fx:id="loginLabel" layoutX="269.0" layoutY="47.0" textFill="#f20808" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="50.0" />
                </children>
             </AnchorPane>
@@ -54,7 +56,7 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <HBox layoutX="336.0" layoutY="24.0" AnchorPane.topAnchor="20.0">
+      <HBox layoutX="347.0" layoutY="25.0" AnchorPane.topAnchor="25.0">
          <children>
             <TextField fx:id="searchTextField" layoutX="336.0" layoutY="24.0" onAction="#handleSearch" prefHeight="25.0" prefWidth="284.0" promptText="Sök efter produkter här.." AnchorPane.leftAnchor="336.0" />
             <Button fx:id="searchButton" layoutX="610.0" layoutY="24.0" mnemonicParsing="false" text="Sök" />

@@ -21,6 +21,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -31,8 +32,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -125,7 +128,7 @@ public class ToppController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    setImage(logoImage, "imat-logga1.png");
+    //etImage(logoImage, "iMAT_Logga.png");
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
     passwordTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
@@ -140,6 +143,22 @@ public class ToppController implements Initializable {
         event.consume();
      }
     });
+    
+    logoImage.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+        //Change cursor to hand
+        @Override
+        public void handle(MouseEvent event) {
+            imat.getPrimaryStage().getScene().setCursor(Cursor.HAND);
+        }
+    });
+
+    logoImage.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+        // Change cursor to default, arrow
+        @Override
+        public void handle(MouseEvent event) {
+            imat.getPrimaryStage().getScene().setCursor(Cursor.DEFAULT);
+        }
+    });    
     
     registerUser.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override

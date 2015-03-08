@@ -49,6 +49,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -65,6 +66,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javax.imageio.ImageIO;
@@ -737,6 +739,10 @@ public class CenterFlikController implements Initializable {
   private Label newCVVLabel;
   @FXML
   private Label newRequirePaymentLabel;
+  @FXML
+  private ScrollPane testPagination;
+  @FXML
+  private Pagination pagination;
   
   public Integer getProductNr() {
     return productNr;
@@ -4895,5 +4901,46 @@ public class CenterFlikController implements Initializable {
       favoritvarorButton.setSelected(false);
     }
   }
+  
+    public void changeToPagination() {
+    int size = varaListVyParent.getChildren().size();
+    currentPane = "testPagination";
+    String id;
+    for (int i = 0; i < size; i++) {
+      id = varaListVyParent.getChildren().get(i).getId();
+      if (id.compareTo(currentPane) == 0) {
+        varaListVyParent.getChildren().get(i).toFront();
+        varaListVyParent.getChildren().get(i).setVisible(true);
+      } else if (id.compareTo("toolBar") == 0) {
+      } else {
+        varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+    
+    pagination.setPageFactory(new Callback<Integer, Node>() {
+      public Node call(Integer pageIndex) {
+        VBox vbox = new VBox();
+        if (pageIndex == 0) {
+          if (IMatController.currentUser != null) {
+            populateCheckoutCart();
+            Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+            totalCostCartLabel.setText(total.toString()+" kr");
+            setCartNotVisible();
+          } else {
+            populateCheckoutCart();
+            Integer total = (int)IMatController.getShoppingCart().getTotal();
+            totalCostCartLabel.setText(total.toString()+" kr");
+            setCartNotVisible();
+          }
+          deSelect();
+        } else {
+          getListVyPane().getChildren().remove(lv);
+        }
+        return vbox;
+      }
+   });
+    
+    }
+  
 
 }

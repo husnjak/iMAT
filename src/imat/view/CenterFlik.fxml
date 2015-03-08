@@ -1338,5 +1338,14 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
+      <ScrollPane fx:id="testPagination" fitToHeight="true" fitToWidth="true" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <content>
+          <AnchorPane maxHeight="500.0" maxWidth="748.0" minHeight="500.0" minWidth="748.0" prefHeight="500.0" prefWidth="748.0">
+               <children>
+                  <Pagination fx:id="pagination" maxHeight="500.0" maxWidth="748.0" minHeight="500.0" minWidth="748.0" pageCount="2" prefHeight="500.0" prefWidth="748.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

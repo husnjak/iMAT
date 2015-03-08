@@ -136,9 +136,9 @@ public class ToppController implements Initializable {
     searchTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
     searchTextField.setPromptText("Sök efter produkter här...");
     
-    logoImage.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
+    logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
      @Override
-     public void handle(ActionEvent event) {
+     public void handle(MouseEvent event) {
         imat.getCenterController().changeToStartPageView();
         event.consume();
      }

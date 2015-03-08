@@ -25,7 +25,8 @@
 }
 
 .LogoButton{
-    -fx-background-image: url("iMAT_Logga.jpg");
+   // -fx-background-image: url("iMAT_Logga.png");
+    -fx-border-color: transparent;
 }
 
 /** Hover styles **/
@@ -35,7 +36,7 @@
 }
 
 .Addbutton:hover{
-    -fx-background-image: url("Add_Hover.png");    
+    -fx-background-image: url("Add_Hover.png");  
 }
 
 .SubButton:hover{

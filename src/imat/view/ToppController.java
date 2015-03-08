@@ -32,8 +32,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.StackPane;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -52,7 +54,7 @@ public class ToppController implements Initializable {
   @FXML
   private Button searchButton;
   @FXML
-  private Button logoButton;
+  private ImageView logoImage;
   @FXML
   private StackPane loginStackPane;
   @FXML
@@ -126,7 +128,7 @@ public class ToppController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //setImage(logoImage, "imat-logga1.png");
+    //etImage(logoImage, "iMAT_Logga.png");
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
     passwordTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
@@ -134,7 +136,7 @@ public class ToppController implements Initializable {
     searchTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
     searchTextField.setPromptText("Sök efter produkter här...");
     
-    logoButton.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
+    logoImage.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
      @Override
      public void handle(ActionEvent event) {
         imat.getCenterController().changeToStartPageView();
@@ -142,7 +144,7 @@ public class ToppController implements Initializable {
      }
     });
     
-    logoButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+    logoImage.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
         //Change cursor to hand
         @Override
         public void handle(MouseEvent event) {
@@ -150,7 +152,7 @@ public class ToppController implements Initializable {
         }
     });
 
-    logoButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+    logoImage.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
         // Change cursor to default, arrow
         @Override
         public void handle(MouseEvent event) {

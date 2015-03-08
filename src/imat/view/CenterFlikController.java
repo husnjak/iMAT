@@ -3967,6 +3967,7 @@ public class CenterFlikController implements Initializable {
             minusButton.setPrefSize(15, 15);
             minusButton.setMaxSize(USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
             minusButton.getStyleClass().add("SubButton");
+            // Styles for buttons
             
             hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, plusButton, label2, minusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);

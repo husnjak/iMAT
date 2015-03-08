@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -9,9 +10,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-border-color: black;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-border-color: black; -fx-background-color: e01e1e;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
    <children>
-      <Button fx:id="logoButton" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" styleClass="LogoButton" stylesheets="@ButtonCSS.css" />
+      <ImageView fx:id="logoImage" fitHeight="75.0" fitWidth="145.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" styleClass="LogoButton">
+         <image>
+            <Image url="@iMAT_Logga.png" />
+         </image>
+      </ImageView>
       <StackPane fx:id="loginStackPane" alignment="CENTER_RIGHT" layoutX="799.0" layoutY="3.0" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0">
          <children>
             <AnchorPane fx:id="loginPane" prefWidth="200.0" StackPane.alignment="CENTER_RIGHT">

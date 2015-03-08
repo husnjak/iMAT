@@ -130,7 +130,6 @@ public class VarukorgController implements Initializable {
     cartBuyButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        //imat.getCenterController().changeToCheckoutView();
         imat.getCenterController().changeToPagination();
       }
     });
@@ -281,7 +280,7 @@ public class VarukorgController implements Initializable {
                       IMatController.getShoppingCart().addItem(shopI.get(i));
                     }
                     if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
-                      imat.getCenterController().changeToCheckoutView();
+                      imat.getCenterController().changeToPagination();
                     }
 
                     Integer total = (int)IMatController.getShoppingCart().getTotal();

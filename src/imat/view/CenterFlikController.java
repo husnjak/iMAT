@@ -708,16 +708,13 @@ public class CenterFlikController implements Initializable {
   private Button minus21;
   @FXML
   private Label totalCost21;
-  @FXML
-  private ScrollPane checkCartCheckoutPane;
   
   ObservableList<IMatShoppingItem> nn;
   
   Label totalCheckoutSum;
   @FXML
   private Label totalCostCartLabel;
-  @FXML
-  private Button toPayInfoButton;
+  //private Button toPayInfoButton;
   @FXML
   private Button paymentForOrderButton1;
   
@@ -743,6 +740,10 @@ public class CenterFlikController implements Initializable {
   private ScrollPane testPagination;
   @FXML
   private Pagination pagination;
+  @FXML
+  private Label checkOutLabel;
+  @FXML
+  private Label summaLabel;
   
   public Integer getProductNr() {
     return productNr;
@@ -788,18 +789,18 @@ public class CenterFlikController implements Initializable {
     fader = createFader(saveInformationLabel);
     fader2 = createFader(newRequirePaymentLabel);
     
-    toPayInfoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        changeToPaymentView();
-        event.consume();
-      }
-    });
+//    toPayInfoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent event) {
+//        changeToPaymentView();
+//        event.consume();
+//      }
+//    });
     
     paymentForOrderButton1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        changeToCheckoutView();
+        changeToPagination();
         event.consume();
       }
     });
@@ -4921,6 +4922,8 @@ public class CenterFlikController implements Initializable {
       public Node call(Integer pageIndex) {
         VBox vbox = new VBox();
         if (pageIndex == 0) {
+          checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
+          summaLabel.setText("Summa:");
           if (IMatController.currentUser != null) {
             populateCheckoutCart();
             Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
@@ -4934,6 +4937,9 @@ public class CenterFlikController implements Initializable {
           }
           deSelect();
         } else {
+          summaLabel.setText("");
+          totalCostCartLabel.setText("");
+          checkOutLabel.setText("Steg 2/2: Kontrollera uppgifter");
           getListVyPane().getChildren().remove(lv);
         }
         return vbox;

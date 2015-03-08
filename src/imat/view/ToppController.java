@@ -296,9 +296,10 @@ public class ToppController implements Initializable {
     } else {
       loginLabel.setText("Felaktigt lösenord");
     }
-   //imat.getCenterController().getProductTable().setVisible(false);
-   imat.getVarukorgController().getList().setFocusTraversable(true);
-   
+  imat.getVarukorgController().getList().setFocusTraversable(true);
+  if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
+    imat.getCenterController().changeToStartPageView();
+  }
   }
   
   /**
@@ -344,6 +345,10 @@ public class ToppController implements Initializable {
     if (imat.getCenterController().currentPane.equals("checkCartCheckoutPane")) {
       imat.getCenterController().getListVyPane().getChildren().remove(imat.getCenterController().getCheckoutView());
       imat.getCenterController().populateCheckoutCart();
+    }
+    
+    if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
+      imat.getCenterController().changeToStartPageView();
     }
   
   }

@@ -21,6 +21,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -51,7 +52,7 @@ public class ToppController implements Initializable {
   @FXML
   private Button searchButton;
   @FXML
-  private ImageView logoImage;
+  private Button logoButton;
   @FXML
   private StackPane loginStackPane;
   @FXML
@@ -125,7 +126,7 @@ public class ToppController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    setImage(logoImage, "imat-logga1.png");
+    //setImage(logoImage, "imat-logga1.png");
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
     passwordTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
@@ -133,13 +134,29 @@ public class ToppController implements Initializable {
     searchTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
     searchTextField.setPromptText("Sök efter produkter här...");
     
-    logoImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+    logoButton.addEventHandler(ActionEvent.ANY, new EventHandler<ActionEvent>() {
      @Override
-     public void handle(MouseEvent event) {
+     public void handle(ActionEvent event) {
         imat.getCenterController().changeToStartPageView();
         event.consume();
      }
     });
+    
+    logoButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+        //Change cursor to hand
+        @Override
+        public void handle(MouseEvent event) {
+            imat.getPrimaryStage().getScene().setCursor(Cursor.HAND);
+        }
+    });
+
+    logoButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+        // Change cursor to default, arrow
+        @Override
+        public void handle(MouseEvent event) {
+            imat.getPrimaryStage().getScene().setCursor(Cursor.DEFAULT);
+        }
+    });    
     
     registerUser.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override

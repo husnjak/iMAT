@@ -11,10 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-border-color: black;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
    <children>
-      <ImageView fx:id="logoImage" fitHeight="80.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
-         <image>
-            <Image url="@../../../imat-logga1.png" />
-         </image></ImageView>
+      <Button fx:id="logoButton" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" styleClass="LogoButton" stylesheets="@ButtonCSS.css" />
       <StackPane fx:id="loginStackPane" alignment="CENTER_RIGHT" layoutX="799.0" layoutY="3.0" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0">
          <children>
             <AnchorPane fx:id="loginPane" prefWidth="200.0" StackPane.alignment="CENTER_RIGHT">

@@ -16,11 +16,17 @@
     -fx-border-color: lightgray;
 }
 
+.backgroundColor{
+    -fx-background-color: white;
+}
+
+.LogoButton{
+    -fx-background-image: url("iMAT_Logga.jpg");
+}
+
 /** Hover styles **/
 .background:hover{
     -fx-background-color: lightblue;
 }
 
-.backgroundColor{
-    -fx-background-color: white;
-}
+

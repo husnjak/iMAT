@@ -2681,6 +2681,7 @@ public class CenterFlikController implements Initializable {
     imat.getVarukorgController().getList().setStyle("-fx-background-color: white;");
     imat.getVarukorgController().getList().setPlaceholder(new Label("Varukorgen är tom"));
     imat.getVarukorgController().getSummaLabel().setDisable(false);
+    imat.getVarukorgController().disableShoppingCartLabel(false);
   }
   
   /**
@@ -4851,6 +4852,7 @@ public class CenterFlikController implements Initializable {
     imat.getVarukorgController().getList().setStyle("-fx-background-color: #F0F0F0 ;");
     imat.getVarukorgController().getList().setPlaceholder(new Label(""));
     imat.getVarukorgController().getSummaLabel().setDisable(true);
+    imat.getVarukorgController().disableShoppingCartLabel(true);
   }
   
   public AnchorPane getListVyPane(){

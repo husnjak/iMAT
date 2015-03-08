@@ -58,6 +58,8 @@ public class VarukorgController implements Initializable {
   boolean added = false;
   @FXML
   private Label summaLabel;
+  @FXML
+  private Label shoppingCartLabel;
   
   /**
   * Is called by the main application to give a reference back to itself.
@@ -83,6 +85,10 @@ public class VarukorgController implements Initializable {
   
   public Button getCartBuyButton() {
     return cartBuyButton;
+  }
+  
+  public void disableShoppingCartLabel(boolean disable) {
+    shoppingCartLabel.setDisable(disable);
   }
   
   public ListView<IMatShoppingItem> getList() {

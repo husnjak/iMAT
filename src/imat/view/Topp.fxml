@@ -22,7 +22,7 @@
                   <HBox layoutX="151.0" layoutY="17.0" spacing="5.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                      <children>
                         <TextField fx:id="usernameTextField" layoutX="151.0" layoutY="17.0" prefHeight="25.0" prefWidth="120.0" promptText="Användarnamn" AnchorPane.topAnchor="17.0" />
-                        <TextField fx:id="passwordTextField" layoutX="278.0" layoutY="17.0" onAction="#handleLogin" prefHeight="25.0" prefWidth="120.0" promptText="Lösenord" AnchorPane.topAnchor="17.0" />
+                        <PasswordField fx:id="passwordTextField" onAction="#handleLogin" prefHeight="25.0" prefWidth="120.0" promptText="Lösenord" />
                         <Button fx:id="loginButton" layoutX="414.0" layoutY="19.0" mnemonicParsing="false" text="Logga in" AnchorPane.topAnchor="19.0" />
                      </children>
                   </HBox>

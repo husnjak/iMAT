@@ -664,7 +664,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="createPasswordTextField" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
+                        <PasswordField fx:id="createPasswordTextField" />
                      </children>
                   </HBox>
                   <HBox layoutX="75.0" layoutY="145.0" spacing="5.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="160.0">
@@ -674,7 +674,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="createPasswordRepeatTextField" layoutX="157.0" layoutY="135.0" AnchorPane.leftAnchor="140.0" />
+                        <PasswordField fx:id="createPasswordRepeatTextField" />
                         <Label fx:id="createPasswordLabel" textFill="#f20303">
                            <HBox.margin>
                               <Insets top="5.0" />

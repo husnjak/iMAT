@@ -2303,9 +2303,10 @@ public class CenterFlikController implements Initializable {
       if (yearTextField1.getLength() == 0) {
         yearTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
-      //if (monthTextField1.getLength() == 0) {
+      if (monthTextField1.getLength() == 0) {
+        monthTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         //yearLabel1.setText("*");
-      //}
+      }
       //if (emailTextField1.getLength() == 0 && phoneTextField1.getLength() == 0) {
         //phoneLabel1.setText("*");
       //}
@@ -2358,6 +2359,17 @@ public class CenterFlikController implements Initializable {
     textField10.setText("1");
     textField11.setText("1");
   }
+  
+  public void setEmptyCartText() {
+    VBox vbox1 = new VBox();
+    Label holder = new Label("           Varukorgen är tom");
+    vbox1.getChildren().add(holder);
+    Pane holderPane = new Pane();
+    holderPane.setMinHeight(250);
+    vbox1.getChildren().add(holderPane);
+    imat.getVarukorgController().getList().setPlaceholder(vbox1);
+  }
+  
   
   /**
    * Is called by the main application to give a reference back to itself.
@@ -2881,6 +2893,16 @@ public class CenterFlikController implements Initializable {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
+    }
+
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "startPage";
@@ -2922,6 +2944,15 @@ public class CenterFlikController implements Initializable {
     getListVyPane().getChildren().remove(lv);
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
      makeShoppingCartVisible();
+    }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
     }
     //imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
     int size = varaListVyParent.getChildren().size();
@@ -3947,11 +3978,30 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
+    
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
+    }
   }
   
   public void changeToKontoView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
+    }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
     }
     if (!kontouppgifterButton.isSelected()) {
       kontouppgifterButton.setSelected(true);
@@ -3983,6 +4033,15 @@ public class CenterFlikController implements Initializable {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
+    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "orderHistorikPane";
@@ -4003,6 +4062,15 @@ public class CenterFlikController implements Initializable {
     deSelect();
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
+    }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
     }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
@@ -4042,6 +4110,15 @@ public class CenterFlikController implements Initializable {
   public void changeToFavoriteView() {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
+    }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
     }
     getListVyPane().getChildren().remove(lv);
         changeToCategoryView();
@@ -4936,6 +5013,15 @@ public class CenterFlikController implements Initializable {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+        setEmptyCartText();
+      }
+    } else {
+        if (IMatController.getShoppingCart().getItems().size() == 0) {
+          setEmptyCartText();
+        }
+    }
     getListVyPane().getChildren().remove(lv);
         changeToCategoryView();
         setAllUnitsToOne();
@@ -5688,6 +5774,7 @@ public class CenterFlikController implements Initializable {
         VBox vbox = new VBox();
         if (pageIndex == 0) {
           checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
+          newRequirePaymentLabel.setText("");
           summaLabel.setText("Summa:");
           if (IMatController.currentUser != null) {
             showPage2(false);

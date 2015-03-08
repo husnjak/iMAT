@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -26,6 +27,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -111,7 +113,13 @@ public class VarukorgController implements Initializable {
     resetShoppingCartLink.setFocusTraversable(false);
     changeCartLink.setFocusTraversable(false);
     shoppingCartListView.setMaxHeight(500);
-    shoppingCartListView.setPlaceholder(new Label("Varukorgen är tom"));
+    VBox vbox1 = new VBox();
+    Label holder = new Label("           Varukorgen är tom");
+    vbox1.getChildren().add(holder);
+    Pane holderPane = new Pane();
+    holderPane.setMinHeight(250);
+    vbox1.getChildren().add(holderPane);
+    shoppingCartListView.setPlaceholder(vbox1);
     
     
     resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {

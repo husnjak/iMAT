@@ -1209,7 +1209,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="470.0" layoutY="410.0" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="385.0">
+                  <VBox layoutX="470.0" layoutY="410.0" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="385.0">
                      <children>
                         <Label fx:id="newRequirePaymentLabel" layoutX="530.0" layoutY="410.0" textFill="#f20101">
                            <font>

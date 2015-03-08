@@ -25,8 +25,9 @@
 }
 
 /** Hover styles **/
-.background:hover{
-    -fx-background-color: lightblue;
+.BuyButton:hover{
+    -fx-background-color: dodgerblue;
+    -fx-text-fill: white;
 }
 
 

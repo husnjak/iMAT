@@ -27,10 +27,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -38,10 +34,8 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -124,6 +118,8 @@ public class CenterFlikController implements Initializable {
   
   private IMat imat;
   
+  Order orderCart;
+  
   ListView<IMatShoppingItem> lv;
   
   static int cellIndex = 0;
@@ -143,6 +139,8 @@ public class CenterFlikController implements Initializable {
   
   // Used to identify which pane should be visible
   String currentPane = "startPage";
+  
+  String defaultStyle;
   
   // Stores order history
   private ObservableList<Order> orders;
@@ -750,6 +748,15 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Text cvvText1;
   
+  FadeTransition fader3;
+  FadeTransition fader4;
+  FadeTransition fader5;
+  FadeTransition fader6;
+  FadeTransition fader7;
+  FadeTransition fader8;
+  FadeTransition fader9;
+  FadeTransition fader10;
+  
   public Integer getProductNr() {
     return productNr;
   }
@@ -793,6 +800,14 @@ public class CenterFlikController implements Initializable {
     varaListVyParent.setFocusTraversable(false);
     fader = createFader(saveInformationLabel);
     fader2 = createFader(newRequirePaymentLabel);
+    fader3 = createFader(civicLabel1);
+    fader4 = createFader(yearLabel1);
+    fader5 = createFader(firstNameLabel1);
+    fader6 = createFader(cardNumberLabel1);
+    fader7 = createFader(cvvLabel1);
+    fader8 = createFader(lastNameLabel1);
+    fader9 = createFader(streetLabel1);
+    fader10 = createFader(postalLabel1);
     
     productFavorite.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -2078,7 +2093,7 @@ public class CenterFlikController implements Initializable {
             initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
             changeToReceiptView();
           } else {
-            Order orderCart = IMatController.getIMatBackend().placeOrder();
+            orderCart = IMatController.getIMatBackend().placeOrder();
             imat.getCenterController().getOrders();
             imat.getVarukorgController().setTotalCostLabel("0 kr");
             imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
@@ -2090,6 +2105,8 @@ public class CenterFlikController implements Initializable {
       }
       }
     });
+    
+    defaultStyle = postalTextField1.getStyle();
 }  
   
   public boolean isRequiredFieldsEntered() {
@@ -2102,6 +2119,17 @@ public class CenterFlikController implements Initializable {
     streetLabel1.setText("");
     lastNameLabel1.setText("");
     
+    postalTextField1.setStyle(defaultStyle);
+    firstNameTextField1.setStyle(defaultStyle);
+    civicTextField1.setStyle(defaultStyle);
+    lastNameTextField1.setStyle(defaultStyle);
+    cardNumberTextField1.setStyle(defaultStyle);
+    yearTextField1.setStyle(defaultStyle);
+    monthTextField1.setStyle(defaultStyle);
+    streetTextField1.setStyle(defaultStyle);
+    cvvTextField1.setStyle(defaultStyle);
+    cityTextField1.setStyle(defaultStyle);
+    
     if (firstNameTextField1.getLength() > 0 && lastNameTextField1.getLength() > 0
         && civicTextField1.getLength() > 0 && postalTextField1.getLength() > 0
         && cityTextField1.getLength() > 0 && cardNumberTextField1.getLength() > 0
@@ -2109,41 +2137,58 @@ public class CenterFlikController implements Initializable {
         && cvvTextField1.getLength() > 0 && streetTextField1.getLength() > 0 ) {
       return true;
     } else {
+      civicLabel1.setText("*");
+      yearLabel1.setText("*");
+      firstNameLabel1.setText("*");
+      cardNumberLabel1.setText("*");
+      cvvLabel1.setText("*");
+      lastNameLabel1.setText("*");
+      streetLabel1.setText("*");
+      postalLabel1.setText("*");
+      
       if (civicTextField1.getLength() == 0) {
-        civicLabel1.setText("*");
+        civicTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
       if (firstNameTextField1.getLength() == 0) {
-        firstNameLabel1.setText("*");
+        firstNameTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
       if (yearTextField1.getLength() == 0) {
-        yearLabel1.setText("*");
+        yearTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
-      if (monthTextField1.getLength() == 0) {
-        yearLabel1.setText("*");
-      }
+      //if (monthTextField1.getLength() == 0) {
+        //yearLabel1.setText("*");
+      //}
       //if (emailTextField1.getLength() == 0 && phoneTextField1.getLength() == 0) {
         //phoneLabel1.setText("*");
       //}
       if (cardNumberTextField1.getLength() == 0) {
-        cardNumberLabel1.setText("*");
+        cardNumberTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
       if (cvvTextField1.getLength() == 0) {
-        cvvLabel1.setText("*");
+        cvvTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
       if (lastNameTextField1.getLength() == 0) {
-        lastNameLabel1.setText("*");
+        lastNameTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
-      if (cityTextField1.getLength() == 0) {
-        cityLabel1.setText("*");
-      }
+      //if (cityTextField1.getLength() == 0) {
+        //Label1.setText("*");
+      //}
       if (streetTextField1.getLength() == 0) {
-        streetLabel1.setText("*");
+        streetTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
       if (postalTextField1.getLength() == 0) {
-        postalLabel1.setText("*");
+        postalTextField1.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
       newRequirePaymentLabel.setText("* Obligatoriska fält");
       fader2.play();
+      fader3.play();
+      fader4.play();
+      fader5.play();
+      fader6.play();
+      fader7.play();
+      fader8.play();
+      fader9.play();
+      fader10.play();
       return false;
     }
   }
@@ -3935,6 +3980,7 @@ public class CenterFlikController implements Initializable {
             super();
             index = cellIndex;
             cellIndex++;
+
             hbox.setMaxHeight(15);
             pane1.setPrefWidth(20);
             label1.setPrefWidth(120);
@@ -4823,6 +4869,13 @@ public class CenterFlikController implements Initializable {
       } else {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
+    }
+    
+    if (IMatController.currentUser != null) {
+      
+    } else {
+      Integer orderID = orderCart.getOrderNumber();
+      orderNumberReceiptLabel.setText(orderID.toString());
     }
   }
   

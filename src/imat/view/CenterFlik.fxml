@@ -976,11 +976,6 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Label text="Steg 3/3" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
                </children></AnchorPane>
         </content>
       </ScrollPane>
@@ -1117,6 +1112,9 @@
                                        <font>
                                           <Font name="System Bold" size="13.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
                                     </Label>
                                  </children>
                                  <HBox.margin>

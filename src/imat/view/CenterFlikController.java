@@ -38,6 +38,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -4455,7 +4456,8 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToCategoryView() {
-    deSelect();
+      deSelect();
+
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
@@ -4548,6 +4550,8 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToFavoriteView() {
+    //currentPane = "favoriteScrollPane";
+ 
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
@@ -4563,6 +4567,8 @@ public class CenterFlikController implements Initializable {
     getListVyPane().getChildren().remove(lv);
         changeToCategoryView();
         setAllUnitsToOne();
+        favoritvarorButton.setSelected(true);
+        categoryLabel.setText("Favoritvaror");
         
         products = IMatController.getIMatBackend().favorites();
         if (products.isEmpty()) {
@@ -5214,7 +5220,10 @@ public class CenterFlikController implements Initializable {
         }
         }
         removeFavorite = true;
+       
   }
+  
+  
     public class XCell extends ListCell<IMatShoppingItem> {
         HBox hbox = new HBox();
         Label label1 = new Label("(empty)");

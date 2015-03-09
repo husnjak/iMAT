@@ -79,43 +79,25 @@ public class CenterFlikController implements Initializable {
   
   @FXML
   private TextField emailTextField;
-  @FXML
   private TextField cvvTextField;
-  @FXML
   private TextField firstNameTextField;
-  @FXML
   private TextField lastNameTextField;
-  @FXML
   private TextField civicTextField;
   @FXML
   private TextField phoneTextField;
-  @FXML
   private TextField streetTextField;
-  @FXML
   private TextField postalTextField;
-  @FXML
   private TextField cityTextField;
-  @FXML
   private TextField cardNumberTextField;
-  @FXML
   private TextField yearTextField;
-  @FXML
   private TextField monthTextField;
-  @FXML
-  private Button storeInfoButton;
-  @FXML
   private Label yearLabel;
   @FXML
   private Label phoneLabel;
-  @FXML
   private Label postalLabel;
-  @FXML
   private Label monthLabel;
-  @FXML
   private Label cvvLabel;
-  @FXML
   private Label cardNumberLabel;
-  @FXML
   private Label civicLabel;
   
   private IMat imat;
@@ -707,19 +689,12 @@ public class CenterFlikController implements Initializable {
   
   FadeTransition fader;
   FadeTransition fader2;
-  @FXML
   private Label newCivicLabel;
-  @FXML
   private Label newPhoneLabel;
-  @FXML
   private Label newPostalLabel;
-  @FXML
   private Label newCardNumberLabel;
-  @FXML
   private Label newYearLabel;
-  @FXML
   private Label newMonthLabel;
-  @FXML
   private Label newCVVLabel;
   @FXML
   private Label newRequirePaymentLabel;
@@ -758,12 +733,65 @@ public class CenterFlikController implements Initializable {
   FadeTransition fader8;
   FadeTransition fader9;
   FadeTransition fader10;
-  FadeTransition fader11;
-  FadeTransition fader12;
-  FadeTransition fader13;
   
   @FXML
   private Label createPasswordLabel1;
+  @FXML
+  private Text firstNameText11;
+  @FXML
+  private TextField firstNameTextField11;
+  @FXML
+  private Label firstNameLabel11;
+  @FXML
+  private Text lastNameText11;
+  @FXML
+  private TextField lastNameTextField11;
+  @FXML
+  private Label lastNameLabel11;
+  @FXML
+  private Text civicText11;
+  @FXML
+  private TextField civicTextField11;
+  @FXML
+  private Label civicLabel11;
+  @FXML
+  private Text addressText11;
+  @FXML
+  private TextField streetTextField11;
+  @FXML
+  private Label streetLabel11;
+  @FXML
+  private Text postCityText11;
+  @FXML
+  private TextField postalTextField11;
+  @FXML
+  private TextField cityTextField11;
+  @FXML
+  private Label postalLabel11;
+  @FXML
+  private Text cardNumberText11;
+  @FXML
+  private TextField cardNumberTextField11;
+  @FXML
+  private Label cardNumberLabel11;
+  @FXML
+  private Text yearMonthText11;
+  @FXML
+  private TextField yearTextField11;
+  @FXML
+  private Text slashText11;
+  @FXML
+  private TextField monthTextField11;
+  @FXML
+  private Label yearLabel11;
+  @FXML
+  private Text cvvText11;
+  @FXML
+  private TextField cvvTextField11;
+  @FXML
+  private Label cvvLabel11;
+  @FXML
+  private Button saveInformationButton;
   
   public Integer getProductNr() {
     return productNr;
@@ -816,9 +844,6 @@ public class CenterFlikController implements Initializable {
     fader8 = createFader(lastNameLabel1);
     fader9 = createFader(streetLabel1);
     fader10 = createFader(postalLabel1);
-    fader11 = createFader(createUserNameLabel);
-    fader12 = createFader(createPasswordLabel);
-    fader13 = createFader(createPasswordLabel1);
     
     firstNameTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
       @Override
@@ -2288,6 +2313,13 @@ public class CenterFlikController implements Initializable {
       }
     });
     
+    saveInformationButton.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        storeInformation();
+      }
+    });
+    
     defaultStyle = postalTextField1.getStyle();
 } 
   
@@ -2456,32 +2488,32 @@ public class CenterFlikController implements Initializable {
   @SuppressWarnings("ConvertToTryWithResources")
   public void loadCustomerInformation() {
     if (IMatController.currentUser == null) {
-      firstNameTextField.setText(IMatController.getIMatBackend().getCustomer().getFirstName());
-      lastNameTextField.setText(IMatController.getIMatBackend().getCustomer().getLastName());
-      civicTextField.setText(IMatController.getIMatBackend().getCustomer().getMobilePhoneNumber());
+      firstNameTextField11.setText(IMatController.getIMatBackend().getCustomer().getFirstName());
+      lastNameTextField11.setText(IMatController.getIMatBackend().getCustomer().getLastName());
+      civicTextField11.setText(IMatController.getIMatBackend().getCustomer().getMobilePhoneNumber());
       phoneTextField.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
       emailTextField.setText(IMatController.getIMatBackend().getCustomer().getEmail());
-      streetTextField.setText(IMatController.getIMatBackend().getCustomer().getAddress());
-      postalTextField.setText(IMatController.getIMatBackend().getCustomer().getPostCode());
-      cityTextField.setText(IMatController.getIMatBackend().getCustomer().getPostAddress());
-      cardNumberTextField.setText(IMatController.getIMatBackend().getCreditCard().getCardNumber());
+      streetTextField11.setText(IMatController.getIMatBackend().getCustomer().getAddress());
+      postalTextField11.setText(IMatController.getIMatBackend().getCustomer().getPostCode());
+      cityTextField11.setText(IMatController.getIMatBackend().getCustomer().getPostAddress());
+      cardNumberTextField11.setText(IMatController.getIMatBackend().getCreditCard().getCardNumber());
       Integer year = IMatController.getIMatBackend().getCreditCard().getValidYear();
       if (year != 0) {
-        yearTextField.setText(year.toString());
+        yearTextField11.setText(year.toString());
       } else {
-        yearTextField.setText("");
+        yearTextField11.setText("");
       }
       Integer month = IMatController.getIMatBackend().getCreditCard().getValidMonth();
       if (month != 0) {
-        monthTextField.setText(month.toString());
+        monthTextField11.setText(month.toString());
       } else {
-        monthTextField.setText("");
+        monthTextField11.setText("");
       }
       Integer cvv = IMatController.getIMatBackend().getCreditCard().getVerificationCode();
       if (cvv != 0) {
-        cvvTextField.setText(cvv.toString());
+        cvvTextField11.setText(cvv.toString());
       } else {
-        cvvTextField.setText("");
+        cvvTextField11.setText("");
       }
     } else {
         try {
@@ -2492,18 +2524,18 @@ public class CenterFlikController implements Initializable {
           psSelect.setString(1, IMatController.currentUser);
             ResultSet rs = psSelect.executeQuery();
             while (rs.next()) {
-              firstNameTextField.setText(rs.getString("FIRSTNAME"));
-              lastNameTextField.setText(rs.getString("LASTNAME"));
-              civicTextField.setText(rs.getString("CIVIC"));
+              firstNameTextField11.setText(rs.getString("FIRSTNAME"));
+              lastNameTextField11.setText(rs.getString("LASTNAME"));
+              civicTextField11.setText(rs.getString("CIVIC"));
               emailTextField.setText(rs.getString("EMAIL"));
               phoneTextField.setText(rs.getString("PHONE"));
-              streetTextField.setText(rs.getString("STREET"));
-              postalTextField.setText(rs.getString("POSTAL"));
-              cityTextField.setText(rs.getString("CITY"));
-              cardNumberTextField.setText(rs.getString("CARDNUMBER"));
-              yearTextField.setText(rs.getString("VALIDYEAR"));
-              monthTextField.setText(rs.getString("VALIDMONTH"));
-              cvvTextField.setText(rs.getString("CVV"));
+              streetTextField11.setText(rs.getString("STREET"));
+              postalTextField11.setText(rs.getString("POSTAL"));
+              cityTextField11.setText(rs.getString("CITY"));
+              cardNumberTextField11.setText(rs.getString("CARDNUMBER"));
+              yearTextField11.setText(rs.getString("VALIDYEAR"));
+              monthTextField11.setText(rs.getString("VALIDMONTH"));
+              cvvTextField11.setText(rs.getString("CVV"));
             }
             rs.close();
             psSelect.close();
@@ -2582,12 +2614,11 @@ public class CenterFlikController implements Initializable {
    * is not required to fill in any specific fields when in 
    * "Kontoinställningar", only when performing a purchase.
    */
-  @FXML
   public void storeInformation() {
     saveInformationLabel.setText("");
     // Store first name if entered
-    if (firstNameTextField.getLength() > 0) {
-      String firstName = firstNameTextField.getText();
+    if (firstNameTextField11.getLength() > 0) {
+      String firstName = firstNameTextField11.getText();
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("FIRSTNAME", firstName);
       } else {
@@ -2602,8 +2633,8 @@ public class CenterFlikController implements Initializable {
     }
     
     // Store last name if entered
-    if (lastNameTextField.getLength() > 0) {
-      String lastName = lastNameTextField.getText();
+    if (lastNameTextField11.getLength() > 0) {
+      String lastName = lastNameTextField11.getText();
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("LASTNAME", lastName);
       } else {
@@ -2619,10 +2650,10 @@ public class CenterFlikController implements Initializable {
     
     // Check if civicTextField contains valid data
     // Ändra så att man väljer datum etc i combobox?
-    if (civicTextField.getLength() > 0 && civicTextField.getLength() == 10) {
+    if (civicTextField11.getLength() > 0 && civicTextField11.getLength() == 10) {
       try {
-        Integer civic = Integer.parseInt(civicTextField.getText());
-        civicLabel.setText("");
+        Integer civic = Integer.parseInt(civicTextField11.getText());
+        civicLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("CIVIC", civic.toString());
         } else {
@@ -2630,14 +2661,14 @@ public class CenterFlikController implements Initializable {
         }
       } catch (NumberFormatException e) {
         //civicLabel.setText("Ange personnummer med 10 siffror");
-        newCivicLabel.setText("Ange med 10 siffror");
+        civicLabel11.setText("Ange med 10 siffror");
       }
-    } else if (civicTextField.getLength() > 0) {
+    } else if (civicTextField11.getLength() > 0) {
       //civicLabel.setText("Ange personnummer med 10 siffror");
-      newCivicLabel.setText("Ange med 10 siffror");
-    } else if (civicTextField.getLength() == 0) {
-      civicLabel.setText("");
-      newCivicLabel.setText("");
+      civicLabel11.setText("Ange med 10 siffror");
+    } else if (civicTextField11.getLength() == 0) {
+      civicLabel11.setText("");
+      civicLabel11.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CIVIC", null);
       } else {
@@ -2657,11 +2688,10 @@ public class CenterFlikController implements Initializable {
         }
       } catch (NumberFormatException e) {
         //phoneLabel.setText("Ange maximalt 15 siffror");
-        newPhoneLabel.setText("Ange med siffror");
+        phoneLabel.setText("Ange med siffror");
       }
     } else if (phoneTextField.getLength() == 0) {
       phoneLabel.setText("");
-      newPhoneLabel.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("PHONE", null);
       } else {
@@ -2686,8 +2716,8 @@ public class CenterFlikController implements Initializable {
     }
     
     // Store street address if entered
-    if (streetTextField.getLength() > 0) {
-      String street = streetTextField.getText();
+    if (streetTextField11.getLength() > 0) {
+      String street = streetTextField11.getText();
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("STREET", street);
       } else {
@@ -2702,10 +2732,10 @@ public class CenterFlikController implements Initializable {
     }
     
     // Check if postalTextField contains valid data
-    if (postalTextField.getLength() > 0 && postalTextField.getLength() == 5) {
+    if (postalTextField11.getLength() > 0 && postalTextField11.getLength() == 5) {
       try {
-        Integer postal = Integer.parseInt(postalTextField.getText());
-        postalLabel.setText("");
+        Integer postal = Integer.parseInt(postalTextField11.getText());
+        postalLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("POSTAL", postal.toString());
         } else {
@@ -2713,14 +2743,14 @@ public class CenterFlikController implements Initializable {
         }
       } catch (NumberFormatException e) {
         //postalLabel.setText("Ange postadress med 5 stycken siffror");
-        newPostalLabel.setText("Ange med 5 siffror");
+        postalLabel11.setText("Ange med 5 siffror");
       }
-    } else if (postalTextField.getLength() > 0) {
+    } else if (postalTextField11.getLength() > 0) {
       //postalLabel.setText("Ange postadress med 5 stycken siffror");
-      newPostalLabel.setText("Ange med 5 siffror");
-    } else if (postalTextField.getLength() == 0) {
-      postalLabel.setText("");
-      newPostalLabel.setText("");
+      postalLabel11.setText("Ange med 5 siffror");
+    } else if (postalTextField11.getLength() == 0) {
+      postalLabel11.setText("");
+      postalLabel11.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("POSTAL", null);
       } else {
@@ -2729,8 +2759,8 @@ public class CenterFlikController implements Initializable {
     }
     
     // Store name of city if entered
-    if (cityTextField.getLength() > 0) {
-      String city = cityTextField.getText();
+    if (cityTextField11.getLength() > 0) {
+      String city = cityTextField11.getText();
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CITY", city);
       } else {
@@ -2745,10 +2775,10 @@ public class CenterFlikController implements Initializable {
     }
     
     // Check if cardNumberTextField contains valid data
-    if (cardNumberTextField.getLength() > 0) {
+    if (cardNumberTextField11.getLength() > 0) {
       try {
-        Integer cardNumber = Integer.parseInt(cardNumberTextField.getText());
-        cardNumberLabel.setText("");
+        Integer cardNumber = Integer.parseInt(cardNumberTextField11.getText());
+        cardNumberLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("CARDNUMBER", cardNumber.toString());
         } else {
@@ -2756,11 +2786,10 @@ public class CenterFlikController implements Initializable {
         }
       } catch (NumberFormatException e) {
         //cardNumberLabel.setText("Ange kortnummer med siffror");
-        newCardNumberLabel.setText("Ange med siffror");
+        cardNumberLabel11.setText("Ange med siffror");
       }
-    } else if (cardNumberTextField.getLength() == 0) {
-      cardNumberLabel.setText("");
-      newCardNumberLabel.setText("");
+    } else if (cardNumberTextField11.getLength() == 0) {
+      cardNumberLabel11.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CARDNUMBER", null);
       } else {
@@ -2769,25 +2798,25 @@ public class CenterFlikController implements Initializable {
     }
     
     // Check if yearTextField contains valid data
-    if (yearTextField.getLength() > 0 && yearTextField.getLength() == 2) {
+    if (yearTextField11.getLength() > 0 && yearTextField11.getLength() == 2) {
       try {
-        Integer validYear = Integer.parseInt(yearTextField.getText());
-        yearLabel.setText("");
+        Integer validYear = Integer.parseInt(yearTextField11.getText());
+        yearLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("VALIDYEAR", validYear.toString());
         } else {
           IMatController.getIMatBackend().getCreditCard().setValidYear(validYear);
         }
       } catch (NumberFormatException e) {
-        newYearLabel.setText("Ange med två siffror");
+        yearLabel11.setText("Ange med två siffror");
         //yearLabel.setText("Ange år med två siffror");
       }
-    } else if (yearTextField.getLength() > 0) {
+    } else if (yearTextField11.getLength() > 0) {
       //yearLabel.setText("Ange år med två siffror");
-      newYearLabel.setText("Ange med två siffror");
-    } else if (yearTextField.getLength() == 0) {
-      yearLabel.setText("");
-      newYearLabel.setText("");
+      yearLabel11.setText("Ange med två siffror");
+    } else if (yearTextField11.getLength() == 0) {
+      yearLabel11.setText("");
+      yearLabel11.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("VALIDYEAR", null);
       } else {
@@ -2796,25 +2825,25 @@ public class CenterFlikController implements Initializable {
     }
     
     // Check if monthTextField contains valid data
-    if (monthTextField.getLength() > 0 && monthTextField.getLength() == 2) {
+    if (monthTextField11.getLength() > 0 && monthTextField11.getLength() == 2) {
       try {
-        Integer validMonth = Integer.parseInt(monthTextField.getText());
-        monthLabel.setText("");
+        Integer validMonth = Integer.parseInt(monthTextField11.getText());
+        //monthLabel.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("VALIDMONTH", validMonth.toString());
         } else {
           IMatController.getIMatBackend().getCreditCard().setValidMonth(validMonth);
         }
       } catch (NumberFormatException e) {
-        newMonthLabel.setText("Ange med två siffror");
+        //monthLabel.setText("Ange med två siffror");
         //monthLabel.setText("Ange månad med två siffror");
       }
-    } else if (monthTextField.getLength() > 0) {
+    } else if (monthTextField11.getLength() > 0) {
       //monthLabel.setText("Ange månad med två siffror");
-      newMonthLabel.setText("Ange med två siffror");
-    } else if (monthTextField.getLength() == 0) {
-      monthLabel.setText("");
-      newMonthLabel.setText("");
+      yearLabel11.setText("Ange med två siffror");
+    } else if (monthTextField11.getLength() == 0) {
+      //monthLabel.setText("");
+      yearLabel11.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("VALIDMONTH", null);
       } else {
@@ -2823,25 +2852,25 @@ public class CenterFlikController implements Initializable {
     }
     
     // Check if cvvTextField contains valid data
-    if (cvvTextField.getLength() > 0 && cvvTextField.getLength() == 3) {
+    if (cvvTextField11.getLength() > 0 && cvvTextField11.getLength() == 3) {
       try {
-        Integer cvv = Integer.parseInt(cvvTextField.getText());
-        cvvLabel.setText("");
+        Integer cvv = Integer.parseInt(cvvTextField11.getText());
+        cvvLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("CVV", cvv.toString());
         } else {
           IMatController.getIMatBackend().getCreditCard().setVerificationCode(cvv);
         }
       } catch (NumberFormatException e) {
-        newCVVLabel.setText("Ange med tre siffror");
+        cvvLabel11.setText("Ange med tre siffror");
         //cvvLabel.setText("Ange cvv med tre siffror");
       }
-    } else if (cvvTextField.getLength() > 0) {
+    } else if (cvvTextField11.getLength() > 0) {
       //cvvLabel.setText("Ange cvv med tre siffror");
-      newCVVLabel.setText("Ange med tre siffror");
-    } else if (cvvTextField.getLength() == 0) {
-      cvvLabel.setText("");
-      newCVVLabel.setText("");
+      cvvLabel11.setText("Ange med tre siffror");
+    } else if (cvvTextField11.getLength() == 0) {
+      cvvLabel11.setText("");
+      cvvLabel11.setText("");
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CVV", null);
       } else {
@@ -2849,10 +2878,10 @@ public class CenterFlikController implements Initializable {
       }
     }
     
-    if (newCVVLabel.getText().equals("") && newCivicLabel.getText().equals("") &&
-        newPhoneLabel.getText().equals("") && newPostalLabel.getText().equals("")
-        && newMonthLabel.getText().equals("") && newYearLabel.getText().equals("")
-        && newCardNumberLabel.getText().equals("")) {
+    if (cvvLabel11.getText().equals("") && civicLabel11.getText().equals("") &&
+        phoneLabel.getText().equals("") && postalLabel11.getText().equals("")
+        && yearLabel11.getText().equals("")
+        && cardNumberLabel11.getText().equals("")) {
       saveInformationLabel.setText("Sparat");
       fader.play();
     }
@@ -4055,11 +4084,11 @@ public class CenterFlikController implements Initializable {
     }
     
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -4070,11 +4099,11 @@ public class CenterFlikController implements Initializable {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -4109,11 +4138,11 @@ public class CenterFlikController implements Initializable {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -4139,11 +4168,11 @@ public class CenterFlikController implements Initializable {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -4187,11 +4216,11 @@ public class CenterFlikController implements Initializable {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -4200,7 +4229,7 @@ public class CenterFlikController implements Initializable {
         setAllUnitsToOne();
         
         products = IMatController.getIMatBackend().favorites();
-        if (products.size() == 0) {
+        if (products.isEmpty()) {
             //hide unused products
             productPane.setVisible(false);
             productPane1.setVisible(false);

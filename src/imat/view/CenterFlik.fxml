@@ -29,7 +29,7 @@
                               <Button fx:id="buy" mnemonicParsing="false" styleClass="BuyButton" stylesheets="@ButtonCSS.css" text="Köp" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
                               <ImageView fx:id="productImage" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
                               <Label fx:id="productLabel" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
-                              <CheckBox fx:id="productFavorite" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <CheckBox fx:id="productFavorite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="Favorite" stylesheets="@ButtonCSS.css" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
                               <TextField fx:id="textField" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
                               <Button fx:id="plus" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="Addbutton" stylesheets="@ButtonCSS.css" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
                                  <font>
@@ -49,7 +49,7 @@
                               <Button fx:id="buy1" mnemonicParsing="false" styleClass="BuyButton" stylesheets="@ButtonCSS.css" text="Köp" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="180.0" />
                               <ImageView fx:id="productImage1" fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="5.0" />
                               <Label fx:id="productLabel1" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="140.0" />
-                              <CheckBox fx:id="productFavorite1" mnemonicParsing="false" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                              <CheckBox fx:id="productFavorite1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
                               <TextField fx:id="textField1" alignment="CENTER_RIGHT" maxHeight="22.0" maxWidth="35.0" minHeight="22.0" minWidth="35.0" prefHeight="22.0" prefWidth="35.0" text="1" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0" />
                               <Button fx:id="plus1" alignment="CENTER" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="Addbutton" stylesheets="@ButtonCSS.css" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="172.0">
                                  <font>

@@ -8,6 +8,8 @@ package imat.view;
 import imat.IMat;
 import imat.IMatController;
 import imat.IMatOrder;
+import imat.IMatProduct;
+import imat.IMatProducts;
 import imat.IMatShoppingCart;
 import imat.IMatShoppingItem;
 import java.awt.image.BufferedImage;
@@ -110,6 +112,8 @@ public class CenterFlikController implements Initializable {
   
   // Used for deciding if to show the list view of products or not
   private boolean listView;
+  
+  private boolean removeFavorite = true;
   
   // Used for holding products from specific categories
   private List<Product> products;
@@ -1209,7 +1213,10 @@ public class CenterFlikController implements Initializable {
           if (productFavorite.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
+            
           }
         }
       }
@@ -1232,7 +1239,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite1.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1255,7 +1264,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite2.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1278,7 +1289,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite3.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1301,7 +1314,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite4.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1324,7 +1339,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite5.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1347,7 +1364,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite6.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1370,7 +1389,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite7.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1393,7 +1414,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite8.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1416,7 +1439,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite9.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1439,7 +1464,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite10.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+              if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -1462,7 +1489,9 @@ public class CenterFlikController implements Initializable {
           if (productFavorite11.isSelected()) {
             IMatController.getIMatBackend().addFavorite(product);
           } else {
-            IMatController.getIMatBackend().removeFavorite(product);
+               if (removeFavorite) {
+                IMatController.getIMatBackend().removeFavorite(product);
+            }
           }
         }
       }
@@ -2844,6 +2873,7 @@ public class CenterFlikController implements Initializable {
     } else if (civicTextField11.getLength() == 0) {
       civicLabel11.setText("");
       civicLabel11.setText("");
+      civicTextField11.setStyle(defaultStyle);
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CIVIC", null);
       } else {
@@ -2867,6 +2897,7 @@ public class CenterFlikController implements Initializable {
       }
     } else if (phoneTextField.getLength() == 0) {
       phoneLabel.setText("");
+      phoneTextField.setStyle(defaultStyle);
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("PHONE", null);
       } else {
@@ -2926,6 +2957,7 @@ public class CenterFlikController implements Initializable {
     } else if (postalTextField11.getLength() == 0) {
       postalLabel11.setText("");
       postalLabel11.setText("");
+      postalTextField11.setStyle(defaultStyle);
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("POSTAL", null);
       } else {
@@ -2965,6 +2997,7 @@ public class CenterFlikController implements Initializable {
       }
     } else if (cardNumberTextField11.getLength() == 0) {
       cardNumberLabel11.setText("");
+      cardNumberTextField11.setStyle(defaultStyle);
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CARDNUMBER", null);
       } else {
@@ -2994,8 +3027,10 @@ public class CenterFlikController implements Initializable {
       yearLabel11.setText("Ange med två siffror");
       yearInfo = false;
     } else if (yearTextField11.getLength() == 0) {
-      //yearLabel11.setText("");
-      //yearLabel11.setText("");
+      if (monthTextField11.getLength() == 0) {
+        yearLabel11.setText("");
+      }
+      yearTextField11.setStyle(defaultStyle);
       yearInfo = true;
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("VALIDYEAR", null);
@@ -3026,7 +3061,11 @@ public class CenterFlikController implements Initializable {
       monthInfo = false;
     } else if (monthTextField11.getLength() == 0) {
       //monthLabel.setText("");
+      if (yearTextField11.getLength() == 0) {
+        yearLabel11.setText("");
+      }
       //yearLabel11.setText("");
+      monthTextField11.setStyle(defaultStyle);
       monthInfo = true;
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("VALIDMONTH", null);
@@ -3055,6 +3094,7 @@ public class CenterFlikController implements Initializable {
     } else if (cvvTextField11.getLength() == 0) {
       cvvLabel11.setText("");
       cvvLabel11.setText("");
+      cvvTextField11.setStyle(defaultStyle);
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("CVV", null);
       } else {
@@ -3068,6 +3108,7 @@ public class CenterFlikController implements Initializable {
         && cardNumberLabel11.getText().equals("")) {
       saveInformationLabel.setText("Sparat");
       fader.play();
+    
     }
     
   }
@@ -3355,6 +3396,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
 
   }
   
@@ -3412,6 +3455,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
   }
   
   public void changeToPastaView() {
@@ -3470,6 +3515,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
 
     
   }
@@ -3545,6 +3592,8 @@ public class CenterFlikController implements Initializable {
     //hides unused product panes
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
   }
   
   public void changeToDrinkView() {
@@ -3626,6 +3675,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
+    
+    populateFavorites(products);
   }
     
   public void changeToFruitView() {
@@ -3707,6 +3758,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
+    
+    populateFavorites(products);
   }
     
   public void changeToFishView() {
@@ -3765,6 +3818,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
     }
     
   public void changeToVegetablesView() {
@@ -3846,6 +3901,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
+    
+    populateFavorites(products);
   }
     
   public void changeToSpiceView() {
@@ -3914,6 +3971,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
     }
     
   public void changeToDairiesView() {
@@ -3982,6 +4041,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
     }
     
   public void changeToNutsView() {
@@ -4050,6 +4111,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    populateFavorites(products);
   }
     
   public void changeToPotatoView() {
@@ -4131,6 +4194,8 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(true);
     productPane10.setVisible(true);
     productPane11.setVisible(true);
+    
+    populateFavorites(products);
     }
     
   public void changeToSweetsView() {
@@ -4199,6 +4264,10 @@ public class CenterFlikController implements Initializable {
     productPane9.setVisible(false);
     productPane10.setVisible(false);
     productPane11.setVisible(false);
+    
+    
+    populateFavorites(products);
+    
     }
   
   /**
@@ -4413,6 +4482,50 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
+    uncheck();
+    
+  }
+  
+  public void uncheck() {
+    removeFavorite = false;
+    if (productFavorite.isSelected()) {
+      productFavorite.fire();
+    }
+  if (productFavorite1.isSelected()) {
+      productFavorite1.fire();
+    }
+  if (productFavorite2.isSelected()) {
+      productFavorite2.fire();
+    }
+  if (productFavorite3.isSelected()) {
+      productFavorite3.fire();
+    }
+  if (productFavorite4.isSelected()) {
+      productFavorite4.fire();
+    }
+  if (productFavorite5.isSelected()) {
+      productFavorite5.fire();
+    }
+  if (productFavorite6.isSelected()) {
+      productFavorite6.fire();
+    }
+  if (productFavorite7.isSelected()) {
+      productFavorite7.fire();
+    }
+  if (productFavorite8.isSelected()) {
+      productFavorite8.fire();
+    }
+  if (productFavorite9.isSelected()) {
+      productFavorite9.fire();
+    }
+  if (productFavorite10.isSelected()) {
+      productFavorite10.fire();
+    }
+  if (productFavorite11.isSelected()) {
+      productFavorite11.fire();
+    }
+  removeFavorite = true;
+      
   }
   
   public void changeToPaymentView() {
@@ -5071,7 +5184,36 @@ public class CenterFlikController implements Initializable {
             productPane10.setVisible(true);
             productPane11.setVisible(true);
         }
-    
+        removeFavorite = false;
+        for (int i = 0; i < products.size(); i++) {
+         switch (i) {
+            case 0:  productFavorite.fire();
+                     break;
+            case 1:  productFavorite1.fire();
+                     break;
+            case 2:  productFavorite2.fire();
+                     break;
+            case 3:  productFavorite3.fire();
+                     break;
+            case 4:  productFavorite4.fire();
+                     break;
+            case 5:  productFavorite5.fire();
+                     break;
+            case 6:  productFavorite6.fire();
+                     break;
+            case 7:  productFavorite7.fire();
+                     break;
+            case 8:  productFavorite8.fire();
+                     break;
+            case 9: productFavorite9.fire();
+                     break;
+            case 10: productFavorite10.fire();
+                     break;
+            case 11: productFavorite11.fire();
+                     break;
+        }
+        }
+        removeFavorite = true;
   }
     public class XCell extends ListCell<IMatShoppingItem> {
         HBox hbox = new HBox();
@@ -6162,7 +6304,55 @@ public class CenterFlikController implements Initializable {
       addressText1.setVisible(show);
       cvvText1.setVisible(show);
       slashText1.setVisible(show);
-  
      }
+    
+    /**
+     * Takes a list of the current product category and checks if any of the
+     * products are in the favorite list. If they are, they will be checked.
+     * 
+     * @param productList the list of the products of current category
+     */
+    public void populateFavorites(List<Product> productList) {
+      removeFavorite = false;
+      if (IMatController.currentUser != null) {
+        //List<IMatProduct> list = imat.getVarukorgController().convertBackendFavoritesToIMat();
+      } else {
+        List<Product> list = IMatController.getIMatBackend().favorites();
+        int size = productList.size();
+        for (int i = 0; i < size; i++) {
+          for (int j = 0; j < list.size(); j++) {
+            if (productList.get(i).equals(list.get(j))) {
+            switch (i) {
+            case 0:  productFavorite.fire();
+                     break;
+            case 1:  productFavorite1.fire();
+                     break;
+            case 2:  productFavorite2.fire();
+                     break;
+            case 3:  productFavorite3.fire();
+                     break;
+            case 4:  productFavorite4.fire();
+                     break;
+            case 5:  productFavorite5.fire();
+                     break;
+            case 6:  productFavorite6.fire();
+                     break;
+            case 7:  productFavorite7.fire();
+                     break;
+            case 8:  productFavorite8.fire();
+                     break;
+            case 9: productFavorite9.fire();
+                     break;
+            case 10: productFavorite10.fire();
+                     break;
+            case 11: productFavorite11.fire();
+                     break;
+        }
+            }
+          }
+        }
+      }
+      removeFavorite = true;
+    }
 
 }

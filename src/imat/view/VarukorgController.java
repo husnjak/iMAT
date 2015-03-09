@@ -7,6 +7,7 @@ package imat.view;
 
 import imat.IMat;
 import imat.IMatController;
+import imat.IMatProduct;
 import imat.IMatShoppingCart;
 import imat.IMatShoppingItem;
 import java.net.URL;
@@ -190,6 +191,23 @@ public class VarukorgController implements Initializable {
       Integer amount = (int)backendList.get(i).getAmount();
       Integer sum = (int)backendList.get(i).getTotal();
       imatList.add(new IMatShoppingItem(product, amount, sum));
+    }
+    return imatList;
+  }
+  
+    /**
+   * Used when displaying the favorite products in the cart in the backend.
+   * 
+   * @return the backend favorite products converted to iMAT favorite products
+   */
+  public List<IMatProduct> convertBackendFavoritesToIMat() {
+    List<IMatProduct> imatList = new ArrayList();
+    List<Product> backendList = IMatController.getIMatBackend().favorites();
+    int backendCartSize = backendList.size();
+    for (int i = 0; i < backendCartSize; i++) {
+      String productName = backendList.get(i).getName();
+      int cost = (int)backendList.get(i).getPrice();
+      imatList.add(new IMatProduct(productName, cost));
     }
     return imatList;
   }

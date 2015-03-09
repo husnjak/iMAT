@@ -206,8 +206,8 @@ public class IMatProducts {
     
     // Adds two kinds of sugar to category SWEETS
     productsSweets = IMatController.imatBackend.getProducts(ProductCategory.SWEET);
-    productsSweets.add(IMatController.imatBackend.getProducts(ProductCategory.SWEET).get(0));
-    productsSweets.add(IMatController.imatBackend.getProducts(ProductCategory.SWEET).get(4));
+    productsSweets.add(IMatController.imatBackend.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(0));
+    productsSweets.add(IMatController.imatBackend.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(4));
     
     // Category POTATOES contain both root vegetables and potatoes
     productsPotatoes = IMatController.imatBackend.getProducts(ProductCategory.ROOT_VEGETABLE);
@@ -230,7 +230,7 @@ public class IMatProducts {
     
     // Adds Salt as a spice to category SPICES
     productsSpices = IMatController.imatBackend.getProducts(ProductCategory.HERB);
-    productsSpices.add(IMatController.imatBackend.getProducts(ProductCategory.SWEET).get(3));
+    productsSpices.add(IMatController.imatBackend.getProducts(ProductCategory.FLOUR_SUGAR_SALT).get(3));
     
   }
 }

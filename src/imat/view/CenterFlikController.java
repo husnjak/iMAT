@@ -6115,6 +6115,8 @@ public class CenterFlikController implements Initializable {
             productPane10.setVisible(true);
             productPane11.setVisible(true);
         }
+        uncheck();
+        populateFavorites(products);
     }
   
   

@@ -793,6 +793,9 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Button saveInformationButton;
   
+  boolean monthInfo = true;
+  boolean yearInfo = true;
+  
   public Integer getProductNr() {
     return productNr;
   }
@@ -1012,6 +1015,178 @@ public class CenterFlikController implements Initializable {
             if (createPasswordRepeatTextField.getLength() > 0) {
               createPasswordRepeatTextField.setStyle(defaultStyle);
               createPasswordLabel.setText("");
+            }
+        }
+      }
+    });
+    
+    firstNameTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (firstNameTextField11.getLength() > 0) {
+              firstNameTextField11.setStyle(defaultStyle);
+              firstNameLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    lastNameTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (lastNameTextField11.getLength() > 0) {
+              lastNameTextField11.setStyle(defaultStyle);
+              lastNameLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    civicTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (civicTextField11.getLength() > 0) {
+              civicTextField11.setStyle(defaultStyle);
+              civicLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    phoneTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (phoneTextField.getLength() > 0) {
+              phoneTextField.setStyle(defaultStyle);
+              phoneLabel.setText("");
+            }
+        }
+      }
+    });
+        
+    emailTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (emailTextField.getLength() > 0) {
+              emailTextField.setStyle(defaultStyle);
+              //emailLabel.setText("");
+            }
+        }
+      }
+    });
+    
+    streetTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (streetTextField11.getLength() > 0) {
+              streetTextField11.setStyle(defaultStyle);
+              streetLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    postalTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (postalTextField11.getLength() > 0) {
+              postalTextField11.setStyle(defaultStyle);
+              postalLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    cityTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (cityTextField11.getLength() > 0) {
+              cityTextField11.setStyle(defaultStyle);
+              //cityLabel.setText("");
+            }
+        }
+      }
+    });
+    
+    cardNumberTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (cardNumberTextField11.getLength() > 0) {
+              cardNumberTextField11.setStyle(defaultStyle);
+              cardNumberLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    cvvTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (cvvTextField11.getLength() > 0) {
+              cvvTextField11.setStyle(defaultStyle);
+              cvvLabel11.setText("");
+            }
+        }
+      }
+    });
+    
+    monthTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (monthTextField11.getLength() > 0) {
+              monthTextField11.setStyle(defaultStyle);
+              if (yearInfo) {
+                yearLabel11.setText(""); 
+              }
+            }
+        }
+      }
+    });
+    
+    yearTextField11.focusedProperty().addListener(new ChangeListener<Boolean>() {
+      @Override
+      public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+        if (newPropertyValue) {
+          
+        } else {
+            if (yearTextField11.getLength() > 0) {
+              yearTextField11.setStyle(defaultStyle);
+              if (monthInfo) {
+                yearLabel11.setText("");
+              }
             }
         }
       }
@@ -2660,11 +2835,11 @@ public class CenterFlikController implements Initializable {
           IMatController.getIMatBackend().getCustomer().setMobilePhoneNumber(civic.toString());
         }
       } catch (NumberFormatException e) {
-        //civicLabel.setText("Ange personnummer med 10 siffror");
+        civicTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         civicLabel11.setText("Ange med 10 siffror");
       }
     } else if (civicTextField11.getLength() > 0) {
-      //civicLabel.setText("Ange personnummer med 10 siffror");
+      civicTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       civicLabel11.setText("Ange med 10 siffror");
     } else if (civicTextField11.getLength() == 0) {
       civicLabel11.setText("");
@@ -2687,7 +2862,7 @@ public class CenterFlikController implements Initializable {
           phoneTextField.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
         }
       } catch (NumberFormatException e) {
-        //phoneLabel.setText("Ange maximalt 15 siffror");
+        phoneTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         phoneLabel.setText("Ange med siffror");
       }
     } else if (phoneTextField.getLength() == 0) {
@@ -2742,11 +2917,11 @@ public class CenterFlikController implements Initializable {
           IMatController.getIMatBackend().getCustomer().setPostCode(postal.toString());
         }
       } catch (NumberFormatException e) {
-        //postalLabel.setText("Ange postadress med 5 stycken siffror");
+        postalTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         postalLabel11.setText("Ange med 5 siffror");
       }
     } else if (postalTextField11.getLength() > 0) {
-      //postalLabel.setText("Ange postadress med 5 stycken siffror");
+      postalTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       postalLabel11.setText("Ange med 5 siffror");
     } else if (postalTextField11.getLength() == 0) {
       postalLabel11.setText("");
@@ -2785,7 +2960,7 @@ public class CenterFlikController implements Initializable {
           IMatController.getIMatBackend().getCreditCard().setCardNumber(cardNumber.toString());
         }
       } catch (NumberFormatException e) {
-        //cardNumberLabel.setText("Ange kortnummer med siffror");
+        cardNumberTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
         cardNumberLabel11.setText("Ange med siffror");
       }
     } else if (cardNumberTextField11.getLength() == 0) {
@@ -2804,19 +2979,24 @@ public class CenterFlikController implements Initializable {
         yearLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("VALIDYEAR", validYear.toString());
+          yearInfo = true;
         } else {
           IMatController.getIMatBackend().getCreditCard().setValidYear(validYear);
+          yearInfo = true;
         }
       } catch (NumberFormatException e) {
         yearLabel11.setText("Ange med två siffror");
-        //yearLabel.setText("Ange år med två siffror");
+        yearTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+        yearInfo = false;
       }
     } else if (yearTextField11.getLength() > 0) {
-      //yearLabel.setText("Ange år med två siffror");
+      yearTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       yearLabel11.setText("Ange med två siffror");
+      yearInfo = false;
     } else if (yearTextField11.getLength() == 0) {
-      yearLabel11.setText("");
-      yearLabel11.setText("");
+      //yearLabel11.setText("");
+      //yearLabel11.setText("");
+      yearInfo = true;
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("VALIDYEAR", null);
       } else {
@@ -2831,19 +3011,23 @@ public class CenterFlikController implements Initializable {
         //monthLabel.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("VALIDMONTH", validMonth.toString());
+          monthInfo = true;
         } else {
           IMatController.getIMatBackend().getCreditCard().setValidMonth(validMonth);
+          monthInfo = true;
         }
       } catch (NumberFormatException e) {
-        //monthLabel.setText("Ange med två siffror");
-        //monthLabel.setText("Ange månad med två siffror");
+        monthTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+        monthInfo = false;
       }
     } else if (monthTextField11.getLength() > 0) {
-      //monthLabel.setText("Ange månad med två siffror");
+      monthTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       yearLabel11.setText("Ange med två siffror");
+      monthInfo = false;
     } else if (monthTextField11.getLength() == 0) {
       //monthLabel.setText("");
-      yearLabel11.setText("");
+      //yearLabel11.setText("");
+      monthInfo = true;
       if (IMatController.currentUser != null) {
         IMatController.updateAccount("VALIDMONTH", null);
       } else {
@@ -2863,10 +3047,10 @@ public class CenterFlikController implements Initializable {
         }
       } catch (NumberFormatException e) {
         cvvLabel11.setText("Ange med tre siffror");
-        //cvvLabel.setText("Ange cvv med tre siffror");
+        cvvTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       }
     } else if (cvvTextField11.getLength() > 0) {
-      //cvvLabel.setText("Ange cvv med tre siffror");
+      cvvTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
       cvvLabel11.setText("Ange med tre siffror");
     } else if (cvvTextField11.getLength() == 0) {
       cvvLabel11.setText("");
@@ -4131,6 +4315,45 @@ public class CenterFlikController implements Initializable {
       }
     }
     saveInformationLabel.setText("");
+    if (!civicLabel11.getText().isEmpty()) {
+      civicLabel11.setText("");
+      civicTextField11.setText("");
+      civicTextField11.setStyle(defaultStyle);
+    }
+    if (!cvvLabel11.getText().isEmpty()) {
+      cvvLabel11.setText("");
+      cvvTextField11.setText("");
+      cvvTextField11.setStyle(defaultStyle);
+    }
+    if (!yearLabel11.getText().isEmpty()) {
+      if (!monthTextField11.getStyle().equals(defaultStyle)) {
+        monthTextField11.setText("");
+        monthTextField11.setStyle(defaultStyle);
+        yearLabel11.setText("");
+      }
+      if (!yearTextField11.getStyle().equals(defaultStyle)) {
+        yearTextField11.setText("");
+        yearTextField11.setStyle(defaultStyle);
+        yearLabel11.setText("");
+      }
+    }
+    
+    if (!postalLabel11.getText().isEmpty()) {
+      postalLabel11.setText("");
+      postalTextField11.setText("");
+      postalTextField11.setStyle(defaultStyle);
+    }
+    if (!cardNumberLabel11.getText().isEmpty()) {
+      cardNumberLabel11.setText("");
+      cardNumberTextField11.setText("");
+      cardNumberTextField11.setStyle(defaultStyle);
+    }
+    if (!phoneLabel.getText().isEmpty()) {
+      phoneLabel.setText("");
+      phoneTextField.setText("");
+      phoneTextField.setStyle(defaultStyle);
+    }
+    
   }
   
   public void changeToOrderHistorikView() {

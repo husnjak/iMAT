@@ -18,7 +18,7 @@
                   <DropShadow />
                </effect>
             </ListView>
-            <Button fx:id="cartBuyButton" layoutX="173.0" layoutY="410.0" mnemonicParsing="false" style="-fx-background-color: LimeGreen;" text="Till Kassan" textFill="WHITE" AnchorPane.rightAnchor="26.0">
+            <Button fx:id="cartBuyButton" layoutX="173.0" layoutY="410.0" mnemonicParsing="false" styleClass="Kassa" stylesheets="@ButtonCSS.css" text="Till Kassan" textFill="WHITE" AnchorPane.rightAnchor="26.0">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>

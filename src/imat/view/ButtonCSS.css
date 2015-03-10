@@ -11,6 +11,11 @@
     -fx-text-fill: white;
 }
 
+.Kassa{
+    -fx-background-color: limegreen;
+    -fx-text-fill: white
+}
+
 .CancelButton{
     -fx-background-image: url("Cancel.png");
 }
@@ -25,8 +30,28 @@
 }
 
 .LogoButton{
-   // -fx-background-image: url("iMAT_Logga.png");
     -fx-border-color: transparent;
+}
+
+.Favorite>.box{
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+    -fx-border-color: black;
+}
+
+.Favorite>.box>.mark{
+    -fx-background-image: url("Favorit.png");
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+    -fx-background-repeat: stretch;
+    -fx-shape: none;
+}
+
+.Favorite:selected>.box>.mark{
+    -fx-background-color: transparent;
+    -fx-background-image: url("Favorit_checked.png");    
 }
 
 /** Hover styles **/
@@ -47,6 +72,12 @@
     -fx-background-image: url("Cancel_Hover.png");
 }
 
+<<<<<<< HEAD
 .list-cell {
   -fx-cell-size: 15 ;
+=======
+.Kassa:hover{
+    -fx-background-color: lime;
+    -fx-text-fill: white
+>>>>>>> 9593120ec76553423bf2897bffa25e73eebbc1e4
 }

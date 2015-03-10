@@ -1203,7 +1203,7 @@ public class CenterFlikController implements Initializable {
     // Ändra så att man väljer datum etc i combobox?
     if (civicTextField11.getLength() > 0 && civicTextField11.getLength() == 10) {
       try {
-        Integer civic = Integer.parseInt(civicTextField11.getText());
+        Float civic = Float.parseFloat(civicTextField11.getText());
         civicLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("CIVIC", civic.toString());

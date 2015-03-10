@@ -2651,10 +2651,10 @@ public class CenterFlikController implements Initializable {
         if (favorite.isSelected()) {
           IMatController.getIMatBackend().addFavorite(product.get(pos));
         } else {
-            if (removeFavorite) {
               IMatController.getIMatBackend().removeFavorite(product.get(pos));
-          }
-
+              if (listPaneLabel.getText().equals("Favoritvaror")) {
+                changeToListView(IMatController.getIMatBackend().favorites());
+              }
         }
     }
     }

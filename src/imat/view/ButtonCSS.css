@@ -34,6 +34,9 @@
     -fx-background-image: url("iMAT_logga_MaroonRed.png");
 }
 
+.ResetShoppingcart{
+    -fx-background-image: url("Recycle_Bin_Full.png");
+}
 
 /** Hover styles **/
 .BuyButton:hover{
@@ -57,6 +60,10 @@
 .Kassa:hover{
     -fx-background-color: lime;
     -fx-text-fill: white
+}
+
+.ResetShoppingcart:hover{
+    -fx-background-image: url("Recycle_Bin_Full_Hover.png");
 }
 
 .check-box>.box {

@@ -53,7 +53,7 @@ public class VarukorgController implements Initializable {
   @FXML
   private ListView<IMatShoppingItem> shoppingCartListView = new ListView();
   @FXML
-  private Hyperlink resetShoppingCartLink;
+  private Button resetShoppingCartButton;
   @FXML
   private Hyperlink changeCartLink;
   
@@ -97,8 +97,8 @@ public class VarukorgController implements Initializable {
     return shoppingCartListView;
   }
   
-  public Hyperlink getEmptyLink() {
-    return resetShoppingCartLink;
+  public Button getEmptyLink() {
+    return resetShoppingCartButton;
   }
   
   public void setAdded() {
@@ -111,7 +111,8 @@ public class VarukorgController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    resetShoppingCartLink.setFocusTraversable(false);
+    resetShoppingCartButton.setFocusTraversable(false);
+    resetShoppingCartButton.setDisable(true);
     changeCartLink.setFocusTraversable(false);
     shoppingCartListView.setMaxHeight(500);
     VBox vbox1 = new VBox();
@@ -129,10 +130,10 @@ public class VarukorgController implements Initializable {
       }
     });
     
-    resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {
+    resetShoppingCartButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        resetShoppingCartLink.setVisited(false);
+        resetShoppingCartButton.setDisable(true);
         resetShoppingCart();
         if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
           imat.getCenterController().changeToCheckoutView();
@@ -151,6 +152,7 @@ public class VarukorgController implements Initializable {
   }
   
   public void resetShoppingCart() {
+      resetShoppingCartButton.setDisable(true); 
     if (IMatController.currentUser != null) {
       imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
       imat.getVarukorgController().getIMatShoppingCart().getCart().setCost(0);
@@ -378,5 +380,7 @@ public class VarukorgController implements Initializable {
     return summaLabel;
   }
   
-        
+  public Button getResetButton(){
+      return resetShoppingCartButton;
+  }
 }

@@ -39,7 +39,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -63,7 +62,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -172,30 +170,7 @@ public class CenterFlikController implements Initializable {
   private TableColumn<IMatShoppingItem, Integer> productUnitsColumn;
   @FXML
   private TableColumn<IMatShoppingItem, Integer> productCostColumn;
-  private CheckBox productFavorite;
-  private TextField textField;
-  private CheckBox productFavorite1;
-  private TextField textField1;
-  private CheckBox productFavorite2;
-  private TextField textField2;
-  private CheckBox productFavorite3;
-  private TextField textField3;
-  private CheckBox productFavorite4;
-  private TextField textField4;
-  private CheckBox productFavorite5;
-  private TextField textField5;
-  private CheckBox productFavorite6;
-  private TextField textField6;
-  private CheckBox productFavorite7;
-  private TextField textField7;
-  private CheckBox productFavorite8;
-  private TextField textField8;
-  private CheckBox productFavorite9;
-  private TextField textField9;
-  private CheckBox productFavorite10;
-  private TextField textField10;
-  private CheckBox productFavorite11;
-  private TextField textField11;
+ 
   @FXML
   private AnchorPane varaListVyParent;
   @FXML
@@ -817,7 +792,6 @@ public class CenterFlikController implements Initializable {
             imat.getToppController().changeLoginScreen();
             showOrderHistory();
             imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
-            initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
           } else {
             createUserNameLabel.setText("Fyll i användarnamn");
             createUserNameTextField.setStyle("-fx-border-color: red; -fx-border-width: 1;");
@@ -935,14 +909,12 @@ public class CenterFlikController implements Initializable {
         imat.getCenterController().showOrderHistory();
         imat.getVarukorgController().setTotalCostLabel("0 kr");
         imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
-        initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
         changeToReceiptView();
       } else {
         orderCart = IMatController.getIMatBackend().placeOrder();
         imat.getCenterController().getOrders();
         imat.getVarukorgController().setTotalCostLabel("0 kr");
         imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         changeToReceiptView();
       }
     } else {
@@ -1033,24 +1005,6 @@ public class CenterFlikController implements Initializable {
       fader10.play();
       return false;
     }
-  }
-  
-  /**
-   * Used when entering a new product category view.
-   */
-  public void setAllUnitsToOne() {
-    textField.setText("1");
-    textField1.setText("1");
-    textField2.setText("1");
-    textField3.setText("1");
-    textField4.setText("1");
-    textField5.setText("1");
-    textField6.setText("1");
-    textField7.setText("1");
-    textField8.setText("1");
-    textField9.setText("1");
-    textField10.setText("1");
-    textField11.setText("1");
   }
   
   public void setEmptyCartText() {
@@ -1518,35 +1472,6 @@ public class CenterFlikController implements Initializable {
     }
   }
   
-  /**
-   * Used to increment the number of units of desired product.
-   * 
-   * @param field contains the number of units
-   * @param totalCost is the product of all units
-   * @param product is the incremented product
-   */
-  public void increment(TextField field, Label totalCost, Product product) {
-    try {
-      Integer inc = Integer.parseInt(field.getCharacters().toString());
-      System.out.println(inc);
-      if (inc > 0) {
-        inc++;
-        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
-        String newNumber = inc.toString();
-        field.setText(newNumber);
-      } else {
-        inc = 1;
-        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
-        String newNumber = inc.toString();
-        field.setText(newNumber);
-      }
-    } catch (NumberFormatException e) {
-        Integer inc = 1;
-        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
-        String newNumber = inc.toString();
-        field.setText(newNumber);
-    }
-  }
   
   public void incrementNew(TextField field, Label totalCost, List<Product> product, int pos) {
     try {
@@ -1566,35 +1491,6 @@ public class CenterFlikController implements Initializable {
     } catch (NumberFormatException e) {
         Integer inc = 1;
         totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
-        String newNumber = inc.toString();
-        field.setText(newNumber);
-    }
-  }
-  
-  /**
-   * Used to decrement the number of units of a particular product.
-   * 
-   * @param field contains the number of units
-   * @param totalCost is the product of all units
-   * @param product is the decremented product
-   */
-  public void decrement(TextField field, Label totalCost, Product product) {
-    try {
-      Integer inc = Integer.parseInt(field.getCharacters().toString());
-      if (inc > 1) {
-        inc--;
-        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
-        String newNumber = inc.toString();
-        field.setText(newNumber);
-      } else {
-        inc = 1;
-        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
-        String newNumber = inc.toString();
-        field.setText(newNumber);
-      }
-    } catch (NumberFormatException e) {
-        Integer inc = 1;
-        totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
         String newNumber = inc.toString();
         field.setText(newNumber);
     }
@@ -1652,11 +1548,11 @@ public class CenterFlikController implements Initializable {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -1713,11 +1609,11 @@ public class CenterFlikController implements Initializable {
      makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
@@ -1796,8 +1692,6 @@ public class CenterFlikController implements Initializable {
   public void changeToRiceView() {
     changeToListView(IMatController.getIMatProducts().getRiceList());
     listPaneLabel.setText("Ris");
-    //populateFavorites(products);
-
   }
   
   /**
@@ -1806,87 +1700,61 @@ public class CenterFlikController implements Initializable {
   public void changeToMeatView() {
     changeToListView(IMatController.getIMatProducts().getMeatList());
     listPaneLabel.setText("Kött");
-   
-    //populateFavorites(products);
   }
   
   public void changeToPastaView() {
     changeToListView(IMatController.getIMatProducts().getPastaList());
     listPaneLabel.setText("Pasta");
-    
-    //populateFavorites(products);
   }
     
   public void changeToBreadView() {
     changeToListView(IMatController.getIMatProducts().getBreadList());
     listPaneLabel.setText("Bröd");
-    
-    //populateFavorites(products);
   }
   
   public void changeToDrinkView() {
     changeToListView(IMatController.getIMatProducts().getDrinkList());
     listPaneLabel.setText("Dryck");
-   
-    //populateFavorites(products);
   }
     
   public void changeToFruitView() {
     changeToListView(IMatController.getIMatProducts().getFruitList());
     listPaneLabel.setText("Frukt & bär");
-   
-    //populateFavorites(products);
   }
     
   public void changeToFishView() {
     changeToListView(IMatController.getIMatProducts().getFishList());
     listPaneLabel.setText("Fisk");
-    
-    //populateFavorites(products);
     }
     
   public void changeToVegetablesView() {
     changeToListView(IMatController.getIMatProducts().getVegetableList());
     listPaneLabel.setText("Grönsaker");
-   
-    //populateFavorites(products);
   }
     
   public void changeToSpiceView() {
     changeToListView(IMatController.getIMatProducts().getSpiceList());
     listPaneLabel.setText("Kryddor & örter");
- 
-    
-    //populateFavorites(products);
     }
     
   public void changeToDairiesView() {
     changeToListView(IMatController.getIMatProducts().getDairieList());
     listPaneLabel.setText("Mejeriprodukter");
-    
-    //populateFavorites(products);
     }
     
   public void changeToNutsView() {
     changeToListView(IMatController.getIMatProducts().getNutsList());
     listPaneLabel.setText("Nötter & frön");
-   
-    //populateFavorites(products);
   }
     
   public void changeToPotatoView() {
     changeToListView(IMatController.getIMatProducts().getPotatoList());
     listPaneLabel.setText("Potatis & rotfrukter");
-    
-    //populateFavorites(products);
     }
     
   public void changeToSweetsView() {
     changeToListView(IMatController.getIMatProducts().getSweetsList());
     listPaneLabel.setText("Sötsaker");
-
-    //populateFavorites(products);
-    
     }
   
   /**
@@ -2064,53 +1932,6 @@ public class CenterFlikController implements Initializable {
     }
   }
   
-  public void changeToCategoryView() {
-
-    
-  }
-  
-  public void uncheck() {
-    removeFavorite = false;
-    if (productFavorite.isSelected()) {
-      productFavorite.fire();
-    }
-  if (productFavorite1.isSelected()) {
-      productFavorite1.fire();
-    }
-  if (productFavorite2.isSelected()) {
-      productFavorite2.fire();
-    }
-  if (productFavorite3.isSelected()) {
-      productFavorite3.fire();
-    }
-  if (productFavorite4.isSelected()) {
-      productFavorite4.fire();
-    }
-  if (productFavorite5.isSelected()) {
-      productFavorite5.fire();
-    }
-  if (productFavorite6.isSelected()) {
-      productFavorite6.fire();
-    }
-  if (productFavorite7.isSelected()) {
-      productFavorite7.fire();
-    }
-  if (productFavorite8.isSelected()) {
-      productFavorite8.fire();
-    }
-  if (productFavorite9.isSelected()) {
-      productFavorite9.fire();
-    }
-  if (productFavorite10.isSelected()) {
-      productFavorite10.fire();
-    }
-  if (productFavorite11.isSelected()) {
-      productFavorite11.fire();
-    }
-  removeFavorite = true;
-      
-  }
-  
   public void changeToPaymentView() {
     deSelect();
     getListVyPane().getChildren().remove(lv);
@@ -2147,56 +1968,7 @@ public class CenterFlikController implements Initializable {
     if (!favoritvarorButton.isSelected()) {
       favoritvarorButton.setSelected(true);
     }
-    //currentPane = "favoriteScrollPane";
-// 
-//    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-//      makeShoppingCartVisible();
-//    }
-//    if (IMatController.currentUser != null) {
-//      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-//        setEmptyCartText();
-//      }
-//    } else {
-//        if (IMatController.getShoppingCart().getItems().isEmpty()) {
-//          setEmptyCartText();
-//        }
-//    }
-//    getListVyPane().getChildren().remove(lv);
-//        changeToCategoryView();
-//        setAllUnitsToOne();
-//        favoritvarorButton.setSelected(true);
-//        categoryLabel.setText("Favoritvaror");
-//        removeFavorite = false;
-//        for (int i = 0; i < products.size(); i++) {
-//         switch (i) {
-//            case 0:  productFavorite.fire();
-//                     break;
-//            case 1:  productFavorite1.fire();
-//                     break;
-//            case 2:  productFavorite2.fire();
-//                     break;
-//            case 3:  productFavorite3.fire();
-//                     break;
-//            case 4:  productFavorite4.fire();
-//                     break;
-//            case 5:  productFavorite5.fire();
-//                     break;
-//            case 6:  productFavorite6.fire();
-//                     break;
-//            case 7:  productFavorite7.fire();
-//                     break;
-//            case 8:  productFavorite8.fire();
-//                     break;
-//            case 9: productFavorite9.fire();
-//                     break;
-//            case 10: productFavorite10.fire();
-//                     break;
-//            case 11: productFavorite11.fire();
-//                     break;
-//        }
-//        }
-//        removeFavorite = true;
-       
+ 
   }
   
   
@@ -2270,7 +2042,6 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
                   totalCostCartLabel.setText(total.toString() + " kr");
-                  initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
                   
                 } else {
                   List<ShoppingItem> shopI = new ArrayList();
@@ -2288,7 +2059,6 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = (int)IMatController.getShoppingCart().getTotal();
                   totalCostCartLabel.setText(total.toString() + " kr");
-                  initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 }
   
               }
@@ -2328,7 +2098,6 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
                   totalCostCartLabel.setText(total.toString() + " kr");
-                  initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
                 } else {
                 List<ShoppingItem> shopI = new ArrayList();
                 shopI.addAll(IMatController.getShoppingCart().getItems());
@@ -2345,7 +2114,6 @@ public class CenterFlikController implements Initializable {
                 populateCheckoutCart();
                 Integer total = (int)IMatController.getShoppingCart().getTotal();
                 totalCostCartLabel.setText(total.toString()+" kr");
-                initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 }
                 
 
@@ -2380,7 +2148,6 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
                   totalCostCartLabel.setText(total.toString() + " kr");
-                  initCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
                 } else {
                   List<ShoppingItem> shopI = new ArrayList();
                   shopI.addAll(IMatController.getShoppingCart().getItems());
@@ -2397,7 +2164,6 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = (int)IMatController.getShoppingCart().getTotal();
                   totalCostCartLabel.setText(total.toString()+" kr");
-                  initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
                 }
               }
             });
@@ -2440,48 +2206,23 @@ public class CenterFlikController implements Initializable {
     cellIndex = 0;
     getListVyPane().getChildren().add(lv);
   }
-    
-  public void initCheckoutCart(List<IMatShoppingItem> cartProducts) {
-    //List<IMatShoppingItem> cartProducts
-
-//    ObservableList<IMatShoppingItem> cartList = FXCollections.observableArrayList(cartProducts);
-//    checkOutCartListView.setItems(cartList);
-//    checkOutCartListView.setCellFactory(new Callback<ListView<IMatShoppingItem>, ListCell<IMatShoppingItem>>(){
-//      @Override
-//      public ListCell<IMatShoppingItem> call(ListView<IMatShoppingItem> p) {
-//        ListCell<IMatShoppingItem> cell = new ListCell<IMatShoppingItem>(){
-//          @Override
-//          protected void updateItem(IMatShoppingItem t, boolean bln) {
-//            super.updateItem(t, bln);
-//            if (t != null) {
-//              setText(t.getAmount() + " st  " + t.getProductName() + "   " + t.getSum() + " kr");
-//            }
-//          }
-//        };
-//      return cell;
-//      }
-//    });
-  }
 
   public void changeToSearchView(String searchText) {
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().size() == 0) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
         setEmptyCartText();
       }
     } else {
-        if (IMatController.getShoppingCart().getItems().size() == 0) {
+        if (IMatController.getShoppingCart().getItems().isEmpty()) {
           setEmptyCartText();
         }
     }
     getListVyPane().getChildren().remove(lv);
     changeToListView(IMatController.getIMatBackend().findProducts(searchText));
     listPaneLabel.setText("Sökresultat för: " + searchText);
-      
-        uncheck();
-        populateFavorites(products);
     }
   
   
@@ -2673,55 +2414,6 @@ public class CenterFlikController implements Initializable {
       slashText1.setVisible(show);
      }
     
-    /**
-     * Takes a list of the current product category and checks if any of the
-     * products are in the favorite list. If they are, they will be checked.
-     * 
-     * @param productList the list of the products of current category
-     */
-    public void populateFavorites(List<Product> productList) {
-      removeFavorite = false;
-      if (IMatController.currentUser != null) {
-        //List<IMatProduct> list = imat.getVarukorgController().convertBackendFavoritesToIMat();
-      } else {
-        List<Product> list = IMatController.getIMatBackend().favorites();
-        int size = productList.size();
-        for (int i = 0; i < size; i++) {
-          for (int j = 0; j < list.size(); j++) {
-            if (productList.get(i).equals(list.get(j))) {
-            switch (i) {
-            case 0:  productFavorite.fire();
-                     break;
-            case 1:  productFavorite1.fire();
-                     break;
-            case 2:  productFavorite2.fire();
-                     break;
-            case 3:  productFavorite3.fire();
-                     break;
-            case 4:  productFavorite4.fire();
-                     break;
-            case 5:  productFavorite5.fire();
-                     break;
-            case 6:  productFavorite6.fire();
-                     break;
-            case 7:  productFavorite7.fire();
-                     break;
-            case 8:  productFavorite8.fire();
-                     break;
-            case 9: productFavorite9.fire();
-                     break;
-            case 10: productFavorite10.fire();
-                     break;
-            case 11: productFavorite11.fire();
-                     break;
-        }
-            }
-          }
-        }
-      }
-      removeFavorite = true;
-    }
-    
     public void changeToListView(List<Product> list) {
       deSelect();
 
@@ -2755,13 +2447,12 @@ public class CenterFlikController implements Initializable {
     }
 
     public void populateProductList(List<Product> productsToView) {
-    //if (getListVyPane().getChildren().contains(listPanesView)) {
-      //getListVyPane().getChildren().remove(listPanesView);
-    //}
+      
       if (!gridPaneProducts.getChildren().isEmpty()) {
         int size = gridPaneProducts.getChildren().size();
         gridPaneProducts.getChildren().remove(0, size);
       }
+
     int inc = 0;
     for (int i = 0; i < productsToView.size(); i++) {
       product = productsToView.get(i);
@@ -2773,6 +2464,11 @@ public class CenterFlikController implements Initializable {
        Button minusButton = new Button("-");
        Button buy = new Button("Köp");
        CheckBox favorite = new CheckBox();
+       
+       if (IMatController.getIMatBackend().isFavorite(product)) {
+         favorite.setSelected(true);
+       }
+       
        TextField field = new TextField("1");
        ImageView image = new ImageView();
        setImage(image, imageName);
@@ -2895,7 +2591,6 @@ public class CenterFlikController implements Initializable {
         productUnits = Integer.parseInt(field.getText());
         field.setText("1");
         int cost = (int)product.get(pos).getPrice();
-        Integer oldCost = cost;
         label2.setText("Pris: " + (int)product.get(pos).getPrice() + " kr");
         int sum = productUnits*cost;
         totalCostInt += sum;
@@ -2920,7 +2615,6 @@ public class CenterFlikController implements Initializable {
           imat.getVarukorgController().updateTotalCost();
           List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
           imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
           imat.getVarukorgController().getList().setFocusTraversable(true);
         } else {
           List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
@@ -2940,7 +2634,6 @@ public class CenterFlikController implements Initializable {
           Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
           imat.getVarukorgController().updateTotalCostBackend(totalSum);
           imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         }
       }
     

@@ -302,7 +302,6 @@ public class ToppController implements Initializable {
       
       imat.getVarukorgController().updateTotalCostBackend(IMatShoppingCart.cart.getCost());
       imat.getVarukorgController().populateCheckoutCart(IMatShoppingCart.cart.getAllProducts());
-      imat.getCenterController().initCheckoutCart(IMatShoppingCart.cart.getAllProducts());
       loginLabel.setText("");
       if (imat.getCenterController().currentPane.equals("checkCartCheckoutPane")) {
         imat.getCenterController().getListVyPane().getChildren().remove(imat.getCenterController().getCheckoutView());
@@ -358,7 +357,6 @@ public class ToppController implements Initializable {
     Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
     imat.getVarukorgController().updateTotalCostBackend(totalSum);
     imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-    imat.getCenterController().initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
     if (imat.getCenterController().currentPane.equals("checkCartCheckoutPane")) {
       imat.getCenterController().getListVyPane().getChildren().remove(imat.getCenterController().getCheckoutView());
       imat.getCenterController().populateCheckoutCart();

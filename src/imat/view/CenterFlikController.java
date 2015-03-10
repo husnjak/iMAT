@@ -63,6 +63,8 @@ import javafx.scene.layout.Priority;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.Sphere;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -2496,6 +2498,10 @@ public class CenterFlikController implements Initializable {
         plusButton.getStyleClass().add("Addbutton");
         minusButton.getStyleClass().add("SubButton");
         buy.getStyleClass().add("BuyButton");
+
+       
+        favorite.setStyle("check-box>.box>.mark;");
+        //favorite.getStyleClass().add("check-box:selected .mark");
         
         favorite.setMaxHeight(18);
         favorite.setMinHeight(18);

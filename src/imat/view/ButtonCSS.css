@@ -33,26 +33,6 @@
     -fx-border-color: transparent;
 }
 
-.Favorite>.box{
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
-    -fx-background-color: transparent;
-    -fx-padding: 10px;
-    -fx-border-color: black;
-}
-
-.Favorite>.box>.mark{
-    -fx-background-image: url("Favorit.png");
-    -fx-background-position: center;
-    -fx-background-size: 100%;
-    -fx-background-repeat: stretch;
-    -fx-shape: none;
-}
-
-.Favorite:selected>.box>.mark{
-    -fx-background-color: transparent;
-    -fx-background-image: url("Favorit_checked.png");    
-}
 
 /** Hover styles **/
 .BuyButton:hover{
@@ -76,4 +56,20 @@
 .Kassa:hover{
     -fx-background-color: lime;
     -fx-text-fill: white
+}
+
+.check-box>.box {
+  -fx-border-color: black;
+  -fx-background-radius: 0, 0;
+  -fx-background-insets: 0, 0;
+  -fx-padding: 5;
+  -fx-shape: "M 50,5 L 37,40 5,40 30,60 20,95 50,75 80,95 70,60 95,40 63,40 Z";
+}
+
+.check-box>.box>.mark {
+  -fx-shape: "M 50,5 L 37,40 5,40 30,60 20,95 50,75 80,95 70,60 95,40 63,40 Z";
+}
+
+.check-box:selected>.box>.mark{
+    -fx-background-color: derive(goldenrod,-50%), yellow;
 }

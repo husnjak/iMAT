@@ -62,9 +62,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Shape;
-import javafx.scene.shape.Sphere;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -90,6 +87,7 @@ public class CenterFlikController implements Initializable {
  
   private IMat imat;
   
+  int pageIndex = 0;
   Order orderCart;
   
   ListView<IMatShoppingItem> lv;
@@ -254,7 +252,6 @@ public class CenterFlikController implements Initializable {
   private Label newRequirePaymentLabel;
   @FXML
   private ScrollPane testPagination;
-  @FXML
   private Pagination pagination;
   @FXML
   private Label checkOutLabel;
@@ -357,6 +354,234 @@ public class CenterFlikController implements Initializable {
   private GridPane gridPaneProducts;
   @FXML
   private Label listPaneLabel;
+  @FXML
+  private ScrollPane productScrollPane;
+  @FXML
+  private GridPane productGrid;
+  @FXML
+  private AnchorPane productPane;
+  @FXML
+  private Button buy;
+  @FXML
+  private ImageView productImage;
+  @FXML
+  private Label productLabel;
+  @FXML
+  private CheckBox productFavorite;
+  @FXML
+  private TextField textField;
+  @FXML
+  private Button plus;
+  @FXML
+  private Button minus;
+  @FXML
+  private Label totalCost;
+  @FXML
+  private AnchorPane productPane1;
+  @FXML
+  private Button buy1;
+  @FXML
+  private ImageView productImage1;
+  @FXML
+  private Label productLabel1;
+  @FXML
+  private CheckBox productFavorite1;
+  @FXML
+  private TextField textField1;
+  @FXML
+  private Button plus1;
+  @FXML
+  private Button minus1;
+  @FXML
+  private Label totalCost1;
+  @FXML
+  private AnchorPane productPane2;
+  @FXML
+  private Button buy2;
+  @FXML
+  private ImageView productImage2;
+  @FXML
+  private Label productLabel2;
+  @FXML
+  private CheckBox productFavorite2;
+  @FXML
+  private TextField textField2;
+  @FXML
+  private Button plus2;
+  @FXML
+  private Button minus2;
+  @FXML
+  private Label totalCost2;
+  @FXML
+  private AnchorPane productPane3;
+  @FXML
+  private Button buy3;
+  @FXML
+  private ImageView productImage3;
+  @FXML
+  private Label productLabel3;
+  @FXML
+  private CheckBox productFavorite3;
+  @FXML
+  private TextField textField3;
+  @FXML
+  private Button plus3;
+  @FXML
+  private Button minus3;
+  @FXML
+  private Label totalCost3;
+  @FXML
+  private AnchorPane productPane4;
+  @FXML
+  private Button buy4;
+  @FXML
+  private ImageView productImage4;
+  @FXML
+  private Label productLabel4;
+  @FXML
+  private CheckBox productFavorite4;
+  @FXML
+  private TextField textField4;
+  @FXML
+  private Button plus4;
+  @FXML
+  private Button minus4;
+  @FXML
+  private Label totalCost4;
+  @FXML
+  private AnchorPane productPane5;
+  @FXML
+  private Button buy5;
+  @FXML
+  private ImageView productImage5;
+  @FXML
+  private Label productLabel5;
+  @FXML
+  private CheckBox productFavorite5;
+  @FXML
+  private TextField textField5;
+  @FXML
+  private Button plus5;
+  @FXML
+  private Button minus5;
+  @FXML
+  private Label totalCost5;
+  @FXML
+  private AnchorPane productPane6;
+  @FXML
+  private Button buy6;
+  @FXML
+  private ImageView productImage6;
+  @FXML
+  private Label productLabel6;
+  @FXML
+  private CheckBox productFavorite6;
+  @FXML
+  private TextField textField6;
+  @FXML
+  private Button plus6;
+  @FXML
+  private Button minus6;
+  @FXML
+  private Label totalCost6;
+  @FXML
+  private AnchorPane productPane7;
+  @FXML
+  private Button buy7;
+  @FXML
+  private ImageView productImage7;
+  @FXML
+  private Label productLabel7;
+  @FXML
+  private CheckBox productFavorite7;
+  @FXML
+  private TextField textField7;
+  @FXML
+  private Button plus7;
+  @FXML
+  private Button minus7;
+  @FXML
+  private Label totalCost7;
+  @FXML
+  private AnchorPane productPane8;
+  @FXML
+  private Button buy8;
+  @FXML
+  private ImageView productImage8;
+  @FXML
+  private Label productLabel8;
+  @FXML
+  private CheckBox productFavorite8;
+  @FXML
+  private TextField textField8;
+  @FXML
+  private Button plus8;
+  @FXML
+  private Button minus8;
+  @FXML
+  private Label totalCost8;
+  @FXML
+  private AnchorPane productPane9;
+  @FXML
+  private Button buy9;
+  @FXML
+  private ImageView productImage9;
+  @FXML
+  private Label productLabel9;
+  @FXML
+  private CheckBox productFavorite9;
+  @FXML
+  private TextField textField9;
+  @FXML
+  private Button plus9;
+  @FXML
+  private Button minus9;
+  @FXML
+  private Label totalCost9;
+  @FXML
+  private AnchorPane productPane10;
+  @FXML
+  private Button buy10;
+  @FXML
+  private ImageView productImage10;
+  @FXML
+  private Label productLabel10;
+  @FXML
+  private CheckBox productFavorite10;
+  @FXML
+  private TextField textField10;
+  @FXML
+  private Button plus10;
+  @FXML
+  private Button minus10;
+  @FXML
+  private Label totalCost10;
+  @FXML
+  private AnchorPane productPane11;
+  @FXML
+  private Button buy11;
+  @FXML
+  private ImageView productImage11;
+  @FXML
+  private Label productLabel11;
+  @FXML
+  private CheckBox productFavorite11;
+  @FXML
+  private TextField textField11;
+  @FXML
+  private Button plus11;
+  @FXML
+  private Button minus11;
+  @FXML
+  private Label totalCost11;
+  @FXML
+  private Label categoryLabel;
+  @FXML
+  private Button nextPaymentButton;
+  @FXML
+  private ScrollPane testPagination1;
+  @FXML
+  private Button backPaymentButton;
   
   public Integer getProductNr() {
     return productNr;
@@ -409,6 +634,20 @@ public class CenterFlikController implements Initializable {
     fader8 = createFader(lastNameLabel1);
     fader9 = createFader(streetLabel1);
     fader10 = createFader(postalLabel1);
+    
+    nextPaymentButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToPagination1();
+      }
+    });
+    
+     backPaymentButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        changeToPagination();
+      }
+    });
     
     firstNameTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
       @Override
@@ -2380,38 +2619,49 @@ public class CenterFlikController implements Initializable {
       }
     }
     
-    pagination.setPageFactory(new Callback<Integer, Node>() {
-      public Node call(Integer pageIndex) {
-        VBox vbox = new VBox();
-        if (pageIndex == 0) {
-          checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
-          newRequirePaymentLabel.setText("");
-          summaLabel.setText("Summa:");
-          if (IMatController.currentUser != null) {
-            showPage2(false);
-            populateCheckoutCart();
-            Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
-            totalCostCartLabel.setText(total.toString()+" kr");
-            setCartNotVisible();
-          } else {
-            showPage2(false);
-            populateCheckoutCart();
-            Integer total = (int)IMatController.getShoppingCart().getTotal();
-            totalCostCartLabel.setText(total.toString()+" kr");
-            setCartNotVisible();
-          }
-          deSelect();
-        } else {
-          showPage2(true);
-          summaLabel.setText("");
-          totalCostCartLabel.setText("");
-          checkOutLabel.setText("Steg 2/2: Kontrollera uppgifter");
-          getListVyPane().getChildren().remove(lv);
-        }
-        return vbox;
-      }
-   });
+    checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
+    newRequirePaymentLabel.setText("");
+    summaLabel.setText("Summa:");
+    nextPaymentButton.setVisible(true);
+    if (IMatController.currentUser != null) {
+      showPage2(false);
+      populateCheckoutCart();
+      Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
+      totalCostCartLabel.setText(total.toString()+" kr");
+      setCartNotVisible();
+    } else {
+      showPage2(false);
+      populateCheckoutCart();
+      Integer total = (int)IMatController.getShoppingCart().getTotal();
+      totalCostCartLabel.setText(total.toString()+" kr");
+      setCartNotVisible();
+    }
+    deSelect();
+
+
     
+    }
+    
+    public void changeToPagination1() {
+      getListVyPane().getChildren().remove(lv);
+      int size = varaListVyParent.getChildren().size();
+      currentPane = "testPagination1";
+      String id;
+      for (int i = 0; i < size; i++) {
+        id = varaListVyParent.getChildren().get(i).getId();
+        if (id.compareTo(currentPane) == 0) {
+          varaListVyParent.getChildren().get(i).toFront();
+          varaListVyParent.getChildren().get(i).setVisible(true);
+        } else if (id.compareTo("toolBar") == 0) {
+        } else {
+          varaListVyParent.getChildren().get(i).setVisible(false);
+      }
+    }
+      
+      showPage2(true);
+      summaLabel.setText("");
+      totalCostCartLabel.setText("");
+      checkOutLabel1.setText("Steg 2/2: Kontrollera uppgifter");
     }
     
     public void showPage2(boolean show) {

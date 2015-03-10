@@ -1329,7 +1329,7 @@ public class CenterFlikController implements Initializable {
     }
     
     // Check if cardNumberTextField contains valid data
-    if (cardNumberTextField11.getLength() > 0) {
+    if (cardNumberTextField11.getLength() > 0 && cardNumberTextField11.getLength() == 16) {
       try {
         Float cardNumber = Float.parseFloat(cardNumberTextField11.getText());
         cardNumberLabel11.setText("");
@@ -1350,6 +1350,9 @@ public class CenterFlikController implements Initializable {
       } else {
         IMatController.getIMatBackend().getCreditCard().setCardNumber("");
       }
+    } else if (cardNumberTextField11.getLength() > 0 && cardNumberTextField11.getLength() != 16) {
+        cardNumberTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
+        cardNumberLabel11.setText("Ange med 16 siffror");
     }
     
     // Check if yearTextField contains valid data

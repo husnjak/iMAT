@@ -1331,7 +1331,7 @@ public class CenterFlikController implements Initializable {
     // Check if cardNumberTextField contains valid data
     if (cardNumberTextField11.getLength() > 0) {
       try {
-        Integer cardNumber = Integer.parseInt(cardNumberTextField11.getText());
+        Float cardNumber = Float.parseFloat(cardNumberTextField11.getText());
         cardNumberLabel11.setText("");
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("CARDNUMBER", cardNumber.toString());

@@ -20,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -63,6 +62,8 @@ public class VarukorgController implements Initializable {
   @FXML
   private Label shoppingCartLabel;
   
+  VBox vbox1;
+  
   /**
   * Is called by the main application to give a reference back to itself.
   * 
@@ -97,7 +98,7 @@ public class VarukorgController implements Initializable {
     return shoppingCartListView;
   }
   
-  public Button getEmptyLink() {
+  public Button getEmptyButton() {
     return resetShoppingCartButton;
   }
   
@@ -108,20 +109,32 @@ public class VarukorgController implements Initializable {
   public Hyperlink getChangeLink() {
     return changeCartLink;
   }
+  
+  public VBox getPlaceHolder(){
+    return vbox1;
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    resetShoppingCartButton.setFocusTraversable(false);
-    resetShoppingCartButton.setDisable(true);
+    //resetShoppingCartButton.setFocusTraversable(false);
+    
     changeCartLink.setFocusTraversable(false);
     shoppingCartListView.setMaxHeight(500);
-    VBox vbox1 = new VBox();
+    vbox1 = new VBox();
     Label holder = new Label("           Varukorgen är tom");
     vbox1.getChildren().add(holder);
     Pane holderPane = new Pane();
     holderPane.setMinHeight(250);
     vbox1.getChildren().add(holderPane);
     shoppingCartListView.setPlaceholder(vbox1);
+    
+    if (!IMatController.getShoppingCart().getItems().isEmpty()) {
+      shoppingCartListView.getPlaceholder().setVisible(false);
+      resetShoppingCartButton.setDisable(false);
+    } else {
+      shoppingCartListView.getPlaceholder().setVisible(true);
+    resetShoppingCartButton.setDisable(true);
+    }
     
     changeCartLink.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -138,7 +151,7 @@ public class VarukorgController implements Initializable {
         if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
           imat.getCenterController().changeToCheckoutView();
         }
-        
+        shoppingCartListView.getPlaceholder().setVisible(true);
       }
     });
     
@@ -152,7 +165,6 @@ public class VarukorgController implements Initializable {
   }
   
   public void resetShoppingCart() {
-      resetShoppingCartButton.setDisable(true); 
     if (IMatController.currentUser != null) {
       imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
       imat.getVarukorgController().getIMatShoppingCart().getCart().setCost(0);
@@ -167,6 +179,16 @@ public class VarukorgController implements Initializable {
       populateCheckoutCart(convertBackendToIMat());
     }
     
+  }
+  
+  public void newPlaceHolder() {
+        vbox1 = new VBox();
+    Label holder = new Label("           Varukorgen är tom");
+    vbox1.getChildren().add(holder);
+    Pane holderPane = new Pane();
+    holderPane.setMinHeight(250);
+    vbox1.getChildren().add(holderPane);
+    shoppingCartListView.setPlaceholder(vbox1);
   }
   
   /**
@@ -322,6 +344,10 @@ public class VarukorgController implements Initializable {
                     imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
                     updateTotalCostBackend(total);
                     populateCheckoutCart(convertBackendToIMat());
+                    if (imat.getCenterController().getTotalCostCartLabel().getText().equals("0 kr")) {
+                      resetShoppingCartButton.setDisable(true);
+                      shoppingCartListView.getPlaceholder().setVisible(true);
+                    }
                   }
               }
                 });          

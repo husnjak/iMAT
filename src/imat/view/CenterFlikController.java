@@ -1009,17 +1009,6 @@ public class CenterFlikController implements Initializable {
     }
   }
   
-  public void setEmptyCartText() {
-    VBox vbox1 = new VBox();
-    Label holder = new Label("           Varukorgen är tom");
-    vbox1.getChildren().add(holder);
-    Pane holderPane = new Pane();
-    holderPane.setMinHeight(250);
-    vbox1.getChildren().add(holderPane);
-    imat.getVarukorgController().getList().setPlaceholder(vbox1);
-  }
-  
-  
   /**
    * Is called by the main application to give a reference back to itself.
    * 
@@ -1526,7 +1515,6 @@ public class CenterFlikController implements Initializable {
   
   public void makeShoppingCartVisible() {
     imat.getVarukorgController().getCartBuyButton().setDisable(false);
-    imat.getVarukorgController().getEmptyLink().setDisable(false);
     imat.getVarukorgController().getChangeLink().setDisable(false);
     if (IMatController.currentUser != null) {
       imat.getVarukorgController().updateTotalCostBackend(IMatShoppingCart.cart.getCost());
@@ -1537,9 +1525,17 @@ public class CenterFlikController implements Initializable {
       Integer totaler = (int)IMatController.getShoppingCart().getTotal();
       imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
       imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+      if (IMatController.getShoppingCart().getItems().isEmpty()) {
+            imat.getVarukorgController().getEmptyButton().setDisable(true);
+            imat.getVarukorgController().getPlaceHolder().setVisible(true);
+      } else {
+          imat.getVarukorgController().getEmptyButton().setDisable(false);
+          imat.getVarukorgController().getPlaceHolder().setVisible(false);
+      }
     }
+
     imat.getVarukorgController().getList().setStyle("-fx-background-color: white;");
-    imat.getVarukorgController().getList().setPlaceholder(new Label("Varukorgen är tom"));
+    //imat.getVarukorgController().getList().setPlaceholder(new Label("Varukorgen är tom"));
     imat.getVarukorgController().getSummaLabel().setDisable(false);
     imat.getVarukorgController().disableShoppingCartLabel(false);
   }
@@ -1548,17 +1544,22 @@ public class CenterFlikController implements Initializable {
    * Changes the center view to the start page.
    */
   public void changeToStartPageView() {
+    imat.getVarukorgController().getPlaceHolder().setVisible(true);
     deSelect();
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
       if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+        imat.getVarukorgController().getEmptyButton().setDisable(true);
+        imat.getVarukorgController().getPlaceHolder().setVisible(true);
       }
     } else {
         if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
     }
 
@@ -1615,11 +1616,15 @@ public class CenterFlikController implements Initializable {
     }
     if (IMatController.currentUser != null) {
       if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
+        imat.getVarukorgController().newPlaceHolder();
+        imat.getVarukorgController().getEmptyButton().setDisable(true);
+        imat.getVarukorgController().getPlaceHolder().setVisible(true);
       }
     } else {
         if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
     }
     //imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
@@ -1807,9 +1812,11 @@ public class CenterFlikController implements Initializable {
     deSelect();
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       imat.getVarukorgController().getCartBuyButton().setDisable(false);
+      if (!imat.getVarukorgController().getList().getChildrenUnmodifiable().isEmpty()) {
+        imat.getVarukorgController().getEmptyButton().setDisable(false);
+      }
       Integer totaler = (int)IMatController.getShoppingCart().getTotal();
       imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
-      imat.getVarukorgController().getEmptyLink().setDisable(false);
       imat.getVarukorgController().getChangeLink().setDisable(false);
       imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
     }
@@ -1830,11 +1837,13 @@ public class CenterFlikController implements Initializable {
     
     if (IMatController.currentUser != null) {
       if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
       }
     } else {
         if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
     }
   }
@@ -1845,11 +1854,15 @@ public class CenterFlikController implements Initializable {
     }
     if (IMatController.currentUser != null) {
       if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
+        imat.getVarukorgController().newPlaceHolder();
+        imat.getVarukorgController().getEmptyButton().setDisable(true);
+        imat.getVarukorgController().getPlaceHolder().setVisible(true);
       }
     } else {
         if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
     }
     getListVyPane().getChildren().remove(lv);
@@ -1909,16 +1922,21 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToOrderHistorikView() {
+    imat.getVarukorgController().getPlaceHolder().setVisible(true);
     if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
       makeShoppingCartVisible();
     }
     if (IMatController.currentUser != null) {
       if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
+        imat.getVarukorgController().newPlaceHolder();
+        imat.getVarukorgController().getEmptyButton().setDisable(true);
+        imat.getVarukorgController().getPlaceHolder().setVisible(true);
       }
     } else {
         if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
     }
     getListVyPane().getChildren().remove(lv);
@@ -2064,8 +2082,15 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = (int)IMatController.getShoppingCart().getTotal();
                   totalCostCartLabel.setText(total.toString() + " kr");
+                  if (IMatController.getShoppingCart().getItems().isEmpty()) {
+                    imat.getVarukorgController().getEmptyButton().setDisable(true);
+                    imat.getVarukorgController().getPlaceHolder().setVisible(true);
+                  } else {
+                    imat.getVarukorgController().getEmptyButton().setDisable(false);
+                    imat.getVarukorgController().getPlaceHolder().setVisible(false);
+                  }
                 }
-  
+                 imat.getVarukorgController().getPlaceHolder().setVisible(true);
               }
             });
             minusButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -2218,11 +2243,15 @@ public class CenterFlikController implements Initializable {
     }
     if (IMatController.currentUser != null) {
       if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
+        imat.getVarukorgController().newPlaceHolder();
+        imat.getVarukorgController().getEmptyButton().setDisable(true);
+        imat.getVarukorgController().getPlaceHolder().setVisible(true);
       }
     } else {
         if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
     }
     getListVyPane().getChildren().remove(lv);
@@ -2287,7 +2316,7 @@ public class CenterFlikController implements Initializable {
     imat.getVarukorgController().getCartBuyButton().setDisable(true);
     imat.getVarukorgController().getList().getItems().clear();
     imat.getVarukorgController().setTotalCostLabel("");
-    imat.getVarukorgController().getEmptyLink().setDisable(true);
+    imat.getVarukorgController().getEmptyButton().setDisable(true);
     imat.getVarukorgController().getChangeLink().setDisable(true);
     imat.getVarukorgController().getList().setStyle("-fx-background-color: #F0F0F0 ;");
     imat.getVarukorgController().getList().setPlaceholder(new Label(""));
@@ -2421,17 +2450,21 @@ public class CenterFlikController implements Initializable {
     
     public void changeToListView(List<Product> list) {
       deSelect();
-
+      imat.getVarukorgController().getPlaceHolder().setVisible(true);
       if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
         makeShoppingCartVisible();
       }
       if (IMatController.currentUser != null) {
         if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-          setEmptyCartText();
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
         }
       } else {
           if (IMatController.getShoppingCart().getItems().isEmpty()) {
-            setEmptyCartText();
+            imat.getVarukorgController().newPlaceHolder();
+            imat.getVarukorgController().getEmptyButton().setDisable(true);
+            imat.getVarukorgController().getPlaceHolder().setVisible(true);
           }
       }
       getListVyPane().getChildren().remove(lv);
@@ -2448,6 +2481,11 @@ public class CenterFlikController implements Initializable {
           varaListVyParent.getChildren().get(i).setVisible(false);
         }
       }
+//      if (imat.getVarukorgController().getList().getPlaceholder().isVisible()) {
+//        imat.getVarukorgController().getEmptyButton().setDisable(true);
+//      } else {
+//        imat.getVarukorgController().getEmptyButton().setDisable(false);
+//      }
       populateProductList(list);
     }
 
@@ -2529,6 +2567,7 @@ public class CenterFlikController implements Initializable {
       @Override
       public void handle(ActionEvent event) {
         buyMethod(field, label2, productsToView, test);
+        imat.getVarukorgController().getEmptyButton().setDisable(false);
       }
     });
         
@@ -2663,6 +2702,7 @@ public class CenterFlikController implements Initializable {
               IMatController.getIMatBackend().removeFavorite(product.get(pos));
               if (listPaneLabel.getText().equals("Favoritvaror")) {
                 changeToListView(IMatController.getIMatBackend().favorites());
+                favoritvarorButton.setSelected(true);
               }
         }
     }

@@ -2137,7 +2137,7 @@ public class CenterFlikController implements Initializable {
       changeToListView(IMatController.getIMatBackend().favorites());
     }
     
-    listPaneLabel.setText("Favoriter");
+    listPaneLabel.setText("Favoritvaror");
     if (kontouppgifterButton.isSelected()) {
       kontouppgifterButton.setSelected(false);
     }

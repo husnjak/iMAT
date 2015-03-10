@@ -19,8 +19,6 @@
             <ToggleButton fx:id="favoritvarorButton" mnemonicParsing="false" text="Favoritvaror" />
         </items>
       </ToolBar>
-<<<<<<< HEAD
-=======
       <ScrollPane fx:id="productScrollPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" maxHeight="550.0" minHeight="550.0" prefHeight="550.0" prefWidth="674.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <content>
             <AnchorPane layoutY="40.0" maxWidth="750.0" minHeight="-Infinity" prefHeight="850.0" prefWidth="750.0">
@@ -289,7 +287,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
->>>>>>> 9593120ec76553423bf2897bffa25e73eebbc1e4
       <ScrollPane fx:id="startPage" fitToHeight="true" fitToWidth="true" layoutY="40.0" maxHeight="550.0" minHeight="550.0" prefHeight="550.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <content>
             <AnchorPane layoutY="40.0" maxHeight="423.0" maxWidth="750.0" minHeight="423.0" prefHeight="423.0" prefWidth="750.0">

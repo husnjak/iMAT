@@ -72,12 +72,8 @@
     -fx-background-image: url("Cancel_Hover.png");
 }
 
-<<<<<<< HEAD
-.list-cell {
-  -fx-cell-size: 15 ;
-=======
+
 .Kassa:hover{
     -fx-background-color: lime;
     -fx-text-fill: white
->>>>>>> 9593120ec76553423bf2897bffa25e73eebbc1e4
 }

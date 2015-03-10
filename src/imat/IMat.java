@@ -74,7 +74,7 @@ public class IMat extends Application {
     totalSum = (int)IMatController.getShoppingCart().getTotal();
     varukorgController.updateTotalCostBackend(totalSum);
     //varukorgController.initShoppingCart(varukorgController.convertBackendToIMat());
-    centerController.initCheckoutCart(varukorgController.convertBackendToIMat());
+    //centerController.initCheckoutCart(varukorgController.convertBackendToIMat());
     varukorgController.populateCheckoutCart(varukorgController.convertBackendToIMat());
   }
   

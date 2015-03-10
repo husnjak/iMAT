@@ -975,5 +975,19 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <ScrollPane fx:id="accordionPane" fitToHeight="true" fitToWidth="true" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <content>
+          <AnchorPane>
+               <children>
+                  <Accordion fx:id="accordion" maxWidth="475.0" minWidth="475.0" prefWidth="475.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="100.0" />
+                  <Label text="Orderhistorik" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

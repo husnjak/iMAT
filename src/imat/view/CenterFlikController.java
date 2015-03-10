@@ -5,6 +5,8 @@
  */
 package imat.view;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import imat.IMat;
 import imat.IMatController;
 import imat.IMatOrder;
@@ -23,6 +25,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +39,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -47,6 +53,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -583,6 +590,10 @@ public class CenterFlikController implements Initializable {
   private ScrollPane testPagination1;
   @FXML
   private Button backPaymentButton;
+  @FXML
+  private Accordion accordion;
+  @FXML
+  private ScrollPane orderHistorikPane1;
   
   public Integer getProductNr() {
     return productNr;
@@ -1093,7 +1104,14 @@ public class CenterFlikController implements Initializable {
         if (favoritvarorButton.isSelected()) {
           favoritvarorButton.setSelected(false);
         }
-        changeToOrderHistorikView();
+        //changeToOrderHistorikView();
+        if (IMatController.currentUser != null) {
+          
+        } else {
+          changeToOrderHistoryAccordian(IMatController.getIMatBackend().getOrders());
+          //populateHistoryAccordian();
+        }
+        
         event.consume();
       }
     });
@@ -2966,7 +2984,100 @@ public class CenterFlikController implements Initializable {
                 favoritvarorButton.setSelected(true);
               }
         }
+      }
     }
+    
+    public void changeToOrderHistoryAccordian(List<Order> ordersToView) {
+       //deSelect();
+      imat.getVarukorgController().getPlaceHolder().setVisible(true);
+      if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+        makeShoppingCartVisible();
+      }
+      if (IMatController.currentUser != null) {
+        if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
+        }
+      } else {
+          if (IMatController.getShoppingCart().getItems().isEmpty()) {
+            imat.getVarukorgController().newPlaceHolder();
+            imat.getVarukorgController().getEmptyButton().setDisable(true);
+            imat.getVarukorgController().getPlaceHolder().setVisible(true);
+          }
+      }
+      getListVyPane().getChildren().remove(lv);
+      int size = varaListVyParent.getChildren().size();
+      currentPane = "accordionPane";
+      String id;
+      for (int i = 0; i < size; i++) {
+        id = varaListVyParent.getChildren().get(i).getId();
+        if (id.compareTo(currentPane) == 0) {
+          varaListVyParent.getChildren().get(i).toFront();
+          varaListVyParent.getChildren().get(i).setVisible(true);
+        } else if (id.compareTo("toolBar") == 0) {
+        } else {
+          varaListVyParent.getChildren().get(i).setVisible(false);
+        }
+      }
+      
+      populateHistoryAccordian(ordersToView);
     }
+    
+    public void populateHistoryAccordian(List<Order> ordersToView) {
+      List<ShoppingItem> orderProducts;
+      
+      for (int i = 0; i < ordersToView.size(); i++) {
+        ObservableList<HBox> hboxList = FXCollections.observableArrayList();
+        Order order = ordersToView.get(i);
+        orderProducts = order.getItems();
+        int nrProducts = orderProducts.size();
+        Integer totalCost;
+        int cost = 0;
+        for (int k = 0; k < nrProducts; k++) {
+          cost += (int)orderProducts.get(k).getTotal();
+        }
+        totalCost = cost;
+        Integer orderID= order.getOrderNumber();
+        Date orderDate = order.getDate();
+        
+        LocalDate date = orderDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String title = "OrderID: " + orderID.toString() + "  \t\t Datum: " + date.toString()
+            + "  \t Summa: " + totalCost.toString()+ " kronor";
+       
+        ListView<HBox> content = new ListView();
+        for (int j = 0; j < nrProducts; j++) {
+        HBox hbox = new HBox();
+        Integer sum = (int)orderProducts.get(j).getTotal();
+        Integer amount = (int)orderProducts.get(j).getAmount();
+        String productName = orderProducts.get(j).getProduct().getName();
+        
+        hbox.setMaxHeight(15);
+        Pane pane1 = new Pane();
+        Pane pane2 = new Pane();
+        Label label1 = new Label(productName+"        ");
+        Label label2 = new Label(amount.toString()+" styck        ");
+        Label label3 = new Label(sum.toString()+" kronor");
+        pane1.setPrefWidth(60);
+        label1.setPrefWidth(120);
+        label2.setPrefWidth(90);
+        pane2.setPrefWidth(95);
+        label3.setPrefWidth(90);
+        hbox.getChildren().addAll(label1, pane1, label2, pane2, label3);
 
+        hboxList.add(hbox);
+        
+        
+        }
+        content.setItems(hboxList);
+        content.setPrefHeight(hboxList.size() * 30);
+        TitledPane pane = new TitledPane(title, content);
+        pane.setExpanded(false);
+        accordion.getPanes().add(pane);
+        
+      }
+      
+     
+      
+ }
 }

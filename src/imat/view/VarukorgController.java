@@ -139,7 +139,9 @@ public class VarukorgController implements Initializable {
     changeCartLink.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        //imat.getCenterController().changeToListView();
+        imat.getCenterController().setOnlyChangeCart();
+        imat.getCenterController().changeToPagination();
+        changeCartLink.setVisited(false);
       }
     });
     

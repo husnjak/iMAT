@@ -738,7 +738,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="testPagination1" fitToHeight="true" fitToWidth="true" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane fx:id="testPagination1" fitToHeight="true" fitToWidth="true" layoutY="40.0" prefHeight="550.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <content>
             <AnchorPane maxHeight="530.0" maxWidth="748.0" minHeight="530.0" minWidth="748.0" prefHeight="530.0" prefWidth="748.0">
                <children>

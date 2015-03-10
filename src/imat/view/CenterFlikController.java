@@ -109,6 +109,7 @@ public class CenterFlikController implements Initializable {
   String currentPane = "startPage";
   
   String defaultStyle;
+  boolean changeCart;
   
   // Stores order history
   private ObservableList<Order> orders;
@@ -2619,10 +2620,16 @@ public class CenterFlikController implements Initializable {
       }
     }
     
-    checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
+    if (changeCart) {
+        checkOutLabel.setText("Ändra i varukorgen");
+        nextPaymentButton.setVisible(false);
+    } else {
+        checkOutLabel.setText("Steg 1/2: Kontrollera varukorg");
+        nextPaymentButton.setVisible(true);
+    }
+    changeCart = false;
     newRequirePaymentLabel.setText("");
     summaLabel.setText("Summa:");
-    nextPaymentButton.setVisible(true);
     if (IMatController.currentUser != null) {
       showPage2(false);
       populateCheckoutCart();
@@ -2640,6 +2647,10 @@ public class CenterFlikController implements Initializable {
 
 
     
+    }
+    
+    public void setOnlyChangeCart() {
+      changeCart = true;
     }
     
     public void changeToPagination1() {

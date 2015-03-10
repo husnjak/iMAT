@@ -122,6 +122,12 @@ public class VarukorgController implements Initializable {
     vbox1.getChildren().add(holderPane);
     shoppingCartListView.setPlaceholder(vbox1);
     
+    changeCartLink.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        //imat.getCenterController().changeToListView();
+      }
+    });
     
     resetShoppingCartLink.setOnAction(new EventHandler<ActionEvent>() {
       @Override

@@ -8,8 +8,6 @@ package imat.view;
 import imat.IMat;
 import imat.IMatController;
 import imat.IMatOrder;
-import imat.IMatProduct;
-import imat.IMatProducts;
 import imat.IMatShoppingCart;
 import imat.IMatShoppingItem;
 import java.awt.image.BufferedImage;
@@ -38,7 +36,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -64,6 +61,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -82,27 +81,13 @@ public class CenterFlikController implements Initializable {
   
   @FXML
   private TextField emailTextField;
-  private TextField cvvTextField;
-  private TextField firstNameTextField;
-  private TextField lastNameTextField;
-  private TextField civicTextField;
+ 
   @FXML
   private TextField phoneTextField;
-  private TextField streetTextField;
-  private TextField postalTextField;
-  private TextField cityTextField;
-  private TextField cardNumberTextField;
-  private TextField yearTextField;
-  private TextField monthTextField;
-  private Label yearLabel;
+  
   @FXML
   private Label phoneLabel;
-  private Label postalLabel;
-  private Label monthLabel;
-  private Label cvvLabel;
-  private Label cardNumberLabel;
-  private Label civicLabel;
-  
+ 
   private IMat imat;
   
   Order orderCart;
@@ -111,14 +96,10 @@ public class CenterFlikController implements Initializable {
   
   static int cellIndex = 0;
   
-  // Used for deciding if to show the list view of products or not
-  private boolean listView;
-  
   private boolean removeFavorite = true;
   
   // Used for holding products from specific categories
   private List<Product> products;
-  private StackPane handlaStackPane;
   
   // Used for handling products
   Product product;
@@ -191,228 +172,30 @@ public class CenterFlikController implements Initializable {
   private TableColumn<IMatShoppingItem, Integer> productUnitsColumn;
   @FXML
   private TableColumn<IMatShoppingItem, Integer> productCostColumn;
-  @FXML
-  private ScrollPane productScrollPane;
-  @FXML
-  private GridPane productGrid;
-  @FXML
-  private AnchorPane productPane;
-  @FXML
-  private Button buy;
-  @FXML
-  private ImageView productImage;
-  @FXML
-  private Label productLabel;
-  @FXML
   private CheckBox productFavorite;
-  @FXML
   private TextField textField;
-  @FXML
-  private Button plus;
-  @FXML
-  private Button minus;
-  @FXML
-  private Label totalCost;
-  @FXML
-  private AnchorPane productPane1;
-  @FXML
-  private Button buy1;
-  @FXML
-  private ImageView productImage1;
-  @FXML
-  private Label productLabel1;
-  @FXML
   private CheckBox productFavorite1;
-  @FXML
   private TextField textField1;
-  @FXML
-  private Button plus1;
-  @FXML
-  private Button minus1;
-  @FXML
-  private Label totalCost1;
-  @FXML
-  private AnchorPane productPane2;
-  @FXML
-  private Button buy2;
-  @FXML
-  private ImageView productImage2;
-  @FXML
-  private Label productLabel2;
-  @FXML
   private CheckBox productFavorite2;
-  @FXML
   private TextField textField2;
-  @FXML
-  private Button plus2;
-  @FXML
-  private Button minus2;
-  @FXML
-  private Label totalCost2;
-  @FXML
-  private AnchorPane productPane3;
-  @FXML
-  private Button buy3;
-  @FXML
-  private ImageView productImage3;
-  @FXML
-  private Label productLabel3;
-  @FXML
   private CheckBox productFavorite3;
-  @FXML
   private TextField textField3;
-  @FXML
-  private Button plus3;
-  @FXML
-  private Button minus3;
-  @FXML
-  private Label totalCost3;
-  @FXML
-  private AnchorPane productPane4;
-  @FXML
-  private Button buy4;
-  @FXML
-  private ImageView productImage4;
-  @FXML
-  private Label productLabel4;
-  @FXML
   private CheckBox productFavorite4;
-  @FXML
   private TextField textField4;
-  @FXML
-  private Button plus4;
-  @FXML
-  private Button minus4;
-  @FXML
-  private Label totalCost4;
-  @FXML
-  private AnchorPane productPane5;
-  @FXML
-  private Button buy5;
-  @FXML
-  private ImageView productImage5;
-  @FXML
-  private Label productLabel5;
-  @FXML
   private CheckBox productFavorite5;
-  @FXML
   private TextField textField5;
-  @FXML
-  private Button plus5;
-  @FXML
-  private Button minus5;
-  @FXML
-  private Label totalCost5;
-  @FXML
-  private AnchorPane productPane6;
-  @FXML
-  private Button buy6;
-  @FXML
-  private ImageView productImage6;
-  @FXML
-  private Label productLabel6;
-  @FXML
   private CheckBox productFavorite6;
-  @FXML
   private TextField textField6;
-  @FXML
-  private Button plus6;
-  @FXML
-  private Button minus6;
-  @FXML
-  private Label totalCost6;
-  @FXML
-  private AnchorPane productPane7;
-  @FXML
-  private Button buy7;
-  @FXML
-  private ImageView productImage7;
-  @FXML
-  private Label productLabel7;
-  @FXML
   private CheckBox productFavorite7;
-  @FXML
   private TextField textField7;
-  @FXML
-  private Button plus7;
-  @FXML
-  private Button minus7;
-  @FXML
-  private Label totalCost7;
-  @FXML
-  private AnchorPane productPane8;
-  @FXML
-  private Button buy8;
-  @FXML
-  private ImageView productImage8;
-  @FXML
-  private Label productLabel8;
-  @FXML
   private CheckBox productFavorite8;
-  @FXML
   private TextField textField8;
-  @FXML
-  private Button plus8;
-  @FXML
-  private Button minus8;
-  @FXML
-  private Label totalCost8;
-  @FXML
-  private AnchorPane productPane9;
-  @FXML
-  private Button buy9;
-  @FXML
-  private ImageView productImage9;
-  @FXML
-  private Label productLabel9;
-  @FXML
   private CheckBox productFavorite9;
-  @FXML
   private TextField textField9;
-  @FXML
-  private Button plus9;
-  @FXML
-  private Button minus9;
-  @FXML
-  private Label totalCost9;
-  @FXML
-  private AnchorPane productPane10;
-  @FXML
-  private Button buy10;
-  @FXML
-  private ImageView productImage10;
-  @FXML
-  private Label productLabel10;
-  @FXML
   private CheckBox productFavorite10;
-  @FXML
   private TextField textField10;
-  @FXML
-  private Button plus10;
-  @FXML
-  private Button minus10;
-  @FXML
-  private Label totalCost10;
-  @FXML
-  private AnchorPane productPane11;
-  @FXML
-  private Button buy11;
-  @FXML
-  private ImageView productImage11;
-  @FXML
-  private Label productLabel11;
-  @FXML
   private CheckBox productFavorite11;
-  @FXML
   private TextField textField11;
-  @FXML
-  private Button plus11;
-  @FXML
-  private Button minus11;
-  @FXML
-  private Label totalCost11;
-  @FXML
-  private Label categoryLabel;
   @FXML
   private AnchorPane varaListVyParent;
   @FXML
@@ -427,194 +210,6 @@ public class CenterFlikController implements Initializable {
   private ScrollPane orderHistorikPane;
   @FXML
   private ScrollPane kontouppgifterPane;
-  @FXML
-  private ScrollPane favoriteScrollPane;
-  @FXML
-  private GridPane favoriteGrid;
-  @FXML
-  private AnchorPane favoritePane;
-  @FXML
-  private AnchorPane favoritePane1;
-  @FXML
-  private AnchorPane favoritePane2;
-  @FXML
-  private AnchorPane favoritePane3;
-  @FXML
-  private Button buy31;
-  @FXML
-  private ImageView productImage31;
-  @FXML
-  private Label productLabel31;
-  @FXML
-  private CheckBox productFavorite31;
-  @FXML
-  private TextField textField31;
-  @FXML
-  private Button plus31;
-  @FXML
-  private Button minus31;
-  @FXML
-  private Label totalCost31;
-  @FXML
-  private AnchorPane favoritePane4;
-  @FXML
-  private Button buy41;
-  @FXML
-  private ImageView productImage41;
-  @FXML
-  private Label productLabel41;
-  @FXML
-  private CheckBox productFavorite41;
-  @FXML
-  private TextField textField41;
-  @FXML
-  private Button plus41;
-  @FXML
-  private Button minus41;
-  @FXML
-  private Label totalCost41;
-  @FXML
-  private AnchorPane favoritePane5;
-  @FXML
-  private Button buy51;
-  @FXML
-  private ImageView productImage51;
-  @FXML
-  private Label productLabel51;
-  @FXML
-  private CheckBox productFavorite51;
-  @FXML
-  private TextField textField51;
-  @FXML
-  private Button plus51;
-  @FXML
-  private Button minus51;
-  @FXML
-  private Label totalCost51;
-  @FXML
-  private AnchorPane favoritePane6;
-  @FXML
-  private Button buy61;
-  @FXML
-  private ImageView productImage61;
-  @FXML
-  private Label productLabel61;
-  @FXML
-  private CheckBox productFavorite61;
-  @FXML
-  private TextField textField61;
-  @FXML
-  private Button plus61;
-  @FXML
-  private Button minus61;
-  @FXML
-  private Label totalCost61;
-  @FXML
-  private AnchorPane favoritePane7;
-  @FXML
-  private Button buy71;
-  @FXML
-  private ImageView productImage71;
-  @FXML
-  private Label productLabel71;
-  @FXML
-  private CheckBox productFavorite71;
-  @FXML
-  private TextField textField71;
-  @FXML
-  private Button plus71;
-  @FXML
-  private Button minus71;
-  @FXML
-  private Label totalCost71;
-  @FXML
-  private AnchorPane favoritePane8;
-  @FXML
-  private Button buy81;
-  @FXML
-  private ImageView productImage81;
-  @FXML
-  private Label productLabel81;
-  @FXML
-  private CheckBox productFavorite81;
-  @FXML
-  private TextField textField81;
-  @FXML
-  private Button plus81;
-  @FXML
-  private Button minus81;
-  @FXML
-  private Label totalCost81;
-  @FXML
-  private AnchorPane favoritePane9;
-  @FXML
-  private Button buy91;
-  @FXML
-  private ImageView productImage91;
-  @FXML
-  private Label productLabel91;
-  @FXML
-  private CheckBox productFavorite91;
-  @FXML
-  private TextField textField91;
-  @FXML
-  private Button plus91;
-  @FXML
-  private Button minus91;
-  @FXML
-  private Label totalCost91;
-  @FXML
-  private AnchorPane favoritePane10;
-  @FXML
-  private Button buy101;
-  @FXML
-  private ImageView productImage101;
-  @FXML
-  private Label productLabel101;
-  @FXML
-  private CheckBox productFavorite101;
-  @FXML
-  private TextField textField101;
-  @FXML
-  private Button plus101;
-  @FXML
-  private Button minus101;
-  @FXML
-  private Label totalCost101;
-  @FXML
-  private AnchorPane favoritePane11;
-  @FXML
-  private Button buy111;
-  @FXML
-  private ImageView productImage111;
-  @FXML
-  private Label productLabel111;
-  @FXML
-  private CheckBox productFavorite111;
-  @FXML
-  private TextField textField111;
-  @FXML
-  private Button plus111;
-  @FXML
-  private Button minus111;
-  @FXML
-  private Label totalCost111;
-  @FXML
-  private Button buyfavorite;
-  @FXML
-  private ImageView favoriteImage;
-  @FXML
-  private Label favoriteLabel;
-  @FXML
-  private CheckBox favoriteFavorite;
-  @FXML
-  private TextField textFieldFavorite;
-  @FXML
-  private Button plusfavorite;
-  @FXML
-  private Button minusfavorite;
-  @FXML
-  private Label totalCostFavorite;
   @FXML
   private TextField civicTextField1;
   @FXML
@@ -650,9 +245,6 @@ public class CenterFlikController implements Initializable {
   private TextField emailTextField1;
   @FXML
   private TextField monthTextField1;
-  private Label monthLabel1;
-  private Hyperlink removeProductPaymentLink;
-  private Label cityLabel1;
   @FXML
   private Label streetLabel1;
   @FXML
@@ -660,6 +252,7 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label firstNameLabel1;
   private ListView<IMatShoppingItem> checkOutCartListView;
+  private ListView<Product> productListView;
   static String action = "init";
   @FXML
   private ScrollPane receiptPane;
@@ -669,24 +262,9 @@ public class CenterFlikController implements Initializable {
   private Label orderNumberReceiptLabel;
   @FXML
   private Label saveInformationLabel;
-  @FXML
-  private Button buy21;
-  @FXML
-  private ImageView productImage21;
-  @FXML
-  private Label productLabel21;
-  @FXML
-  private CheckBox productFavorite21;
-  @FXML
-  private TextField textField21;
-  @FXML
-  private Button plus21;
-  @FXML
-  private Button minus21;
-  @FXML
-  private Label totalCost21;
   
   ObservableList<IMatShoppingItem> nn;
+  ObservableList<Product> productList;
   
   Label totalCheckoutSum;
   @FXML
@@ -694,13 +272,7 @@ public class CenterFlikController implements Initializable {
   
   FadeTransition fader;
   FadeTransition fader2;
-  private Label newCivicLabel;
-  private Label newPhoneLabel;
-  private Label newPostalLabel;
-  private Label newCardNumberLabel;
-  private Label newYearLabel;
-  private Label newMonthLabel;
-  private Label newCVVLabel;
+
   @FXML
   private Label newRequirePaymentLabel;
   @FXML
@@ -800,6 +372,14 @@ public class CenterFlikController implements Initializable {
   
   boolean monthInfo = true;
   boolean yearInfo = true;
+  @FXML
+  private Label checkOutLabel1;
+  @FXML
+  private ScrollPane listPane;
+  @FXML
+  private GridPane gridPaneProducts;
+  @FXML
+  private Label listPaneLabel;
   
   public Integer getProductNr() {
     return productNr;
@@ -1196,499 +776,6 @@ public class CenterFlikController implements Initializable {
         }
       }
     });
-    
-    productFavorite.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(0);
-        if (IMatController.currentUser != null) {
-          if (productFavorite.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-            
-          }
-        }
-      }
-    });
-    
-    productFavorite1.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(1);
-        if (IMatController.currentUser != null) {
-          if (productFavorite1.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite1.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite2.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(2);
-        if (IMatController.currentUser != null) {
-          if (productFavorite2.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite2.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite3.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(3);
-        if (IMatController.currentUser != null) {
-          if (productFavorite3.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite3.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite4.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(4);
-        if (IMatController.currentUser != null) {
-          if (productFavorite4.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite4.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite5.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(5);
-        if (IMatController.currentUser != null) {
-          if (productFavorite5.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite5.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite6.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(6);
-        if (IMatController.currentUser != null) {
-          if (productFavorite6.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite6.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite7.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(7);
-        if (IMatController.currentUser != null) {
-          if (productFavorite7.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite7.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite8.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(8);
-        if (IMatController.currentUser != null) {
-          if (productFavorite8.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite8.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite9.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(9);
-        if (IMatController.currentUser != null) {
-          if (productFavorite9.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite9.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite10.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(10);
-        if (IMatController.currentUser != null) {
-          if (productFavorite10.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite10.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-              if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    productFavorite11.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(11);
-        if (IMatController.currentUser != null) {
-          if (productFavorite11.isSelected()) {
-            int index = IMatController.getNumberOfRecords(product.toString());
-            IMatController.addFavorite(product.toString(), ++index);
-          } else {
-            // Implement how to find correct index
-            int index = 1;
-            IMatController.removeFavorite(product.toString(), index);
-          }
-        } else {
-          if (productFavorite11.isSelected()) {
-            IMatController.getIMatBackend().addFavorite(product);
-          } else {
-               if (removeFavorite) {
-                IMatController.getIMatBackend().removeFavorite(product);
-            }
-          }
-        }
-      }
-    });
-    
-    plus.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(0);
-        increment(textField, totalCost, product);
-      }
-    });
-    
-    minus.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(0);
-        decrement(textField, totalCost, product);
-      }
-    });
-    
-    plus1.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(1);
-        increment(textField1, totalCost1, product);
-      }
-    });
-    
-    minus1.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(1);
-        decrement(textField1, totalCost1, product);
-      }
-    });
-    
-    plus2.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(2);
-        increment(textField2, totalCost2, product);
-      }
-    });
-    
-    minus2.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(2);
-        decrement(textField2, totalCost2, product);
-      }
-    });
-    
-    plus3.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(3);
-        increment(textField3, totalCost3, product);
-      }
-    });
-    
-    minus3.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(3);
-        decrement(textField3, totalCost3, product);
-      }
-    });
-    
-    plus4.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(4);
-        increment(textField4, totalCost4, product);
-      }
-    });
-    
-    minus4.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(4);
-        decrement(textField4, totalCost4, product);
-      }
-    });
-    
-    plus5.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(5);
-        increment(textField5, totalCost5, product);
-      }
-    });
-    
-    minus5.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(5);
-        decrement(textField5, totalCost5, product);
-      }
-    });
-    
-    plus6.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(6);
-        increment(textField6, totalCost6, product);
-      }
-    });
-    
-    minus6.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(6);
-        decrement(textField6, totalCost6, product);
-      }
-    });
-    
-    plus7.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(7);
-        increment(textField7, totalCost7, product);
-      }
-    });
-    
-    minus7.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(7);
-        decrement(textField7, totalCost7, product);
-      }
-    });
-    
-    plus8.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(8);
-        increment(textField8, totalCost8, product);
-      }
-    });
-    
-    minus8.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(8);
-        decrement(textField8, totalCost8, product);
-      }
-    });
-    
-    plus9.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(9);
-        increment(textField9, totalCost9, product);
-      }
-    });
-    
-    minus9.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(9);
-        decrement(textField9, totalCost9, product);
-      }
-    });
-    
-    plus10.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(10);
-        increment(textField10, totalCost10, product);
-      }
-    });
-    
-    minus10.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(10);
-        decrement(textField10, totalCost10, product);
-      }
-    });
-    
-    plus11.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(11);
-        increment(textField11, totalCost11, product);
-      }
-    });
-    
-    minus11.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        Product product = products.get(11);
-        decrement(textField11, totalCost11, product);
-      }
-    });
 
     createAccountButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -1759,709 +846,12 @@ public class CenterFlikController implements Initializable {
       }
     }
     });
-    
-    buy.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(0);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField.getText());
-        textField.setText("1");
-        int cost = (int)product.getPrice();
-        Integer oldCost = cost;
-        totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-        int sum = productUnits*cost;
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-          imat.getVarukorgController().getList().setFocusTraversable(true);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-      }
-    });
-    
-    buy1.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(1);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField1.getText());
-        textField1.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-      }
-    });
-    
-    buy2.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(2);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField2.getText());
-        textField2.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy3.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(3);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField3.getText());
-        textField3.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy4.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(4);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField4.getText());
-        textField4.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy5.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(5);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField5.getText());
-        textField5.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy6.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(6);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField6.getText());
-        textField6.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy7.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(7);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField7.getText());
-        textField7.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy8.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(8);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField8.getText());
-        textField8.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy9.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(9);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField9.getText());
-        textField9.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
   
-    buy10.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(10);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField10.getText());
-        textField10.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
-    
-    buy11.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        boolean existed = false;
-        imat.getVarukorgController().setAdded();
-        Product product = products.get(11);
-        ShoppingItem productItem;
-        productUnits = Integer.parseInt(textField11.getText());
-        textField11.setText("1");
-        int cost = (int)product.getPrice();
-        int sum = productUnits*cost;
-        totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-        totalCostInt += sum;
-        if (IMatController.currentUser != null) {
-          productNr++;
-          
-          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              existingProducts.get(i).setAmount(newProductUnits);
-              existingProducts.get(i).addToSum(sum);
-              IMatShoppingCart.cart.addCost(sum);
-              existed = true;
-            }
-          }
-          if (!existed) {
-            IMatShoppingCart.cart.addShoppingItem(product, productUnits, sum);
-          }
-          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
-          imat.getVarukorgController().updateTotalCost();
-          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
-          imat.getVarukorgController().populateCheckoutCart(list);
-          initCheckoutCart(list);
-        } else {
-          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
-          for (int i = 0; i < existingProducts.size(); i++) {
-            if (existingProducts.get(i).getProduct().getName().equals(product.getName())) {
-              int oldProductUnits = (int)existingProducts.get(i).getAmount();
-              int newProductUnits = productUnits + oldProductUnits;
-              productItem = new ShoppingItem(product, newProductUnits);
-              existed = true;
-              IMatController.getShoppingCart().removeItem(i);
-              IMatController.getShoppingCart().addItem(productItem);
-            }
-          }
-          if (!existed) {
-            IMatController.getShoppingCart().addItem(new ShoppingItem(product, productUnits));
-          }
-          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
-          imat.getVarukorgController().updateTotalCostBackend(totalSum);
-          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
-        }
-    }
-    });
 
     kontouppgifterButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        if (kontouppgifterButton.isFocused()) {
+        if (kontouppgifterButton.isSelected()) {
           kontouppgifterButton.setSelected(true);
         }
         if (orderhistorikButton.isSelected()) {
@@ -2495,7 +885,7 @@ public class CenterFlikController implements Initializable {
     favoritvarorButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        if (favoritvarorButton.isFocused()) {
+        if (favoritvarorButton.isSelected()) {
           favoritvarorButton.setSelected(true);
         }
         if (kontouppgifterButton.isSelected()) {
@@ -3138,6 +1528,7 @@ public class CenterFlikController implements Initializable {
   public void increment(TextField field, Label totalCost, Product product) {
     try {
       Integer inc = Integer.parseInt(field.getCharacters().toString());
+      System.out.println(inc);
       if (inc > 0) {
         inc++;
         totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
@@ -3152,6 +1543,29 @@ public class CenterFlikController implements Initializable {
     } catch (NumberFormatException e) {
         Integer inc = 1;
         totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+    }
+  }
+  
+  public void incrementNew(TextField field, Label totalCost, List<Product> product, int pos) {
+    try {
+      Integer inc = Integer.parseInt(field.getCharacters().toString());
+      System.out.println(inc);
+      if (inc > 0) {
+        inc++;
+        totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      } else {
+        inc = 1;
+        totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      }
+    } catch (NumberFormatException e) {
+        Integer inc = 1;
+        totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
         String newNumber = inc.toString();
         field.setText(newNumber);
     }
@@ -3181,6 +1595,29 @@ public class CenterFlikController implements Initializable {
     } catch (NumberFormatException e) {
         Integer inc = 1;
         totalCost.setText("Pris: " + (int)product.getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+    }
+  }
+  
+  public void decrementNew(TextField field, Label totalCost, List<Product> product, int pos) {
+    System.out.println(pos);
+    try {
+      Integer inc = Integer.parseInt(field.getCharacters().toString());
+      if (inc > 1) {
+        inc--;
+        totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      } else {
+        inc = 1;
+        totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
+        String newNumber = inc.toString();
+        field.setText(newNumber);
+      }
+    } catch (NumberFormatException e) {
+        Integer inc = 1;
+        totalCost.setText("Pris: " + (int)product.get(pos).getPrice()*inc + " kr");
         String newNumber = inc.toString();
         field.setText(newNumber);
     }
@@ -3357,48 +1794,9 @@ public class CenterFlikController implements Initializable {
    * If Rice link has been clicked, show rice products in Handla view.
    */
   public void changeToRiceView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Ris");
-    products = IMatController.getIMatProducts().getRiceList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    
-    //hides unused product panes
-    productPane4.setVisible(false);
-    productPane5.setVisible(false);
-    productPane6.setVisible(false);
-    productPane7.setVisible(false);
-    productPane8.setVisible(false);
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getRiceList());
+    listPaneLabel.setText("Ris");
+    //populateFavorites(products);
 
   }
   
@@ -3406,868 +1804,88 @@ public class CenterFlikController implements Initializable {
    * If Meat link has been clicked, show meat products in Handla view.
    */
   public void changeToMeatView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Kött");
-    products = IMatController.getIMatProducts().getMeatList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    
-    //hides unused product panes
-    productPane6.setVisible(false);
-    productPane7.setVisible(false);
-    productPane8.setVisible(false);
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getMeatList());
+    listPaneLabel.setText("Kött");
+   
+    //populateFavorites(products);
   }
   
   public void changeToPastaView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Pasta");
-    products = IMatController.getIMatProducts().getPastaList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    changeToListView(IMatController.getIMatProducts().getPastaList());
+    listPaneLabel.setText("Pasta");
     
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    
-    //hides unused product panes
-    productPane7.setVisible(false);
-    productPane8.setVisible(false);
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
-
-    
+    //populateFavorites(products);
   }
     
   public void changeToBreadView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Bröd");
-    products = IMatController.getIMatProducts().getBreadList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(9);
-    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage9, imageName);
-    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
+    changeToListView(IMatController.getIMatProducts().getBreadList());
+    listPaneLabel.setText("Bröd");
     
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    productPane9.setVisible(true);
-    
-    //hides unused product panes
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    //populateFavorites(products);
   }
   
   public void changeToDrinkView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Dryck");
-    products = IMatController.getIMatProducts().getDrinkList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(9);
-    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage9, imageName);
-    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(10);
-    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage10, imageName);
-    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(11);
-    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage11, imageName);
-    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    productPane9.setVisible(true);
-    productPane10.setVisible(true);
-    productPane11.setVisible(true);
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getDrinkList());
+    listPaneLabel.setText("Dryck");
+   
+    //populateFavorites(products);
   }
     
   public void changeToFruitView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Frukt & bär");
-    products = IMatController.getIMatProducts().getFruitList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(9);
-    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage9, imageName);
-    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(10);
-    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage10, imageName);
-    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(11);
-    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage11, imageName);
-    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    productPane9.setVisible(true);
-    productPane10.setVisible(true);
-    productPane11.setVisible(true);
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getFruitList());
+    listPaneLabel.setText("Frukt & bär");
+   
+    //populateFavorites(products);
   }
     
   public void changeToFishView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Fisk");
-    products = IMatController.getIMatProducts().getFishList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
+    changeToListView(IMatController.getIMatProducts().getFishList());
+    listPaneLabel.setText("Fisk");
     
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    
-    //hides unused product panes
-    productPane7.setVisible(false);
-    productPane8.setVisible(false);
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    //populateFavorites(products);
     }
     
   public void changeToVegetablesView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Grönsaker");
-    products = IMatController.getIMatProducts().getVegetableList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(9);
-    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage9, imageName);
-    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(10);
-    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage10, imageName);
-    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(11);
-    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage11, imageName);
-    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    productPane9.setVisible(true);
-    productPane10.setVisible(true);
-    productPane11.setVisible(true);
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getVegetableList());
+    listPaneLabel.setText("Grönsaker");
+   
+    //populateFavorites(products);
   }
     
   public void changeToSpiceView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Kryddor & örter");
-    products = IMatController.getIMatProducts().getSpiceList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    changeToListView(IMatController.getIMatProducts().getSpiceList());
+    listPaneLabel.setText("Kryddor & örter");
+ 
     
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    
-    //hides unused product panes
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    //populateFavorites(products);
     }
     
   public void changeToDairiesView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Mejeriprodukter");
-    products = IMatController.getIMatProducts().getDairieList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
+    changeToListView(IMatController.getIMatProducts().getDairieList());
+    listPaneLabel.setText("Mejeriprodukter");
     
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    
-    //hides unused product panes
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    //populateFavorites(products);
     }
     
   public void changeToNutsView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Nötter & frön");
-    products = IMatController.getIMatProducts().getNutsList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    
-    //hides unused product panes
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getNutsList());
+    listPaneLabel.setText("Nötter & frön");
+   
+    //populateFavorites(products);
   }
     
   public void changeToPotatoView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Potatis & rotfrukter");
-    products = IMatController.getIMatProducts().getPotatoList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(9);
-    productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage9, imageName);
-    totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(10);
-    productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage10, imageName);
-    totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(11);
-    productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage11, imageName);
-    totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
+    changeToListView(IMatController.getIMatProducts().getPotatoList());
+    listPaneLabel.setText("Potatis & rotfrukter");
     
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    productPane9.setVisible(true);
-    productPane10.setVisible(true);
-    productPane11.setVisible(true);
-    
-    populateFavorites(products);
+    //populateFavorites(products);
     }
     
   public void changeToSweetsView() {
-    changeToCategoryView();
-    setAllUnitsToOne();
-    categoryLabel.setText("Sötsaker");
-    products = IMatController.getIMatProducts().getSweetsList();
-    product = products.get(0);
-    productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage, imageName);
-    totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(1);
-    productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage1, imageName);
-    totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(2);
-    productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage2, imageName);
-    totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(3);
-    productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage3, imageName);
-    totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(4);
-    productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage4, imageName);
-    totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(5);
-    productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage5, imageName);
-    totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(6);
-    productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage6, imageName);
-    totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(7);
-    productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage7, imageName);
-    totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-    product = products.get(8);
-    productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-    imageName = product.getImageName();
-    setImage(productImage8, imageName);
-    totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-    
-    //show used product panes
-    productPane.setVisible(true);
-    productPane1.setVisible(true);
-    productPane2.setVisible(true);
-    productPane3.setVisible(true);
-    productPane4.setVisible(true);
-    productPane5.setVisible(true);
-    productPane6.setVisible(true);
-    productPane7.setVisible(true);
-    productPane8.setVisible(true);
-    
-    //hides unused product panes
-    productPane9.setVisible(false);
-    productPane10.setVisible(false);
-    productPane11.setVisible(false);
-    
-    
-    populateFavorites(products);
+    changeToListView(IMatController.getIMatProducts().getSweetsList());
+    listPaneLabel.setText("Sötsaker");
+
+    //populateFavorites(products);
     
     }
   
@@ -4361,15 +1979,6 @@ public class CenterFlikController implements Initializable {
           setEmptyCartText();
         }
     }
-    if (!kontouppgifterButton.isSelected()) {
-      kontouppgifterButton.setSelected(true);
-    }
-    if (orderhistorikButton.isSelected()) {
-      orderhistorikButton.setSelected(false);
-    }
-    if (favoritvarorButton.isSelected()) {
-      favoritvarorButton.setSelected(false);
-    }
     getListVyPane().getChildren().remove(lv);
     int size = varaListVyParent.getChildren().size();
     currentPane = "kontouppgifterPane";
@@ -4456,35 +2065,7 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToCategoryView() {
-      deSelect();
 
-    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      makeShoppingCartVisible();
-    }
-    if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
-      }
-    } else {
-        if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
-        }
-    }
-    getListVyPane().getChildren().remove(lv);
-    int size = varaListVyParent.getChildren().size();
-    currentPane = "productScrollPane";
-    String id;
-    for (int i = 0; i < size; i++) {
-      id = varaListVyParent.getChildren().get(i).getId();
-      if (id.compareTo(currentPane) == 0) {
-        varaListVyParent.getChildren().get(i).toFront();
-        varaListVyParent.getChildren().get(i).setVisible(true);
-      } else if (id.compareTo("toolBar") == 0) {
-      } else {
-        varaListVyParent.getChildren().get(i).setVisible(false);
-      }
-    }
-    uncheck();
     
   }
   
@@ -4550,676 +2131,71 @@ public class CenterFlikController implements Initializable {
   }
   
   public void changeToFavoriteView() {
-    //currentPane = "favoriteScrollPane";
- 
-    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
-      makeShoppingCartVisible();
-    }
     if (IMatController.currentUser != null) {
-      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
-        setEmptyCartText();
-      }
+      
     } else {
-        if (IMatController.getShoppingCart().getItems().isEmpty()) {
-          setEmptyCartText();
-        }
+      changeToListView(IMatController.getIMatBackend().favorites());
     }
-    getListVyPane().getChildren().remove(lv);
-        changeToCategoryView();
-        setAllUnitsToOne();
-        favoritvarorButton.setSelected(true);
-        categoryLabel.setText("Favoritvaror");
-        
-        products = IMatController.getIMatBackend().favorites();
-        if (products.isEmpty()) {
-            //hide unused products
-            productPane.setVisible(false);
-            productPane1.setVisible(false);
-            productPane2.setVisible(false);
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-        }else if(products.size() == 1) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            //show used product panes
-            productPane.setVisible(true);
-            
-            //hide unused product panes
-            productPane1.setVisible(false);
-            productPane2.setVisible(false);
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 2) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            
-            //hide unused product panes
-            productPane2.setVisible(false);
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 3) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            
-            //hide unused product panes
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 4) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            
-            //hide unused product panes
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 5) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            
-            //hide unused product panes
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 6) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            
-            //hide unused product panes
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 7) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            
-            //hide unused product panes
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 8) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            
-            //hide unused product panes
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 9) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            
-            //hide unused product panes
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 10) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(9);
-            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage9, imageName);
-            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            productPane9.setVisible(true);
-            
-            //hide unused product panes
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-           
-        }else if(products.size() == 11) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(9);
-            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage9, imageName);
-            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(10);
-            productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage10, imageName);
-            totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            productPane9.setVisible(true);
-            productPane10.setVisible(true);
-            
-            //hide unsed product panes
-            productPane11.setVisible(false);
-        }else {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(9);
-            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage9, imageName);
-            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(10);
-            productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage10, imageName);
-            totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(11);
-            productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage11, imageName);
-            totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            productPane9.setVisible(true);
-            productPane10.setVisible(true);
-            productPane11.setVisible(true);
-        }
-        removeFavorite = false;
-        for (int i = 0; i < products.size(); i++) {
-         switch (i) {
-            case 0:  productFavorite.fire();
-                     break;
-            case 1:  productFavorite1.fire();
-                     break;
-            case 2:  productFavorite2.fire();
-                     break;
-            case 3:  productFavorite3.fire();
-                     break;
-            case 4:  productFavorite4.fire();
-                     break;
-            case 5:  productFavorite5.fire();
-                     break;
-            case 6:  productFavorite6.fire();
-                     break;
-            case 7:  productFavorite7.fire();
-                     break;
-            case 8:  productFavorite8.fire();
-                     break;
-            case 9: productFavorite9.fire();
-                     break;
-            case 10: productFavorite10.fire();
-                     break;
-            case 11: productFavorite11.fire();
-                     break;
-        }
-        }
-        removeFavorite = true;
+    
+    listPaneLabel.setText("Favoriter");
+    if (kontouppgifterButton.isSelected()) {
+      kontouppgifterButton.setSelected(false);
+    }
+    if (orderhistorikButton.isSelected()) {
+      orderhistorikButton.setSelected(false);
+    }
+    if (!favoritvarorButton.isSelected()) {
+      favoritvarorButton.setSelected(true);
+    }
+    //currentPane = "favoriteScrollPane";
+// 
+//    if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+//      makeShoppingCartVisible();
+//    }
+//    if (IMatController.currentUser != null) {
+//      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
+//        setEmptyCartText();
+//      }
+//    } else {
+//        if (IMatController.getShoppingCart().getItems().isEmpty()) {
+//          setEmptyCartText();
+//        }
+//    }
+//    getListVyPane().getChildren().remove(lv);
+//        changeToCategoryView();
+//        setAllUnitsToOne();
+//        favoritvarorButton.setSelected(true);
+//        categoryLabel.setText("Favoritvaror");
+//        removeFavorite = false;
+//        for (int i = 0; i < products.size(); i++) {
+//         switch (i) {
+//            case 0:  productFavorite.fire();
+//                     break;
+//            case 1:  productFavorite1.fire();
+//                     break;
+//            case 2:  productFavorite2.fire();
+//                     break;
+//            case 3:  productFavorite3.fire();
+//                     break;
+//            case 4:  productFavorite4.fire();
+//                     break;
+//            case 5:  productFavorite5.fire();
+//                     break;
+//            case 6:  productFavorite6.fire();
+//                     break;
+//            case 7:  productFavorite7.fire();
+//                     break;
+//            case 8:  productFavorite8.fire();
+//                     break;
+//            case 9: productFavorite9.fire();
+//                     break;
+//            case 10: productFavorite10.fire();
+//                     break;
+//            case 11: productFavorite11.fire();
+//                     break;
+//        }
+//        }
+//        removeFavorite = true;
        
   }
   
@@ -5501,629 +2477,9 @@ public class CenterFlikController implements Initializable {
         }
     }
     getListVyPane().getChildren().remove(lv);
-        changeToCategoryView();
-        setAllUnitsToOne();
-        categoryLabel.setText("Sökresultat för: " + searchText);
-        products = IMatController.imatBackend.findProducts(searchText);
-        if (products.size() == 0) {
-            //hide unused products
-            productPane.setVisible(false);
-            productPane1.setVisible(false);
-            productPane2.setVisible(false);
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-        }else if(products.size() == 1) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            //show used product panes
-            productPane.setVisible(true);
-            
-            //hide unused product panes
-            productPane1.setVisible(false);
-            productPane2.setVisible(false);
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 2) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            
-            //hide unused product panes
-            productPane2.setVisible(false);
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 3) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            
-            //hide unused product panes
-            productPane3.setVisible(false);
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 4) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            
-            //hide unused product panes
-            productPane4.setVisible(false);
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 5) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            
-            //hide unused product panes
-            productPane5.setVisible(false);
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 6) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            
-            //hide unused product panes
-            productPane6.setVisible(false);
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 7) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            
-            //hide unused product panes
-            productPane7.setVisible(false);
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 8) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            
-            //hide unused product panes
-            productPane8.setVisible(false);
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 9) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            
-            //hide unused product panes
-            productPane9.setVisible(false);
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-            
-        }else if(products.size() == 10) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(9);
-            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage9, imageName);
-            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            productPane9.setVisible(true);
-            
-            //hide unused product panes
-            productPane10.setVisible(false);
-            productPane11.setVisible(false);
-           
-        }else if(products.size() == 11) {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(9);
-            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage9, imageName);
-            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(10);
-            productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage10, imageName);
-            totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            productPane9.setVisible(true);
-            productPane10.setVisible(true);
-            
-            //hide unsed product panes
-            productPane11.setVisible(false);
-        }else {
-            product = products.get(0);
-            productLabel.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage, imageName);
-            totalCost.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(1);
-            productLabel1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage1, imageName);
-            totalCost1.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(2);
-            productLabel2.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage2, imageName);
-            totalCost2.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(3);
-            productLabel3.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage3, imageName);
-            totalCost3.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(4);
-            productLabel4.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage4, imageName);
-            totalCost4.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(5);
-            productLabel5.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage5, imageName);
-            totalCost5.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(6);
-            productLabel6.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage6, imageName);
-            totalCost6.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(7);
-            productLabel7.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage7, imageName);
-            totalCost7.setText("Pris: " + (int)product.getPrice() + " kr");
-            //hide and show
-            product = products.get(8);
-            productLabel8.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage8, imageName);
-            totalCost8.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(9);
-            productLabel9.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage9, imageName);
-            totalCost9.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(10);
-            productLabel10.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage10, imageName);
-            totalCost10.setText("Pris: " + (int)product.getPrice() + " kr");
-            product = products.get(11);
-            productLabel11.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
-            imageName = product.getImageName();
-            setImage(productImage11, imageName);
-            totalCost11.setText("Pris: " + (int)product.getPrice() + " kr");
-            
-            //show used product panes
-            productPane.setVisible(true);
-            productPane1.setVisible(true);
-            productPane2.setVisible(true);
-            productPane3.setVisible(true);
-            productPane4.setVisible(true);
-            productPane5.setVisible(true);
-            productPane6.setVisible(true);
-            productPane7.setVisible(true);
-            productPane8.setVisible(true);
-            productPane9.setVisible(true);
-            productPane10.setVisible(true);
-            productPane11.setVisible(true);
-        }
+    changeToListView(IMatController.getIMatBackend().findProducts(searchText));
+    listPaneLabel.setText("Sökresultat för: " + searchText);
+      
         uncheck();
         populateFavorites(products);
     }
@@ -6364,6 +2720,250 @@ public class CenterFlikController implements Initializable {
         }
       }
       removeFavorite = true;
+    }
+    
+    public void changeToListView(List<Product> list) {
+      deSelect();
+
+      if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+        makeShoppingCartVisible();
+      }
+      if (IMatController.currentUser != null) {
+        if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
+          setEmptyCartText();
+        }
+      } else {
+          if (IMatController.getShoppingCart().getItems().isEmpty()) {
+            setEmptyCartText();
+          }
+      }
+      getListVyPane().getChildren().remove(lv);
+      int size = varaListVyParent.getChildren().size();
+      currentPane = "listPane";
+      String id;
+      for (int i = 0; i < size; i++) {
+        id = varaListVyParent.getChildren().get(i).getId();
+        if (id.compareTo(currentPane) == 0) {
+          varaListVyParent.getChildren().get(i).toFront();
+          varaListVyParent.getChildren().get(i).setVisible(true);
+        } else if (id.compareTo("toolBar") == 0) {
+        } else {
+          varaListVyParent.getChildren().get(i).setVisible(false);
+        }
+      }
+      populateProductList(list);
+    }
+
+    public void populateProductList(List<Product> productsToView) {
+    //if (getListVyPane().getChildren().contains(listPanesView)) {
+      //getListVyPane().getChildren().remove(listPanesView);
+    //}
+      if (!gridPaneProducts.getChildren().isEmpty()) {
+        int size = gridPaneProducts.getChildren().size();
+        gridPaneProducts.getChildren().remove(0, size);
+      }
+    int inc = 0;
+    for (int i = 0; i < productsToView.size(); i++) {
+      product = productsToView.get(i);
+      imageName = product.getImageName();
+      AnchorPane pane = new AnchorPane();
+       Label label1 = new Label("");
+       Label label2 = new Label("");
+       Button plusButton = new Button("+");
+       Button minusButton = new Button("-");
+       Button buy = new Button("Köp");
+       CheckBox favorite = new CheckBox();
+       TextField field = new TextField("1");
+       ImageView image = new ImageView();
+       setImage(image, imageName);
+       image.fitWidthProperty().setValue(150);
+       image.fitHeightProperty().setValue(110);
+
+
+        label1.setMaxHeight(15);
+        label1.setMinHeight(15);
+        label2.setMinWidth(0);
+        label2.setMaxHeight(15);
+        label2.setMinHeight(15);
+             
+    label1.setText(product.getName() + "  " + (int)product.getPrice() + " " + product.getUnit());
+    label2.setText("Pris: " + (int)product.getPrice() + " kr");
+ 
+        plusButton.setMaxHeight(15);
+        plusButton.setMinHeight(15);
+        plusButton.setMinWidth(15);
+        plusButton.setMaxWidth(15);
+        minusButton.setMaxHeight(15);
+        minusButton.setMinHeight(15);
+        minusButton.setMinWidth(15);
+        minusButton.setMaxWidth(15);
+        plusButton.getStyleClass().add("Addbutton");
+        minusButton.getStyleClass().add("SubButton");
+        buy.getStyleClass().add("BuyButton");
+        
+        favorite.setMaxHeight(18);
+        favorite.setMinHeight(18);
+        favorite.setMinWidth(24);
+        favorite.setMaxWidth(24);
+        field.setMaxHeight(22);
+        field.setMinHeight(22);
+        field.setMinWidth(35);
+        field.setMaxWidth(35);
+        
+        
+        buy.setMaxSize(43, 25);
+        buy.minHeight(25);
+        buy.minWidth(43);
+        buy.maxHeight(25);
+        buy.maxWidth(43);
+
+        Integer test = i;
+
+        
+      buy.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        buyMethod(field, label2, productsToView, test);
+      }
+    });
+        
+          
+      minusButton.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+          decrementNew(field, label2, productsToView, test);
+        }
+      });
+      
+      plusButton.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+          incrementNew(field, label2, productsToView, test);
+        }
+      });
+
+        
+      favorite.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+          favoriteMethod(favorite, productsToView, test);
+        }
+      });
+
+        AnchorPane.setTopAnchor(buy, 180.0);
+        AnchorPane.setRightAnchor(buy, 10.0);
+        AnchorPane.setTopAnchor(label1, 140.0);
+        AnchorPane.setLeftAnchor(label1, 33.0);
+        AnchorPane.setTopAnchor(label2, 184.0);
+        AnchorPane.setLeftAnchor(label2, 80.0);
+        AnchorPane.setTopAnchor(image, 5.0);
+        AnchorPane.setRightAnchor(image, 32.0);
+        AnchorPane.setLeftAnchor(image, 33.0);
+        AnchorPane.setTopAnchor(plusButton, 177.0);
+        AnchorPane.setLeftAnchor(plusButton, 60.0);
+        AnchorPane.setTopAnchor(minusButton, 195.0);
+        AnchorPane.setLeftAnchor(minusButton, 60.0);
+        AnchorPane.setTopAnchor(favorite, 15.0);
+        AnchorPane.setRightAnchor(favorite, 5.0);
+        AnchorPane.setTopAnchor(field, 180.0);
+        AnchorPane.setLeftAnchor(field, 20.0);
+
+        pane.getChildren().addAll(buy, label1, label2, image, plusButton, minusButton, favorite, field);
+        pane.setMaxHeight(250);
+        pane.setMinHeight(250);
+        pane.setPrefSize(217, 250);
+        pane.setMaxWidth(217);
+        pane.setMinWidth(217);
+        pane.setStyle("-fx-border-color: #2e8b57;");
+        if (i > 0 && i%3 == 0) {
+          inc++;
+        }
+        int row = i%3;
+        gridPaneProducts.add(pane, row, inc);
+
+     
+    }
+
+    
+          }
+  
+    
+    public void buyMethod(TextField field, Label label2, List<Product> product, int pos) {
+     boolean existed = false;
+        imat.getVarukorgController().setAdded();
+        ShoppingItem productItem;
+        productUnits = Integer.parseInt(field.getText());
+        field.setText("1");
+        int cost = (int)product.get(pos).getPrice();
+        Integer oldCost = cost;
+        label2.setText("Pris: " + (int)product.get(pos).getPrice() + " kr");
+        int sum = productUnits*cost;
+        totalCostInt += sum;
+        if (IMatController.currentUser != null) {
+          productNr++;
+          
+          List<IMatShoppingItem> existingProducts = IMatShoppingCart.cart.getAllProducts();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.get(pos).getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              existingProducts.get(i).setAmount(newProductUnits);
+              existingProducts.get(i).addToSum(sum);
+              IMatShoppingCart.cart.addCost(sum);
+              existed = true;
+            }
+          }
+          if (!existed) {
+            IMatShoppingCart.cart.addShoppingItem(product.get(pos), productUnits, sum);
+          }
+          imat.getVarukorgController().getIMatShoppingCart().getCart().setShoppingItemList(existingProducts); ;
+          imat.getVarukorgController().updateTotalCost();
+          List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
+          imat.getVarukorgController().populateCheckoutCart(list);
+          initCheckoutCart(list);
+          imat.getVarukorgController().getList().setFocusTraversable(true);
+        } else {
+          List<ShoppingItem> existingProducts = IMatController.getShoppingCart().getItems();
+          for (int i = 0; i < existingProducts.size(); i++) {
+            if (existingProducts.get(i).getProduct().getName().equals(product.get(pos).getName())) {
+              int oldProductUnits = (int)existingProducts.get(i).getAmount();
+              int newProductUnits = productUnits + oldProductUnits;
+              productItem = new ShoppingItem(product.get(pos), newProductUnits);
+              existed = true;
+              IMatController.getShoppingCart().removeItem(i);
+              IMatController.getShoppingCart().addItem(productItem);
+            }
+          }
+          if (!existed) {
+            IMatController.getShoppingCart().addItem(new ShoppingItem(product.get(pos), productUnits));
+          }
+          Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
+          imat.getVarukorgController().updateTotalCostBackend(totalSum);
+          imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+          initCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
+        }
+      }
+    
+    public void favoriteMethod(CheckBox favorite, List<Product> product, int pos) {
+      if (IMatController.currentUser != null) {
+        if (favorite.isSelected()) {
+          int index = IMatController.getNumberOfRecords(product.get(pos).toString());
+          IMatController.addFavorite(product.get(pos).toString(), ++index);
+        } else {
+          // Implement how to find correct index
+          int index = 1;
+          IMatController.removeFavorite(product.toString(), index);
+        }
+      } else {
+        if (favorite.isSelected()) {
+          IMatController.getIMatBackend().addFavorite(product.get(pos));
+        } else {
+            if (removeFavorite) {
+              IMatController.getIMatBackend().removeFavorite(product.get(pos));
+          }
+
+        }
+    }
     }
 
 }

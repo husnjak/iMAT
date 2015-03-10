@@ -46,3 +46,7 @@
 .CancelButton:hover{
     -fx-background-image: url("Cancel_Hover.png");
 }
+
+.list-cell {
+  -fx-cell-size: 15 ;
+}

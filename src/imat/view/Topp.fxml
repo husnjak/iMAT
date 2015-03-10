@@ -10,11 +10,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-background-color: e01e1e;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="1210.0" style="-fx-background-color: maroon;" styleClass="backgroundColor" stylesheets="@ButtonCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.view.ToppController">
    <children>
       <ImageView fx:id="logoImage" fitHeight="75.0" fitWidth="200.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="LogoButton">
          <image>
-            <Image url="@iMAT_Logga.png" />
+            <Image url="@iMAT_logga_MaroonRed.png" />
          </image>
       </ImageView>
       <StackPane fx:id="loginStackPane" alignment="CENTER_RIGHT" layoutX="799.0" layoutY="3.0" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0">
@@ -28,26 +28,38 @@
                         <Button fx:id="loginButton" layoutX="414.0" layoutY="19.0" mnemonicParsing="false" text="Logga in" AnchorPane.topAnchor="19.0" />
                      </children>
                   </HBox>
-                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" style="-fx-text-fill: darkblue;" text="Skapa konto" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="45.0" />
-                  <Label fx:id="loginLabel" layoutX="269.0" layoutY="47.0" textFill="#f20808" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="50.0" />
+                  <Hyperlink fx:id="registerUser" layoutX="151.0" layoutY="49.0" style="-fx-text-fill: lightblue;" text="Skapa konto" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="45.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Hyperlink>
+                  <Label fx:id="loginLabel" layoutX="274.0" layoutY="47.0" textFill="#f20808" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="logoutPane" prefWidth="200.0" visible="false" StackPane.alignment="CENTER_RIGHT">
                <children>
                   <HBox alignment="CENTER_RIGHT" layoutX="213.0" layoutY="35.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <Label fx:id="loggedInLabel" layoutX="213.0" layoutY="40.0" text="Inloggad som">
+                        <Label fx:id="loggedInLabel" layoutX="213.0" layoutY="40.0" text="Inloggad som: " textFill="WHITE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
                         </Label>
-                        <Hyperlink fx:id="loggedInUser" layoutX="301.0" layoutY="36.0">
+                        <Hyperlink fx:id="loggedInUser" layoutX="301.0" layoutY="36.0" style="-fx-text-fill: lightblue;" textFill="#171717">
                            <padding>
                               <Insets right="20.0" />
                            </padding>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
                         </Hyperlink>
                         <Button fx:id="logoutButton" layoutX="374.0" layoutY="35.0" mnemonicParsing="false" text="Logga ut" />
                      </children>

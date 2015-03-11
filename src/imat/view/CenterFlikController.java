@@ -1291,9 +1291,9 @@ public class CenterFlikController implements Initializable {
         Float cardNumber = Float.parseFloat(cardNumberTextField11.getText());
         cardNumberLabel11.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("CARDNUMBER", cardNumber.toString());
+          IMatController.updateAccount("CARDNUMBER", cardNumberTextField11.getText());
         } else {
-          IMatController.getIMatBackend().getCreditCard().setCardNumber(cardNumber.toString());
+          IMatController.getIMatBackend().getCreditCard().setCardNumber(cardNumberTextField11.getText());
         }
       } catch (NumberFormatException e) {
         cardNumberTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
@@ -1318,7 +1318,7 @@ public class CenterFlikController implements Initializable {
         Integer validYear = Integer.parseInt(yearTextField11.getText());
         yearLabel11.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("VALIDYEAR", validYear.toString());
+          IMatController.updateAccount("VALIDYEAR", yearTextField11.getText());
           yearInfo = true;
         } else {
           IMatController.getIMatBackend().getCreditCard().setValidYear(validYear);

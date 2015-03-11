@@ -1163,7 +1163,7 @@ public class CenterFlikController implements Initializable {
         Float civic = Float.parseFloat(civicTextField11.getText());
         civicLabel11.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("CIVIC", civic.toString());
+          IMatController.updateAccount("CIVIC", civicTextField11.getText());
         } else {
           IMatController.getIMatBackend().getCustomer().setMobilePhoneNumber(civic.toString());
         }

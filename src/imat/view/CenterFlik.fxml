@@ -383,9 +383,7 @@
                      <children>
                         <HBox layoutX="248.9619140625" layoutY="180.0" spacing="5.0" AnchorPane.leftAnchor="250.0">
                            <children>
-                              <Label layoutX="249.0" layoutY="180.0" text="Tack" />
-                              <Label fx:id="nameOrderLabel" layoutX="280.0" layoutY="180.0" />
-                              <Label layoutX="350.0" layoutY="180.0" text="för din beställning." />
+                              <Label layoutX="249.0" layoutY="180.0" text="Tack för din beställning." />
                            </children>
                         </HBox>
                         <HBox layoutX="247.0" layoutY="217.0">

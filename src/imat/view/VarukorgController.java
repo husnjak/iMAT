@@ -152,7 +152,7 @@ public class VarukorgController implements Initializable {
         resetShoppingCartButton.setDisable(true);
         resetShoppingCart();
         if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
-          imat.getCenterController().changeToCheckoutView();
+          //imat.getCenterController().changeToCheckoutView();
         }
         shoppingCartListView.getPlaceholder().setVisible(true);
         changeCartLink.setDisable(true);

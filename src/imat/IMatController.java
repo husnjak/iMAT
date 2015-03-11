@@ -451,6 +451,22 @@ public class IMatController implements Initializable {
     }
     return favorites;
   }
+   
+     public static int getNumberOfOrders() {
+    int records = 0;
+    try {
+      select = conn.createStatement();
+      ResultSet rs = select.executeQuery("SELECT * FROM ORDERS");
+      while (rs.next()) {
+        records++;
+      }
+      rs.close();
+      select.close();
+    } catch (SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return records;
+  }
   
   /**
    * When the products in the shopping cart has been paid for, the receipt is

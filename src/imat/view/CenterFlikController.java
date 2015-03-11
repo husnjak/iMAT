@@ -2041,7 +2041,7 @@ public class CenterFlikController implements Initializable {
             minusButton.getStyleClass().add("SubButton");
             // Styles for buttons
             
-            hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, plusButton, label2, minusButton, pane3, label3);
+            hbox.getChildren().addAll(deleteButton, pane1, label1, pane2, minusButton, label2, plusButton, pane3, label3);
             HBox.setHgrow(pane1, Priority.ALWAYS);
             HBox.setHgrow(pane2, Priority.ALWAYS);
             HBox.setHgrow(pane3, Priority.ALWAYS);
@@ -2086,13 +2086,7 @@ public class CenterFlikController implements Initializable {
                   populateCheckoutCart();
                   Integer total = (int)IMatController.getShoppingCart().getTotal();
                   totalCostCartLabel.setText(total.toString() + " kr");
-                  if (IMatController.getShoppingCart().getItems().isEmpty()) {
-                    imat.getVarukorgController().getEmptyButton().setDisable(true);
-                    imat.getVarukorgController().getPlaceHolder().setVisible(true);
-                  } else {
-                    imat.getVarukorgController().getEmptyButton().setDisable(false);
-                    imat.getVarukorgController().getPlaceHolder().setVisible(false);
-                  }
+                  imat.getVarukorgController().getEmptyButton().setDisable(true);
                 }
                  imat.getVarukorgController().getPlaceHolder().setVisible(true);
               }
@@ -2280,7 +2274,8 @@ public class CenterFlikController implements Initializable {
     }
     
     if (IMatController.currentUser != null) {
-      
+      Integer nr = IMatController.getNumberOfOrders();
+        orderNumberReceiptLabel.setText(nr.toString());
     } else {
       Integer orderID = orderCart.getOrderNumber();
       orderNumberReceiptLabel.setText(orderID.toString());
@@ -2289,7 +2284,7 @@ public class CenterFlikController implements Initializable {
   
   public void changeToCheckoutView() {
     int size = varaListVyParent.getChildren().size();
-    currentPane = "checkCartCheckoutPane";
+    currentPane = "testPagination";
     String id;
     for (int i = 0; i < size; i++) {
       id = varaListVyParent.getChildren().get(i).getId();

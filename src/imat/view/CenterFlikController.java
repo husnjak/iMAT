@@ -45,13 +45,10 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -777,7 +774,7 @@ public class CenterFlikController implements Initializable {
             imat.getToppController().setUsername(username);
             imat.getToppController().setPassword(password);
             imat.getToppController().changeLoginScreen();
-            showOrderHistory();
+            //showOrderHistory();
             imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
           } else {
             createUserNameLabel.setText("Fyll i användarnamn");
@@ -818,7 +815,8 @@ public class CenterFlikController implements Initializable {
         }
         //changeToOrderHistorikView();
         if (IMatController.currentUser != null) {
-          
+          showOrderHistory();
+          changeToOrderHistory(imatOrderList);
         } else {
           changeToOrderHistoryAccordian(IMatController.getIMatBackend().getOrders());
           //populateHistoryAccordian();
@@ -878,13 +876,13 @@ public class CenterFlikController implements Initializable {
     if (isRequiredFieldsEntered()) {
       if (IMatController.currentUser != null) {
         IMatController.createPaidOrder(imat.getVarukorgController().getIMatShoppingCart().getCart());
-        imat.getCenterController().showOrderHistory();
+        showOrderHistory();
         imat.getVarukorgController().setTotalCostLabel("0 kr");
         imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
         changeToReceiptView();
       } else {
         orderCart = IMatController.getIMatBackend().placeOrder();
-        imat.getCenterController().getOrders();
+        getOrders();
         imat.getVarukorgController().setTotalCostLabel("0 kr");
         imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());
         changeToReceiptView();
@@ -1638,7 +1636,7 @@ public class CenterFlikController implements Initializable {
           PreparedStatement psSelect = IMatController.getConnection().prepareStatement(selectSQL);
           psSelect.setString(1, IMatController.currentUser);
           ResultSet rs = psSelect.executeQuery();
-          List<IMatOrder> imatOrderList = new ArrayList();
+          imatOrderList = new ArrayList();
           while (rs.next()) {
             String storedDate = rs.getString("DATE");
             Date orderDate = new Date();
@@ -2797,7 +2795,97 @@ public class CenterFlikController implements Initializable {
         
       }
       
-     
-      
  }
+    
+       public void changeToOrderHistory(List<IMatOrder> ordersToView) {
+       //deSelect();
+      imat.getVarukorgController().getPlaceHolder().setVisible(true);
+      if (imat.getVarukorgController().getCartBuyButton().isDisabled()) {
+        makeShoppingCartVisible();
+      }
+      if (IMatController.currentUser != null) {
+        if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
+          imat.getVarukorgController().newPlaceHolder();
+          imat.getVarukorgController().getEmptyButton().setDisable(true);
+          imat.getVarukorgController().getPlaceHolder().setVisible(true);
+        }
+      } else {
+          if (IMatController.getShoppingCart().getItems().isEmpty()) {
+            imat.getVarukorgController().newPlaceHolder();
+            imat.getVarukorgController().getEmptyButton().setDisable(true);
+            imat.getVarukorgController().getPlaceHolder().setVisible(true);
+          }
+      }
+      getListVyPane().getChildren().remove(lv);
+      int size = varaListVyParent.getChildren().size();
+      currentPane = "accordionPane";
+      String id;
+      for (int i = 0; i < size; i++) {
+        id = varaListVyParent.getChildren().get(i).getId();
+        if (id.compareTo(currentPane) == 0) {
+          varaListVyParent.getChildren().get(i).toFront();
+          varaListVyParent.getChildren().get(i).setVisible(true);
+        } else if (id.compareTo("toolBar") == 0) {
+        } else {
+          varaListVyParent.getChildren().get(i).setVisible(false);
+        }
+      }
+      
+      accordion.getPanes().clear();
+      populateHistoryOrders(ordersToView);
+    }
+       
+       
+      public void populateHistoryOrders(List<IMatOrder> ordersToView) {
+      List<IMatShoppingItem> orderProducts;
+      
+      for (int i = 0; i < ordersToView.size(); i++) {
+        ObservableList<HBox> hboxList = FXCollections.observableArrayList();
+        IMatOrder order = ordersToView.get(i);
+        orderProducts = order.getAllProducts();
+        int nrProducts = orderProducts.size();
+        Integer totalCost;
+        int cost = 0;
+        for (int k = 0; k < nrProducts; k++) {
+          cost += (int)orderProducts.get(k).getSum();
+        }
+        totalCost = cost;
+        Integer orderID= order.getOrderNumber();
+        LocalDate date = order.getDate();
+        
+        String title = "OrderID: " + orderID.toString() + "  \t\t Datum: " + date.toString()
+            + "  \t Summa: " + totalCost.toString()+ " kronor";
+       
+        ListView<HBox> content = new ListView();
+        for (int j = 0; j < nrProducts; j++) {
+        HBox hbox = new HBox();
+        Integer sum = (int)orderProducts.get(j).getSum();
+        Integer amount = (int)orderProducts.get(j).getAmount();
+        String productName = orderProducts.get(j).getProduct().getName();
+        
+        hbox.setMaxHeight(15);
+        Pane pane1 = new Pane();
+        Pane pane2 = new Pane();
+        Label label1 = new Label(productName+"        ");
+        Label label2 = new Label(amount.toString()+" styck        ");
+        Label label3 = new Label(sum.toString()+" kronor");
+        pane1.setPrefWidth(60);
+        label1.setPrefWidth(120);
+        label2.setPrefWidth(90);
+        pane2.setPrefWidth(95);
+        label3.setPrefWidth(90);
+        hbox.getChildren().addAll(label1, pane1, label2, pane2, label3);
+
+        hboxList.add(hbox);
+        
+        
+        }
+        content.setItems(hboxList);
+        content.setPrefHeight(hboxList.size() * 30);
+        TitledPane pane = new TitledPane(title, content);
+        pane.setExpanded(false);
+        accordion.getPanes().add(pane);
+        
+      }
+      }
 }

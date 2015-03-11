@@ -376,6 +376,9 @@ public class ToppController implements Initializable {
       imat.getCenterController().getListVyPane().getChildren().remove(imat.getCenterController().getCheckoutView());
       imat.getCenterController().populateCheckoutCart();
     }
+    if (imat.getCenterController().currentPane.equals("accordionPane")) {
+      imat.getCenterController().changeToStartPageView();
+    }
     
     if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
       imat.getCenterController().changeToStartPageView();

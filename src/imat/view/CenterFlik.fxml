@@ -28,6 +28,11 @@
                         <Font size="36.0" />
                      </font>
                   </Text>
+                  <ImageView fitHeight="550.0" fitWidth="750.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Startsida.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </content>

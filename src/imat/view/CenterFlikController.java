@@ -1165,7 +1165,7 @@ public class CenterFlikController implements Initializable {
         if (IMatController.currentUser != null) {
           IMatController.updateAccount("CIVIC", civicTextField11.getText());
         } else {
-          IMatController.getIMatBackend().getCustomer().setMobilePhoneNumber(civic.toString());
+          IMatController.getIMatBackend().getCustomer().setMobilePhoneNumber(civicTextField11.getText());
         }
       } catch (NumberFormatException e) {
         civicTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
@@ -1188,10 +1188,10 @@ public class CenterFlikController implements Initializable {
     // Check if phoneTextField contains valid data
     if (phoneTextField.getLength() > 0 && phoneTextField.getLength() < 16) {
       try {
-        Integer phone = Integer.parseInt(phoneTextField.getText());
+        Float phone = Float.parseFloat(phoneTextField.getText());
         phoneLabel.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("PHONE", phone.toString());
+          IMatController.updateAccount("PHONE", phoneTextField.getText());
         } else {
           phoneTextField.setText(IMatController.getIMatBackend().getCustomer().getPhoneNumber());
         }
@@ -1247,9 +1247,9 @@ public class CenterFlikController implements Initializable {
         Integer postal = Integer.parseInt(postalTextField11.getText());
         postalLabel11.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("POSTAL", postal.toString());
+          IMatController.updateAccount("POSTAL", postalTextField11.getText());
         } else {
-          IMatController.getIMatBackend().getCustomer().setPostCode(postal.toString());
+          IMatController.getIMatBackend().getCustomer().setPostCode(postalTextField11.getText());
         }
       } catch (NumberFormatException e) {
         postalTextField11.setStyle("-fx-border-color: red; -fx-border-width: 1;");
@@ -1352,7 +1352,7 @@ public class CenterFlikController implements Initializable {
         Integer validMonth = Integer.parseInt(monthTextField11.getText());
         //monthLabel.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("VALIDMONTH", validMonth.toString());
+          IMatController.updateAccount("VALIDMONTH", monthTextField11.getText());
           monthInfo = true;
         } else {
           IMatController.getIMatBackend().getCreditCard().setValidMonth(validMonth);
@@ -1387,7 +1387,7 @@ public class CenterFlikController implements Initializable {
         Integer cvv = Integer.parseInt(cvvTextField11.getText());
         cvvLabel11.setText("");
         if (IMatController.currentUser != null) {
-          IMatController.updateAccount("CVV", cvv.toString());
+          IMatController.updateAccount("CVV", cvvTextField11.getText());
         } else {
           IMatController.getIMatBackend().getCreditCard().setVerificationCode(cvv);
         }

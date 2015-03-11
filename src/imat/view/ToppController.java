@@ -315,7 +315,22 @@ public class ToppController implements Initializable {
   imat.getVarukorgController().getList().setFocusTraversable(true);
   if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
     imat.getCenterController().changeToStartPageView();
-  }
+  } else if (imat.getCenterController().currentPane.equals("registerPane")) {
+      imat.getCenterController().changeToKontoView();
+    }
+  
+    if (IMatController.currentUser != null) {
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
+          imat.getVarukorgController().newPlaceHolder();
+        imat.getVarukorgController().getEmptyButton().setDisable(true);
+        imat.getVarukorgController().getPlaceHolder().setVisible(true);
+        imat.getVarukorgController().getChangeLink().setDisable(true);
+      } else {
+        imat.getVarukorgController().getEmptyButton().setDisable(false);
+        imat.getVarukorgController().getPlaceHolder().setVisible(false);
+        imat.getVarukorgController().getChangeLink().setDisable(false);
+      }
+    } 
   }
   
   /**
@@ -353,7 +368,7 @@ public class ToppController implements Initializable {
     
     imat.getCenterController().getOrders();
 
-    imat.getCenterController().getProductTable().setVisible(false);
+    
     Integer totalSum = (int)IMatController.getShoppingCart().getTotal();
     imat.getVarukorgController().updateTotalCostBackend(totalSum);
     imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().convertBackendToIMat());

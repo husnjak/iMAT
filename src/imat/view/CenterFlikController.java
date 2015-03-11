@@ -5,8 +5,6 @@
  */
 package imat.view;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import imat.IMat;
 import imat.IMatController;
 import imat.IMatOrder;
@@ -25,7 +23,6 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +36,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
@@ -143,14 +138,6 @@ public class CenterFlikController implements Initializable {
   private Button createAccountButton;
   @FXML
   private Label createUserNameLabel;
-  @FXML
-  private TableView<IMatOrder> orderTable;
-  @FXML
-  private TableColumn<IMatOrder, Integer> orderIdColumn;
-  @FXML
-  private TableColumn<IMatOrder, LocalDate> orderDateColumn;
-  @FXML
-  private TableColumn<IMatOrder, Integer> orderCostColumn;
   
   // Used to keep track which number the recently added product has in order
   Integer productNr = 0;
@@ -169,15 +156,6 @@ public class CenterFlikController implements Initializable {
   
   // Used to keep track of which category is selected
   Product currentProductCategory;
-  
-  @FXML
-  private TableView<IMatShoppingItem> productTable;
-  @FXML
-  private TableColumn<IMatShoppingItem, String> productNameColumn;
-  @FXML
-  private TableColumn<IMatShoppingItem, Integer> productUnitsColumn;
-  @FXML
-  private TableColumn<IMatShoppingItem, Integer> productCostColumn;
  
   @FXML
   private AnchorPane varaListVyParent;
@@ -190,8 +168,6 @@ public class CenterFlikController implements Initializable {
   @FXML
   private ToggleButton favoritvarorButton;
   @FXML
-  private ScrollPane orderHistorikPane;
-  @FXML
   private ScrollPane kontouppgifterPane;
   @FXML
   private TextField civicTextField1;
@@ -201,8 +177,6 @@ public class CenterFlikController implements Initializable {
   private TextField yearTextField1;
   @FXML
   private Label yearLabel1;
-  private TextField phoneTextField1;
-  private Label phoneLabel1;
   @FXML
   private TextField postalTextField1;
   @FXML
@@ -225,7 +199,6 @@ public class CenterFlikController implements Initializable {
   private TextField firstNameTextField1;
   @FXML
   private Button paymentForOrderButton;
-  private TextField emailTextField1;
   @FXML
   private TextField monthTextField1;
   @FXML
@@ -235,12 +208,7 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label firstNameLabel1;
   private ListView<IMatShoppingItem> checkOutCartListView;
-  private ListView<Product> productListView;
   static String action = "init";
-  @FXML
-  private ScrollPane receiptPane;
-  @FXML
-  private Label nameOrderLabel;
   @FXML
   private Label orderNumberReceiptLabel;
   @FXML
@@ -296,8 +264,6 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label createPasswordLabel1;
   @FXML
-  private Text firstNameText11;
-  @FXML
   private TextField firstNameTextField11;
   @FXML
   private Label firstNameLabel11;
@@ -307,8 +273,6 @@ public class CenterFlikController implements Initializable {
   private TextField lastNameTextField11;
   @FXML
   private Label lastNameLabel11;
-  @FXML
-  private Text civicText11;
   @FXML
   private TextField civicTextField11;
   @FXML
@@ -363,228 +327,6 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Label listPaneLabel;
   @FXML
-  private ScrollPane productScrollPane;
-  @FXML
-  private GridPane productGrid;
-  @FXML
-  private AnchorPane productPane;
-  @FXML
-  private Button buy;
-  @FXML
-  private ImageView productImage;
-  @FXML
-  private Label productLabel;
-  @FXML
-  private CheckBox productFavorite;
-  @FXML
-  private TextField textField;
-  @FXML
-  private Button plus;
-  @FXML
-  private Button minus;
-  @FXML
-  private Label totalCost;
-  @FXML
-  private AnchorPane productPane1;
-  @FXML
-  private Button buy1;
-  @FXML
-  private ImageView productImage1;
-  @FXML
-  private Label productLabel1;
-  @FXML
-  private CheckBox productFavorite1;
-  @FXML
-  private TextField textField1;
-  @FXML
-  private Button plus1;
-  @FXML
-  private Button minus1;
-  @FXML
-  private Label totalCost1;
-  @FXML
-  private AnchorPane productPane2;
-  @FXML
-  private Button buy2;
-  @FXML
-  private ImageView productImage2;
-  @FXML
-  private Label productLabel2;
-  @FXML
-  private CheckBox productFavorite2;
-  @FXML
-  private TextField textField2;
-  @FXML
-  private Button plus2;
-  @FXML
-  private Button minus2;
-  @FXML
-  private Label totalCost2;
-  @FXML
-  private AnchorPane productPane3;
-  @FXML
-  private Button buy3;
-  @FXML
-  private ImageView productImage3;
-  @FXML
-  private Label productLabel3;
-  @FXML
-  private CheckBox productFavorite3;
-  @FXML
-  private TextField textField3;
-  @FXML
-  private Button plus3;
-  @FXML
-  private Button minus3;
-  @FXML
-  private Label totalCost3;
-  @FXML
-  private AnchorPane productPane4;
-  @FXML
-  private Button buy4;
-  @FXML
-  private ImageView productImage4;
-  @FXML
-  private Label productLabel4;
-  @FXML
-  private CheckBox productFavorite4;
-  @FXML
-  private TextField textField4;
-  @FXML
-  private Button plus4;
-  @FXML
-  private Button minus4;
-  @FXML
-  private Label totalCost4;
-  @FXML
-  private AnchorPane productPane5;
-  @FXML
-  private Button buy5;
-  @FXML
-  private ImageView productImage5;
-  @FXML
-  private Label productLabel5;
-  @FXML
-  private CheckBox productFavorite5;
-  @FXML
-  private TextField textField5;
-  @FXML
-  private Button plus5;
-  @FXML
-  private Button minus5;
-  @FXML
-  private Label totalCost5;
-  @FXML
-  private AnchorPane productPane6;
-  @FXML
-  private Button buy6;
-  @FXML
-  private ImageView productImage6;
-  @FXML
-  private Label productLabel6;
-  @FXML
-  private CheckBox productFavorite6;
-  @FXML
-  private TextField textField6;
-  @FXML
-  private Button plus6;
-  @FXML
-  private Button minus6;
-  @FXML
-  private Label totalCost6;
-  @FXML
-  private AnchorPane productPane7;
-  @FXML
-  private Button buy7;
-  @FXML
-  private ImageView productImage7;
-  @FXML
-  private Label productLabel7;
-  @FXML
-  private CheckBox productFavorite7;
-  @FXML
-  private TextField textField7;
-  @FXML
-  private Button plus7;
-  @FXML
-  private Button minus7;
-  @FXML
-  private Label totalCost7;
-  @FXML
-  private AnchorPane productPane8;
-  @FXML
-  private Button buy8;
-  @FXML
-  private ImageView productImage8;
-  @FXML
-  private Label productLabel8;
-  @FXML
-  private CheckBox productFavorite8;
-  @FXML
-  private TextField textField8;
-  @FXML
-  private Button plus8;
-  @FXML
-  private Button minus8;
-  @FXML
-  private Label totalCost8;
-  @FXML
-  private AnchorPane productPane9;
-  @FXML
-  private Button buy9;
-  @FXML
-  private ImageView productImage9;
-  @FXML
-  private Label productLabel9;
-  @FXML
-  private CheckBox productFavorite9;
-  @FXML
-  private TextField textField9;
-  @FXML
-  private Button plus9;
-  @FXML
-  private Button minus9;
-  @FXML
-  private Label totalCost9;
-  @FXML
-  private AnchorPane productPane10;
-  @FXML
-  private Button buy10;
-  @FXML
-  private ImageView productImage10;
-  @FXML
-  private Label productLabel10;
-  @FXML
-  private CheckBox productFavorite10;
-  @FXML
-  private TextField textField10;
-  @FXML
-  private Button plus10;
-  @FXML
-  private Button minus10;
-  @FXML
-  private Label totalCost10;
-  @FXML
-  private AnchorPane productPane11;
-  @FXML
-  private Button buy11;
-  @FXML
-  private ImageView productImage11;
-  @FXML
-  private Label productLabel11;
-  @FXML
-  private CheckBox productFavorite11;
-  @FXML
-  private TextField textField11;
-  @FXML
-  private Button plus11;
-  @FXML
-  private Button minus11;
-  @FXML
-  private Label totalCost11;
-  @FXML
-  private Label categoryLabel;
-  @FXML
   private Button nextPaymentButton;
   @FXML
   private ScrollPane testPagination1;
@@ -593,7 +335,7 @@ public class CenterFlikController implements Initializable {
   @FXML
   private Accordion accordion;
   @FXML
-  private ScrollPane orderHistorikPane1;
+  private ScrollPane accordionPane;
   
   public Integer getProductNr() {
     return productNr;
@@ -615,13 +357,6 @@ public class CenterFlikController implements Initializable {
     this.productUnits = productUnits;
   }
   
-  public TableView<IMatOrder> getOrderTable() {
-    return orderTable;
-  }
-  
-  public TableView<IMatShoppingItem> getProductTable() {
-    return productTable;
-  }
   
   public ObservableList<IMatOrder> getIMatOrders() {
     return imatOrders;
@@ -634,7 +369,6 @@ public class CenterFlikController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     products = new ArrayList<>();
-    productTable.setMouseTransparent(true);
     varaListVyParent.setFocusTraversable(false);
     fader = createFader(saveInformationLabel);
     fader2 = createFader(newRequirePaymentLabel);
@@ -1052,28 +786,6 @@ public class CenterFlikController implements Initializable {
         }
       }
     });
-    
-    // Initialize the order table
-    orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
-    orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-    orderCostColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
-    
-    // Initialize the shopping item table
-    productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
-    productUnitsColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-    productCostColumn.setCellValueFactory(new PropertyValueFactory<>("sum"));
-    
-    // Listen for selection changes
-    orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<IMatOrder>() {
-
-    @Override
-    public void changed(ObservableValue<? extends IMatOrder> observable, IMatOrder oldOrder, IMatOrder newOrder) {
-      if (newOrder != null) {
-        showIMatOrderDetails(newOrder.getAllProducts());
-      }
-    }
-    });
-  
 
     kontouppgifterButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
@@ -1779,6 +1491,15 @@ public class CenterFlikController implements Initializable {
       imat.getVarukorgController().populateCheckoutCart(imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts());
       Integer total = imat.getVarukorgController().getIMatShoppingCart().getCart().getCost();
       totalCostCartLabel.setText(total.toString()+" kr");
+      if (imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts().isEmpty()) {
+            imat.getVarukorgController().getEmptyButton().setDisable(true);
+            imat.getVarukorgController().getPlaceHolder().setVisible(true);
+            imat.getVarukorgController().getChangeLink().setDisable(true);
+      } else {
+          imat.getVarukorgController().getEmptyButton().setDisable(false);
+          imat.getVarukorgController().getPlaceHolder().setVisible(false);
+          imat.getVarukorgController().getChangeLink().setDisable(false);
+      }
     } else {
       Integer totaler = (int)IMatController.getShoppingCart().getTotal();
       imat.getVarukorgController().setTotalCostLabel(totaler.toString() + " kr");
@@ -1786,9 +1507,11 @@ public class CenterFlikController implements Initializable {
       if (IMatController.getShoppingCart().getItems().isEmpty()) {
             imat.getVarukorgController().getEmptyButton().setDisable(true);
             imat.getVarukorgController().getPlaceHolder().setVisible(true);
+            imat.getVarukorgController().getChangeLink().setDisable(true);
       } else {
           imat.getVarukorgController().getEmptyButton().setDisable(false);
           imat.getVarukorgController().getPlaceHolder().setVisible(false);
+          imat.getVarukorgController().getChangeLink().setDisable(false);
       }
     }
 
@@ -1942,8 +1665,7 @@ public class CenterFlikController implements Initializable {
             }
 
           }
-          imatOrders = FXCollections.observableArrayList(imatOrderList);
-          orderTable.setItems(imatOrders);
+
           rs.close();
           psSelect.close();
         } catch (SQLException ex) {
@@ -2050,19 +1772,16 @@ public class CenterFlikController implements Initializable {
       imatOrder.setShoppingItemList(imatItems);
       imatOrderList.add(imatOrder);
     }
-    imatOrders = FXCollections.observableArrayList(imatOrderList);
-    orderTable.setItems(imatOrders);
+    
   }
   
   public void showIMatOrderDetails(List<IMatShoppingItem> list) {
     if (IMatController.currentUser != null) {
       productsInOrder = FXCollections.observableArrayList(list);
-      productTable.setItems(productsInOrder);
-      productTable.setVisible(true);
+
     } else {
       productsInOrder = FXCollections.observableArrayList(list);
-      productTable.setItems(productsInOrder);
-      productTable.setVisible(true);
+
       }
   }
   
@@ -2847,6 +2566,7 @@ public class CenterFlikController implements Initializable {
       public void handle(ActionEvent event) {
         buyMethod(field, label2, productsToView, test);
         imat.getVarukorgController().getEmptyButton().setDisable(false);
+        imat.getVarukorgController().getChangeLink().setDisable(false);
       }
     });
         

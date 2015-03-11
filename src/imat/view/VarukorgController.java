@@ -133,7 +133,8 @@ public class VarukorgController implements Initializable {
       resetShoppingCartButton.setDisable(false);
     } else {
       shoppingCartListView.getPlaceholder().setVisible(true);
-    resetShoppingCartButton.setDisable(true);
+      resetShoppingCartButton.setDisable(true);
+      changeCartLink.setDisable(true);
     }
     
     changeCartLink.setOnAction(new EventHandler<ActionEvent>() {
@@ -154,6 +155,7 @@ public class VarukorgController implements Initializable {
           imat.getCenterController().changeToCheckoutView();
         }
         shoppingCartListView.getPlaceholder().setVisible(true);
+        changeCartLink.setDisable(true);
       }
     });
     
@@ -168,11 +170,11 @@ public class VarukorgController implements Initializable {
   
   public void resetShoppingCart() {
     if (IMatController.currentUser != null) {
-      imat.getVarukorgController().getIMatShoppingCart().getCart().setNewEmptyCart();
-      imat.getVarukorgController().getIMatShoppingCart().getCart().setCost(0);
+      getIMatShoppingCart().getCart().setNewEmptyCart();
+      getIMatShoppingCart().getCart().setCost(0);
       List<IMatShoppingItem> list = imat.getVarukorgController().getIMatShoppingCart().getCart().getAllProducts();
       populateCheckoutCart(list);
-      
+      totalCostLabel.setText("0 kr");
     } else {
       IMatController.getShoppingCart().clear();
       Integer total = (int)IMatController.getShoppingCart().getTotal();
@@ -325,6 +327,11 @@ public class VarukorgController implements Initializable {
                   totalCostLabel.setText(total.toString()+ " kr");
                   imat.getCenterController().getTotalCostCartLabel().setText(total.toString() + " kr");
                   populateCheckoutCart(getIMatShoppingCart().getCart().getAllProducts());
+                  if (imat.getCenterController().getTotalCostCartLabel().getText().equals("0 kr")) {
+                      resetShoppingCartButton.setDisable(true);
+                      shoppingCartListView.getPlaceholder().setVisible(true);
+                      changeCartLink.setDisable(true);
+                  }
                 } else {
                     List<ShoppingItem> shopI = new ArrayList();
                     shopI.addAll(IMatController.getShoppingCart().getItems());
@@ -349,6 +356,7 @@ public class VarukorgController implements Initializable {
                     if (imat.getCenterController().getTotalCostCartLabel().getText().equals("0 kr")) {
                       resetShoppingCartButton.setDisable(true);
                       shoppingCartListView.getPlaceholder().setVisible(true);
+                      changeCartLink.setDisable(true);
                     }
                   }
               }

@@ -169,18 +169,18 @@ public class IMatController implements Initializable {
           + " PASSWORD VARCHAR(30), "
           + " FIRSTNAME VARCHAR(30), "
           + " LASTNAME VARCHAR(30), "
-          + " CIVIC INT, "
+          + " CIVIC VARCHAR(10), "
           + " EMAIL VARCHAR(30), "
           + " PHONE VARCHAR(15), "
           + " STREET VARCHAR(30), "
           + " POSTAL VARCHAR(10), "
           + " CITY VARCHAR(30), "
-          + " CARDNUMBER VARCHAR(15), "
+          + " CARDNUMBER VARCHAR(16), "
           + " CARDTYPE VARCHAR(15), "
           + " CARDHOLDER VARCHAR(30), "
-          + " VALIDYEAR INT, "
-          + " VALIDMONTH INT, "
-          + " CVV INT) " ;
+          + " VALIDYEAR VARCHAR(2), "
+          + " VALIDMONTH VARCHAR(2), "
+          + " CVV VARCHAR(3)) " ;
 
           statement.execute(createString);
         }

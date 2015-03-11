@@ -28,6 +28,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 
 /**
@@ -268,7 +269,6 @@ public class IMatController implements Initializable {
       psInsert.setString(1, username);
       psInsert.setString(2, password);
       psInsert.execute();
-      psInsert.close();
     } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -280,14 +280,13 @@ public class IMatController implements Initializable {
    * @param favorite  the product to be added as a favorite
    * @param index the number of the favorite product among the favorites
    */
-  public static synchronized void addFavorite(String favorite, int index) {
+  public static synchronized void addFavorite(String favorite) {
     try {
-      String updateString = "update FAVORITES set PRODUCT" + index + " = ? where USERNAME = ?";
-      psUpdate = conn.prepareStatement(updateString);
-      psUpdate.setString(1, favorite);
-      psUpdate.setString(2, currentUser);
-      psUpdate.executeUpdate();
-      psUpdate.close();
+      psInsert = conn.prepareStatement("insert into FAVORITES(USERNAME, FAVORITE1) values (?,?)");
+      psInsert.setString(1, currentUser);
+      psInsert.setString(2, favorite);
+      psInsert.execute();
+      psInsert.close();
     } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -317,18 +316,43 @@ public class IMatController implements Initializable {
    * 
    * @param favorite  the product to be removed
    */
-  public static synchronized void removeFavorite(String favorite, int index) {
+  public static synchronized void removeFavorite(String favorite) {
+    int id = 0;
     try {
-      String updateString = "update FAVORITES set FAVORITE" + index + " = ? where USERNAME = ?";
-      psUpdate = conn.prepareStatement(updateString);
-      psUpdate.setString(1, null);
-      psUpdate.setString(2, currentUser);
-      psUpdate.executeUpdate();
-      psUpdate.close();
+      String selectSQL = "select * from FAVORITES where USERNAME = ?";
+      psSelect = conn.prepareStatement(selectSQL);
+      psSelect.setString(1, currentUser);
+      ResultSet rs = psSelect.executeQuery();
+      while (rs.next()) {
+        String favoriteP = rs.getString("FAVORITE1");
+        if (favoriteP == null) {
+          
+        } else {
+          if (favorite.compareTo(favoriteP) == 0) {
+           id = rs.getInt(1);
+           System.out.println("ID: "+id);
+           break;
+        }
+        }
+
+      }
+      
+      if (id != 0) {
+        String updateString = "update FAVORITES set FAVORITE1 = NULL where ID = ?";
+        psUpdate = conn.prepareStatement(updateString);
+        psUpdate.setInt(1, id);
+        psUpdate.executeUpdate();
+        psUpdate.close();
+      }
+
+        rs.close();
+        psSelect.close();
+      
     } catch (SQLException ex) {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
+
   
   public static void addProductToIMatOrder(Integer productNr, Integer productUnits, String value, Integer totalCost) {
       try {
@@ -409,6 +433,23 @@ public class IMatController implements Initializable {
       Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
     }
     return ++records;
+  }
+  
+   public static int getNumberOfFavorites() {
+    int favorites = 0;
+   try {
+      String selectSQL = "select * from FAVORITES where USERNAME = ?";
+      psSelect = conn.prepareStatement(selectSQL);
+      psSelect.setString(1, currentUser);
+      ResultSet rs = psSelect.executeQuery();
+      //rs.next();
+      
+      rs.close();
+      psSelect.close();
+      }catch (SQLException ex) {
+      Logger.getLogger(IMatController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return favorites;
   }
   
   /**

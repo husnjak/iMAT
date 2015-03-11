@@ -172,6 +172,7 @@ public class ToppController implements Initializable {
       public void handle(MouseEvent event) {
         loggedInUser.setVisited(false);
         imat.getCenterController().changeToKontoView();
+        imat.getCenterController().setTogglesSelected(false, false, true);
         event.consume();
       }
     });
@@ -317,6 +318,10 @@ public class ToppController implements Initializable {
     imat.getCenterController().changeToStartPageView();
   } else if (imat.getCenterController().currentPane.equals("registerPane")) {
       imat.getCenterController().changeToKontoView();
+    } else if (imat.getCenterController().isFavoriteSelected()) {
+     imat.getCenterController().changeToStartPageView();
+    } else if (imat.getCenterController().currentPane != "listPane"){
+      imat.getCenterController().changeToStartPageView();
     }
   
     if (IMatController.currentUser != null) {
@@ -331,6 +336,9 @@ public class ToppController implements Initializable {
         imat.getVarukorgController().getChangeLink().setDisable(false);
       }
     } 
+      //IMatController.getNumberOfFavorites();
+    imat.getCenterController().populateFavorites();
+    //imat.getCenterController().setCurrentIndex(IMatController.getNumberOfRecords("FAVORITES"));
   }
   
   /**
@@ -381,6 +389,12 @@ public class ToppController implements Initializable {
     }
     
     if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {
+      imat.getCenterController().changeToStartPageView();
+    }  else if (imat.getCenterController().currentPane.equals("registerPane")) {
+      imat.getCenterController().changeToKontoView();
+    } else if (imat.getCenterController().isFavoriteSelected()) {
+     imat.getCenterController().changeToStartPageView();
+    } else if (imat.getCenterController().currentPane != "listPane"){
       imat.getCenterController().changeToStartPageView();
     }
   

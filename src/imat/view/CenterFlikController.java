@@ -86,6 +86,8 @@ public class CenterFlikController implements Initializable {
  
   private IMat imat;
   
+  private static int currentIndex = 0;
+  
   int pageIndex = 0;
   Order orderCart;
   
@@ -117,6 +119,8 @@ public class CenterFlikController implements Initializable {
   // Contains products in a given IMatOrder
   private ObservableList<IMatShoppingItem> productsInOrder;
   private ObservableList<IMatShoppingItem> productsInDatabase;
+  
+  List<Product> imatFavoriteList = new ArrayList();
  
   @FXML
   private ScrollPane startPage;
@@ -838,7 +842,18 @@ public class CenterFlikController implements Initializable {
         if (orderhistorikButton.isSelected()) {
           orderhistorikButton.setSelected(false);
         }
-        changeToFavoriteView();
+        
+        if (IMatController.currentUser != null) {
+          imatFavoriteList.clear();
+          showFavorites();
+          listPaneLabel.setText("Favoritvaror");
+          System.out.println(imatFavoriteList.size()+"storlk");
+          changeToListView(imatFavoriteList);
+          favoritvarorButton.setSelected(true);
+
+        } else {
+          changeToFavoriteView();
+        }
         event.consume();
       }
     });
@@ -1969,6 +1984,20 @@ public class CenterFlikController implements Initializable {
  
   }
   
+  public Label getListPaneLabel() {
+    return listPaneLabel;
+  }
+  
+  public boolean isFavoriteSelected() {
+    return favoritvarorButton.isSelected();
+  }
+  
+  public void setTogglesSelected(boolean fav, boolean order, boolean konto) {
+    this.favoritvarorButton.setSelected(fav);
+    this.orderhistorikButton.setSelected(order);
+    this.kontouppgifterButton.setSelected(konto);
+  }
+  
   
     public class XCell extends ListCell<IMatShoppingItem> {
         HBox hbox = new HBox();
@@ -2504,8 +2533,14 @@ public class CenterFlikController implements Initializable {
        Button buy = new Button("Köp");
        CheckBox favorite = new CheckBox();
        
-       if (IMatController.getIMatBackend().isFavorite(product)) {
-         favorite.setSelected(true);
+       if (IMatController.currentUser == null) {
+        if (IMatController.getIMatBackend().isFavorite(product)) {
+          favorite.setSelected(true);
+        }
+       } else {
+         if (imatFavoriteList.contains(product)) {
+           favorite.setSelected(true);
+         }
        }
        
        TextField field = new TextField("1");
@@ -2682,15 +2717,22 @@ public class CenterFlikController implements Initializable {
         }
       }
     
+    public void setCurrentIndex(int index) {
+      currentIndex = index;
+    }
+    
     public void favoriteMethod(CheckBox favorite, List<Product> product, int pos) {
       if (IMatController.currentUser != null) {
         if (favorite.isSelected()) {
-          int index = IMatController.getNumberOfRecords(product.get(pos).toString());
-          IMatController.addFavorite(product.get(pos).toString(), ++index);
+          IMatController.addFavorite(product.get(pos).getName());
+          imatFavoriteList.add(product.get(pos));
         } else {
-          // Implement how to find correct index
-          int index = 1;
-          IMatController.removeFavorite(product.toString(), index);
+          IMatController.removeFavorite(product.get(pos).getName());
+          imatFavoriteList.remove(product.get(pos));
+          if (listPaneLabel.getText().equals("Favoritvaror")) {
+                changeToListView(imatFavoriteList);
+                favoritvarorButton.setSelected(true);
+          }
         }
       } else {
         if (favorite.isSelected()) {
@@ -2888,4 +2930,39 @@ public class CenterFlikController implements Initializable {
         
       }
       }
+      
+      
+       /**
+   * Display the user's order history.
+   */
+  public void showFavorites() {
+    if (IMatController.currentUser != null) {
+      populateFavorites();
+      changeToListView(imatFavoriteList);
+    }
+  }
+  
+  public void populateFavorites() {
+          try {
+        String selectSQL = "select * from FAVORITES where USERNAME = ?";
+          PreparedStatement psSelect = IMatController.getConnection().prepareStatement(selectSQL);
+          psSelect.setString(1, IMatController.currentUser);
+          ResultSet rs = psSelect.executeQuery();
+          while (rs.next()) {
+
+            String productAttribute = rs.getString("FAVORITE1");
+            if (productAttribute == null) {
+              
+            } else {
+              List<Product> favorites = IMatController.getIMatBackend().findProducts(productAttribute);
+              Product favorite = favorites.get(0);
+              imatFavoriteList.add(favorite);
+            }
+            
+          }
+      System.out.println(imatFavoriteList.size()+"efter add");
+}     catch (SQLException ex) {
+        Logger.getLogger(CenterFlikController.class.getName()).log(Level.SEVERE, null, ex);
+      }
+  }
 }

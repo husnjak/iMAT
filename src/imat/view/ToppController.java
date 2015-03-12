@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -33,6 +35,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 import javax.imageio.ImageIO;
 
 /**
@@ -47,6 +50,7 @@ public class ToppController implements Initializable {
   private TextField passwordTextField;
   
   private IMat imat;
+  FadeTransition fader;
   @FXML
   private TextField searchTextField;
   @FXML
@@ -127,6 +131,8 @@ public class ToppController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     //etImage(logoImage, "iMAT_Logga.png");
+    loginLabel.setText("");
+    fader = createFader(loginLabel);
     registerUser.setFocusTraversable(false);
     loggedInUser.setFocusTraversable(false);
     passwordTextField.alignmentProperty().setValue(Pos.CENTER_LEFT);
@@ -222,6 +228,14 @@ public class ToppController implements Initializable {
     }
 };
   
+    public FadeTransition createFader(Node node) {
+    FadeTransition fade = new FadeTransition(Duration.seconds(4), node);
+    fade.setFromValue(1);
+    fade.setToValue(0);
+
+    return fade;
+}
+  
   /**
    * Is called by the main application to give a reference back to itself.
    * 
@@ -272,8 +286,10 @@ public class ToppController implements Initializable {
     
     if (username.length() == 0) {
       loginLabel.setText("Fyll i användarnamn");
+      fader.play();
     } else if (password.length() == 0) {
       loginLabel.setText("Fyll i lösenord");
+      fader.play();
     } else if ((valid.compareTo("validAccount") == 0)) {
       loggedInUser.setText("  " + username);
       IMatController.setCurrentUser(username);
@@ -310,8 +326,10 @@ public class ToppController implements Initializable {
       }
     } else if (valid.compareTo("invalidUsername") == 0) {
       loginLabel.setText("Felaktigt användarnamn");
+      fader.play();
     } else {
       loginLabel.setText("Felaktigt lösenord");
+      fader.play();
     }
   imat.getVarukorgController().getList().setFocusTraversable(true);
   if (imat.getCenterController().getListVyPane().getChildren().contains(imat.getCenterController().lv)) {

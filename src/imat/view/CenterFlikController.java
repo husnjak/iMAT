@@ -2089,6 +2089,9 @@ public class CenterFlikController implements Initializable {
                   imat.getVarukorgController().getEmptyButton().setDisable(true);
                 }
                  imat.getVarukorgController().getPlaceHolder().setVisible(true);
+                 if (totalCostCartLabel.getText().equals("0 kr")) {
+                   nextPaymentButton.setDisable(true);
+                 }
               }
             });
             minusButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -2344,7 +2347,7 @@ public class CenterFlikController implements Initializable {
     return checkOutCartListView;
   }
   
-  private FadeTransition createFader(Node node) {
+  public FadeTransition createFader(Node node) {
     FadeTransition fade = new FadeTransition(Duration.seconds(4), node);
     fade.setFromValue(1);
     fade.setToValue(0);
@@ -2378,7 +2381,7 @@ public class CenterFlikController implements Initializable {
         varaListVyParent.getChildren().get(i).setVisible(false);
       }
     }
-    
+    nextPaymentButton.setDisable(false);
     if (changeCart) {
         checkOutLabel.setText("Ändra i varukorgen");
         nextPaymentButton.setVisible(false);

@@ -64,13 +64,13 @@ public class IMat extends Application {
     if (IMatController.getConnection() == null) {
       IMatController.createDatabaseConnection();
     }
- 
+    
     initRootLayout();
     initKategoriMeny();
     initCenterFlik();
     initTopp();
     initVarukorg();
-    
+ 
     totalSum = (int)IMatController.getShoppingCart().getTotal();
     varukorgController.updateTotalCostBackend(totalSum);
     varukorgController.populateCheckoutCart(varukorgController.convertBackendToIMat());
